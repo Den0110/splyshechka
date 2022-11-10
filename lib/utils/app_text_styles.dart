@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_pillow/utils/app_colors.dart';
 
 class AppTextStyles {
-  static const fontFamilySFPro = "packages/core_ui/SF-Pro";
-  static const fontFamilyOpenSans = "packages/core_ui/OpenSans";
-  static const fontFamilyStapel = "packages/core_ui/Stapel";
+  static const fontFamilySFPro = "SF-Pro";
+  static const fontFamilyOpenSans = "OpenSans";
+  static const fontFamilyStapel = "Stapel";
 
   static final buttonLargeStyle = TextStyle(
     height: 22.h / 16.h,

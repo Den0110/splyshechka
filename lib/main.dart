@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,12 +10,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Сплюшечка',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return DefaultTextHeightBehavior(
+          textHeightBehavior: const TextHeightBehavior(
+            leadingDistribution: TextLeadingDistribution.even,
+          ),
+          child: MaterialApp(
+            title: 'Сплюшечка',
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+            ),
+            home: const MyHomePage(),
+          ),
+        );
+      },
     );
   }
 }
@@ -35,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: const [
+          children: [
             Text('Влад бумага'),
           ],
         ),
