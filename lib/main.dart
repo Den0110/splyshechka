@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_pillow/models/bottom_bars/app_bottom_bar_items.dart';
+import 'package:my_pillow/widgets/bottom_bars/app_bottom_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Text('Влад бумага'),
+            AppBottomBar(onSelected: (f){}, values: AppBottomBarItem.values, selected: AppBottomBarItem.autoGraph)
           ],
         ),
       ),
