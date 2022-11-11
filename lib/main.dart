@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_pillow/models/notifications/notification_type.dart';
+import 'package:my_pillow/utils/app_colors.dart';
+import 'package:my_pillow/widgets/notifications/notification_without_image.dart';
+import 'package:my_pillow/widgets/notifications/notifications_with_image.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,7 +53,48 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Text('Влад бумага'),
+            NotificationWithIcon(
+                subTitle: 'test',
+                title: 'test',
+                onPressed: () {},
+                onClosed: () {},
+                type: NotificationType.empty),
+            NotificationWithIcon(
+                subTitle: 'test',
+                title: 'test',
+                onPressed: () {},
+                onClosed: () {},
+                type: NotificationType.closeable),
+            NotificationWithIcon(
+                subTitle: 'test',
+                title: 'test',
+                onPressed: () {},
+                onClosed: () {},
+                type: NotificationType.openable),
+            NotificationWithIcon(
+                title: 'Notification Title',
+                subTitle: 'Here’s notification text.',
+                type: NotificationType.closeable,
+                onPressed: () {},
+                onClosed: () {}),
+            NotificationWithOutImage(
+                color: AppColors.darkPurple,
+                title: 'test',
+                onPressed: () {},
+                onClosed: () {},
+                type: NotificationType.empty),
+            NotificationWithOutImage(
+                color: AppColors.darkPurple,
+                title: 'test',
+                onPressed: () {},
+                onClosed: () {},
+                type: NotificationType.closeable),
+            NotificationWithOutImage(
+                color: AppColors.darkPurple,
+                title: 'test',
+                onPressed: () {},
+                onClosed: () {},
+                type: NotificationType.openable),
           ],
         ),
       ),
