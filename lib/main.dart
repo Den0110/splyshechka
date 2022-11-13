@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_pillow/widgets/containers/sleep_container.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,7 +50,16 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Text('Влад бумага'),
+            SleepContainer(
+              child: Column(
+                children: const [
+                  Text(
+                    'tESt TeST teSt tESt TeST teSt tESt TeST teSt',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
