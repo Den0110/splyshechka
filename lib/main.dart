@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_pillow/widgets/options_list/active_widget.dart';
+import 'package:my_pillow/widgets/options_list/check_element.dart';
+import 'package:my_pillow/widgets/options_list/list_element.dart';
+import 'package:my_pillow/widgets/options_list/slider_element.dart';
+import 'package:my_pillow/widgets/options_list/stepper_element.dart';
+import 'package:my_pillow/widgets/options_list/switch_element.dart';
+import 'package:my_pillow/widgets/options_list/value_element.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,7 +56,13 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Text('Влад бумага'),
+            ActiveWidget(isActive: true, child: Text('Test')),
+            CheckElement(title: 'Test', isActive: true, value: true , onChanged:(){}),
+            ListElement(isActive: true),
+            SliderElement(isActive: true, value: 15.5, minValue: 1.0, maxValue: 20.0, onChanged: (a){}),
+            StepperElement(title: 'Test', isActive: true, value: 15, onIncrease: (){}, onDecrease: (){}),
+            SwitchElement(title: 'True', isActive: true, value: true, onChanged: (a){}),
+            ValueElement(title: 'Test', isActive: true),
           ],
         ),
       ),
