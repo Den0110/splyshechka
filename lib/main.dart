@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_pillow/widgets/pin_code/pin_button.dart';
+import 'package:my_pillow/widgets/pin_code/pin_code.dart';
+import 'package:my_pillow/widgets/pin_code/pin_progress.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,7 +52,9 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Text('Влад бумага'),
+            PinButton(label: 'test', onTap: (){}),
+            PinCode(password: 'test', length: 4, onChanged: (a){}, onSubmitted: (a){}),
+            PinProgress(length: 4, filled: 2),
           ],
         ),
       ),
