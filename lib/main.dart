@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_pillow/widgets/test_sleep_time/time_picker.dart';
 
 void main() {
   runApp(const MyApp());
@@ -47,11 +48,11 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text('Сплюшечка'),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Text('Влад бумага'),
+        child: Container(color: Colors.black, child: Column(
+          children: const [
+            TimeWheelPicker(),
           ],
-        ),
+        ),),
       ),
     );
   }
