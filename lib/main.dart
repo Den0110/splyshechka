@@ -7,6 +7,11 @@ import 'package:my_pillow/widgets/options_list/slider_element.dart';
 import 'package:my_pillow/widgets/options_list/stepper_element.dart';
 import 'package:my_pillow/widgets/options_list/switch_element.dart';
 import 'package:my_pillow/widgets/options_list/value_element.dart';
+import 'package:my_pillow/widgets/switchers/pick_option/background_option.dart';
+import 'package:my_pillow/widgets/switchers/pick_option/highlight_option.dart';
+import 'package:my_pillow/widgets/switchers/pick_option/option_creator.dart';
+import 'package:my_pillow/widgets/switchers/pick_option/pick_option.dart';
+import 'package:my_pillow/widgets/switchers/question_button/question_button.dart';
 
 void main() {
   runApp(const MyApp());
@@ -56,13 +61,18 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ActiveWidget(isActive: true, child: Text('Test')),
+            const ActiveWidget(isActive: true, child: Text('Test')),
             CheckElement(title: 'Test', isActive: true, value: true , onChanged:(){}),
-            ListElement(isActive: true),
+            const ListElement(isActive: true),
             SliderElement(isActive: true, value: 15.5, minValue: 1.0, maxValue: 20.0, onChanged: (a){}),
             StepperElement(title: 'Test', isActive: true, value: 15, onIncrease: (){}, onDecrease: (){}),
             SwitchElement(title: 'True', isActive: true, value: true, onChanged: (a){}),
-            ValueElement(title: 'Test', isActive: true),
+            const ValueElement(title: 'Test', isActive: true),
+            const BackgroundOption(isActive: true, value: 'test'),
+            const HighlightOption(isActive: true, value: 'test'),
+            const OptionCreator(optionStyle: OptionStyle.highlightStyle, value: 'test', isActive: true),
+            PickOption(options: ['test'], active: 1, optionStyle: OptionStyle.highlightStyle, onTap: (a){}),
+            QuestionButton(onTap: (){}),
           ],
         ),
       ),
