@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_pillow/widgets/page_indicator/page_indicator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Text('Влад бумага'),
+            PageIndicator(index: 12, count: 15),
           ],
         ),
       ),
