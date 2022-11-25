@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_pillow/models/pickers/sleep_color_picker_items.dart';
+import 'package:my_pillow/widgets/sleep_color_picker/sleep_color_picker.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,7 +51,11 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Text('Влад бумага'),
+            SleepColorPicker(
+              values: sleepColorPickerItems,
+              selectedColor: sleepColorPickerItems[1],
+              onSelected: (_) {},
+            ),
           ],
         ),
       ),
