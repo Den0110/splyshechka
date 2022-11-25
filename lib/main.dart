@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_pillow/widgets/pillow_id_label/pillow_id_label.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,10 +48,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: [
-            PillowIdLabel(
-              text: "test",
-            ),
+          children: const [
+            Text("Влад Бумага")
           ],
         ),
       ),
