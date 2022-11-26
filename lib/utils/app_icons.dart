@@ -1,19 +1,14 @@
 abstract class AppIcons {
   static const String autoGraphDisabled =
       "assets/icons/auto_graph_disabled.svg";
-  static const String autoGraphEnabled =
-      "assets/icons/auto_graph_enabled.svg";
+  static const String autoGraphEnabled = "assets/icons/auto_graph_enabled.svg";
   static const String autoRenew = "assets/icons/autorenew.svg";
-  static const String bedtimeDisabled =
-      "assets/icons/bedtime_disabled.svg";
-  static const String bedtimeEnabled =
-      "assets/icons/bedtime_enabled.svg";
+  static const String bedtimeDisabled = "assets/icons/bedtime_disabled.svg";
+  static const String bedtimeEnabled = "assets/icons/bedtime_enabled.svg";
   static const String favorite = "assets/icons/favorite.svg";
   static const String handyman = "assets/icons/handyman.svg";
-  static const String localMallDisabled =
-      "assets/icons/local_mall_disabled.svg";
-  static const String localMallEnabled =
-      "assets/icons/local_mall_enabled.svg";
+  static const String articleDisabled = "assets/icons/article_disabled.svg";
+  static const String articleEnabled = "assets/icons/article_enabled.svg";
   static const String precisionManufacturing =
       "assets/icons/precision_manufacturing.svg";
   static const String sell = "assets/icons/sell.svg";
@@ -21,26 +16,22 @@ abstract class AppIcons {
   static const String coin = "assets/icons/coin_icon.svg";
   static const String code = "assets/icons/code_icon.svg";
   static const String closed = 'assets/icons/close.svg';
-  static const String arrowRight =
-      'assets/icons/arrow_forward.svg';
+  static const String arrowRight = 'assets/icons/arrow_forward.svg';
   static const String alarm = 'assets/icons/alarm.svg';
   static const String qr = 'assets/icons/qr_code_scanner.svg';
   static const String bedtime = 'assets/icons/bedtime.svg';
   static const String wakeUp = 'assets/icons/wake_up.svg';
-  static const String coinCircle =
-      'assets/icons/coin_circle.svg';
+  static const String coinCircle = 'assets/icons/coin_circle.svg';
   static const String chair = 'assets/icons/chair.svg';
   static const String gear = 'assets/icons/gear.svg';
   static const String lockC = 'assets/icons/lock_C.svg';
   static const String lockE = 'assets/icons/lock_E.svg';
   static const String lockL = 'assets/icons/lock_L.svg';
   static const String diamond = 'assets/icons/diamond.svg';
-  static const String speedometer =
-      'assets/icons/speedometer.svg';
+  static const String speedometer = 'assets/icons/speedometer.svg';
   static const String stars = 'assets/icons/stars.svg';
   static const String sharp = 'assets/icons/sharp.svg';
-  static const String arrowRightAlt =
-      'assets/icons/arrow_right.svg';
+  static const String arrowRightAlt = 'assets/icons/arrow_right.svg';
   static const String editCircle = 'assets/icons/editCircle.svg';
   static const String edit = 'assets/icons/edit.svg';
   static const String asleepAfter = "assets/icons/asleep_after.svg";

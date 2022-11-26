@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter_svg/svg.dart';
 import 'package:my_pillow/utils/app_icons.dart';
 
@@ -9,7 +11,7 @@ extension AppBottomBarExtension on AppBottomBarItem {
       case AppBottomBarItem.bedtime:
         return SvgPicture.asset(AppIcons.bedtimeEnabled);
       case AppBottomBarItem.localMall:
-        return SvgPicture.asset(AppIcons.localMallEnabled);
+        return SvgPicture.asset(AppIcons.articleEnabled);
       case AppBottomBarItem.autoGraph:
         return SvgPicture.asset(AppIcons.autoGraphEnabled);
     }
@@ -20,7 +22,7 @@ extension AppBottomBarExtension on AppBottomBarItem {
       case AppBottomBarItem.bedtime:
         return SvgPicture.asset(AppIcons.bedtimeDisabled);
       case AppBottomBarItem.localMall:
-        return SvgPicture.asset(AppIcons.localMallDisabled);
+        return SvgPicture.asset(AppIcons.articleDisabled);
       case AppBottomBarItem.autoGraph:
         return SvgPicture.asset(AppIcons.autoGraphDisabled);
     }

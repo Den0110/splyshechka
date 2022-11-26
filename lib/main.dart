@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_pillow/navigation/auto_router.gr.dart';
+import 'package:my_pillow/utils/app_colors.dart';
+import 'package:my_pillow/utils/app_text_styles.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
@@ -19,40 +24,24 @@ class MyApp extends StatelessWidget {
           textHeightBehavior: const TextHeightBehavior(
             leadingDistribution: TextLeadingDistribution.even,
           ),
-          child: MaterialApp(
-            title: 'Сплюшечка',
+          child: MaterialApp.router(
+            title: 'SleepN',
+            debugShowCheckedModeBanner: false,
             theme: ThemeData(
-              primarySwatch: Colors.blue,
+              appBarTheme: AppBarTheme(
+                elevation: 0,
+                centerTitle: true,
+                backgroundColor: Colors.transparent,
+                titleTextStyle: AppTextStyles.appBarStyle,
+              ),
+              colorScheme: ColorScheme.fromSeed(seedColor: AppColors.purple),
+              scaffoldBackgroundColor: AppColors.space,
             ),
-            home: const MyHomePage(),
+            routerDelegate: _appRouter.delegate(),
+            routeInformationParser: _appRouter.defaultRouteParser(),
           ),
         );
       },
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Сплюшечка'),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: const [
-            Text("Влад Бумага")
-          ],
-        ),
-      ),
     );
   }
 }
