@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:my_pillow/pages/articles/articles_page.dart';
+import 'package:my_pillow/pages/articles/wiki_article/wiki_article_page.dart';
 import 'package:my_pillow/pages/home/home_page.dart';
 import 'package:my_pillow/pages/main/main_page.dart';
 import 'package:my_pillow/pages/statistics/statistics_page.dart';
@@ -13,6 +14,9 @@ import 'package:my_pillow/pages/statistics/statistics_page.dart';
       children: [
         AutoRoute(
           page: HomePage,
+        ),
+        AutoRoute(
+          page: WikiArticlePage,
         ),
         AutoRoute(
           page: ArticlesPage,

@@ -29,4 +29,5 @@ abstract class AppColors {
   static const Color subtitleColor = Color.fromRGBO(215, 215, 215, 0.6);
   static const Color shadowOfCoin = Color.fromRGBO(48, 48, 48, 1);
   static const Color darkGreen = Color.fromRGBO(26, 47, 35, 1);
+  static Color black38 = Colors.black.withOpacity(0.38);
 }

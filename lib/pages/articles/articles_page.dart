@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_pillow/pages/articles/wiki/wiki_page.dart';
 import 'package:my_pillow/utils/app_colors.dart';
 
 class ArticlesPage extends StatelessWidget {
@@ -6,11 +7,6 @@ class ArticlesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'Articles',
-        style: TextStyle(color: AppColors.white),
-      ),
-    );
+    return WikiPage();
   }
 }
