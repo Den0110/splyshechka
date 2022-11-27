@@ -21,7 +21,7 @@ class WikiCard extends StatelessWidget {
         height: 200.h,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10)),
-          color: Colors.white,
+          color: Color.fromRGBO(37,35,49,1),
           boxShadow: [
             BoxShadow(
               color: Color.fromRGBO(0, 0, 0, 0.06),
@@ -44,7 +44,7 @@ class WikiCard extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  color: const Color.fromRGBO(23, 23, 37, 1),
+                  color:  const Color.fromRGBO(255, 255, 255, 1),
                   fontWeight: FontWeight.w700,
                   fontSize: 28.sm,
                   height: 30.h / 28.sm,
@@ -60,7 +60,7 @@ class WikiCard extends StatelessWidget {
                         article.outline,
                         overflow: TextOverflow.fade,
                         style: TextStyle(
-                          color: const Color.fromRGBO(0, 0, 0, 0.7),
+                          color: const Color.fromRGBO(180, 180, 185, 1),
                           fontWeight: FontWeight.w400,
                           fontSize: 11.sm,
                           height: 18.h / 11.sm,

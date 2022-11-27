@@ -21,7 +21,7 @@ class WikiArticleContent extends StatelessWidget {
         fontFamily: AppTextStyles.fontFamilyOpenSans,
         fontSize: 16.sm,
         fontWeight: FontWeight.w400,
-        color: AppColors.black38,
+        color: const Color.fromRGBO(180, 180, 185, 1),
         height: 23 / 16.sm,
       ),
       parse: [
@@ -40,7 +40,7 @@ class WikiArticleContent extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 36.sm,
                     fontWeight: FontWeight.w600,
-                    color: AppColors.black38,
+                    color: AppColors.white,
                     height: 40 / 36.sm,
                   ),
                 ),
@@ -61,7 +61,7 @@ class WikiArticleContent extends StatelessWidget {
                 child: Text(
                   displayText,
                   style: TextStyle(
-                    color: AppColors.black38,
+                    color: AppColors.white,
                     fontSize: 24.sm,
                     fontWeight: FontWeight.w600,
                     height: 30 / 24.sm,
@@ -86,7 +86,7 @@ class WikiArticleContent extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14.sm,
                     fontWeight: FontWeight.w400,
-                    color: AppColors.black38,
+                    color: AppColors.white,
                     height: 22 / 14.sm,
                   ),
                 ),
