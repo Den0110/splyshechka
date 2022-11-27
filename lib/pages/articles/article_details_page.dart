@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_pillow/models/articles/article.dart';
-import 'package:my_pillow/pages/articles/wiki_article/widgets/wiki_article_content.dart';
-import 'package:my_pillow/widgets/articles/title_app_bar.dart';
+import 'package:my_pillow/pages/articles/widgets/wiki_article_content.dart';
 
 
-class WikiArticlePage extends StatelessWidget {
+class ArticleDetailsPage extends StatelessWidget {
   final Article article;
 
-  const WikiArticlePage({
+  const ArticleDetailsPage({
     Key? key,
     required this.article,
   }) : super(key: key);
@@ -16,7 +15,9 @@ class WikiArticlePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: titleAppBar(title: "Wiki"),
+      appBar: AppBar(
+        automaticallyImplyLeading: true,
+      ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Container(

@@ -18,7 +18,7 @@ class WikiCard extends StatelessWidget {
     return InkWell(
       onTap: () => onArticlePressed(article),
       child: Container(
-        width: 294.w,
+        height: 200.h,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10)),
           color: Colors.white,

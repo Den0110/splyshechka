@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_parsed_text/flutter_parsed_text.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_pillow/utils/app_colors.dart';
+import 'package:my_pillow/utils/app_text_styles.dart';
 import 'package:my_pillow/widgets/articles/loadable_image.dart';
-
 
 class WikiArticleContent extends StatelessWidget {
   final String text;
@@ -18,7 +18,7 @@ class WikiArticleContent extends StatelessWidget {
     return ParsedText(
       text: text,
       style: TextStyle(
-        fontFamily: 'SourceSansPro',
+        fontFamily: AppTextStyles.fontFamilyOpenSans,
         fontSize: 16.sm,
         fontWeight: FontWeight.w400,
         color: AppColors.black38,

@@ -1,12 +1,40 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:my_pillow/pages/articles/wiki/wiki_page.dart';
-import 'package:my_pillow/utils/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_pillow/models/articles/article.dart';
+import 'package:my_pillow/navigation/auto_router.gr.dart';
+import 'package:my_pillow/pages/articles/widgets/wiki_card.dart';
 
 class ArticlesPage extends StatelessWidget {
-  const ArticlesPage({Key? key}) : super(key: key);
+  ArticlesPage({Key? key}) : super(key: key);
+
+  final articles = [
+    Article.empty(),
+    Article.empty(),
+    Article.empty(),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return WikiPage();
+    return ListView.builder(
+      physics: const BouncingScrollPhysics(),
+      itemCount: articles.length,
+      itemBuilder: (BuildContext context, int index) {
+        return Padding(
+          padding: EdgeInsets.only(
+            top: index == 0 ? 24.h : 8.h,
+            bottom: index == articles.length - 1 ? 24.h : 8.h,
+            left: 24.w,
+            right: 24.w,
+          ),
+          child: WikiCard(
+            article: articles[index],
+            onArticlePressed: (article) {
+              context.router.navigate(ArticleDetailsRoute(article: article));
+            },
+          ),
+        );
+      },
+    );
   }
 }
