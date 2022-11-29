@@ -314,4 +314,12 @@ class AppTextStyles {
     fontSize: 13.sp,
     fontFamily: fontFamilyOpenSans,
   );
+  static final alarmDescriptionStyle = TextStyle(
+    fontFamily: AppTextStyles.fontFamilyOpenSans,
+    fontSize: 13.sp,
+    height: 18.h / 13.sp,
+    fontWeight: FontWeight.w400,
+    letterSpacing: -0.08.w,
+    color: AppColors.subtitleColor.withOpacity(0.6),
+  );
 }

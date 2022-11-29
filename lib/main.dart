@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_pillow/di/locator.dart';
 import 'package:my_pillow/navigation/auto_router.gr.dart';
 import 'package:my_pillow/utils/app_colors.dart';
 import 'package:my_pillow/utils/app_text_styles.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initDependencies();
   runApp(MyApp());
 }
 
@@ -25,7 +28,7 @@ class MyApp extends StatelessWidget {
             leadingDistribution: TextLeadingDistribution.even,
           ),
           child: MaterialApp.router(
-            title: 'SleepN',
+            title: 'Сплюшечка',
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
               appBarTheme: AppBarTheme(

@@ -48,4 +48,5 @@ abstract class AppIcons {
   static const String volume = 'assets/icons/volume.svg';
   static const String bnb = "assets/icons/bnb.svg";
   static const String slt = "assets/icons/coin_slt.svg";
+  static const String mic = 'assets/icons/mic.svg';
 }
