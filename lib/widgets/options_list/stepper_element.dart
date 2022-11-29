@@ -13,7 +13,7 @@ class StepperElement extends StatelessWidget {
     required this.onDecrease,
     this.isActiveMinus = true,
     this.isActivePlus = true,
-    this.iconAsset,
+    this.icon,
     this.verticalPadding,
     this.iconSize,
   });
@@ -25,7 +25,7 @@ class StepperElement extends StatelessWidget {
   final num value;
   final VoidCallback onIncrease;
   final VoidCallback onDecrease;
-  final String? iconAsset;
+  final Widget? icon;
   final double? verticalPadding;
   final Size? iconSize;
 
@@ -35,7 +35,7 @@ class StepperElement extends StatelessWidget {
       iconSize: iconSize,
       title: title,
       isActive: isActive,
-      iconAsset: iconAsset,
+      icon: icon,
       verticalPadding: verticalPadding,
       rightPadding: 2.0,
       child: SleepStepper(

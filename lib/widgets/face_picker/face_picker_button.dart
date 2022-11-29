@@ -27,7 +27,7 @@ class FacePickerButton extends StatelessWidget {
             Radius.circular(8.r),
           ),
         ),
-        child: Image.asset(pathImage, fit: BoxFit.fill),
+        child: Image.network(pathImage, fit: BoxFit.fill),
       ),
     );
   }
