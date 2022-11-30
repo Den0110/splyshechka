@@ -10,7 +10,7 @@ class SwitchElement extends StatelessWidget {
     required this.isActive,
     required this.value,
     required this.onChanged,
-    this.iconAsset,
+    this.icon,
     this.verticalPadding,
   });
 
@@ -18,7 +18,7 @@ class SwitchElement extends StatelessWidget {
   final bool isActive;
   final bool value;
   final void Function(bool) onChanged;
-  final String? iconAsset;
+  final Widget? icon;
   final double? verticalPadding;
 
   @override
@@ -27,7 +27,7 @@ class SwitchElement extends StatelessWidget {
       verticalPadding: verticalPadding,
       title: title,
       isActive: isActive,
-      iconAsset: iconAsset,
+      icon: icon,
       onTap: () {
         onChanged(!value);
       },

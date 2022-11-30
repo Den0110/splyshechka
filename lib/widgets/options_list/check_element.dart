@@ -9,7 +9,7 @@ class CheckElement extends StatelessWidget {
     required this.isActive,
     required this.value,
     required this.onChanged,
-    this.iconAsset,
+    this.icon,
     this.verticalPadding,
   });
 
@@ -17,7 +17,7 @@ class CheckElement extends StatelessWidget {
   final bool isActive;
   final bool value;
   final VoidCallback onChanged;
-  final String? iconAsset;
+  final Widget? icon;
   final double? verticalPadding;
 
   @override
@@ -30,7 +30,7 @@ class CheckElement extends StatelessWidget {
         onChanged();
       },
       arrowIfTappable: false,
-      iconAsset: iconAsset,
+      icon: icon,
       rightPadding: 5.0,
       child: SleepCheckbox(
         value: value,

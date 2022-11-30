@@ -19,7 +19,7 @@ class MainPage extends StatelessWidget {
       child: BlocConsumer<MainBloc, MainState>(
         listener: (context, state) {
           if (state is NavToProfile) {
-            // context.router.navigate(const ProfileRoute());
+            context.router.navigate(const ProfileRoute());
           }
         },
         builder: (context, state) => Scaffold(
@@ -34,7 +34,8 @@ class MainPage extends StatelessWidget {
                 children: [
                   Avatar(
                     color: AppColors.darkPurple,
-                    imageUrl: "https://drive.google.com/uc?export=view&id=1lXj3z1-fONnscN-lPxaGenInu8r0qe7U",
+                    imageUrl:
+                        "https://drive.google.com/uc?export=view&id=1lXj3z1-fONnscN-lPxaGenInu8r0qe7U",
                     size: 28.r,
                     padding: 4.r,
                   ),

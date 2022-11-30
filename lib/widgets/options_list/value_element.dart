@@ -12,7 +12,7 @@ class ValueElement extends StatelessWidget {
     this.titleColor,
     this.subTitle,
     required this.isActive,
-    this.iconAsset,
+    this.icon,
     this.value,
     this.valueColor,
     this.onTap,
@@ -23,7 +23,7 @@ class ValueElement extends StatelessWidget {
   final Color? titleColor;
   final String? subTitle;
   final bool isActive;
-  final String? iconAsset;
+  final Widget? icon;
   final Object? value;
   final Color? valueColor;
   final VoidCallback? onTap;
@@ -37,7 +37,7 @@ class ValueElement extends StatelessWidget {
       subtitle: subTitle,
       titleColor: titleColor,
       isActive: isActive,
-      iconAsset: iconAsset,
+      icon: icon,
       onTap: onTap,
       child: value != null
           ? Row(
