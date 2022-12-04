@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:my_pillow/widgets/options_list/list_element.dart';
-import 'package:my_pillow/widgets/switchers/sleep_stepper/sleep_stepper.dart';
+import 'package:splyshechka/widgets/options_list/list_element.dart';
+import 'package:splyshechka/widgets/switchers/sleep_stepper/sleep_stepper.dart';
 
 class StepperElement extends StatelessWidget {
   const StepperElement({

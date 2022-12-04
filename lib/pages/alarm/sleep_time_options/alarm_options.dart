@@ -1,17 +1,17 @@
 import 'package:flutter_svg/svg.dart';
-import 'package:my_pillow/utils/app_icons.dart';
-import 'package:my_pillow/widgets/options_list/slider_element.dart';
-import 'package:my_pillow/widgets/options_list/switch_element.dart';
-import 'package:my_pillow/widgets/options_list/value_element.dart';
-import 'package:my_pillow/widgets/sleep_container/sleep_container.dart';
-import 'package:my_pillow/domain/entities/alarm/sleep_time.dart';
-import 'package:my_pillow/domain/entities/alarm/snooze_time.dart';
+import 'package:splyshechka/utils/app_icons.dart';
+import 'package:splyshechka/widgets/options_list/slider_element.dart';
+import 'package:splyshechka/widgets/options_list/switch_element.dart';
+import 'package:splyshechka/widgets/options_list/value_element.dart';
+import 'package:splyshechka/widgets/sleep_container/sleep_container.dart';
+import 'package:splyshechka/domain/entities/alarm/sleep_time.dart';
+import 'package:splyshechka/domain/entities/alarm/snooze_time.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_pillow/pages/alarm/set_sleep_time_details/bloc/sleep_time_details_cubit.dart';
-import 'package:my_pillow/pages/alarm/sleep_time_options/widgets/sleep_goal.dart';
-import 'package:my_pillow/widgets/sleep_time_picker/sleep_time_picker.dart';
+import 'package:splyshechka/pages/alarm/set_sleep_time_details/bloc/sleep_time_details_cubit.dart';
+import 'package:splyshechka/pages/alarm/sleep_time_options/widgets/sleep_goal.dart';
+import 'package:splyshechka/widgets/sleep_time_picker/sleep_time_picker.dart';
 
 class AlarmOptions extends StatelessWidget {
   const AlarmOptions({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_pillow/models/articles/article.dart';
-import 'package:my_pillow/pages/articles/widgets/wiki_article_content.dart';
+import 'package:splyshechka/models/articles/article.dart';
+import 'package:splyshechka/pages/articles/widgets/wiki_article_content.dart';
 
 
 class ArticleDetailsPage extends StatelessWidget {

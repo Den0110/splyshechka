@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_pillow/pages/alarm/sleeping/utils/wave_painter.dart';
+import 'package:splyshechka/pages/alarm/sleeping/utils/wave_painter.dart';
 
 class SoundListener extends StatefulWidget {
   const SoundListener({

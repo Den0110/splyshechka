@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_pillow/widgets/options_list/list_element.dart';
-import 'package:my_pillow/widgets/switchers/sleep_checkbox/sleep_checkbox.dart';
+import 'package:splyshechka/widgets/options_list/list_element.dart';
+import 'package:splyshechka/widgets/switchers/sleep_checkbox/sleep_checkbox.dart';
 
 class CheckElement extends StatelessWidget {
   const CheckElement({

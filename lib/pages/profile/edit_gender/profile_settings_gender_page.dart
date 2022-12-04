@@ -2,10 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_pillow/models/gender/gender.dart';
-import 'package:my_pillow/pages/profile/edit_gender/gender_picker/gender_picker.dart';
-import 'package:my_pillow/utils/app_colors.dart';
-import 'package:my_pillow/widgets/buttons/large_button.dart';
+import 'package:splyshechka/models/gender/gender.dart';
+import 'package:splyshechka/pages/profile/edit_gender/gender_picker/gender_picker.dart';
+import 'package:splyshechka/utils/app_colors.dart';
+import 'package:splyshechka/widgets/buttons/large_button.dart';
 
 class ProfileSettingsGenderPage extends StatefulWidget {
   const ProfileSettingsGenderPage({super.key});

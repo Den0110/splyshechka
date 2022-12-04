@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_pillow/widgets/options_list/list_element.dart';
-import 'package:my_pillow/widgets/switchers/sleep_slider/sleep_slider.dart';
+import 'package:splyshechka/widgets/options_list/list_element.dart';
+import 'package:splyshechka/widgets/switchers/sleep_slider/sleep_slider.dart';
 
 class SliderElement extends StatelessWidget {
   const SliderElement({

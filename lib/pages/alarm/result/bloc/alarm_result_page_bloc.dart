@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:my_pillow/domain/entities/alarm/sleep_time.dart';
+import 'package:splyshechka/domain/entities/alarm/sleep_time.dart';
 
 part 'alarm_result_page_bloc.freezed.dart';
 

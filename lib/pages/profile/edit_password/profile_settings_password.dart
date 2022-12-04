@@ -2,12 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_pillow/utils/app_colors.dart';
-import 'package:my_pillow/utils/app_text_styles.dart';
-import 'package:my_pillow/widgets/buttons/large_button.dart';
-import 'package:my_pillow/widgets/buttons/small_button.dart';
-import 'package:my_pillow/widgets/containers/sleep_container.dart';
-import 'package:my_pillow/widgets/text_fields/app_text_field.dart';
+import 'package:splyshechka/utils/app_colors.dart';
+import 'package:splyshechka/utils/app_text_styles.dart';
+import 'package:splyshechka/widgets/buttons/large_button.dart';
+import 'package:splyshechka/widgets/buttons/small_button.dart';
+import 'package:splyshechka/widgets/containers/sleep_container.dart';
+import 'package:splyshechka/widgets/text_fields/app_text_field.dart';
 
 class ProfileSettingsPasswordPage extends StatelessWidget {
   const ProfileSettingsPasswordPage({Key? key}) : super(key: key);

@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:my_pillow/pages/main/bloc/main_ui_model.dart';
+import 'package:splyshechka/pages/main/bloc/main_ui_model.dart';
 
 part 'main_bloc.freezed.dart';
 

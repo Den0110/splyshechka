@@ -1,4 +1,4 @@
-package com.example.my_pillow
+package com.example.splyshechka
 
 import io.flutter.embedding.android.FlutterActivity
 

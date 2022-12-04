@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_pillow/domain/entities/alarm/sleep_time.dart';
-import 'package:my_pillow/pages/alarm/result/widgets/alarm_result_container.dart';
-import 'package:my_pillow/pages/alarm/result/widgets/category_with_icon.dart';
-import 'package:my_pillow/pages/alarm/result/widgets/value_with_icon.dart';
-import 'package:my_pillow/utils/app_colors.dart';
-import 'package:my_pillow/utils/app_icons.dart';
-import 'package:my_pillow/utils/app_text_styles.dart';
-import 'package:my_pillow/widgets/indicators/circle_fill_indicator.dart';
+import 'package:splyshechka/domain/entities/alarm/sleep_time.dart';
+import 'package:splyshechka/pages/alarm/result/widgets/alarm_result_container.dart';
+import 'package:splyshechka/pages/alarm/result/widgets/category_with_icon.dart';
+import 'package:splyshechka/pages/alarm/result/widgets/value_with_icon.dart';
+import 'package:splyshechka/utils/app_colors.dart';
+import 'package:splyshechka/utils/app_icons.dart';
+import 'package:splyshechka/utils/app_text_styles.dart';
+import 'package:splyshechka/widgets/indicators/circle_fill_indicator.dart';
 
 class StatisticsPage extends StatelessWidget {
   const StatisticsPage({Key? key}) : super(key: key);
@@ -20,19 +20,6 @@ class StatisticsPage extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 16.0.w, vertical: 9.h),
           child: Column(
             children: [
-              SizedBox(
-                height: 60.r,
-                width: 60.r,
-                child: Image.asset(
-                  "assets/images/pillow.png",
-                  fit: BoxFit.fill,
-                ),
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-
-              //Slightly modified large button
               Container(
                 padding: EdgeInsets.only(bottom: 4.h),
                 decoration: BoxDecoration(
@@ -54,14 +41,6 @@ class StatisticsPage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        ValueWithIcon(
-                          icon: AppIcons.coinCircle,
-                          title: "+${8.40.toStringAsFixed(2)}",
-                        ),
-                        const ValueWithIcon(
-                          icon: AppIcons.box,
-                          title: "x1",
-                        ),
                         ValueWithIcon(
                           icon: AppIcons.moon,
                           title: "-${const SleepTime(h: 7, m: 52).h} h",
@@ -208,8 +187,11 @@ class StatisticsPage extends StatelessWidget {
               SizedBox(
                 width: 1.sw,
                 height: 201.h,
-                child: const AlarmResultContainer(
-                  child: Text("sleep_plot_placeholder"),
+                child: AlarmResultContainer(
+                  child: Image.asset(
+                    'assets/images/chart.png',
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
             ],

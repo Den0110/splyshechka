@@ -2,12 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_pillow/models/bottom_bars/app_bottom_bar_items.dart';
-import 'package:my_pillow/navigation/auto_router.gr.dart';
-import 'package:my_pillow/pages/main/bloc/main_bloc.dart';
-import 'package:my_pillow/utils/app_colors.dart';
-import 'package:my_pillow/widgets/avatar.dart';
-import 'package:my_pillow/widgets/bottom_bars/app_bottom_bar.dart';
+import 'package:splyshechka/models/bottom_bars/app_bottom_bar_items.dart';
+import 'package:splyshechka/navigation/auto_router.gr.dart';
+import 'package:splyshechka/pages/main/bloc/main_bloc.dart';
+import 'package:splyshechka/utils/app_colors.dart';
+import 'package:splyshechka/utils/app_images.dart';
+import 'package:splyshechka/widgets/avatar.dart';
+import 'package:splyshechka/widgets/bottom_bars/app_bottom_bar.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -34,8 +35,7 @@ class MainPage extends StatelessWidget {
                 children: [
                   Avatar(
                     color: AppColors.darkPurple,
-                    imageUrl:
-                        "https://drive.google.com/uc?export=view&id=1lXj3z1-fONnscN-lPxaGenInu8r0qe7U",
+                    imageUrl: AppImages.sleepingFace,
                     size: 28.r,
                     padding: 4.r,
                   ),

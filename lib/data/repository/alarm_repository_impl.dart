@@ -1,9 +1,9 @@
 import 'package:injectable/injectable.dart';
-import 'package:my_pillow/data/data_source/alarm/local/alarm_local_data_source.dart';
-import 'package:my_pillow/data/model/alarm/sleep_time_dto.dart';
-import 'package:my_pillow/domain/entities/alarm/sleep_time.dart';
-import 'package:my_pillow/domain/entities/alarm/snooze_time.dart';
-import 'package:my_pillow/domain/repository/alarm_repository.dart';
+import 'package:splyshechka/data/data_source/alarm/local/alarm_local_data_source.dart';
+import 'package:splyshechka/data/model/alarm/sleep_time_dto.dart';
+import 'package:splyshechka/domain/entities/alarm/sleep_time.dart';
+import 'package:splyshechka/domain/entities/alarm/snooze_time.dart';
+import 'package:splyshechka/domain/repository/alarm_repository.dart';
 
 @Singleton(as: AlarmRepository)
 class AlarmRepositoryImpl extends AlarmRepository {

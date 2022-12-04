@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_pillow/utils/app_colors.dart';
-import 'package:my_pillow/utils/sleep_thumb_shape.dart';
+import 'package:splyshechka/utils/app_colors.dart';
+import 'package:splyshechka/utils/sleep_thumb_shape.dart';
 
 class SleepSlider extends StatelessWidget {
   const SleepSlider({

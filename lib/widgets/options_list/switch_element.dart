@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:my_pillow/widgets/options_list/list_element.dart';
-import 'package:my_pillow/widgets/switchers/sleep_switch/sleep_switch.dart';
+import 'package:splyshechka/widgets/options_list/list_element.dart';
+import 'package:splyshechka/widgets/switchers/sleep_switch/sleep_switch.dart';
 
 class SwitchElement extends StatelessWidget {
   const SwitchElement({

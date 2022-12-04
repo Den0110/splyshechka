@@ -2,17 +2,17 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_pillow/di/locator.dart';
-import 'package:my_pillow/domain/entities/alarm/sleep_time_mapper.dart';
-import 'package:my_pillow/navigation/auto_router.gr.dart';
-import 'package:my_pillow/pages/alarm/set_sleep_time_details/model/sleep_time_type.dart';
-import 'package:my_pillow/pages/home/bloc/set_sleep_time_page_cubit.dart';
-import 'package:my_pillow/pages/home/widgets/time_selection.dart';
-import 'package:my_pillow/utils/app_colors.dart';
-import 'package:my_pillow/utils/app_icons.dart';
-import 'package:my_pillow/utils/one_shot_bloc.dart';
-import 'package:my_pillow/widgets/buttons/large_button.dart';
-import 'package:my_pillow/widgets/sleep_period_picker/sleep_period_picker.dart';
+import 'package:splyshechka/di/locator.dart';
+import 'package:splyshechka/domain/entities/alarm/sleep_time_mapper.dart';
+import 'package:splyshechka/navigation/auto_router.gr.dart';
+import 'package:splyshechka/pages/alarm/set_sleep_time_details/model/sleep_time_type.dart';
+import 'package:splyshechka/pages/home/bloc/set_sleep_time_page_cubit.dart';
+import 'package:splyshechka/pages/home/widgets/time_selection.dart';
+import 'package:splyshechka/utils/app_colors.dart';
+import 'package:splyshechka/utils/app_icons.dart';
+import 'package:splyshechka/utils/one_shot_bloc.dart';
+import 'package:splyshechka/widgets/buttons/large_button.dart';
+import 'package:splyshechka/widgets/sleep_period_picker/sleep_period_picker.dart';
 import 'package:progressive_time_picker/progressive_time_picker.dart';
 
 class HomePage extends StatelessWidget {

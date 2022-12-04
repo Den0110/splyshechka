@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:my_pillow/widgets/switchers/pick_option/background_option.dart';
-import 'package:my_pillow/widgets/switchers/pick_option/highlight_option.dart';
-import 'package:my_pillow/widgets/switchers/pick_option/pick_option.dart';
+import 'package:splyshechka/widgets/switchers/pick_option/background_option.dart';
+import 'package:splyshechka/widgets/switchers/pick_option/highlight_option.dart';
+import 'package:splyshechka/widgets/switchers/pick_option/pick_option.dart';
 
 class OptionCreator extends StatelessWidget {
   const OptionCreator({

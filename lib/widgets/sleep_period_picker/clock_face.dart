@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_pillow/utils/app_text_styles.dart';
-import 'package:my_pillow/utils/clock_face_painter.dart';
+import 'package:splyshechka/utils/app_text_styles.dart';
+import 'package:splyshechka/utils/clock_face_painter.dart';
 
 import '../../utils/app_colors.dart';
 

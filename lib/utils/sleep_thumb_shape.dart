@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_pillow/utils/app_text_styles.dart';
+import 'package:splyshechka/utils/app_text_styles.dart';
 
 class SleepThumbShape extends SliderComponentShape {
   SleepThumbShape({

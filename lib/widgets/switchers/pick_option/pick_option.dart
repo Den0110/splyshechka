@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_pillow/widgets/switchers/pick_option/option_creator.dart';
+import 'package:splyshechka/widgets/switchers/pick_option/option_creator.dart';
 
 enum OptionStyle { highlightStyle, backgroundStyle }
 

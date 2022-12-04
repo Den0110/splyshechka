@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:my_pillow/widgets/sleep_period_picker/sleep_period_picker.dart';
+import 'package:splyshechka/widgets/sleep_period_picker/sleep_period_picker.dart';
 import 'package:progressive_time_picker/progressive_time_picker.dart';
 
 class SleepPeriodPickerDemo extends StatefulWidget {

@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:my_pillow/utils/app_colors.dart';
+import 'package:splyshechka/utils/app_colors.dart';
 
 final _defaultBarrierColor = Colors.black.withOpacity(0.7);
 

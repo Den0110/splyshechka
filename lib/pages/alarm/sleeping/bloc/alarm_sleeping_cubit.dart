@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:my_pillow/domain/repository/alarm_repository.dart';
+import 'package:splyshechka/domain/repository/alarm_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:my_pillow/utils/one_shot_bloc.dart';
+import 'package:splyshechka/utils/one_shot_bloc.dart';
 
 part 'alarm_sleeping_cubit.freezed.dart';
 

@@ -2,13 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:my_pillow/navigation/auto_router.gr.dart';
-import 'package:my_pillow/pages/profile/edit_avatar/avatar.dart';
-import 'package:my_pillow/utils/app_colors.dart';
-import 'package:my_pillow/utils/app_icons.dart';
-import 'package:my_pillow/utils/app_images.dart';
-import 'package:my_pillow/widgets/containers/sleep_container.dart';
-import 'package:my_pillow/widgets/options_list/value_element.dart';
+import 'package:splyshechka/navigation/auto_router.gr.dart';
+import 'package:splyshechka/pages/profile/edit_avatar/avatar.dart';
+import 'package:splyshechka/utils/app_colors.dart';
+import 'package:splyshechka/utils/app_icons.dart';
+import 'package:splyshechka/utils/app_images.dart';
+import 'package:splyshechka/widgets/containers/sleep_container.dart';
+import 'package:splyshechka/widgets/options_list/value_element.dart';
 
 class ProfileSettingsPage extends StatelessWidget {
   const ProfileSettingsPage({

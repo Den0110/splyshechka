@@ -1,14 +1,14 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:my_pillow/utils/app_colors.dart';
-import 'package:my_pillow/utils/app_text_styles.dart';
-import 'package:my_pillow/widgets/buttons/large_button.dart';
+import 'package:splyshechka/utils/app_colors.dart';
+import 'package:splyshechka/utils/app_text_styles.dart';
+import 'package:splyshechka/widgets/buttons/large_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_pillow/navigation/auto_router.gr.dart';
-import 'package:my_pillow/pages/alarm/good_morning/bloc/good_morning_bloc.dart';
+import 'package:splyshechka/navigation/auto_router.gr.dart';
+import 'package:splyshechka/pages/alarm/good_morning/bloc/good_morning_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:my_pillow/utils/one_shot_bloc.dart';
+import 'package:splyshechka/utils/one_shot_bloc.dart';
 
 class GoodMorningPage extends StatelessWidget {
   const GoodMorningPage({super.key});

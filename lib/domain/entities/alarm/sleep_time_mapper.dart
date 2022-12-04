@@ -1,4 +1,4 @@
-import 'package:my_pillow/domain/entities/alarm/sleep_time.dart';
+import 'package:splyshechka/domain/entities/alarm/sleep_time.dart';
 import 'package:progressive_time_picker/progressive_time_picker.dart';
 
 abstract class SleepTimeMapper {

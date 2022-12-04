@@ -1,5 +1,5 @@
-import 'package:my_pillow/utils/app_colors.dart';
-import 'package:my_pillow/utils/app_text_styles.dart';
+import 'package:splyshechka/utils/app_colors.dart';
+import 'package:splyshechka/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

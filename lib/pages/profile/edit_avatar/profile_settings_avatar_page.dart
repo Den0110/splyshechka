@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_pillow/pages/profile/edit_avatar/avatar.dart';
-import 'package:my_pillow/utils/app_colors.dart';
-import 'package:my_pillow/utils/app_images.dart';
-import 'package:my_pillow/utils/app_text_styles.dart';
-import 'package:my_pillow/widgets/face_picker/face_picker.dart';
-import 'package:my_pillow/widgets/sleep_color_picker/sleep_color_picker.dart';
+import 'package:splyshechka/pages/profile/edit_avatar/avatar.dart';
+import 'package:splyshechka/utils/app_colors.dart';
+import 'package:splyshechka/utils/app_images.dart';
+import 'package:splyshechka/utils/app_text_styles.dart';
+import 'package:splyshechka/widgets/face_picker/face_picker.dart';
+import 'package:splyshechka/widgets/sleep_color_picker/sleep_color_picker.dart';
 
 class ProfileSettingsAvatarPage extends StatefulWidget {
   const ProfileSettingsAvatarPage({super.key});

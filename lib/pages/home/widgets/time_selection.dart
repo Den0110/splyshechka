@@ -1,10 +1,10 @@
-import 'package:my_pillow/utils/app_colors.dart';
-import 'package:my_pillow/utils/app_icons.dart';
-import 'package:my_pillow/utils/app_text_styles.dart';
+import 'package:splyshechka/utils/app_colors.dart';
+import 'package:splyshechka/utils/app_icons.dart';
+import 'package:splyshechka/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_pillow/domain/entities/alarm/sleep_time.dart';
+import 'package:splyshechka/domain/entities/alarm/sleep_time.dart';
 
 class TimeSelection extends StatelessWidget {
   const TimeSelection({

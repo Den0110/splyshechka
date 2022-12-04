@@ -1,4 +1,4 @@
-import 'package:my_pillow/utils/app_icons.dart';
+import 'package:splyshechka/utils/app_icons.dart';
 
 enum Gender { male, female, other, secret }
 

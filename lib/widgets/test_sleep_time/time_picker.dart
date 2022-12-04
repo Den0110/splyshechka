@@ -2,7 +2,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:my_pillow/widgets/sleep_time_picker/sleep_time_picker.dart';
+import 'package:splyshechka/widgets/sleep_time_picker/sleep_time_picker.dart';
 
 class TimeWheelPicker extends StatefulWidget {
   const TimeWheelPicker({Key? key}) : super(key: key);

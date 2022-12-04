@@ -1,14 +1,14 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:my_pillow/domain/entities/alarm/snooze_time.dart';
-import 'package:my_pillow/utils/app_colors.dart';
-import 'package:my_pillow/utils/app_text_styles.dart';
-import 'package:my_pillow/widgets/buttons/large_button.dart';
-import 'package:my_pillow/widgets/sleep_wheel_picker/sleep_wheel_picker.dart';
+import 'package:splyshechka/domain/entities/alarm/snooze_time.dart';
+import 'package:splyshechka/utils/app_colors.dart';
+import 'package:splyshechka/utils/app_text_styles.dart';
+import 'package:splyshechka/widgets/buttons/large_button.dart';
+import 'package:splyshechka/widgets/sleep_wheel_picker/sleep_wheel_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_pillow/di/locator.dart';
-import 'package:my_pillow/pages/alarm/snooze/bloc/snooze_page_bloc.dart';
+import 'package:splyshechka/di/locator.dart';
+import 'package:splyshechka/pages/alarm/snooze/bloc/snooze_page_bloc.dart';
 
 class SnoozePage extends StatelessWidget {
   const SnoozePage({super.key});

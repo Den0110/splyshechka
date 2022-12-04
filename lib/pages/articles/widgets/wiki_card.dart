@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_pillow/models/articles/article.dart';
-import 'package:my_pillow/widgets/articles/loadable_image.dart';
+import 'package:splyshechka/models/articles/article.dart';
+import 'package:splyshechka/widgets/articles/loadable_image.dart';
 
 class WikiCard extends StatelessWidget {
   final Article article;

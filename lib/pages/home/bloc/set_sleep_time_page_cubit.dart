@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
-import 'package:my_pillow/domain/entities/alarm/sleep_time.dart';
-import 'package:my_pillow/domain/repository/alarm_repository.dart';
+import 'package:splyshechka/domain/entities/alarm/sleep_time.dart';
+import 'package:splyshechka/domain/repository/alarm_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:my_pillow/pages/alarm/set_sleep_time_details/model/sleep_time_type.dart';
-import 'package:my_pillow/utils/one_shot_bloc.dart';
+import 'package:splyshechka/pages/alarm/set_sleep_time_details/model/sleep_time_type.dart';
+import 'package:splyshechka/utils/one_shot_bloc.dart';
 
 part 'set_sleep_time_page_cubit.freezed.dart';
 

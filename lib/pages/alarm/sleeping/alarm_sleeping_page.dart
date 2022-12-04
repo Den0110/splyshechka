@@ -1,20 +1,20 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:my_pillow/utils/app_colors.dart';
-import 'package:my_pillow/utils/app_icons.dart';
-import 'package:my_pillow/utils/app_text_styles.dart';
-import 'package:my_pillow/widgets/buttons/large_button.dart';
-import 'package:my_pillow/widgets/options_list/value_element.dart';
-import 'package:my_pillow/widgets/sleep_container/sleep_container.dart';
+import 'package:splyshechka/utils/app_colors.dart';
+import 'package:splyshechka/utils/app_icons.dart';
+import 'package:splyshechka/utils/app_text_styles.dart';
+import 'package:splyshechka/widgets/buttons/large_button.dart';
+import 'package:splyshechka/widgets/options_list/value_element.dart';
+import 'package:splyshechka/widgets/sleep_container/sleep_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
-import 'package:my_pillow/di/locator.dart';
-import 'package:my_pillow/navigation/auto_router.gr.dart';
-import 'package:my_pillow/pages/alarm/sleeping/bloc/alarm_sleeping_cubit.dart';
-import 'package:my_pillow/pages/alarm/sleeping/widgets/sound_listener.dart';
-import 'package:my_pillow/utils/one_shot_bloc.dart';
+import 'package:splyshechka/di/locator.dart';
+import 'package:splyshechka/navigation/auto_router.gr.dart';
+import 'package:splyshechka/pages/alarm/sleeping/bloc/alarm_sleeping_cubit.dart';
+import 'package:splyshechka/pages/alarm/sleeping/widgets/sound_listener.dart';
+import 'package:splyshechka/utils/one_shot_bloc.dart';
 
 class AlarmSleepingPage extends StatelessWidget {
   const AlarmSleepingPage({super.key});
@@ -104,14 +104,17 @@ class AlarmSleepingPage extends StatelessWidget {
                     SizedBox(
                       height: 45.h,
                     ),
-                    LargeButton(
-                      text: "Wake up",
-                      textColor: AppColors.black,
-                      backgroundColor: AppColors.white,
-                      shadowColor: AppColors.black,
-                      onPressed: () {
-                        context.read<AlarmSleepingCubit>().wakeUpClicked();
-                      },
+                    Padding(
+                      padding: EdgeInsets.only(left: 25.w, right: 25.w),
+                      child: LargeButton(
+                        text: "Wake up",
+                        textColor: AppColors.black,
+                        backgroundColor: AppColors.white,
+                        shadowColor: AppColors.black,
+                        onPressed: () {
+                          context.read<AlarmSleepingCubit>().wakeUpClicked();
+                        },
+                      ),
                     ),
                   ],
                 ),

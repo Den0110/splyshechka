@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_pillow/utils/app_colors.dart';
-import 'package:my_pillow/widgets/sleep_period_picker/clock_face.dart';
+import 'package:splyshechka/utils/app_colors.dart';
+import 'package:splyshechka/widgets/sleep_period_picker/clock_face.dart';
 import 'package:progressive_time_picker/progressive_time_picker.dart';
 
 class SleepPeriodPicker extends StatelessWidget {

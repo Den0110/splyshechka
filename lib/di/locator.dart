@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
-import 'package:my_pillow/di/locator.config.dart';
+import 'package:splyshechka/di/locator.config.dart';
 
 final getIt = GetIt.instance;
 

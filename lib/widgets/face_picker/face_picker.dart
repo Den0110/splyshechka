@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_pillow/widgets/face_picker/face_picker_button.dart';
+import 'package:splyshechka/widgets/face_picker/face_picker_button.dart';
 
 class FacePicker extends StatelessWidget {
   final String selectedImage;

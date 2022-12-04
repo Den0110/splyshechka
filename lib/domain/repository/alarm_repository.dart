@@ -1,5 +1,5 @@
-import 'package:my_pillow/domain/entities/alarm/sleep_time.dart';
-import 'package:my_pillow/domain/entities/alarm/snooze_time.dart';
+import 'package:splyshechka/domain/entities/alarm/sleep_time.dart';
+import 'package:splyshechka/domain/entities/alarm/snooze_time.dart';
 import 'package:rxdart/subjects.dart';
 
 abstract class AlarmRepository {

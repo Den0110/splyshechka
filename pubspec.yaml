@@ -1,4 +1,4 @@
-name: my_pillow
+name: splyshechka
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -84,6 +84,13 @@ dev_dependencies:
 
   injectable_generator: ^1.5.3
   json_serializable: ^6.5.4
+
+  flutter_launcher_icons: ^0.11.0
+
+flutter_icons:
+  image_path: "assets/images/logo.png"
+  android: true
+  ios: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

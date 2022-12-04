@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:my_pillow/models/gender/gender.dart';
-import 'package:my_pillow/widgets/containers/sleep_container.dart';
-import 'package:my_pillow/widgets/options_list/check_element.dart';
+import 'package:splyshechka/models/gender/gender.dart';
+import 'package:splyshechka/widgets/containers/sleep_container.dart';
+import 'package:splyshechka/widgets/options_list/check_element.dart';
 
 class GenderPicker extends StatelessWidget {
   final Function(Gender) onPressed;

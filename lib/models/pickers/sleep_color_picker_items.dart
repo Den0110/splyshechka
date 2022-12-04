@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_pillow/utils/app_colors.dart';
+import 'package:splyshechka/utils/app_colors.dart';
 
 List<Color> sleepColorPickerItems = [
   AppColors.darkPurple,

@@ -1,24 +1,22 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:my_pillow/navigation/auto_router.gr.dart';
-import 'package:my_pillow/utils/app_colors.dart';
-import 'package:my_pillow/utils/app_icons.dart';
-import 'package:my_pillow/utils/app_text_styles.dart';
-import 'package:my_pillow/widgets/buttons/large_button.dart';
-import 'package:my_pillow/widgets/indicators/circle_fill_indicator.dart';
+import 'package:splyshechka/navigation/auto_router.gr.dart';
+import 'package:splyshechka/utils/app_colors.dart';
+import 'package:splyshechka/utils/app_icons.dart';
+import 'package:splyshechka/utils/app_text_styles.dart';
+import 'package:splyshechka/widgets/buttons/large_button.dart';
+import 'package:splyshechka/widgets/indicators/circle_fill_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_pillow/pages/alarm/result/bloc/alarm_result_page_bloc.dart';
-import 'package:my_pillow/pages/alarm/result/widgets/alarm_result_container.dart';
-import 'package:my_pillow/pages/alarm/result/widgets/category_with_icon.dart';
-import 'package:my_pillow/pages/alarm/result/widgets/value_with_icon.dart';
+import 'package:splyshechka/pages/alarm/result/bloc/alarm_result_page_bloc.dart';
+import 'package:splyshechka/pages/alarm/result/widgets/alarm_result_container.dart';
+import 'package:splyshechka/pages/alarm/result/widgets/category_with_icon.dart';
+import 'package:splyshechka/pages/alarm/result/widgets/value_with_icon.dart';
 
 class AlarmResultPage extends StatelessWidget {
   const AlarmResultPage({
     Key? key,
   }) : super(key: key);
-
-  void onAccept() {}
 
   @override
   Widget build(BuildContext context) {
@@ -37,18 +35,8 @@ class AlarmResultPage extends StatelessWidget {
                       child: Column(
                         children: [
                           SizedBox(
-                            height: 60.r,
-                            width: 60.r,
-                            child: Image.asset(
-                              state.image,
-                              fit: BoxFit.fill,
-                            ),
+                            height: 60.h,
                           ),
-                          SizedBox(
-                            height: 20.h,
-                          ),
-
-                          //Slightly modified large button
                           Container(
                             padding: EdgeInsets.only(bottom: 4.h),
                             decoration: BoxDecoration(
@@ -71,15 +59,6 @@ class AlarmResultPage extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    ValueWithIcon(
-                                      icon: AppIcons.coinCircle,
-                                      title:
-                                          "+${state.value.toStringAsFixed(2)}",
-                                    ),
-                                    ValueWithIcon(
-                                      icon: AppIcons.box,
-                                      title: "x${state.boxes}",
-                                    ),
                                     ValueWithIcon(
                                       icon: AppIcons.moon,
                                       title: "-${state.totalSleep.h} h",
@@ -234,8 +213,11 @@ class AlarmResultPage extends StatelessWidget {
                           SizedBox(
                             width: 1.sw,
                             height: 201.h,
-                            child: const AlarmResultContainer(
-                              child: Text("sleep_plot_placeholder"),
+                            child: AlarmResultContainer(
+                              child: Image.asset(
+                                'assets/images/chart.png',
+                                fit: BoxFit.fill,
+                              ),
                             ),
                           ),
                         ],

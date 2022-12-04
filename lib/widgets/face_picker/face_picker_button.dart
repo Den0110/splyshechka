@@ -2,7 +2,7 @@
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_pillow/utils/app_colors.dart';
+import 'package:splyshechka/utils/app_colors.dart';
 
 class FacePickerButton extends StatelessWidget {
   final bool isSelected;

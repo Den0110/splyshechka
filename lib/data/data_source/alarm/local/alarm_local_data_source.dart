@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:my_pillow/data/data_source/alarm/local/alarm_props_keys.dart';
-import 'package:my_pillow/data/model/alarm/sleep_time_dto.dart';
+import 'package:splyshechka/data/data_source/alarm/local/alarm_props_keys.dart';
+import 'package:splyshechka/data/model/alarm/sleep_time_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
