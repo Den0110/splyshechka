@@ -61,7 +61,7 @@ class AlarmResultPage extends StatelessWidget {
                                   children: [
                                     ValueWithIcon(
                                       icon: AppIcons.moon,
-                                      title: "-${state.totalSleep.h} h",
+                                      title: "-${state.totalSleep.h} ч",
                                     ),
                                   ],
                                 ),
@@ -77,7 +77,7 @@ class AlarmResultPage extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: AlarmResultContainer(
-                                    title: "Quality",
+                                    title: "Качество",
                                     child: CircleFillIndicator(
                                       maxValue: 100,
                                       minValue: 0,
@@ -98,7 +98,7 @@ class AlarmResultPage extends StatelessWidget {
                                   child: AlarmResultContainer(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
-                                    title: "Duration",
+                                    title: "Длительность",
                                     padding: EdgeInsets.only(
                                       left: 16.r,
                                       top: 16.r,
@@ -110,7 +110,7 @@ class AlarmResultPage extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "${state.totalSleep.h} h ${state.totalSleep.m} m",
+                                          "${state.totalSleep.h} ч ${state.totalSleep.m} мин",
                                           style:
                                               AppTextStyles.alarmDurationStyle,
                                         ),
@@ -118,7 +118,7 @@ class AlarmResultPage extends StatelessWidget {
                                           height: 5.h,
                                         ),
                                         Text(
-                                          "Total sleep",
+                                          "Всего спал",
                                           style:
                                               AppTextStyles.alarmSubtitleStyle,
                                         ),
@@ -126,7 +126,7 @@ class AlarmResultPage extends StatelessWidget {
                                           height: 20.h,
                                         ),
                                         Text(
-                                          "${state.inBed.h} h ${state.inBed.m} m",
+                                          "${state.inBed.h} ч ${state.inBed.m} мин",
                                           style:
                                               AppTextStyles.alarmDurationStyle,
                                         ),
@@ -134,7 +134,7 @@ class AlarmResultPage extends StatelessWidget {
                                           height: 5.h,
                                         ),
                                         Text(
-                                          "In bed",
+                                          "В постели",
                                           style:
                                               AppTextStyles.alarmSubtitleStyle,
                                         ),
@@ -165,17 +165,17 @@ class AlarmResultPage extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         CategoryWithIcon(
-                                          title: "Went to bed",
+                                          title: "Отправился спать",
                                           icon: AppIcons.wentToBed,
                                           value:
                                               "${state.wentToBed.h}:${state.wentToBed.m}",
                                         ),
                                         SizedBox(height: 25.h),
                                         CategoryWithIcon(
-                                          title: "Aleep after",
+                                          title: "Заснул в течение",
                                           icon: AppIcons.asleepAfter,
                                           value:
-                                              "${state.asleepAfter.m + state.asleepAfter.h * 60} min",
+                                              "${state.asleepAfter.m + state.asleepAfter.h * 60} мин",
                                         ),
                                       ],
                                     ),
@@ -189,16 +189,16 @@ class AlarmResultPage extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         CategoryWithIcon(
-                                          title: "Woke up",
+                                          title: "Проснулся в",
                                           icon: AppIcons.wokeUp,
                                           value:
-                                              "${state.wokeUp.h}:${state.wokeUp.m} am",
+                                              "${state.wokeUp.h}:${state.wokeUp.m}",
                                         ),
                                         SizedBox(height: 25.h),
                                         CategoryWithIcon(
-                                          title: "Noise",
+                                          title: "Шум",
                                           icon: AppIcons.noise,
-                                          value: "${state.noise} db",
+                                          value: "${state.noise} дб",
                                         ),
                                       ],
                                     ),
@@ -233,7 +233,7 @@ class AlarmResultPage extends StatelessWidget {
                         bottom: 16.h,
                       ),
                       child: LargeButton(
-                        text: "Okay",
+                        text: "Принять",
                         textColor: AppColors.darkGreen,
                         onPressed: () {
                           context.router.navigate(const GoodMorningRoute());

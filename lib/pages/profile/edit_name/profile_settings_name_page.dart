@@ -15,7 +15,7 @@ class ProfileSettingsNamePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Name"),
+        title: Text("Имя"),
       ),
       body: SafeArea(
         child: Container(
@@ -30,7 +30,7 @@ class ProfileSettingsNamePage extends StatelessWidget {
                 child: AppTextField(
                   onChanged: (value) {},
                   value: "Иван Подушечкин",
-                  hint: "Enter name",
+                  hint: "Введите имя",
                 ),
               ),
               const Spacer(),
@@ -39,7 +39,7 @@ class ProfileSettingsNamePage extends StatelessWidget {
                 child: Column(
                   children: [
                     LargeButton(
-                      text: "Save",
+                      text: "Сохранить",
                       onPressed: () {
                           Navigator.of(context).pop();
                       },
@@ -49,7 +49,7 @@ class ProfileSettingsNamePage extends StatelessWidget {
                     ),
                     SizedBox(height: 6.h),
                     LargeButton(
-                      text: "Cancel",
+                      text: "Отмена",
                       onPressed: () {
                         Navigator.of(context).pop();
                       },

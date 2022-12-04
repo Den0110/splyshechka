@@ -58,12 +58,6 @@ class TimeSelection extends StatelessWidget {
                   text: time.toStringWithColon(),
                   style: AppTextStyles.timeSelectionNumberStyle,
                 ),
-                TextSpan(
-                  text: " am",
-                  style: AppTextStyles.clockLetterStyle.copyWith(
-                    color: AppColors.white,
-                  ),
-                ),
               ],
             ),
           ),

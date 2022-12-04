@@ -26,7 +26,7 @@ class ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Profile"),
+        title: const Text("Профиль"),
         actions: [
           IconButton(
             icon: const Icon(
@@ -65,7 +65,7 @@ class ProfilePageState extends State<ProfilePage> {
                   child: Column(
                     children: [
                       ValueElement(
-                        title: "Records",
+                        title: "Записи",
                         isActive: false,
                         onTap: () {},
                       ),
@@ -77,7 +77,7 @@ class ProfilePageState extends State<ProfilePage> {
                   child: Column(
                     children: [
                       SwitchElement(
-                        title: "Sound",
+                        title: "Звук",
                         isActive: true,
                         value: sound,
                         onChanged: (val) {
@@ -86,22 +86,12 @@ class ProfilePageState extends State<ProfilePage> {
                           });
                         },
                       ),
-                      SwitchElement(
-                        title: "Google Authenticator",
-                        isActive: false,
-                        value: googleAuth,
-                        onChanged: (val) {
-                           setState(() {
-                            googleAuth = val;
-                          });
-                        },
-                      ),
                     ],
                   ),
                 ),
                 SizedBox(height: 10.h),
                 LargeButton(
-                  text: "Logout",
+                  text: "Выйти из аккаунта",
                   textColor: AppColors.red,
                   onPressed: () {},
                 ),

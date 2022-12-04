@@ -16,7 +16,7 @@ class ProfileSettingsPasswordPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Password"),
+        title: Text("Пароль"),
       ),
       body: SafeArea(
         child: Container(
@@ -35,7 +35,7 @@ class ProfileSettingsPasswordPage extends StatelessWidget {
                   bottom: 8.h,
                 ),
                 child: Text(
-                  "Email",
+                  "Электронная почта",
                   style: AppTextStyles.profileLabelStyle,
                 ),
               ),
@@ -43,14 +43,14 @@ class ProfileSettingsPasswordPage extends StatelessWidget {
                 child: AppTextField(
                   onChanged: (value) {},
                   value: "lublu_spat@mail.ru",
-                  hint: "Enter email",
+                  hint: "Введите электронную почту",
                 ),
               ),
               SizedBox(height: 10.h),
               SleepContainer(
                 child: AppTextField(
                   onChanged: (value) {},
-                  hint: "Enter code from Email",
+                  hint: "Введите отправленный код",
                 ),
               ),
               Padding(
@@ -59,7 +59,7 @@ class ProfileSettingsPasswordPage extends StatelessWidget {
                   top: 5.h,
                 ),
                 child: SmallButton(
-                  text: "Send code",
+                  text: "Отправить код",
                   textColor: AppColors.lightGreen,
                   textSize: 16.sp,
                   onPressed: () {},
@@ -68,7 +68,7 @@ class ProfileSettingsPasswordPage extends StatelessWidget {
               SleepContainer(
                 child: AppTextField(
                   onChanged: (value) {},
-                  hint: "New password",
+                  hint: "Новый пароль",
                 ),
               ),
               const Spacer(),
@@ -77,7 +77,7 @@ class ProfileSettingsPasswordPage extends StatelessWidget {
                 child: Column(
                   children: [
                     LargeButton(
-                      text: "Save",
+                      text: "Сохранить",
                       onPressed: () {
                           Navigator.of(context).pop();
                       },
@@ -87,7 +87,7 @@ class ProfileSettingsPasswordPage extends StatelessWidget {
                     ),
                     SizedBox(height: 6.h),
                     LargeButton(
-                      text: "Cancel",
+                      text: "Отмена",
                       onPressed: () {
                         Navigator.of(context).pop();
                       },

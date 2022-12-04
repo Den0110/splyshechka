@@ -14,7 +14,7 @@ class ProfileSettingsEmailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Email"),
+        title: const Text("Почта"),
       ),
       body: SafeArea(
         child: Container(
@@ -29,7 +29,7 @@ class ProfileSettingsEmailPage extends StatelessWidget {
                 child: AppTextField(
                   onChanged: (value) {},
                   value: "lublu_spat@mail.ru",
-                  hint: "Enter Email",
+                  hint: "Введите электронную почту",
                 ),
               ),
               const Spacer(),
@@ -39,7 +39,7 @@ class ProfileSettingsEmailPage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     LargeButton(
-                      text: "Save",
+                      text: "Сохранить",
                       onPressed: () {
                           Navigator.of(context).pop();
                       },
@@ -49,7 +49,7 @@ class ProfileSettingsEmailPage extends StatelessWidget {
                     ),
                     SizedBox(height: 6.h),
                     LargeButton(
-                      text: "Cancel",
+                      text: "Отмена",
                       onPressed: () {
                         Navigator.of(context).pop();
                       },

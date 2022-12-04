@@ -54,7 +54,7 @@ class AlarmOptions extends StatelessWidget {
           SizedBox(height: 30.h),
           SleepContainer(
             child: SwitchElement(
-              title: "Alarm",
+              title: "Звонок",
               isActive: true,
               value: alarmEnabled,
               onChanged: (bool value) {
@@ -70,7 +70,7 @@ class AlarmOptions extends StatelessWidget {
               child: Column(
                 children: [
                   SwitchElement(
-                    title: "Vibration",
+                    title: "Вибрация",
                     isActive: true,
                     value: vibrationEnabled,
                     onChanged: (bool value) {
@@ -99,7 +99,7 @@ class AlarmOptions extends StatelessWidget {
             ),
             SleepContainer(
               child: ValueElement(
-                title: "Snooze",
+                title: "Отложить",
                 isActive: true,
                 onTap: () {
                   context.read<SleepTimeDetailsCubit>().snoozeClicked();

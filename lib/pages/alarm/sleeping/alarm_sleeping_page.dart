@@ -52,12 +52,6 @@ class AlarmSleepingPage extends StatelessWidget {
                               color: AppColors.white,
                             ),
                           ),
-                          TextSpan(
-                            text: " am",
-                            style: AppTextStyles.alarmLetter.copyWith(
-                              color: AppColors.white,
-                            ),
-                          ),
                         ],
                       ),
                     ),
@@ -77,7 +71,7 @@ class AlarmSleepingPage extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 41.w),
                       child: SleepContainer(
                         child: ValueElement(
-                          title: "Alarm",
+                          title: "Звонок",
                           isActive: true,
                           value: alarmTime,
                           onTap: () {
@@ -107,7 +101,7 @@ class AlarmSleepingPage extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(left: 25.w, right: 25.w),
                       child: LargeButton(
-                        text: "Wake up",
+                        text: "Проснулся",
                         textColor: AppColors.black,
                         backgroundColor: AppColors.white,
                         shadowColor: AppColors.black,

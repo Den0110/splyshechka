@@ -60,7 +60,7 @@ class ProfileSettingsPage extends StatelessWidget {
                   child: Column(
                     children: [
                       ValueElement(
-                        title: "Email",
+                        title: "Электронная почта",
                         value: "lublu_spat@mail.ru",
                         isActive: true,
                         onTap: () {
@@ -69,7 +69,7 @@ class ProfileSettingsPage extends StatelessWidget {
                         },
                       ),
                       ValueElement(
-                        title: "Name",
+                        title: "Имя",
                         value: "Иван Подушечкин",
                         isActive: true,
                         onTap: () {
@@ -78,8 +78,8 @@ class ProfileSettingsPage extends StatelessWidget {
                         },
                       ),
                       ValueElement(
-                        title: "Gender",
-                        value: "Male",
+                        title: "Гендер",
+                        value: "Мужской",
                         isActive: true,
                         onTap: () {
                           context.router
@@ -87,8 +87,8 @@ class ProfileSettingsPage extends StatelessWidget {
                         },
                       ),
                       ValueElement(
-                        title: "Password",
-                        value: "Set",
+                        title: "Пароль",
+                        value: "Установлен",
                         isActive: true,
                         onTap: () {
                           context.router
@@ -101,7 +101,7 @@ class ProfileSettingsPage extends StatelessWidget {
                 SizedBox(height: 10.h),
                 SleepContainer(
                   child: ValueElement(
-                    title: "Delete account",
+                    title: "Удалить аккаунт",
                     titleColor: AppColors.red,
                     isActive: true,
                     onTap: () {},

@@ -43,7 +43,7 @@ class StatisticsPage extends StatelessWidget {
                       children: [
                         ValueWithIcon(
                           icon: AppIcons.moon,
-                          title: "-${const SleepTime(h: 7, m: 52).h} h",
+                          title: "-${const SleepTime(h: 7, m: 52).h} ч",
                         ),
                       ],
                     ),
@@ -59,7 +59,7 @@ class StatisticsPage extends StatelessWidget {
                   children: [
                     Expanded(
                       child: AlarmResultContainer(
-                        title: "Quality",
+                        title: "Качество",
                         child: CircleFillIndicator(
                           maxValue: 100,
                           minValue: 0,
@@ -79,7 +79,7 @@ class StatisticsPage extends StatelessWidget {
                     Expanded(
                       child: AlarmResultContainer(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        title: "Duration",
+                        title: "Длительность",
                         padding: EdgeInsets.only(
                           left: 16.r,
                           top: 16.r,
@@ -90,28 +90,28 @@ class StatisticsPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "${const SleepTime(h: 7, m: 52).h} h ${const SleepTime(h: 7, m: 52).m} m",
+                              "${const SleepTime(h: 7, m: 52).h} h ${const SleepTime(h: 7, m: 52).m} мин",
                               style: AppTextStyles.alarmDurationStyle,
                             ),
                             SizedBox(
                               height: 5.h,
                             ),
                             Text(
-                              "Total sleep",
+                              "Спал всего",
                               style: AppTextStyles.alarmSubtitleStyle,
                             ),
                             SizedBox(
                               height: 20.h,
                             ),
                             Text(
-                              "${const SleepTime(h: 8, m: 12).h} h ${const SleepTime(h: 8, m: 12).m} m",
+                              "${const SleepTime(h: 8, m: 12).h} ч ${const SleepTime(h: 8, m: 12).m} мин",
                               style: AppTextStyles.alarmDurationStyle,
                             ),
                             SizedBox(
                               height: 5.h,
                             ),
                             Text(
-                              "In bed",
+                              "В постели",
                               style: AppTextStyles.alarmSubtitleStyle,
                             ),
                           ],
@@ -140,17 +140,17 @@ class StatisticsPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             CategoryWithIcon(
-                              title: "Went to bed",
+                              title: "Отправился спать",
                               icon: AppIcons.wentToBed,
                               value:
                                   "${const SleepTime(h: 23, m: 48).h}:${const SleepTime(h: 23, m: 48).m}",
                             ),
                             SizedBox(height: 25.h),
                             CategoryWithIcon(
-                              title: "Aleep after",
+                              title: "Заснул после",
                               icon: AppIcons.asleepAfter,
                               value:
-                                  "${const SleepTime(h: 0, m: 5).m + const SleepTime(h: 0, m: 5).h * 60} min",
+                                  "${const SleepTime(h: 0, m: 5).m + const SleepTime(h: 0, m: 5).h * 60} мин",
                             ),
                           ],
                         ),
@@ -163,16 +163,16 @@ class StatisticsPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             CategoryWithIcon(
-                              title: "Woke up",
+                              title: "Проснулся",
                               icon: AppIcons.wokeUp,
                               value:
-                                  "${const SleepTime(h: 9, m: 32).h}:${const SleepTime(h: 9, m: 32).m} am",
+                                  "${const SleepTime(h: 9, m: 32).h}:${const SleepTime(h: 9, m: 32).m}",
                             ),
                             SizedBox(height: 25.h),
                             const CategoryWithIcon(
-                              title: "Noise",
+                              title: "Шум",
                               icon: AppIcons.noise,
-                              value: "${30} db",
+                              value: "${30} дб",
                             ),
                           ],
                         ),

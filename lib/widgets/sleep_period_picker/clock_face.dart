@@ -32,7 +32,7 @@ class ClockFace extends StatelessWidget {
                     .copyWith(color: AppColors.white),
               ),
               TextSpan(
-                text: " h",
+                text: " ч",
                 style: AppTextStyles.clockLetterStyle
                     .copyWith(color: AppColors.white),
               )

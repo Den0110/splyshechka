@@ -78,7 +78,7 @@ class HomePage extends StatelessWidget {
                                           .editRequested(SleepTimeType.bedtime);
                                     },
                                     icon: AppIcons.bedtime,
-                                    title: "BedTime",
+                                    title: "Заснуть в",
                                     time: bedTime,
                                   ),
                                 ),
@@ -90,7 +90,7 @@ class HomePage extends StatelessWidget {
                                           .editRequested(SleepTimeType.alarm);
                                     },
                                     icon: AppIcons.wakeUp,
-                                    title: "WakeUp",
+                                    title: "Проснуться в",
                                     time: wakeUpTime,
                                   ),
                                 ),
@@ -113,7 +113,7 @@ class HomePage extends StatelessWidget {
                           BlocProvider.of<SetSleepTimePageCubit>(context)
                               .sleepClicked();
                         },
-                        text: "Sleep now",
+                        text: "Заснуть сейчас",
                         backgroundColor: AppColors.green,
                         shadowColor: AppColors.yellow,
                         textColor: AppColors.darkGreen,

@@ -89,7 +89,7 @@ class SetSleepTimeDetailsPage extends StatelessWidget {
                           onPressed: () {
                             context.read<SleepTimeDetailsCubit>().okayClicked();
                           },
-                          text: "Okay",
+                          text: "Принять",
                           backgroundColor: AppColors.white,
                           textColor: AppColors.black,
                         ),

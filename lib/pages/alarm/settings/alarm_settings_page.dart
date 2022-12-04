@@ -63,7 +63,7 @@ class AlarmSettingsPage extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         LargeButton(
-                          text: "Confirm",
+                          text: "Принять",
                           backgroundColor: AppColors.lightGreen,
                           shadowColor: AppColors.lemon,
                           textColor: AppColors.darkGreen,
@@ -73,7 +73,7 @@ class AlarmSettingsPage extends StatelessWidget {
                         ),
                         SizedBox(height: 6.h),
                         LargeButton(
-                          text: "Cancel",
+                          text: "Отмена",
                           onPressed: () {
                             context.read<SleepTimeDetailsCubit>().okayClicked();
                           },

@@ -21,7 +21,7 @@ class ProfileSettingsGenderPageState extends State<ProfileSettingsGenderPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Gender"),
+        title: const Text("Гендер"),
       ),
       body: SafeArea(
         child: Container(
@@ -46,7 +46,7 @@ class ProfileSettingsGenderPageState extends State<ProfileSettingsGenderPage> {
                 ),
                 const Spacer(),
                 LargeButton(
-                  text: "Confirm",
+                  text: "Принять",
                   onPressed: () {
                       Navigator.of(context).pop();
                   },
@@ -56,7 +56,7 @@ class ProfileSettingsGenderPageState extends State<ProfileSettingsGenderPage> {
                 ),
                 SizedBox(height: 6.h),
                 LargeButton(
-                  text: "Cancel",
+                  text: "Отмена",
                   onPressed: () {},
                 ),
               ],

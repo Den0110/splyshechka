@@ -43,7 +43,7 @@ class BedtimeOptions extends StatelessWidget {
           SizedBox(height: 30.h),
           SleepContainer(
             child: SwitchElement(
-              title: "Remind me to sleep",
+              title: "Напомнить мне о сне",
               isActive: true,
               value: remindToSleep,
               onChanged: (bool value) {

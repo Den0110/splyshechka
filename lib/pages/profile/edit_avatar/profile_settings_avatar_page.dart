@@ -23,7 +23,7 @@ class ProfileSettingsAvatarPageState extends State<ProfileSettingsAvatarPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Avatar"),
+        title: Text("Аватар"),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -56,7 +56,7 @@ class ProfileSettingsAvatarPageState extends State<ProfileSettingsAvatarPage> {
                     vertical: 10.h,
                   ),
                   child: Text(
-                    "Face",
+                    "Мордашка",
                     style: AppTextStyles.titleMediumStyle,
                   ),
                 ),

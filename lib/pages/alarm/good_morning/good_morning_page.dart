@@ -24,7 +24,7 @@ class GoodMorningPage extends StatelessWidget {
               context.router.pop();
             },
             wakeUp: () {
-              context.router.navigate(const AlarmResultRoute());
+    //          context.router.navigate(const HomeRoute());
             },
           );
         },
@@ -58,7 +58,7 @@ class GoodMorningPage extends StatelessWidget {
                           height: 62.h,
                         ),
                         Text(
-                          "Good morning!",
+                          "Доброе утро!",
                           style: AppTextStyles.alarmTitle,
                         ),
                         SizedBox(
@@ -70,12 +70,6 @@ class GoodMorningPage extends StatelessWidget {
                               TextSpan(
                                 text: timeString,
                                 style: AppTextStyles.alarmNumber.copyWith(
-                                  color: AppColors.black,
-                                ),
-                              ),
-                              TextSpan(
-                                text: " am",
-                                style: AppTextStyles.alarmLetter.copyWith(
                                   color: AppColors.black,
                                 ),
                               ),
@@ -102,7 +96,7 @@ class GoodMorningPage extends StatelessWidget {
                         ),
                         const Spacer(),
                         LargeButton(
-                          text: "Delay",
+                          text: "Отложить",
                           textColor: AppColors.white,
                           backgroundColor: AppColors.black,
                           shadowColor: AppColors.white,
@@ -116,14 +110,14 @@ class GoodMorningPage extends StatelessWidget {
                           height: 6.h,
                         ),
                         LargeButton(
-                          text: "Wake up",
+                          text: "Проснуться",
                           textColor: AppColors.black,
                           backgroundColor: AppColors.white,
                           shadowColor: AppColors.black,
                           onPressed: () {
                             context
                                 .read<GoodMorningBloc>()
-                                .add(const Delayed());
+                                .add(WokeUp());
                           },
                         ),
                       ],

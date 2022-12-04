@@ -16,7 +16,7 @@ class SleepGoal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text.rich(
       TextSpan(children: [
-        const TextSpan(text: "Your sleep goal is "),
+        const TextSpan(text: "Ваша цель проспать "),
         TextSpan(
           text: goal.toString(),
           style: TextStyle(
@@ -27,7 +27,7 @@ class SleepGoal extends StatelessWidget {
             fontSize: 13.sp,
           ),
         ),
-        const TextSpan(text: "\nBased on your bedtime and alarm time"),
+        const TextSpan(text: "\nОсновано на вашем времени сна и будильника"),
       ]),
       style: AppTextStyles.alarmDescriptionStyle,
       textAlign: TextAlign.center,

@@ -35,7 +35,7 @@ class SnoozePage extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 25.h, bottom: 10.h),
                   child: Text(
-                    "Snooze",
+                    "Отложить",
                     style: AppTextStyles.appBarStyle,
                   ),
                 ),
@@ -56,7 +56,7 @@ class SnoozePage extends StatelessWidget {
                   height: 31.h,
                 ),
                 LargeButton(
-                  text: "Save",
+                  text: "Сохранить",
                   backgroundColor: AppColors.green,
                   shadowColor: AppColors.yellow,
                   textColor: AppColors.darkGreen,
@@ -68,7 +68,7 @@ class SnoozePage extends StatelessWidget {
                   height: 6.h,
                 ),
                 LargeButton(
-                  text: "Cancel",
+                  text: "Отмена",
                   textColor: AppColors.white,
                   onPressed: () {
                     context.read<SnoozePageBloc>().add(const CancelClicked());

@@ -2,18 +2,17 @@ import 'package:splyshechka/utils/app_icons.dart';
 
 enum Gender { male, female, other, secret }
 
-
 extension GenderExtension on Gender {
   String get name {
     switch (this) {
       case Gender.male:
-        return 'Male';
+        return 'Мужской';
       case Gender.female:
-        return 'Female';
+        return 'Женский';
       case Gender.other:
-        return 'Other';
+        return 'Другой';
       case Gender.secret:
-        return 'Secret';
+        return 'Скрыт';
     }
   }
 
