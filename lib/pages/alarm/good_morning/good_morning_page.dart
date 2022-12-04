@@ -1,14 +1,14 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:splyshechka/utils/app_colors.dart';
-import 'package:splyshechka/utils/app_text_styles.dart';
-import 'package:splyshechka/widgets/buttons/large_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:splyshechka/navigation/auto_router.gr.dart';
 import 'package:splyshechka/pages/alarm/good_morning/bloc/good_morning_bloc.dart';
-import 'package:intl/intl.dart';
+import 'package:splyshechka/utils/app_colors.dart';
+import 'package:splyshechka/utils/app_text_styles.dart';
 import 'package:splyshechka/utils/one_shot_bloc.dart';
+import 'package:splyshechka/widgets/buttons/large_button.dart';
 
 class GoodMorningPage extends StatelessWidget {
   const GoodMorningPage({super.key});
@@ -21,7 +21,10 @@ class GoodMorningPage extends StatelessWidget {
         listener: (context, state) {
           state.whenOrNull(
             delay: () {
-              context.router.pop();
+              context.router.pushAndPopUntil(
+                const MainRoute(),
+                predicate: (_) => false,
+              );
             },
             wakeUp: () {
               context.router.navigate(const AlarmResultRoute());
@@ -32,7 +35,8 @@ class GoodMorningPage extends StatelessWidget {
           return state.maybeWhen(
             initial: (dateTime) {
               String dateString = DateFormat("EEEE, MMM d").format(dateTime);
-              String timeString = DateFormat(DateFormat.HOUR24_MINUTE).format(dateTime);
+              String timeString =
+                  DateFormat(DateFormat.HOUR24_MINUTE).format(dateTime);
               return Container(
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
