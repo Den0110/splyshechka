@@ -113,7 +113,7 @@ class HomePage extends StatelessWidget {
                           BlocProvider.of<SetSleepTimePageCubit>(context)
                               .sleepClicked();
                         },
-                        text: "Заснуть сейчас",
+                        text: "Пойти спать",
                         backgroundColor: AppColors.green,
                         shadowColor: AppColors.yellow,
                         textColor: AppColors.darkGreen,

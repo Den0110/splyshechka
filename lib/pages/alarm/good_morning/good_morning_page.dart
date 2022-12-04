@@ -121,7 +121,7 @@ class GoodMorningPage extends StatelessWidget {
                           onPressed: () {
                             context
                                 .read<GoodMorningBloc>()
-                                .add(WokeUp());
+                                .add(const Delayed());
                           },
                         ),
                       ],

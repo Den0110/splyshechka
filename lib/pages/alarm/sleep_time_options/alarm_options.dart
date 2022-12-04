@@ -54,7 +54,7 @@ class AlarmOptions extends StatelessWidget {
           SizedBox(height: 30.h),
           SleepContainer(
             child: SwitchElement(
-              title: "Звонок",
+              title: "Будильник",
               isActive: true,
               value: alarmEnabled,
               onChanged: (bool value) {

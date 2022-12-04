@@ -25,7 +25,7 @@ class AlarmSettingsPage extends StatelessWidget {
         builder: (context, state) {
           return Scaffold(
             appBar: AppBar(
-              title: const Text("Alarm"),
+              title: const Text("Будильник"),
             ),
             body: Stack(
               children: [

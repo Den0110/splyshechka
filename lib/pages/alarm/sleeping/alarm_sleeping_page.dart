@@ -71,7 +71,7 @@ class AlarmSleepingPage extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 41.w),
                       child: SleepContainer(
                         child: ValueElement(
-                          title: "Звонок",
+                          title: "Будильник",
                           isActive: true,
                           value: alarmTime,
                           onTap: () {
@@ -101,7 +101,7 @@ class AlarmSleepingPage extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(left: 25.w, right: 25.w),
                       child: LargeButton(
-                        text: "Проснулся",
+                        text: "Проснуться",
                         textColor: AppColors.black,
                         backgroundColor: AppColors.white,
                         shadowColor: AppColors.black,
