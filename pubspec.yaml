@@ -63,6 +63,7 @@ dependencies:
 
   # memory
   shared_preferences: ^2.0.15
+  json_annotation: ^4.7.0
 
 dev_dependencies:
   flutter_test:
@@ -80,6 +81,7 @@ dev_dependencies:
   auto_route_generator: ^5.0.1
 
   injectable_generator: ^1.5.3
+  json_serializable: ^6.5.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
