@@ -1,3 +1,4 @@
+import 'package:flutter_svg/svg.dart';
 import 'package:my_pillow/utils/app_icons.dart';
 import 'package:my_pillow/widgets/options_list/slider_element.dart';
 import 'package:my_pillow/widgets/options_list/switch_element.dart';
@@ -79,7 +80,7 @@ class AlarmOptions extends StatelessWidget {
                     },
                   ),
                   SliderElement(
-                    iconAsset: AppIcons.volume,
+                    icon: SvgPicture.asset(AppIcons.volume),
                     minValue: 0,
                     value: volume,
                     maxValue: 100,

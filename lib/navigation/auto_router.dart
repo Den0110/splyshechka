@@ -6,6 +6,7 @@ import 'package:my_pillow/pages/alarm/set_sleep_time_details/set_sleep_time_deta
 import 'package:my_pillow/pages/alarm/settings/alarm_settings_page.dart';
 import 'package:my_pillow/pages/alarm/sleeping/alarm_sleeping_page.dart';
 import 'package:my_pillow/pages/alarm/snooze/snooze_page.dart';
+import 'package:my_pillow/pages/articles/article_details_page.dart';
 import 'package:my_pillow/pages/articles/articles_page.dart';
 import 'package:my_pillow/pages/home/home_page.dart';
 import 'package:my_pillow/pages/main/main_page.dart';
@@ -35,6 +36,9 @@ import 'package:my_pillow/pages/statistics/statistics_page.dart';
           page: StatisticsPage,
         ),
       ],
+    ),
+    AutoRoute(
+      page: ArticleDetailsPage,
     ),
     AutoRoute(
       page: ProfilePage,

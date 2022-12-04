@@ -1,0 +1,224 @@
+{
+  "appName": "SolarBill",
+
+  "splashTitle": "How much\nyou *could save* using Solar Panels?",
+  "splashButton": "Get answer easy",
+
+  "calculatorTab": "Calculator",
+  "wikiTab": "Wiki",
+
+  "calculatorProceedsTitle": "Proceeds",
+  "calculatorProceedsDescription": "Based on {year} year",
+  "@calculatorProceedsDescription": {
+    "placeholders": {
+      "year": {}
+    }
+  },
+  "calculatorProceedsPaybackLabel": "Payback in",
+  "calculatorProceedsPaybackValue": "{years} years",
+  "@calculatorProceedsPaybackValue": {
+    "placeholders": {
+      "years": {}
+    }
+  },
+  "calculatorChartLabelJanuary": "JAN",
+  "calculatorChartLabelMay": "MAY",
+  "calculatorChartLabelAugust": "AUG",
+  "calculatorChartLabelDecember": "DEC",
+  "calculatorIndependenceTitle": "Independence",
+  "calculatorIndependenceDescription": "Annual average",
+  "calculatorIndependenceYieldLabel": "Yield",
+  "calculatorChartConsumption": "Consumption",
+  "calculatorChartGeneration": "Generation",
+  "calculatorROITitle": "Return on investment",
+  "calculatorROIDescription": "After {years} years",
+  "@calculatorROIDescription": {
+    "placeholders": {
+      "years": {}
+    }
+  },
+  "calculatorROITotal": "Total ROI",
+  "calculatorROIYearly": "Yearly ROI",
+
+  "calculatorConsumeTab": "Consume",
+  "calculatorCostsTab": "Costs",
+  "calculatorAreaTab": "Area",
+  "calculatorOrientationTab": "Orientation",
+  "calculatorLoosesTab": "Looses",
+  "calculatorStoreTab": "Store",
+  "calculatorCellsTab": "Cells",
+  "calculatorFundingTab": "Funding",
+
+  "calculatorConsumeTitle": "How many watts do you use per month?",
+  "calculatorConsumeDescription": "Magnetic compass direction",
+  "calculatorConsumeInfo": "Consume info",
+  "calculatorConsumeAutoCalc": "Auto calculate",
+  "calculatorCostsTitle": "Electricity Rate per kWh",
+  "calculatorCostsDescription": "Avg. value with taxes and fees included",
+  "calculatorCostsInfo": "Costs info",
+  "calculatorAreaTitle": "Installation area",
+  "calculatorAreaAreaTab": "Area",
+  "calculatorAreaPitchTab": "Pitch",
+  "calculatorAreaDescription": "Free area for installation",
+  "calculatorAreaInfo": "Area info",
+  "calculatorOrientationTitle": "Orientation",
+  "calculatorOrientationDirectionTab": "Direction",
+  "calculatorOrientationTiltTab": "Tilt",
+  "calculatorOrientationDescription": "Magnetic compass direction",
+  "calculatorOrientationInfo": "Orientation info",
+  "calculatorLoosesTitle": "System Losses",
+  "calculatorLoosesDescription": "Losses in electrical systems",
+  "calculatorLoosesInfo": "Losses info",
+  "calculatorStoreTitle": "How to store energy?",
+  "calculatorStoreDescription": "Sell to the grid or store in the batteries",
+  "calculatorStoreInfo": "Store info",
+  "calculatorCellsTitle": "Solar Cells",
+  "calculatorCellsModuleTab": "Module type",
+  "calculatorCellsArrayTab": "Array type",
+  "calculatorCellsDescription": "The type describes the photovoltaic modules in the array",
+  "calculatorCellsInfo": "Cells info",
+  "calculatorFundingTitle": "Funding in {place}",
+  "@calculatorFundingTitle": {
+    "placeholders": {
+      "place": {}
+    }
+  },
+  "calculatorFundingDescription": "The government grants for buying solar panels",
+  "calculatorFundingInfo": "Funding info",
+
+  "calculatorNewCalculationButton": "New calculation",
+
+  "selectLocationTitle": "Select Location",
+  "selectLocationNameLabel": "Name",
+  "selectLocationNameErrorMessage": "Name can't be empty",
+  "selectLocationAddressLabel": "Enter the address or point location",
+  "selectLocationAddressErrorMessage": "Address can't be empty",
+  "selectLocationPropertyTypeLabel": "Type of property",
+  "selectLocationResidential": "Residential",
+  "selectLocationCommercial": "Commercial",
+
+  "myCalculationsTitle": "My calculations",
+
+  "wikiTitle": "Solar Energy",
+
+  "settingsTitle": "Settings",
+  "settingsLanguage": "Language",
+  "settingsLanguageEnglish": "English",
+  "settingsLanguageGreek": "Greek",
+  "settingsLanguagePortuguese": "Portuguese",
+  "settingsCurrency": "Currency",
+  "settingsUnits": "Units",
+  "settingsUnitsMetric": "Metric",
+  "settingsUnitsImperial": "Imperial",
+  "settingsUnitsSI": "SI",
+  "settingsDataSourcesTitle": "Data sources",
+  "settingsDataSourcesText": "The application uses official data from meteorological laboratories and scientific centers for climate and solar radiation research.",
+  "settingsVersion": "Version {version}",
+  "@settingsVersion": {
+    "placeholders": {
+      "version": {}
+    }
+  },
+  "settingsImpressEarthLabel": "Impress your mother Earth",
+  "settingsResetButton": "Reset all data and settings",
+  "settingsResetConfirmation": "Are you sure?",
+  "settingsResetPositiveButton": "Yes",
+  "settingsResetNegativeButton": "No",
+
+  "noConnectionCheckLabel": "Please check internet\nconnection",
+  "noConnectionCheckButton": "Refresh app",
+
+  "gotIt": "Got it",
+  "getOffersButton": "Get Offers",
+
+  "offersTitle": "Compare offers from local installers",
+  "offersSendRequest": "Send a request to Installers",
+  "offersInstallersFound": "Found {count} active installers",
+  "@offersInstallersFound": {
+      "placeholders": {
+        "count": {}
+      }
+  },
+  "offersResponseTime": "Response time {time}",
+  "@offersResponseTime": {
+      "placeholders": {
+        "time": {}
+      }
+  },
+  "offersFullNameLabel": "Full name",
+  "offersFullErrorMessage": "Please enter your full name",
+  "offersEmailLabel": "Email",
+  "offersEmailErrorMessage": "Please enter your email",
+  "offersMyCalculatedDataLabel": "My calculated data",
+
+  "detailedReportTitle": "Detailed Report",
+  "reportLocationTip": "Your location is better suited for solar energy than {percent}% of app users.",
+  "@reportLocationTip": {
+    "placeholders": {
+      "percent": {}
+    }
+  },
+  "reportGeneralValuesLabel": "GENERAL VALUES",
+  "reportGeneralSolarSavingsLabel": "Solar savings",
+  "reportGeneralResultingElectricityRateLabel": "Resulting electricity rate",
+  "reportGeneralTotalRoiLabel": "Total ROI for 30 years",
+  "reportGeneralSystemAcOutputLabel": "System AC output",
+  "reportGeneralDcSystemSizeLabel": "DC System Size",
+  "reportGeneralSystemCostLabel": "System cost",
+  "reportGeneralInstallationCostLabel": "Installation cost",
+
+  "reportSolarRadiationLabel": "SOLAR RADIATION",
+  "reportRadiationAverageDescription": "Avr. m2/day",
+
+  "reportFinancialAnalysisLabel": "FINANCIAL ANALYSIS",
+  "reportFinancialYears": "{years} years",
+  "@reportFinancialYears": {
+    "placeholders": {
+      "years": {}
+    }
+  },
+  "reportFinancialPayback": "pay back",
+  "reportFinancialYearLabel": "Year",
+  "reportFinancialElectricBillLabel": "Electric Bill",
+  "reportFinancialSolarSavingsLabel": "Solar Savings",
+  "reportFinancialSystemValueLabel": "System Value",
+
+  "reportImpactOnEnvLabel": "IMPACT ON THE ENVIRONMENT",
+  "reportImpactCarEquivalentDescription": "Equivalent cars removed from the road",
+  "reportImpactCo2EmissionsDescription": "Estimated CO2 emissions displaced",
+
+  "reportPvSystemPreSpecLabel": "PV SYSTEM PRE-SPECIFICATION",
+  "reportPvSystemModuleTypeLabel": "Module Type",
+  "reportPvSystemArrayTypeLabel": "Array Type",
+  "reportPvSystemDcSystemSizeLabel": "DC System Size",
+  "reportPvSystemCellsQuantityLabel": "Cells quantity",
+  "reportPvSystemCellMaxOutputLabel": "Cell max output",
+  "reportPvSystemArrayTiltLabel": "Array Tilt",
+  "reportPvSystemArrayAzimuthLabel": "Array Azimuth",
+  "reportPvSystemSystemLossesLabel": "System Losses",
+  "reportPvSystemInverterEfficiencyLabel": "Inverter Efficiency",
+  "reportPvSystemDcAcSizeRatioLabel": "DC to AC Size Ratio",
+
+  "reportCompareOffersTitle": "Compare offers from local installers",
+  "reportCompareOffersMedianLabel": "Median offers in {location}",
+  "@reportCompareOffersMedianLabel": {
+      "placeholders": {
+        "location": {}
+      }
+  },
+  "reportCompareOffersSystem": "{power} system {price}",
+  "@reportCompareOffersSystem": {
+      "placeholders": {
+        "power": {},
+        "price": {}
+      }
+  },
+  "reportCompareOffersInstallation": "Installation {price}",
+  "@reportCompareOffersInstallation": {
+      "placeholders": {
+        "price": {}
+      }
+  },
+  "reportCompareOffersGetOffersButton": "Get offers"
+
+}
