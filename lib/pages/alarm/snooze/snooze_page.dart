@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:my_pillow/models/wheel_picker/snooze_time.dart';
+import 'package:my_pillow/domain/entities/alarm/snooze_time.dart';
 import 'package:my_pillow/utils/app_colors.dart';
 import 'package:my_pillow/utils/app_text_styles.dart';
 import 'package:my_pillow/widgets/buttons/large_button.dart';

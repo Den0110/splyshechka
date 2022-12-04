@@ -1,6 +1,5 @@
-
 import 'package:flutter/material.dart';
-import 'package:my_pillow/models/wheel_picker/snooze_time.dart';
+import 'package:my_pillow/domain/entities/alarm/snooze_time.dart';
 import 'package:my_pillow/utils/app_colors.dart';
 import 'package:my_pillow/widgets/sleep_wheel_picker/sleep_wheel_picker.dart';
 
