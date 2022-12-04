@@ -13,7 +13,7 @@ class ListElement extends StatelessWidget {
     required this.isActive,
     this.onTap,
     this.subtitle,
-    this.iconAsset,
+    this.icon,
     this.titleColor,
     this.child,
     this.arrowIfTappable = true,
@@ -29,7 +29,7 @@ class ListElement extends StatelessWidget {
   final String? subtitle;
   final Widget? child;
   final Color? titleColor;
-  final String? iconAsset;
+  final Widget? icon;
   final bool arrowIfTappable;
   final double rightPadding;
   final double? leftPadding;
@@ -57,7 +57,7 @@ class ListElement extends StatelessWidget {
             child: IntrinsicHeight(
               child: Row(
                 children: [
-                  iconAsset != null
+                  icon != null
                       ? Padding(
                           padding: EdgeInsets.only(
                             right: 10.0.w,
@@ -65,7 +65,7 @@ class ListElement extends StatelessWidget {
                           child: SizedBox(
                             height: iconSize?.height,
                             width: iconSize?.width,
-                            child: SvgPicture.asset(iconAsset!),
+                            child: icon,
                           ),
                         )
                       : const Center(),

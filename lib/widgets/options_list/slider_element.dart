@@ -9,7 +9,7 @@ class SliderElement extends StatelessWidget {
     super.key,
     required this.isActive,
     required this.value,
-    this.iconAsset,
+    this.icon,
     required this.minValue,
     required this.maxValue,
     required this.onChanged,
@@ -20,13 +20,13 @@ class SliderElement extends StatelessWidget {
   final double minValue;
   final double maxValue;
   final void Function(double) onChanged;
-  final String? iconAsset;
+  final Widget? icon;
 
   @override
   Widget build(BuildContext context) {
     return ListElement(
       isActive: isActive,
-      iconAsset: iconAsset,
+      icon: icon,
       rightPadding: 0.0,
       child: SizedBox(
         width: 280.w,
