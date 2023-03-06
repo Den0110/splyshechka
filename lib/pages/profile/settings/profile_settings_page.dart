@@ -1,14 +1,18 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:splyshechka/di/locator.dart';
 import 'package:splyshechka/navigation/auto_router.gr.dart';
 import 'package:splyshechka/pages/profile/edit_avatar/avatar.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/utils/app_icons.dart';
-import 'package:splyshechka/utils/app_images.dart';
+import 'package:splyshechka/utils/one_shot_bloc.dart';
 import 'package:splyshechka/widgets/containers/sleep_container.dart';
 import 'package:splyshechka/widgets/options_list/value_element.dart';
+
+import 'bloc/profile_settings_bloc.dart';
 
 class ProfileSettingsPage extends StatelessWidget {
   const ProfileSettingsPage({
@@ -17,99 +21,146 @@ class ProfileSettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Иван Подушечкин"),
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: Column(
-              children: [
-                SizedBox(height: 31.h),
-                GestureDetector(
-                  onTap: () {
-                    context.router.navigate(const ProfileSettingsAvatarRoute());
-                  },
-                  child: Stack(
-                    alignment: Alignment.topRight,
+    return BlocProvider(
+      create: (context) =>
+          getIt<ProfileSettingsBloc>()..add(const PageOpened()),
+      child: OneShotBlocConsumer<ProfileSettingsBloc, ProfileSettingsState>(
+        listener: (context, state) {
+          if (state is NavToSettingsAvatar) {
+            context.router.navigate(
+              const ProfileSettingsAvatarRoute(),
+            );
+          }
+          if (state is NavToSettingsEmail) {
+            context.router.navigate(
+              const ProfileSettingsEmailRoute(),
+            );
+          }
+          if (state is NavToSettingsName) {
+            context.router.navigate(
+              const ProfileSettingsNameRoute(),
+            );
+          }
+          if (state is NavToSettingsPassword) {
+            context.router.navigate(
+              const ProfileSettingsPasswordRoute(),
+            );
+          }
+          if (state is NavToSettingsGender) {
+            context.router.navigate(
+              const ProfileSettingsGenderRoute(),
+            );
+          }
+        },
+        builder: (context, state) => state.maybeWhen(
+          (user) => Scaffold(
+            appBar: AppBar(
+              title: Text(user.name),
+            ),
+            body: SafeArea(
+              child: SingleChildScrollView(
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                  child: Column(
                     children: [
-                      Avatar(
-                        color: AppColors.darkPurple,
-                        imageUrl: AppImages.sleepingFace,
-                        size: 107.r,
-                        padding: 15.r,
+                      SizedBox(height: 31.h),
+                      GestureDetector(
+                        onTap: () {
+                          context.read<ProfileSettingsBloc>().add(
+                                const ProfileSettingsEvent.avatarEditPressed(),
+                              );
+                        },
+                        child: Stack(
+                          alignment: Alignment.topRight,
+                          children: [
+                            Avatar(
+                              color: user.avatar.color,
+                              imageUrl: user.avatar.emojiUrl,
+                              size: 107.r,
+                              padding: 15.r,
+                            ),
+                            Positioned(
+                              top: 2.h,
+                              right: 4.w,
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  color: AppColors.green,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: SvgPicture.asset(AppIcons.edit),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      Positioned(
-                        top: 2.h,
-                        right: 4.w,
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            color: AppColors.green,
-                            shape: BoxShape.circle,
-                          ),
-                          child: SvgPicture.asset(AppIcons.edit),
+                      SizedBox(height: 35.h),
+                      SleepContainer(
+                        child: Column(
+                          children: [
+                            ValueElement(
+                              title: "Email",
+                              value: user.email,
+                              isActive: true,
+                              onTap: () {
+                                context.read<ProfileSettingsBloc>().add(
+                                      ProfileSettingsEvent.emailEditPressed(),
+                                    );
+                              },
+                            ),
+                            ValueElement(
+                              title: "Name",
+                              value: user.name,
+                              isActive: true,
+                              onTap: () {
+                                context.read<ProfileSettingsBloc>().add(
+                                      ProfileSettingsEvent.nameEditPressed(),
+                                    );
+                              },
+                            ),
+                            ValueElement(
+                              title: "Gender",
+                              value: user.gender.name,
+                              isActive: true,
+                              onTap: () {
+                                context.read<ProfileSettingsBloc>().add(
+                                      ProfileSettingsEvent.genderEditPressed(),
+                                    );
+                              },
+                            ),
+                            ValueElement(
+                              title: "Password",
+                              value: "Set",
+                              isActive: true,
+                              onTap: () {
+                                context.read<ProfileSettingsBloc>().add(
+                                      ProfileSettingsEvent
+                                          .passwordEditPressed(),
+                                    );
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10.h),
+                      SleepContainer(
+                        child: ValueElement(
+                          title: "Delete account",
+                          titleColor: AppColors.red,
+                          isActive: true,
+                          onTap: () {
+                            context.read<ProfileSettingsBloc>().add(
+                                  ProfileSettingsEvent.deleteAccountPressed(),
+                                );
+                          },
                         ),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(height: 35.h),
-                SleepContainer(
-                  child: Column(
-                    children: [
-                      ValueElement(
-                        title: "Электронная почта",
-                        value: "lublu_spat@mail.ru",
-                        isActive: true,
-                        onTap: () {
-                          context.router
-                              .navigate(const ProfileSettingsEmailRoute());
-                        },
-                      ),
-                      ValueElement(
-                        title: "Имя",
-                        value: "Иван Подушечкин",
-                        isActive: true,
-                        onTap: () {
-                          context.router
-                              .navigate(const ProfileSettingsNameRoute());
-                        },
-                      ),
-                      ValueElement(
-                        title: "Гендер",
-                        value: "Мужской",
-                        isActive: true,
-                        onTap: () {
-                          context.router
-                              .navigate(const ProfileSettingsGenderRoute());
-                        },
-                      ),
-                      ValueElement(
-                        title: "Пароль",
-                        value: "Установлен",
-                        isActive: true,
-                        onTap: () {
-                          context.router
-                              .navigate(const ProfileSettingsPasswordRoute());
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 10.h),
-                SleepContainer(
-                  child: ValueElement(
-                    title: "Удалить аккаунт",
-                    titleColor: AppColors.red,
-                    isActive: true,
-                    onTap: () {},
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
+          orElse: Container.new,
         ),
       ),
     );
