@@ -5,7 +5,6 @@ class ProfileState with _$ProfileState {
 
   const factory ProfileState({
     required SleepUser user,
-    required String version,
   }) = _ProfileState;
 
   @Implements<OneShotState>()

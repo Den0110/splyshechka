@@ -37,7 +37,7 @@ class ProfilePage extends StatelessWidget {
           if (state is Logout) {}
         },
         builder: (context, state) => state.maybeWhen(
-          (user, version) => Scaffold(
+          (user) => Scaffold(
             appBar: AppBar(
               title: const Text("Profile"),
               actions: [

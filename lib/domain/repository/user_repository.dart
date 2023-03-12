@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rxdart/subjects.dart';
-import 'package:splyshechka/domain/profile/sleep_avatar.dart';
-import 'package:splyshechka/domain/profile/sleep_user.dart';
+import 'package:splyshechka/domain/entities/profile/sleep_avatar.dart';
+import 'package:splyshechka/domain/entities/profile/sleep_user.dart';
 import 'package:splyshechka/models/gender/gender.dart';
 
 abstract class UserRepository {
@@ -9,7 +9,7 @@ abstract class UserRepository {
 
   SleepUser get lastCurrentUser =>
       currentUser.valueOrNull ??
-      SleepUser(
+      const SleepUser(
         id: -1,
         avatar: SleepAvatar(
           emojiUrl:

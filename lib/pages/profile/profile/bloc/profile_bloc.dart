@@ -1,26 +1,22 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:splyshechka/domain/profile/sleep_user.dart';
+import 'package:splyshechka/domain/entities/profile/sleep_user.dart';
 import 'package:splyshechka/domain/repository/user_repository.dart';
 import 'package:splyshechka/utils/one_shot_bloc.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 
 part 'profile_bloc.freezed.dart';
-
 part 'profile_event.dart';
-
 part 'profile_state.dart';
 
 @injectable
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final UserRepository _userRepository;
 
-  ProfileBloc(this._userRepository, PackageInfo packageInfo)
+  ProfileBloc(this._userRepository)
       : super(
           ProfileState(
             user: _userRepository.lastCurrentUser,
-            version: packageInfo.version,
           ),
         ) {
     on<PageOpened>(_onPageOpened);
@@ -47,27 +43,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     Emitter<ProfileState> emit,
   ) {
     emitOnce(emit, ProfileState.navToProfileSettings());
-  }
-
-  void _onPressedUseTerms(
-    TermsOfUsePressed event,
-    Emitter<ProfileState> emit,
-  ) {
-    emitOnce(emit, ProfileState.navToTermsOfUse());
-  }
-
-  void _onPressedPrivacyPolicy(
-    PrivacyPolicyPressed event,
-    Emitter<ProfileState> emit,
-  ) {
-    emitOnce(emit, ProfileState.navToPrivacyPolicy());
-  }
-
-  void _onPressedMultiChain(
-    MultiChainPressed event,
-    Emitter<ProfileState> emit,
-  ) {
-    emitOnce(emit, ProfileState.navToMultiChain());
   }
 
   void _onPressedRecords(

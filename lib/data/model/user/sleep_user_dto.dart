@@ -2,7 +2,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:splyshechka/data/model/user/sleep_avatar_dto.dart';
 import 'package:splyshechka/data/model/user/sleep_gender_dto.dart';
-import 'package:splyshechka/domain/profile/sleep_user.dart';
+import 'package:splyshechka/domain/entities/profile/sleep_user.dart';
 
 part 'sleep_user_dto.freezed.dart';
 

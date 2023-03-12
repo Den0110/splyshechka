@@ -55,7 +55,7 @@ dependencies:
   expandable_page_view: ^1.0.17
 
   get_it: ^7.2.0
-  injectable: ^1.5.3
+  injectable: ^1.5.4
 
   package_info_plus: ^1.4.3+1
 

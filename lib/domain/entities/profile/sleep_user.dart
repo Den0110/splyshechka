@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:splyshechka/domain/profile/sleep_avatar.dart';
+import 'package:splyshechka/domain/entities/profile/sleep_avatar.dart';
 import 'package:splyshechka/models/gender/gender.dart';
 
 part 'sleep_user.freezed.dart';

@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:splyshechka/domain/profile/sleep_avatar.dart';
+import 'package:splyshechka/domain/entities/profile/sleep_avatar.dart';
 
 part 'sleep_avatar_dto.freezed.dart';
 

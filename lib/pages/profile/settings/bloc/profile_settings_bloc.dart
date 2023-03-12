@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:splyshechka/domain/profile/sleep_user.dart';
+import 'package:splyshechka/domain/entities/profile/sleep_user.dart';
 import 'package:splyshechka/domain/repository/user_repository.dart';
 import 'package:splyshechka/utils/one_shot_bloc.dart';
 

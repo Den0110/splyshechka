@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:splyshechka/data/data_source/user/remote/user_remote_data_source.dart';
 import 'package:splyshechka/data/model/user/sleep_user_dto.dart';
-import 'package:splyshechka/domain/profile/sleep_user.dart';
+import 'package:splyshechka/domain/entities/profile/sleep_user.dart';
 import 'package:splyshechka/domain/repository/user_repository.dart';
 
 @Singleton(as: UserRepository)
