@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:splyshechka/navigation/route_builders.dart';
+import 'package:splyshechka/pages/achievements/achievements_page.dart';
 import 'package:splyshechka/pages/alarm/good_morning/good_morning_page.dart';
 import 'package:splyshechka/pages/alarm/result/alarm_result_page.dart';
 import 'package:splyshechka/pages/alarm/set_sleep_time_details/set_sleep_time_details_page.dart';
@@ -35,6 +36,9 @@ import 'package:splyshechka/pages/statistics/statistics_page.dart';
         AutoRoute(
           page: StatisticsPage,
         ),
+        AutoRoute(
+          page: AchievementsPage,
+        )
       ],
     ),
     AutoRoute(

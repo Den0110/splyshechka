@@ -1,7 +1,7 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:splyshechka/utils/app_icons.dart';
 
-enum AppBottomBarItem { bedtime, localMall, autoGraph }
+enum AppBottomBarItem { bedtime, localMall, autoGraph, sparkles}
 
 extension AppBottomBarExtension on AppBottomBarItem {
   SvgPicture get iconEnabled {
@@ -12,6 +12,8 @@ extension AppBottomBarExtension on AppBottomBarItem {
         return SvgPicture.asset(AppIcons.articleEnabled);
       case AppBottomBarItem.autoGraph:
         return SvgPicture.asset(AppIcons.autoGraphEnabled);
+      case AppBottomBarItem.sparkles:
+        return SvgPicture.asset(AppIcons.sparklesEnabled);
     }
   }
 
@@ -23,6 +25,8 @@ extension AppBottomBarExtension on AppBottomBarItem {
         return SvgPicture.asset(AppIcons.articleDisabled);
       case AppBottomBarItem.autoGraph:
         return SvgPicture.asset(AppIcons.autoGraphDisabled);
+      case AppBottomBarItem.sparkles:
+        return SvgPicture.asset(AppIcons.sparklesDisabled);
     }
   }
 }
