@@ -9,6 +9,9 @@ import 'package:splyshechka/pages/alarm/snooze/snooze_page.dart';
 import 'package:splyshechka/pages/articles/article_details_page.dart';
 import 'package:splyshechka/pages/articles/articles_page.dart';
 import 'package:splyshechka/pages/home/home_page.dart';
+import 'package:splyshechka/pages/login/login_page.dart';
+import 'package:splyshechka/pages/login/password_retrieval/password_retrieval_page.dart';
+import 'package:splyshechka/pages/login/registration/registration_page.dart';
 import 'package:splyshechka/pages/main/main_page.dart';
 import 'package:splyshechka/pages/profile/edit_avatar/profile_settings_avatar_page.dart';
 import 'package:splyshechka/pages/profile/edit_email/profile_settings_email_page.dart';
@@ -37,6 +40,15 @@ import 'package:splyshechka/pages/statistics/statistics_page.dart';
         ),
       ],
     ),
+    AutoRoute(
+      page: LoginPage,
+    ),
+    AutoRoute(
+          page: PasswordRetrievalPage,
+        ),
+    AutoRoute(
+          page: RegistrationPage,
+        ),
     AutoRoute(
       page: ArticleDetailsPage,
     ),
