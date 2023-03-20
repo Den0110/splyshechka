@@ -43,7 +43,8 @@ class MainPage extends StatelessWidget {
               ),
             ),
           ),
-          body: SafeArea(
+          body: 
+          SafeArea(
               child: AutoTabsRouter(
             routes: [HomeRoute(), ArticlesRoute(), StatisticsRoute()],
             builder: (context, child, animation) {

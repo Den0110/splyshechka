@@ -50,6 +50,7 @@ class HomePage extends StatelessWidget {
                       (bedTime, wakeUpTime) => SingleChildScrollView(
                         child: Column(
                           children: [
+                            Container(color: Colors.blue,child: GestureDetector(onTap: () => context.navigateTo(LoginRoute()),child: Text("Логин"),),),
                             SleepPeriodPicker(
                               begin: SleepTimeMapper.toPickedTime(bedTime),
                               end: SleepTimeMapper.toPickedTime(wakeUpTime),
