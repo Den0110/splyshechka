@@ -43,7 +43,7 @@ class AlarmResultContainer extends StatelessWidget {
               )
               : const SizedBox(),
           title != null
-              ? const Spacer()
+              ? const SizedBox()
               : const SizedBox(),
           child,
         ],

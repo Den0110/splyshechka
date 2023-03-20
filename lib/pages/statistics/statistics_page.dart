@@ -90,7 +90,7 @@ class StatisticsPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "${const SleepTime(h: 7, m: 52).h} h ${const SleepTime(h: 7, m: 52).m} мин",
+                              "${const SleepTime(h: 7, m: 52).h} ч ${const SleepTime(h: 7, m: 52).m} мин",
                               style: AppTextStyles.alarmDurationStyle,
                             ),
                             SizedBox(
@@ -99,9 +99,6 @@ class StatisticsPage extends StatelessWidget {
                             Text(
                               "Спал всего",
                               style: AppTextStyles.alarmSubtitleStyle,
-                            ),
-                            SizedBox(
-                              height: 20.h,
                             ),
                             Text(
                               "${const SleepTime(h: 8, m: 12).h} ч ${const SleepTime(h: 8, m: 12).m} мин",

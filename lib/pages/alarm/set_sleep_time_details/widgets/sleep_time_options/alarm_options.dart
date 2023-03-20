@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:splyshechka/pages/alarm/set_sleep_time_details/bloc/sleep_time_details_cubit.dart';
-import 'package:splyshechka/pages/alarm/sleep_time_options/widgets/sleep_goal.dart';
+import 'package:splyshechka/pages/alarm/set_sleep_time_details/widgets/sleep_time_options/sleep_goal.dart';
 import 'package:splyshechka/widgets/sleep_time_picker/sleep_time_picker.dart';
 
 class AlarmOptions extends StatelessWidget {
