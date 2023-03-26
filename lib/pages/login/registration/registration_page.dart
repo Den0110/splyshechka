@@ -4,11 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';
 import 'package:splyshechka/di/locator.dart';
+import 'package:splyshechka/models/gender/gender.dart';
 import 'package:splyshechka/pages/login/registration/bloc/registration_bloc.dart';
 import 'package:splyshechka/pages/login/widgets/gender_selector_field.dart';
 import 'package:splyshechka/pages/login/widgets/login_text_field.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/utils/app_text_styles.dart';
+import 'package:splyshechka/widgets/switchers/pick_option/pick_option.dart';
 
 class RegistrationPage extends StatelessWidget {
   const RegistrationPage({Key? key}) : super(key: key);
@@ -26,7 +28,9 @@ class RegistrationPage extends StatelessWidget {
           RegistrationState, RegistrationCommand>(
         listener: (context, sideEffect) {
           sideEffect.when(
-            navToMain: () {},
+            navToMain: () {
+              context.router.navigateBack();
+            },
           );
         },
         builder: (context, state) => SafeArea(
@@ -71,11 +75,18 @@ class RegistrationPage extends StatelessWidget {
                   controller: _passwordController,
                 ),
                 SizedBox(height: 20.h),
-                GenderSelectionField(),
-                SizedBox(height: 20.h),
-                LoginTextField(
-                  hintText: "Дата рождениия",
-                  height: 30.h,
+                PickOption(
+                  options: Gender.values.map((e) => e.name).toList(),
+                  active: Gender.values.indexWhere((e) => state.gender == e),
+                  optionStyle: OptionStyle.backgroundStyle,
+                  color: AppColors.stroke,
+                  onTap: (int i) {
+                    context.read<RegistrationBloc>().add(
+                          RegistrationEvent.genderChanged(
+                            gender: i == 0 ? Gender.male : Gender.female,
+                          ),
+                        );
+                  },
                 ),
                 SizedBox(height: 40.h),
                 GestureDetector(
@@ -88,7 +99,6 @@ class RegistrationPage extends StatelessWidget {
                             password: _passwordController.text,
                           ),
                         );
-                    context.router.navigateBack();
                   },
                   child: Container(
                     height: 40.h,

@@ -7,7 +7,7 @@ part 'sleep_user.freezed.dart';
 @freezed
 class SleepUser with _$SleepUser {
   const factory SleepUser({
-    required int id,
+    required int token,
     required SleepAvatar avatar,
     required String name,
     required String email,
