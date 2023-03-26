@@ -28,7 +28,7 @@ import '../pages/alarm/snooze/snooze_page.dart' as _i14;
 import '../pages/articles/article_details_page.dart' as _i5;
 import '../pages/articles/articles_page.dart' as _i20;
 import '../pages/home/home_page.dart' as _i19;
-import '../pages/login/login_page.dart' as _i2;
+import '../pages/login/login/login_page.dart' as _i2;
 import '../pages/login/password_retrieval/password_retrieval_page.dart' as _i3;
 import '../pages/login/registration/registration_page.dart' as _i4;
 import '../pages/main/main_page.dart' as _i1;

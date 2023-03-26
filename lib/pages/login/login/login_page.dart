@@ -44,11 +44,17 @@ class LoginPage extends StatelessWidget {
               SizedBox(
                 height: 40.h,
               ),
-              LoginTextField(hintText: 'Email/логин',height: 30.h,),
+              LoginTextField(
+                hintText: 'Email/логин',
+                height: 30.h,
+              ),
               SizedBox(
                 height: 15.h,
               ),
-              LoginTextField(hintText: "Пароль",height: 30.h,),
+              LoginTextField(
+                hintText: "Пароль",
+                height: 30.h,
+              ),
               SizedBox(
                 height: 15.h,
               ),
@@ -73,21 +79,21 @@ class LoginPage extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(11.r),
                     color: AppColors.greyMain,
-                boxShadow: [
-                  BoxShadow(
-                    color: Color.fromRGBO(83, 83, 177, 1),
-                    offset: Offset(0, 1)
-                  )
-                ],
+                    boxShadow: const [
+                      BoxShadow(
+                          color: Color.fromRGBO(83, 83, 177, 1),
+                          offset: Offset(0, 1))
+                    ],
                   ),
                   child: Center(
                     child: Text(
                       "Войти",
                       style: TextStyle(
-                          color: AppColors.white,
-                          fontFamily: AppTextStyles.fontFamilyOpenSans,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w500,),
+                        color: AppColors.white,
+                        fontFamily: AppTextStyles.fontFamilyOpenSans,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 ),

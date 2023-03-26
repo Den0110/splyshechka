@@ -9,7 +9,7 @@ import 'package:splyshechka/pages/alarm/snooze/snooze_page.dart';
 import 'package:splyshechka/pages/articles/article_details_page.dart';
 import 'package:splyshechka/pages/articles/articles_page.dart';
 import 'package:splyshechka/pages/home/home_page.dart';
-import 'package:splyshechka/pages/login/login_page.dart';
+import 'package:splyshechka/pages/login/login/login_page.dart';
 import 'package:splyshechka/pages/login/password_retrieval/password_retrieval_page.dart';
 import 'package:splyshechka/pages/login/registration/registration_page.dart';
 import 'package:splyshechka/pages/main/main_page.dart';

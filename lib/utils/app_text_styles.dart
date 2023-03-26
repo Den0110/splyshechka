@@ -8,9 +8,9 @@ class AppTextStyles {
   static const fontFamilyStapel = "Stapel";
 
   static final buttonLargeStyle = TextStyle(
-    height: 22.h / 16.h,
-    fontWeight: FontWeight.w500,
-    fontSize: 16.sp,
+    height: 25.h / 18.h,
+    fontWeight: FontWeight.w400,
+    fontSize: 18.sp,
     fontFamily: fontFamilySFPro,
   );
   static final buttonSmallStyle = TextStyle(
@@ -20,7 +20,7 @@ class AppTextStyles {
     fontFamily: fontFamilyOpenSans,
   );
   static final actionsBarStyle = TextStyle(
-    letterSpacing: -0.408.w,
+    letterSpacing: -0.24.w,
     color: AppColors.white,
     height: 22.h / 10.sp,
     fontWeight: FontWeight.w400,
