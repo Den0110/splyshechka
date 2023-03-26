@@ -7,6 +7,7 @@ import 'package:splyshechka/di/locator.dart';
 import 'package:splyshechka/navigation/auto_router.gr.dart';
 import 'package:splyshechka/pages/login/login/bloc/login_bloc.dart';
 import 'package:splyshechka/pages/login/widgets/login_text_field.dart';
+import 'package:splyshechka/pages/main/main_page.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/utils/app_text_styles.dart';
 
@@ -23,9 +24,14 @@ class LoginPage extends StatelessWidget {
       child: BlocSideEffectConsumer<LoginBloc, LoginBloc, LoginState,
           LoginCommand>(
         listener: (context, sideEffect) {
-          sideEffect.when(
-            navToMain: () {},
-          );
+          sideEffect.when(navToMain: () {
+             context.navigateTo(MainRoute());
+          }, error: () {
+            const snackBar = SnackBar(
+              content:  Text('Ошибка! Неверные данные.'),
+            );
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          });
         },
         builder: (context, state) => SafeArea(
           child: Scaffold(
@@ -98,7 +104,6 @@ class LoginPage extends StatelessWidget {
                               password: _passwordController.text,
                             ),
                           );
-                      context.navigateBack();
                     },
                     child: Container(
                       width: 170.w,

@@ -27,7 +27,6 @@ import 'package:splyshechka/pages/statistics/statistics_page.dart';
   routes: <AutoRoute>[
     AutoRoute(
       page: MainPage,
-      initial: true,
       children: [
         AutoRoute(
           page: HomePage,
@@ -42,13 +41,14 @@ import 'package:splyshechka/pages/statistics/statistics_page.dart';
     ),
     AutoRoute(
       page: LoginPage,
+      initial: true,
     ),
     AutoRoute(
-          page: PasswordRetrievalPage,
-        ),
+      page: PasswordRetrievalPage,
+    ),
     AutoRoute(
-          page: RegistrationPage,
-        ),
+      page: RegistrationPage,
+    ),
     AutoRoute(
       page: ArticleDetailsPage,
     ),

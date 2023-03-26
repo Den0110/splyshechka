@@ -31,8 +31,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState>
       ));
       String token = result.token;
       produceSideEffect(LoginCommand.navToMain());
-    } catch (e) 
-    {}
+    } catch (e) {
+      produceSideEffect(LoginCommand.error());
+    }
 
     //Получение юзера по токену
   }

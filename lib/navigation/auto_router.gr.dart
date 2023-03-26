@@ -208,7 +208,7 @@ class AppRouter extends _i22.RootStackRouter {
   List<_i22.RouteConfig> get routes => [
         _i22.RouteConfig(
           MainRoute.name,
-          path: '/',
+          path: '/main-page',
           children: [
             _i22.RouteConfig(
               HomeRoute.name,
@@ -229,7 +229,7 @@ class AppRouter extends _i22.RootStackRouter {
         ),
         _i22.RouteConfig(
           LoginRoute.name,
-          path: '/login-page',
+          path: '/',
         ),
         _i22.RouteConfig(
           PasswordRetrievalRoute.name,
@@ -304,7 +304,7 @@ class MainRoute extends _i22.PageRouteInfo<void> {
   const MainRoute({List<_i22.PageRouteInfo>? children})
       : super(
           MainRoute.name,
-          path: '/',
+          path: '/main-page',
           initialChildren: children,
         );
 
@@ -317,7 +317,7 @@ class LoginRoute extends _i22.PageRouteInfo<void> {
   const LoginRoute()
       : super(
           LoginRoute.name,
-          path: '/login-page',
+          path: '/',
         );
 
   static const String name = 'LoginRoute';
