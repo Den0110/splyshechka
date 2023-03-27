@@ -7,7 +7,6 @@ import 'package:splyshechka/di/locator.dart';
 import 'package:splyshechka/models/gender/gender.dart';
 import 'package:splyshechka/navigation/auto_router.gr.dart';
 import 'package:splyshechka/pages/login/registration/bloc/registration_bloc.dart';
-import 'package:splyshechka/pages/login/widgets/gender_selector_field.dart';
 import 'package:splyshechka/pages/login/widgets/login_text_field.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/utils/app_text_styles.dart';
@@ -30,7 +29,12 @@ class RegistrationPage extends StatelessWidget {
         listener: (context, sideEffect) {
           sideEffect.when(
             navToMain: () {
-               context.navigateTo(const LoginRoute());
+              const snackBar = SnackBar(
+                content: Text('Аккаунт создан!'),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+              context.navigateTo(const LoginRoute());
             },
           );
         },

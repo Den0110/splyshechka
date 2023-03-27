@@ -22,7 +22,7 @@ import 'package:splyshechka/pages/profile/profile/profile_page.dart';
 import 'package:splyshechka/pages/profile/settings/profile_settings_page.dart';
 import 'package:splyshechka/pages/statistics/all_analysis/all_analysis_page.dart';
 import 'package:splyshechka/pages/statistics/last_analys/statistics_page.dart';
-import 'package:splyshechka/pages/statistics/widgets/analys_widget.dart';
+import 'package:splyshechka/pages/statistics/current_analys/analys_widget.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',

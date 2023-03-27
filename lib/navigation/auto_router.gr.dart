@@ -41,8 +41,8 @@ import '../pages/profile/edit_password/profile_settings_password.dart' as _i9;
 import '../pages/profile/profile/profile_page.dart' as _i6;
 import '../pages/profile/settings/profile_settings_page.dart' as _i7;
 import '../pages/statistics/all_analysis/all_analysis_page.dart' as _i13;
+import '../pages/statistics/current_analys/analys_widget.dart' as _i16;
 import '../pages/statistics/last_analys/statistics_page.dart' as _i23;
-import '../pages/statistics/widgets/analys_widget.dart' as _i16;
 import 'route_builders.dart' as _i26;
 
 class AppRouter extends _i24.RootStackRouter {
