@@ -2,14 +2,13 @@ part of 'main_bloc.dart';
 
 @Freezed(equal: false)
 class MainState with _$MainState {
-  @override
-  MainUiModel get uiModel;
+  const factory MainState.initial() = Initial;
 
-  const factory MainState.initial({
-    required MainUiModel uiModel,
-  }) = Initial;
+  const factory MainState.pageOpen({
+    required SleepUser user,
+  }) = PageOpen;
 
-  factory MainState.navToProfile({
-    required MainUiModel uiModel,
-  }) = NavToProfile;
+  // factory MainState.navToProfile({
+  //   required MainUiModel uiModel,
+  // }) = NavToProfile;
 }
