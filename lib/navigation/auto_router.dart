@@ -17,6 +17,7 @@ import 'package:splyshechka/pages/profile/edit_name/profile_settings_name_page.d
 import 'package:splyshechka/pages/profile/edit_password/profile_settings_password.dart';
 import 'package:splyshechka/pages/profile/profile/profile_page.dart';
 import 'package:splyshechka/pages/profile/settings/profile_settings_page.dart';
+import 'package:splyshechka/pages/statistics/all_analysis/all_analysis_page.dart';
 import 'package:splyshechka/pages/statistics/statistics_page.dart';
 
 @MaterialAutoRouter(
@@ -60,6 +61,9 @@ import 'package:splyshechka/pages/statistics/statistics_page.dart';
     ),
     AutoRoute(
       page: ProfileSettingsGenderPage,
+    ),
+    AutoRoute(
+      page: AllAnalysisPage,
     ),
     CustomRoute(
       page: SetSleepTimeDetailsPage,
