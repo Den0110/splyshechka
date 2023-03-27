@@ -30,7 +30,7 @@ class RegistrationPage extends StatelessWidget {
         listener: (context, sideEffect) {
           sideEffect.when(
             navToMain: () {
-               context.navigateTo(LoginRoute());
+               context.navigateTo(const LoginRoute());
             },
           );
         },
@@ -77,7 +77,7 @@ class RegistrationPage extends StatelessWidget {
                 ),
                 SizedBox(height: 20.h),
                 PickOption(
-                  options: Gender.values.map((e) => e.name).toList(),
+                  options: Gender.values.map((e) => e.getName).toList(),
                   active: Gender.values.indexWhere((e) => state.gender == e),
                   optionStyle: OptionStyle.backgroundStyle,
                   color: AppColors.stroke,

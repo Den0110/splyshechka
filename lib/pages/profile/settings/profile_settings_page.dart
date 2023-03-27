@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';
 import 'package:splyshechka/di/locator.dart';
+import 'package:splyshechka/models/gender/gender.dart';
 import 'package:splyshechka/navigation/auto_router.gr.dart';
 import 'package:splyshechka/pages/profile/edit_avatar/avatar.dart';
 import 'package:splyshechka/utils/app_colors.dart';
@@ -60,7 +61,7 @@ class ProfileSettingsPage extends StatelessWidget {
         },
         builder: (context, state) => Scaffold(
           appBar: AppBar(
-            title: Text(state.user.fullName),
+            title: Text(state.user.nickname),
           ),
           body: SafeArea(
             child: SingleChildScrollView(
@@ -124,7 +125,7 @@ class ProfileSettingsPage extends StatelessWidget {
                           ),
                           ValueElement(
                             title: "Пол",
-                            value: state.user.gender.name,
+                            value: state.user.gender.getName,
                             isActive: true,
                             onTap: () {
                               context.read<ProfileSettingsBloc>().add(

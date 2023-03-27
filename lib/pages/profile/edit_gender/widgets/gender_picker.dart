@@ -23,7 +23,7 @@ class GenderPicker extends StatelessWidget {
             .map(
               (elem) => CheckElement(
                 icon: SvgPicture.asset(elem.icon),
-                title: elem.name,
+                title: elem.getName,
                 value: pickedValue == elem,
                 isActive: true,
                 onChanged: () {

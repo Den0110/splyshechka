@@ -38,7 +38,7 @@ class _GenderSelectionFieldState extends State<GenderSelectionField> {
               _selectedGender = newValue;
             });
           },
-          items: <String>["Мужской", "Женский", "Другой"]
+          items: <String>["Мужской", "Женский"]
               .map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
               value: value,

@@ -5,7 +5,6 @@ import 'package:side_effect_bloc/side_effect_bloc.dart';
 import 'package:splyshechka/data/data_source/user/remote/new_user_remote_data_source.dart';
 import 'package:splyshechka/domain/entities/profile/sleep_user.dart';
 import 'package:splyshechka/domain/repository/user_repository.dart';
-import 'package:splyshechka/utils/one_shot_bloc.dart';
 
 part 'profile_settings_bloc.freezed.dart';
 part 'profile_settings_event.dart';

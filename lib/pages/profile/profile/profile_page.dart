@@ -34,7 +34,11 @@ class ProfilePage extends StatelessWidget {
           if (state is NavToPrivacyPolicy) {}
           if (state is NavToTermsOfUse) {}
           if (state is NavToRecords) {}
-          if (state is Logout) {}
+          if (state is Logout) {
+            context.router.navigate(
+              const LoginRoute(),
+            );
+          }
         },
         builder: (context, state) => state.maybeWhen(
           (user) => Scaffold(
@@ -68,7 +72,7 @@ class ProfilePage extends StatelessWidget {
                       ),
                       SizedBox(height: 16.5.h),
                       Text(
-                        user.fullName,
+                        user.nickname,
                         style: AppTextStyles.profileNameStyle,
                       ),
                       Text(

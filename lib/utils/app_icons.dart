@@ -40,7 +40,7 @@ abstract class AppIcons {
   static const String wokeUp = "assets/icons/woke_up.svg";
   static const String box = "assets/icons/box.svg";
   static const String moon = "assets/icons/moon.svg";
-  static const String female = 'assets/icons/femalesvg';
+  static const String female = 'assets/icons/female.svg';
   static const String male = 'assets/icons/male.svg';
   static const String transgender = 'assets/icons/transgender.svg';
   static const String question = 'assets/icons/question_mark.svg';
