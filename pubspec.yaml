@@ -34,9 +34,6 @@ dependencies:
   side_effect_bloc:
     path: side_effect_bloc
 
-  side_effect_bloc:
-    path: side_effect_bloc
-
   progressive_time_picker: ^0.0.7
   flutter_time_picker_spinner: ^2.0.0
   intl: ^0.17.0
