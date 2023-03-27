@@ -20,7 +20,10 @@ class ArticlesPage extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       itemCount: articles.length,
       itemBuilder: (BuildContext context, int index) {
-        return Padding(
+        return Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+          ),
           padding: EdgeInsets.only(
             top: index == 0 ? 24.h : 8.h,
             bottom: index == articles.length - 1 ? 24.h : 8.h,

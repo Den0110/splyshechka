@@ -14,7 +14,7 @@ class AllAnalysisPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Все анализы",
+          "Вся статистика",
         ),
       ),
       body: BlocProvider(

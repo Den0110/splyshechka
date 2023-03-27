@@ -22,7 +22,18 @@ class StatisticsPage extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.0.w, vertical: 9.h),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Text(
+                "Анализ последнего сна",
+                style: TextStyle(
+                  fontFamily: AppTextStyles.fontFamilyOpenSans,
+                  fontSize: 16.sm,
+                  fontWeight: FontWeight.w600,
+                  color: const Color.fromRGBO(180, 180, 185, 1),
+                  height: 23 / 16.sm,
+                ),
+              ),
               Container(
                 padding: EdgeInsets.only(bottom: 4.h),
                 decoration: BoxDecoration(
@@ -104,19 +115,16 @@ class StatisticsPage extends StatelessWidget {
                                 "${const SleepTime(h: 7, m: 52).h} ч ${const SleepTime(h: 7, m: 52).m} мин",
                                 style: AppTextStyles.alarmDurationStyle,
                               ),
-                              SizedBox(
-                                height: 9.h,
-                              ),
                               Text(
                                 "Спал всего",
                                 style: AppTextStyles.alarmSubtitleStyle,
                               ),
+                              SizedBox(
+                                height: 10.h,
+                              ),
                               Text(
                                 "${const SleepTime(h: 8, m: 12).h} ч ${const SleepTime(h: 8, m: 12).m} мин",
                                 style: AppTextStyles.alarmDurationStyle,
-                              ),
-                              SizedBox(
-                                height: 9.h,
                               ),
                               Text(
                                 "В постели",
@@ -194,9 +202,10 @@ class StatisticsPage extends StatelessWidget {
                 height: 25.h,
               ),
               LargeButton(
-                text: "Подробнее",
-                backgroundColor: AppColors.darkGrey,
-                shadowColor: AppColors.mediumGrey,
+                text: "Вся статистика",
+                backgroundColor: AppColors.green,
+                shadowColor: AppColors.yellow,
+                textColor: AppColors.darkGreen,
                 onPressed: () {
                   context.router.navigate(const AllAnalysisRoute());
                 },
