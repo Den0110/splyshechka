@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:splyshechka/di/locator.dart';
 import 'package:splyshechka/pages/alarm/set_sleep_time_details/bloc/sleep_time_details_cubit.dart';
-import 'package:splyshechka/pages/alarm/sleep_time_options/alarm_options.dart';
+import 'package:splyshechka/pages/alarm/set_sleep_time_details/widgets/sleep_time_options/alarm_options.dart';
 import 'package:splyshechka/utils/one_shot_bloc.dart';
 
 class AlarmSettingsPage extends StatelessWidget {

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:side_effect_bloc/side_effect_bloc.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/utils/app_icons.dart';
 import 'package:splyshechka/utils/app_text_styles.dart';
@@ -12,9 +13,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:splyshechka/di/locator.dart';
 import 'package:splyshechka/navigation/auto_router.gr.dart';
-import 'package:splyshechka/pages/alarm/sleeping/bloc/alarm_sleeping_cubit.dart';
 import 'package:splyshechka/pages/alarm/sleeping/widgets/sound_listener.dart';
-import 'package:splyshechka/utils/one_shot_bloc.dart';
+
+import 'bloc/alarm_sleeping_bloc.dart';
 
 class AlarmSleepingPage extends StatelessWidget {
   const AlarmSleepingPage({super.key});
@@ -22,8 +23,9 @@ class AlarmSleepingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<AlarmSleepingCubit>(),
-      child: OneShotBlocConsumer<AlarmSleepingCubit, AlarmSleepingState>(
+      create: (context) => getIt<AlarmSleepingBloc>(),
+      child: BlocSideEffectConsumer<AlarmSleepingBloc, AlarmSleepingBloc,
+          AlarmSleepingState, AlarmSleepingCommand>(
         listener: (context, state) {
           if (state is NavToResults) {
             context.router.navigate(const AlarmResultRoute());
@@ -55,18 +57,14 @@ class AlarmSleepingPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(
-                      height: 17.h,
-                    ),
+                    SizedBox(height: 17.h),
                     Text(
                       dateString,
                       style: AppTextStyles.alarmSubtitle.copyWith(
                         color: AppColors.white,
                       ),
                     ),
-                    SizedBox(
-                      height: 38.h,
-                    ),
+                    SizedBox(height: 38.h),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 41.w),
                       child: SleepContainer(
@@ -75,7 +73,7 @@ class AlarmSleepingPage extends StatelessWidget {
                           isActive: true,
                           value: alarmTime,
                           onTap: () {
-                            context.read<AlarmSleepingCubit>().alarmClicked();
+                            context.read<AlarmSleepingBloc>().alarmClicked();
                           },
                         ),
                       ),
@@ -106,7 +104,7 @@ class AlarmSleepingPage extends StatelessWidget {
                         backgroundColor: AppColors.white,
                         shadowColor: AppColors.black,
                         onPressed: () {
-                          context.read<AlarmSleepingCubit>().wakeUpClicked();
+                          context.read<AlarmSleepingBloc>().wakeUpClicked();
                         },
                       ),
                     ),

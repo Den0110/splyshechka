@@ -20,31 +20,31 @@ class AlarmResultContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: padding ?? EdgeInsets.only(
-        left: 16.r,
-        top: 16.r,
-        right: 16.r,
-        bottom: 16.r,
-      ),
+      padding: padding ??
+          EdgeInsets.only(
+            left: 16.r,
+            top: 16.r,
+            right: 16.r,
+            bottom: 16.r,
+          ),
       decoration: BoxDecoration(
         color: AppColors.darkGrey,
         borderRadius: BorderRadius.circular(13),
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: crossAxisAlignment,
         children: [
           title != null
               ? Align(
-                alignment: Alignment.topLeft,
-                child: Text(
+                  alignment: Alignment.topLeft,
+                  child: Text(
                     title!,
                     style: AppTextStyles.alarmLabelStyle,
                   ),
-              )
+                )
               : const SizedBox(),
-          title != null
-              ? const SizedBox()
-              : const SizedBox(),
+          title != null ? const SizedBox() : const SizedBox(),
           child,
         ],
       ),

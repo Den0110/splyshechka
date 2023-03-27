@@ -1,12 +1,15 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:splyshechka/domain/entities/alarm/sleep_time.dart';
+import 'package:splyshechka/navigation/auto_router.gr.dart';
 import 'package:splyshechka/pages/alarm/result/widgets/alarm_result_container.dart';
 import 'package:splyshechka/pages/alarm/result/widgets/category_with_icon.dart';
 import 'package:splyshechka/pages/alarm/result/widgets/value_with_icon.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/utils/app_icons.dart';
 import 'package:splyshechka/utils/app_text_styles.dart';
+import 'package:splyshechka/widgets/buttons/large_button.dart';
 import 'package:splyshechka/widgets/indicators/circle_fill_indicator.dart';
 
 class StatisticsPage extends StatelessWidget {
@@ -54,7 +57,7 @@ class StatisticsPage extends StatelessWidget {
                 height: 25.h,
               ),
               SizedBox(
-                height: 204.h,
+                height: 180.h,
                 child: Row(
                   children: [
                     Expanded(
@@ -79,42 +82,48 @@ class StatisticsPage extends StatelessWidget {
                     Expanded(
                       child: AlarmResultContainer(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        title: "Длительность",
                         padding: EdgeInsets.only(
                           left: 16.r,
                           top: 16.r,
                           right: 16.r,
                           bottom: 31.r,
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "${const SleepTime(h: 7, m: 52).h} h ${const SleepTime(h: 7, m: 52).m} мин",
-                              style: AppTextStyles.alarmDurationStyle,
-                            ),
-                            SizedBox(
-                              height: 5.h,
-                            ),
-                            Text(
-                              "Спал всего",
-                              style: AppTextStyles.alarmSubtitleStyle,
-                            ),
-                            SizedBox(
-                              height: 20.h,
-                            ),
-                            Text(
-                              "${const SleepTime(h: 8, m: 12).h} ч ${const SleepTime(h: 8, m: 12).m} мин",
-                              style: AppTextStyles.alarmDurationStyle,
-                            ),
-                            SizedBox(
-                              height: 5.h,
-                            ),
-                            Text(
-                              "В постели",
-                              style: AppTextStyles.alarmSubtitleStyle,
-                            ),
-                          ],
+                        child: Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Длительность",
+                                style: AppTextStyles.alarmSubtitleStyle,
+                              ),
+                              SizedBox(
+                                height: 9.h,
+                              ),
+                              Text(
+                                "${const SleepTime(h: 7, m: 52).h} ч ${const SleepTime(h: 7, m: 52).m} мин",
+                                style: AppTextStyles.alarmDurationStyle,
+                              ),
+                              SizedBox(
+                                height: 9.h,
+                              ),
+                              Text(
+                                "Спал всего",
+                                style: AppTextStyles.alarmSubtitleStyle,
+                              ),
+                              Text(
+                                "${const SleepTime(h: 8, m: 12).h} ч ${const SleepTime(h: 8, m: 12).m} мин",
+                                style: AppTextStyles.alarmDurationStyle,
+                              ),
+                              SizedBox(
+                                height: 9.h,
+                              ),
+                              Text(
+                                "В постели",
+                                style: AppTextStyles.alarmSubtitleStyle,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -182,17 +191,15 @@ class StatisticsPage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 10.h,
+                height: 25.h,
               ),
-              SizedBox(
-                width: 1.sw,
-                height: 201.h,
-                child: AlarmResultContainer(
-                  child: Image.asset(
-                    'assets/images/chart.png',
-                    fit: BoxFit.fill,
-                  ),
-                ),
+              LargeButton(
+                text: "Подробнее",
+                backgroundColor: AppColors.darkGrey,
+                shadowColor: AppColors.mediumGrey,
+                onPressed: () {
+                  context.router.navigate(const AllAnalysisRoute());
+                },
               ),
             ],
           ),

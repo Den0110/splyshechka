@@ -33,7 +33,7 @@ dependencies:
     sdk: flutter
   side_effect_bloc:
     path: side_effect_bloc
-
+    
   progressive_time_picker: ^0.0.7
   flutter_time_picker_spinner: ^2.0.0
   intl: ^0.17.0
@@ -69,6 +69,8 @@ dependencies:
 
   # memory
   shared_preferences: ^2.0.15
+  flutter_alarm_clock: ^0.0.2
+  alarm: ^0.2.0
   json_annotation: ^4.8.0
 
 dev_dependencies:
@@ -87,6 +89,7 @@ dev_dependencies:
   auto_route_generator: ^5.0.1
   injectable_generator: ^1.5.3
   json_serializable: ^6.5.4
+
   retrofit: ^3.0.1+1
   dio: ^4.0.6
   pretty_dio_logger: ^1.1.1

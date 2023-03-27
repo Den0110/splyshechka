@@ -122,9 +122,6 @@ class AlarmResultPage extends StatelessWidget {
                                           style:
                                               AppTextStyles.alarmSubtitleStyle,
                                         ),
-                                        SizedBox(
-                                          height: 20.h,
-                                        ),
                                         Text(
                                           "${state.inBed.h} ч ${state.inBed.m} мин",
                                           style:
@@ -247,7 +244,7 @@ class AlarmResultPage extends StatelessWidget {
               ),
             );
           } else {
-            return const Text("Error"); 
+            return const Text("Error");
           }
         },
       ),

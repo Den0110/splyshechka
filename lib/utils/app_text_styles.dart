@@ -217,8 +217,8 @@ class AppTextStyles {
 
   static TextStyle alarmSubtitleStyle = TextStyle(
     color: AppColors.lightGrey,
-    height: 13.h / 12.sp,
-    fontSize: 12.sp,
+    height: 14.h / 15.sp,
+    fontSize: 15.sp,
     fontWeight: FontWeight.w400,
     fontFamily: fontFamilyOpenSans,
   );
@@ -247,8 +247,8 @@ class AppTextStyles {
 
   static TextStyle alarmDurationStyle = TextStyle(
     color: AppColors.white,
-    height: 22.h / 28.sp,
-    fontSize: 28.sp,
+    height: 26.h / 32.sp,
+    fontSize: 32.sp,
     fontWeight: FontWeight.w600,
     fontFamily: fontFamilyOpenSans,
   );
