@@ -31,6 +31,8 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
   flutter:
     sdk: flutter
+  side_effect_bloc:
+    path: side_effect_bloc
 
   side_effect_bloc:
     path: side_effect_bloc
