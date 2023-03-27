@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:side_effect_bloc/side_effect_bloc.dart';
 import 'package:splyshechka/di/locator.dart';
 import 'package:splyshechka/navigation/auto_router.gr.dart';
 import 'package:splyshechka/pages/profile/edit_avatar/avatar.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/utils/app_icons.dart';
-import 'package:splyshechka/utils/one_shot_bloc.dart';
 import 'package:splyshechka/widgets/containers/sleep_container.dart';
 import 'package:splyshechka/widgets/options_list/value_element.dart';
 
@@ -24,7 +24,8 @@ class ProfileSettingsPage extends StatelessWidget {
     return BlocProvider(
       create: (context) =>
           getIt<ProfileSettingsBloc>()..add(const PageOpened()),
-      child: OneShotBlocConsumer<ProfileSettingsBloc, ProfileSettingsState>(
+      child: BlocSideEffectConsumer<ProfileSettingsBloc, ProfileSettingsBloc,
+          ProfileSettingsState, ProfileSettingsCommand>(
         listener: (context, state) {
           if (state is NavToSettingsAvatar) {
             context.router.navigate(
@@ -51,116 +52,117 @@ class ProfileSettingsPage extends StatelessWidget {
               const ProfileSettingsGenderRoute(),
             );
           }
+          if (state is NavToDeleteAccount) {
+            context.router.navigate(
+              const LoginRoute(),
+            );
+          }
         },
-        builder: (context, state) => state.maybeWhen(
-          (user) => Scaffold(
-            appBar: AppBar(
-              title: Text(user.fullName),
-            ),
-            body: SafeArea(
-              child: SingleChildScrollView(
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16.w),
-                  child: Column(
-                    children: [
-                      SizedBox(height: 31.h),
-                      GestureDetector(
+        builder: (context, state) => Scaffold(
+          appBar: AppBar(
+            title: Text(state.user.fullName),
+          ),
+          body: SafeArea(
+            child: SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: Column(
+                  children: [
+                    SizedBox(height: 31.h),
+                    GestureDetector(
+                      onTap: () {
+                        context.read<ProfileSettingsBloc>().add(
+                              const ProfileSettingsEvent.avatarEditPressed(),
+                            );
+                      },
+                      child: Stack(
+                        alignment: Alignment.topRight,
+                        children: [
+                          Avatar(
+                            color: state.user.avatar.color,
+                            imageUrl: state.user.avatar.emojiUrl,
+                            size: 107.r,
+                            padding: 15.r,
+                          ),
+                          Positioned(
+                            top: 2.h,
+                            right: 4.w,
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                color: AppColors.green,
+                                shape: BoxShape.circle,
+                              ),
+                              child: SvgPicture.asset(AppIcons.edit),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 35.h),
+                    SleepContainer(
+                      child: Column(
+                        children: [
+                          ValueElement(
+                            title: "Email",
+                            value: state.user.email,
+                            isActive: true,
+                            onTap: () {
+                              context.read<ProfileSettingsBloc>().add(
+                                    ProfileSettingsEvent.emailEditPressed(),
+                                  );
+                            },
+                          ),
+                          ValueElement(
+                            title: "Имя",
+                            value: state.user.fullName,
+                            isActive: true,
+                            onTap: () {
+                              context.read<ProfileSettingsBloc>().add(
+                                    ProfileSettingsEvent.nameEditPressed(),
+                                  );
+                            },
+                          ),
+                          ValueElement(
+                            title: "Пол",
+                            value: state.user.gender.name,
+                            isActive: true,
+                            onTap: () {
+                              context.read<ProfileSettingsBloc>().add(
+                                    ProfileSettingsEvent.genderEditPressed(),
+                                  );
+                            },
+                          ),
+                          ValueElement(
+                            title: "Пароль",
+                            value: "Установлен",
+                            isActive: true,
+                            onTap: () {
+                              context.read<ProfileSettingsBloc>().add(
+                                    ProfileSettingsEvent.passwordEditPressed(),
+                                  );
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 10.h),
+                    SleepContainer(
+                      child: ValueElement(
+                        title: "Удалить аккаунт",
+                        titleColor: AppColors.red,
+                        isActive: true,
                         onTap: () {
                           context.read<ProfileSettingsBloc>().add(
-                                const ProfileSettingsEvent.avatarEditPressed(),
+                                ProfileSettingsEvent.deleteAccountPressed(),
                               );
                         },
-                        child: Stack(
-                          alignment: Alignment.topRight,
-                          children: [
-                            Avatar(
-                              color: user.avatar.color,
-                              imageUrl: user.avatar.emojiUrl,
-                              size: 107.r,
-                              padding: 15.r,
-                            ),
-                            Positioned(
-                              top: 2.h,
-                              right: 4.w,
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                  color: AppColors.green,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: SvgPicture.asset(AppIcons.edit),
-                              ),
-                            ),
-                          ],
-                        ),
                       ),
-                      SizedBox(height: 35.h),
-                      SleepContainer(
-                        child: Column(
-                          children: [
-                            ValueElement(
-                              title: "Email",
-                              value: user.email,
-                              isActive: true,
-                              onTap: () {
-                                context.read<ProfileSettingsBloc>().add(
-                                      ProfileSettingsEvent.emailEditPressed(),
-                                    );
-                              },
-                            ),
-                            ValueElement(
-                              title: "Имя",
-                              value: user.fullName,
-                              isActive: true,
-                              onTap: () {
-                                context.read<ProfileSettingsBloc>().add(
-                                      ProfileSettingsEvent.nameEditPressed(),
-                                    );
-                              },
-                            ),
-                            ValueElement(
-                              title: "Пол",
-                              value: user.gender.name,
-                              isActive: true,
-                              onTap: () {
-                                context.read<ProfileSettingsBloc>().add(
-                                      ProfileSettingsEvent.genderEditPressed(),
-                                    );
-                              },
-                            ),
-                            ValueElement(
-                              title: "Пароль",
-                              value: "Установлен",
-                              isActive: true,
-                              onTap: () {
-                                context.read<ProfileSettingsBloc>().add(
-                                      ProfileSettingsEvent
-                                          .passwordEditPressed(),
-                                    );
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 10.h),
-                      SleepContainer(
-                        child: ValueElement(
-                          title: "Удалить аккаунт",
-                          titleColor: AppColors.red,
-                          isActive: true,
-                          onTap: () {
-                            context.read<ProfileSettingsBloc>().add(
-                                  ProfileSettingsEvent.deleteAccountPressed(),
-                                );
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
           ),
-          orElse: Container.new,
         ),
       ),
     );

@@ -156,7 +156,7 @@ class LoginPage extends StatelessWidget {
                                 fontFamily: AppTextStyles.fontFamilyOpenSans,
                                 fontSize: 14.sp),
                           ),
-                          onTap: () => context.navigateTo(LoginRoute()),
+                          onTap: () => context.navigateTo(RegistrationRoute()),
                         )
                       ],
                     ),

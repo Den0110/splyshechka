@@ -50,7 +50,7 @@ class UserRemoteDataSourceMock extends UserRemoteDataSource {
   @override
   Future<SleepUserDto> updateUser(int id, SleepUserDto user) async {
     return Future.delayed(
-      const Duration(seconds: 2),
+      const Duration(seconds: 1),
       () => db[db.indexWhere((e) => e.id == id)] = user,
     );
   }

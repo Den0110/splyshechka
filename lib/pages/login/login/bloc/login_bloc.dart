@@ -40,19 +40,21 @@ class LoginBloc extends Bloc<LoginEvent, LoginState>
       ));
       String token = "Bearer_" + result.token;
       NewSleepUserDto userDto = await _dataSource.getUser(token);
-      _userRepository.lastCurrentUser.copyWith(
-        nickname: userDto.username,
-        fullName: userDto.fullName,
-        email: userDto.email,
-        gender: GenderExtension.fromJson(userDto.gender),
-        id: userDto.id,
-        token: token,
-        avatar: const SleepAvatar(
-          emojiUrl:
-              'https://drive.google.com/uc?export=view&id=1gnHBRgL1gV0Q7ewRt8bywXeVVF4M_Fmu',
-          color: Colors.white,
+      _userRepository.updateUser(
+        SleepUser(
+          nickname: userDto.username,
+          fullName: userDto.fullName,
+          email: userDto.email,
+          gender: GenderExtension.fromJson(userDto.gender),
+          id: userDto.id,
+          token: token,
+          avatar: const SleepAvatar(
+            emojiUrl:
+                'https://drive.google.com/uc?export=view&id=1gnHBRgL1gV0Q7ewRt8bywXeVVF4M_Fmu',
+            color: Colors.white,
+          ),
+          sound: true,
         ),
-        sound: false,
       );
       produceSideEffect(LoginCommand.navToMain());
     } catch (e) {

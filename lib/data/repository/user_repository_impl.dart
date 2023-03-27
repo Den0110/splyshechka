@@ -20,10 +20,10 @@ class UserRepositoryImpl extends UserRepository {
   @override
   Future<void> updateUser(SleepUser user) async {
     currentUser.add(user);
-    await _remoteDataSource.updateUser(
-      111,
-      SleepUserMapper.fromModel(user),
-    );
+   // await _remoteDataSource.updateUser(
+    //  user.id,
+   //   SleepUserMapper.fromModel(user),
+   // );
   }
 
   @override

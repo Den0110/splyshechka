@@ -14,7 +14,7 @@ extension GenderMapper on GenderDto {
       case GenderDto.male:
         return Gender.male;
       case GenderDto.female:
-        return Gender.female;;
+        return Gender.female;
     }
   }
 

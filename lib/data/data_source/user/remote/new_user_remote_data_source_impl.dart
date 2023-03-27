@@ -26,4 +26,8 @@ abstract class NewUserRemoteDataSourceImpl implements NewUserRemoteDataSource {
   @override
   @GET("/user/get-user")
   Future<NewSleepUserDto> getUser(@Header("Authorization") String token);
+
+  @override
+  @POST('/user/delete')
+  Future<void> deleteUser(@Header("Authorization") String token);
 }

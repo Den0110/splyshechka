@@ -41,5 +41,6 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState>
       password: event.password,
       gender: state.gender.jsonName,
     ));
+    produceSideEffect(NavToMain());
   }
 }
