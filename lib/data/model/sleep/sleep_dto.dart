@@ -9,6 +9,7 @@ class SleepDto with _$SleepDto {
     required int noise,
     required int quality,
     required DateTime went_sleep,
+    required DateTime waked_up_at,
     required DateTime slept_during,
     required DateTime fell_asleep_during,
     required DateTime time_spent_in_bed

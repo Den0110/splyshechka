@@ -21,7 +21,8 @@ import 'package:splyshechka/pages/profile/edit_password/profile_settings_passwor
 import 'package:splyshechka/pages/profile/profile/profile_page.dart';
 import 'package:splyshechka/pages/profile/settings/profile_settings_page.dart';
 import 'package:splyshechka/pages/statistics/all_analysis/all_analysis_page.dart';
-import 'package:splyshechka/pages/statistics/statistics_page.dart';
+import 'package:splyshechka/pages/statistics/last_analys/statistics_page.dart';
+import 'package:splyshechka/pages/statistics/widgets/analys_widget.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
@@ -83,6 +84,10 @@ import 'package:splyshechka/pages/statistics/statistics_page.dart';
     ),
     CustomRoute(
       page: SnoozePage,
+      customRouteBuilder: bottomSheetBuilder,
+    ),
+    CustomRoute(
+      page: CurrentAnalysPage,
       customRouteBuilder: bottomSheetBuilder,
     ),
     CustomRoute(

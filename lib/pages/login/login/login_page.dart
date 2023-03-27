@@ -7,7 +7,6 @@ import 'package:splyshechka/di/locator.dart';
 import 'package:splyshechka/navigation/auto_router.gr.dart';
 import 'package:splyshechka/pages/login/login/bloc/login_bloc.dart';
 import 'package:splyshechka/pages/login/widgets/login_text_field.dart';
-import 'package:splyshechka/pages/main/main_page.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/utils/app_text_styles.dart';
 
@@ -25,7 +24,7 @@ class LoginPage extends StatelessWidget {
           LoginCommand>(
         listener: (context, sideEffect) {
           sideEffect.when(navToMain: () {
-             context.navigateTo(MainRoute());
+             context.navigateTo(const MainRoute());
           }, error: () {
             const snackBar = SnackBar(
               content:  Text('Ошибка! Неверные данные.'),

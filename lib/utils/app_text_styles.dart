@@ -248,7 +248,7 @@ class AppTextStyles {
   static TextStyle alarmDurationStyle = TextStyle(
     color: AppColors.white,
     //height: 26.h / 26.sp,
-    fontSize: 26.sp,
+    fontSize: 22.sp,
     fontWeight: FontWeight.w600,
     fontFamily: fontFamilyOpenSans,
   );
