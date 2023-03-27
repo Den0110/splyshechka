@@ -7,12 +7,21 @@ import 'package:splyshechka/di/locator.dart';
 import 'package:splyshechka/navigation/auto_router.gr.dart';
 import 'package:splyshechka/pages/login/login/bloc/login_bloc.dart';
 import 'package:splyshechka/pages/login/widgets/login_text_field.dart';
+import 'package:splyshechka/pages/login/widgets/password_text_field.dart';
 import 'package:splyshechka/pages/main/main_page.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/utils/app_text_styles.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -45,123 +54,124 @@ class LoginPage extends StatelessWidget {
                     Color.fromRGBO(83, 83, 177, 1),
                     AppColors.space,
                   ])),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Flexible(
-                    child: Image.asset(
-                      "assets/images/LarkAndOwl.png",
-                      fit: BoxFit.contain,
-                      width: 200.w,
-                      height: 200.h,
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Flexible(
+                      child: Image.asset(
+                        "assets/images/LarkAndOwl.png",
+                        fit: BoxFit.contain,
+                        width: 200.w,
+                        height: 200.h,
+                      ),
                     ),
-                  ),
-                  Text(
-                    "Авторизация",
-                    style: TextStyle(
-                        fontSize: 26.sp,
-                        color: Colors.white,
-                        fontFamily: AppTextStyles.fontFamilyOpenSans),
-                  ),
-                  SizedBox(
-                    height: 40.h,
-                  ),
-                  LoginTextField(
-                    hintText: 'Email/логин',
-                    height: 30.h,
-                    controller: _emailController,
-                  ),
-                  SizedBox(
-                    height: 15.h,
-                  ),
-                  LoginTextField(
-                    hintText: "Пароль",
-                    height: 30.h,
-                    controller: _passwordController,
-                  ),
-                  SizedBox(
-                    height: 15.h,
-                  ),
-                  GestureDetector(
-                      child: Text(
-                        "Забыли пароль?",
-                        style: TextStyle(
-                            color: Color.fromRGBO(141, 141, 255, 1),
-                            fontFamily: AppTextStyles.fontFamilyOpenSans,
-                            fontSize: 14.sp),
-                      ),
-                      onTap: () {
-                        context.navigateTo(PasswordRetrievalRoute());
-                      }),
-                  SizedBox(
-                    height: 40.h,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      context.read<LoginBloc>().add(
-                            LoginEvent.signInClicked(
-                              email: _emailController.text,
-                              password: _passwordController.text,
-                            ),
-                          );
-                    },
-                    child: Container(
-                      width: 170.w,
-                      height: 35.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(11.r),
-                        color: AppColors.greyMain,
-                        boxShadow: const [
-                          BoxShadow(
-                              color: Color.fromRGBO(83, 83, 177, 1),
-                              offset: Offset(0, 1))
-                        ],
-                      ),
-                      child: Center(
+                    Text(
+                      "Авторизация",
+                      style: TextStyle(
+                          fontSize: 26.sp,
+                          color: Colors.white,
+                          fontFamily: AppTextStyles.fontFamilyOpenSans),
+                    ),
+                    SizedBox(
+                      height: 40.h,
+                    ),
+                    RegistrationTextField(
+                      hintText: 'Email/логин',
+                      controller: _emailController,
+                    ),
+                    SizedBox(
+                      height: 15.h,
+                    ),
+                    PasswordTextField(
+                      hintText: "Пароль",
+                      controller: _passwordController,
+                    ),
+                    SizedBox(
+                      height: 15.h,
+                    ),
+                    GestureDetector(
                         child: Text(
-                          "Войти",
+                          "Забыли пароль?",
                           style: TextStyle(
-                            color: AppColors.white,
-                            fontFamily: AppTextStyles.fontFamilyOpenSans,
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 40.h,
-                  ),
-                  SizedBox(
-                    width: 180.w,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Еще нет аккаунта?",
-                          style: TextStyle(
-                              color: Colors.white,
+                              color: Color.fromRGBO(141, 141, 255, 1),
                               fontFamily: AppTextStyles.fontFamilyOpenSans,
                               fontSize: 14.sp),
                         ),
-                        SizedBox(
-                          width: 5.h,
+                        onTap: () {
+                          context.navigateTo(PasswordRetrievalRoute());
+                        }),
+                    SizedBox(
+                      height: 40.h,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        context.read<LoginBloc>().add(
+                              LoginEvent.signInClicked(
+                                email: _emailController.text,
+                                password: _passwordController.text,
+                              ),
+                            );
+                      },
+                      child: Container(
+                        width: 170.w,
+                        height: 35.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(11.r),
+                          color: AppColors.greyMain,
+                          boxShadow: const [
+                            BoxShadow(
+                                color: Color.fromRGBO(83, 83, 177, 1),
+                                offset: Offset(0, 1))
+                          ],
                         ),
-                        GestureDetector(
+                        child: Center(
                           child: Text(
-                            "Создать.",
+                            "Войти",
                             style: TextStyle(
-                                color: Color.fromRGBO(141, 141, 255, 1),
+                              color: AppColors.white,
+                              fontFamily: AppTextStyles.fontFamilyOpenSans,
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 40.h,
+                    ),
+                    SizedBox(
+                      width: 180.w,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Еще нет аккаунта?",
+                            style: TextStyle(
+                                color: Colors.white,
                                 fontFamily: AppTextStyles.fontFamilyOpenSans,
                                 fontSize: 14.sp),
                           ),
-                          onTap: () => context.navigateTo(LoginRoute()),
-                        )
-                      ],
-                    ),
-                  )
-                ],
+                          SizedBox(
+                            width: 5.h,
+                          ),
+                          GestureDetector(
+                            child: Text(
+                              "Создать.",
+                              style: TextStyle(
+                                  color: Color.fromRGBO(141, 141, 255, 1),
+                                  fontFamily: AppTextStyles.fontFamilyOpenSans,
+                                  fontSize: 14.sp),
+                            ),
+                            onTap: () => context.navigateTo(RegistrationRoute()),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ),
