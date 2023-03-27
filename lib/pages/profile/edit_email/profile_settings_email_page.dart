@@ -51,7 +51,7 @@ class ProfileSettingsEmailPage extends StatelessWidget {
                               );
                         },
                         value: user.email,
-                        hint: "Enter Email",
+                        hint: "Введите Email",
                       ),
                     ),
                     const Spacer(),
@@ -61,7 +61,7 @@ class ProfileSettingsEmailPage extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           LargeButton(
-                            text: "Save",
+                            text: "Сохранить",
                             onPressed: () {
                               context.read<ProfileSettingsEmailBloc>().add(
                                     const ProfileSettingsEmailEvent
@@ -74,7 +74,7 @@ class ProfileSettingsEmailPage extends StatelessWidget {
                           ),
                           SizedBox(height: 6.h),
                           LargeButton(
-                            text: "Cancel",
+                            text: "Отменить",
                             onPressed: () {
                               context.read<ProfileSettingsEmailBloc>().add(
                                     const ProfileSettingsEmailEvent

@@ -39,7 +39,7 @@ class ProfilePage extends StatelessWidget {
         builder: (context, state) => state.maybeWhen(
           (user) => Scaffold(
             appBar: AppBar(
-              title: const Text("Profile"),
+              title: const Text("Профиль"),
               actions: [
                 IconButton(
                   icon: const Icon(
@@ -80,7 +80,7 @@ class ProfilePage extends StatelessWidget {
                         child: Column(
                           children: [
                             ValueElement(
-                              title: "Records",
+                              title: "Аудиозаписи",
                               isActive: false,
                               onTap: () {
                                 context.read<ProfileBloc>().add(
@@ -96,7 +96,7 @@ class ProfilePage extends StatelessWidget {
                         child: Column(
                           children: [
                             SwitchElement(
-                              title: "Sound",
+                              title: "Звук",
                               isActive: true,
                               value: user.sound,
                               onChanged: (sound) {
@@ -112,7 +112,7 @@ class ProfilePage extends StatelessWidget {
                       ),
                       SizedBox(height: 10.h),
                       LargeButton(
-                        text: "Logout",
+                        text: "Выйти из аккаунта",
                         textColor: AppColors.red,
                         onPressed: () {
                           context.read<ProfileBloc>().add(

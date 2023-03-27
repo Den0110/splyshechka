@@ -33,7 +33,7 @@ class ProfileSettingsPasswordPage extends StatelessWidget {
           return state.maybeWhen(
               (user, state, code, password) => Scaffold(
                     appBar: AppBar(
-                      title: const Text("Password"),
+                      title: const Text("Пароль"),
                     ),
                     body: SafeArea(
                       child: Container(
@@ -67,7 +67,7 @@ class ProfileSettingsPasswordPage extends StatelessWidget {
                                       );
                                 },
                                 value: user.email,
-                                hint: "Enter email",
+                                hint: "Введите email",
                               ),
                             ),
                             SizedBox(height: 10.h),
@@ -83,7 +83,7 @@ class ProfileSettingsPasswordPage extends StatelessWidget {
                                               .emailCodeChanged(code: value),
                                         );
                                   },
-                                  hint: "Enter code from Email",
+                                  hint: "Введите код отправленный на Email",
                                 ),
                               ),
                             ],
@@ -93,7 +93,7 @@ class ProfileSettingsPasswordPage extends StatelessWidget {
                                 top: 5.h,
                               ),
                               child: SmallButton(
-                                text: "Send code",
+                                text: "Отправить код",
                                 textColor: AppColors.lightGreen,
                                 textSize: 16.sp,
                                 onPressed: () {
@@ -117,7 +117,7 @@ class ProfileSettingsPasswordPage extends StatelessWidget {
                                             .passwordChanged(password: value),
                                       );
                                 },
-                                hint: "New password",
+                                hint: "Новый пароль",
                               ),
                             ),
                             const Spacer(),
@@ -126,7 +126,7 @@ class ProfileSettingsPasswordPage extends StatelessWidget {
                               child: Column(
                                 children: [
                                   LargeButton(
-                                    text: "Save",
+                                    text: "Сохранить",
                                     onPressed: () {
                                       context
                                           .read<ProfileSettingsPasswordBloc>()
@@ -141,7 +141,7 @@ class ProfileSettingsPasswordPage extends StatelessWidget {
                                   ),
                                   SizedBox(height: 6.h),
                                   LargeButton(
-                                    text: "Cancel",
+                                    text: "Отменить",
                                     onPressed: () {
                                       context
                                           .read<ProfileSettingsPasswordBloc>()

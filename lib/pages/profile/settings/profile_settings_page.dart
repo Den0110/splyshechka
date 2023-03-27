@@ -108,7 +108,7 @@ class ProfileSettingsPage extends StatelessWidget {
                               },
                             ),
                             ValueElement(
-                              title: "Name",
+                              title: "Имя",
                               value: user.fullName,
                               isActive: true,
                               onTap: () {
@@ -118,7 +118,7 @@ class ProfileSettingsPage extends StatelessWidget {
                               },
                             ),
                             ValueElement(
-                              title: "Gender",
+                              title: "Пол",
                               value: user.gender.name,
                               isActive: true,
                               onTap: () {
@@ -128,8 +128,8 @@ class ProfileSettingsPage extends StatelessWidget {
                               },
                             ),
                             ValueElement(
-                              title: "Password",
-                              value: "Set",
+                              title: "Пароль",
+                              value: "Установлен",
                               isActive: true,
                               onTap: () {
                                 context.read<ProfileSettingsBloc>().add(
@@ -144,7 +144,7 @@ class ProfileSettingsPage extends StatelessWidget {
                       SizedBox(height: 10.h),
                       SleepContainer(
                         child: ValueElement(
-                          title: "Delete account",
+                          title: "Удалить аккаунт",
                           titleColor: AppColors.red,
                           isActive: true,
                           onTap: () {

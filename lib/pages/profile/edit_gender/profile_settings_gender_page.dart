@@ -30,7 +30,7 @@ class ProfileSettingsGenderPage extends StatelessWidget {
         builder: (context, state) => state.maybeWhen(
           (user) => Scaffold(
             appBar: AppBar(
-              title: const Text("Gender"),
+              title: const Text("Пол"),
             ),
             body: SafeArea(
               child: Container(
@@ -57,7 +57,7 @@ class ProfileSettingsGenderPage extends StatelessWidget {
                       ),
                       const Spacer(),
                       LargeButton(
-                        text: "Confirm",
+                        text: "Сохранить",
                         onPressed: () {
                           context.read<ProfileSettingsGenderBloc>().add(
                                 const ProfileSettingsGenderEvent.savePressed(),
@@ -69,7 +69,7 @@ class ProfileSettingsGenderPage extends StatelessWidget {
                       ),
                       SizedBox(height: 6.h),
                       LargeButton(
-                        text: "Cancel",
+                        text: "Отменить",
                         onPressed: () {
                           context.read<ProfileSettingsGenderBloc>().add(
                                 const ProfileSettingsGenderEvent

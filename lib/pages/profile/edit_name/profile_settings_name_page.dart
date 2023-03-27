@@ -30,7 +30,7 @@ class ProfileSettingsNamePage extends StatelessWidget {
         builder: (context, state) => state.maybeWhen(
           (user) => Scaffold(
             appBar: AppBar(
-              title: const Text("Name"),
+              title: const Text("Имя"),
             ),
             body: SafeArea(
               child: Container(
@@ -50,7 +50,7 @@ class ProfileSettingsNamePage extends StatelessWidget {
                               );
                         },
                         value: user.fullName,
-                        hint: "Enter name",
+                        hint: "Введите имя",
                       ),
                     ),
                     const Spacer(),
@@ -59,7 +59,7 @@ class ProfileSettingsNamePage extends StatelessWidget {
                       child: Column(
                         children: [
                           LargeButton(
-                            text: "Save",
+                            text: "Сохранить",
                             onPressed: () {
                               context.read<ProfileSettingsNameBloc>().add(
                                     const ProfileSettingsNameEvent
@@ -72,7 +72,7 @@ class ProfileSettingsNamePage extends StatelessWidget {
                           ),
                           SizedBox(height: 6.h),
                           LargeButton(
-                            text: "Cancel",
+                            text: "Отменить",
                             onPressed: () {
                               context.read<ProfileSettingsNameBloc>().add(
                                     const ProfileSettingsNameEvent
