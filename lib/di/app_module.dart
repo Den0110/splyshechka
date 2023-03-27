@@ -18,7 +18,7 @@ abstract class AppModule {
           requestHeader: true,
           requestBody: true,
           responseBody: true,
-          responseHeader: false,
+          responseHeader: true,
           compact: false,
         ));
 }

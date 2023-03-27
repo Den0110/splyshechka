@@ -11,9 +11,11 @@ class SleepUserDto with _$SleepUserDto {
   const factory SleepUserDto({
     required int id,
     required SleepAvatarDto avatar,
-    required String name,
+    required String nickname,
+    required String fullName,
     required String email,
     required bool sound,
+    required String token,
     required GenderDto gender,
   }) = _SleepUserDto;
 }
@@ -21,20 +23,24 @@ class SleepUserDto with _$SleepUserDto {
 extension SleepUserMapper on SleepUserDto {
   SleepUser toModel() {
     return SleepUser(
-      token: id,
+      id: id,
       avatar: avatar.toModel(),
-      name: name,
+      fullName: fullName,
       email: email,
       sound: sound,
-      gender: gender.toModel(),
+      token: token,
+      gender: gender.toModel(), 
+      nickname: nickname,
     );
   }
 
   static SleepUserDto fromModel(SleepUser user) {
     return SleepUserDto(
-      id: user.token,
+      id: user.id,
       avatar: SleepAvatarMapper.fromModel(user.avatar),
-      name: user.name,
+      nickname: user.nickname,
+      fullName: user.fullName,
+      token: user.token,
       email: user.email,
       sound: user.sound,
       gender: GenderMapper.fromModel(user.gender),

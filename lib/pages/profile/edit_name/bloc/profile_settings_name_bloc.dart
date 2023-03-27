@@ -50,7 +50,7 @@ class ProfileSettingsNameBloc
     if (state is _ProfileSettingsNameState) {
       final profileState = state as _ProfileSettingsNameState;
       emit(profileState.copyWith(
-        user: profileState.user.copyWith(name: event.name),
+        user: profileState.user.copyWith(fullName: event.name),
       ));
     }
   }

@@ -49,7 +49,7 @@ class ProfileSettingsNamePage extends StatelessWidget {
                                     name: value),
                               );
                         },
-                        value: user.name,
+                        value: user.fullName,
                         hint: "Enter name",
                       ),
                     ),

@@ -15,9 +15,10 @@ class UserRemoteDataSourceMock extends UserRemoteDataSource {
             "https://drive.google.com/uc?export=view&id=1gnHBRgL1gV0Q7ewRt8bywXeVVF4M_Fmu",
         color: 0xffffffff,
       ),
-      name: "Denis C",
+      fullName: "Denis C",
+      nickname: "durak",
       email: "denis_c@mail.ru",
-      
+      token: "",
       sound: false,
       gender: GenderDto.male,
     ),
@@ -28,9 +29,12 @@ class UserRemoteDataSourceMock extends UserRemoteDataSource {
             "https://drive.google.com/uc?export=view&id=1gnHBRgL1gV0Q7ewRt8bywXeVVF4M_Fmu",
         color: 0xffffffff,
       ),
-      name: "Sleep N",
+
+      fullName: "Sleep N",
+      nickname: "sleepeshka",
       email: "sleep-n@mail.ru",
       sound: false,
+      token: "",
       gender: GenderDto.male,
     ),
   ];

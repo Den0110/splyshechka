@@ -68,7 +68,7 @@ class ProfilePage extends StatelessWidget {
                       ),
                       SizedBox(height: 16.5.h),
                       Text(
-                        user.name,
+                        user.fullName,
                         style: AppTextStyles.profileNameStyle,
                       ),
                       Text(

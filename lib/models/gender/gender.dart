@@ -29,4 +29,14 @@ extension GenderExtension on Gender {
         return AppIcons.female;
     }
   }
+
+  static Gender fromJson(String gender) {
+    switch (gender) {
+      case "male":
+        return Gender.male;
+      case "female":
+        return Gender.female;
+    }
+    return Gender.male;
+  }
 }

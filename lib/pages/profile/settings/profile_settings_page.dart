@@ -55,7 +55,7 @@ class ProfileSettingsPage extends StatelessWidget {
         builder: (context, state) => state.maybeWhen(
           (user) => Scaffold(
             appBar: AppBar(
-              title: Text(user.name),
+              title: Text(user.fullName),
             ),
             body: SafeArea(
               child: SingleChildScrollView(
@@ -109,7 +109,7 @@ class ProfileSettingsPage extends StatelessWidget {
                             ),
                             ValueElement(
                               title: "Name",
-                              value: user.name,
+                              value: user.fullName,
                               isActive: true,
                               onTap: () {
                                 context.read<ProfileSettingsBloc>().add(

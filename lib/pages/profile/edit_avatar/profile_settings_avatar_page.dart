@@ -32,7 +32,7 @@ class ProfileSettingsAvatarPage extends StatelessWidget {
         },
         builder: (context, state) => Scaffold(
           appBar: AppBar(
-            title: Text(state.user.name),
+            title: Text(state.user.fullName),
           ),
           body: SafeArea(
             child: SingleChildScrollView(
