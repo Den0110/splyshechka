@@ -62,7 +62,14 @@ abstract class NewUserRemoteDataSourceImpl implements NewUserRemoteDataSource {
 
   @override
   @GET("/sleep/all")
-   Future<List<SleepDto>> getAllSleep(
+  Future<List<SleepDto>> getAllSleep(
     @Header("Authorization") String token,
+  );
+
+  @override
+  @POST("/sleep/add")
+  Future<void> addSleep(
+    @Header("Authorization") String token,
+    @Body() SleepDto field,
   );
 }

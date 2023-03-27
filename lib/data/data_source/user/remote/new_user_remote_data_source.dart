@@ -24,4 +24,8 @@ abstract class NewUserRemoteDataSource {
   );
   Future<SleepDto> getLastSleep(String token);
   Future<List<SleepDto>> getAllSleep(String token);
+  Future<void> addSleep(
+    String token,
+    SleepDto field,
+  );
 }
