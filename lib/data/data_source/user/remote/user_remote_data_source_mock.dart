@@ -31,7 +31,7 @@ class UserRemoteDataSourceMock extends UserRemoteDataSource {
       name: "Sleep N",
       email: "sleep-n@mail.ru",
       sound: false,
-      gender: GenderDto.secret,
+      gender: GenderDto.male,
     ),
   ];
 

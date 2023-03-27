@@ -10,7 +10,7 @@ abstract class UserRepository {
   SleepUser get lastCurrentUser =>
       currentUser.valueOrNull ??
       const SleepUser(
-        id: -1,
+        token: -1,
         avatar: SleepAvatar(
           emojiUrl:
               'https://drive.google.com/uc?export=view&id=1gnHBRgL1gV0Q7ewRt8bywXeVVF4M_Fmu',
@@ -19,7 +19,7 @@ abstract class UserRepository {
         name: '',
         email: '',
         sound: false,
-        gender: Gender.secret,
+        gender: Gender.male,
       );
 
   Future<void> updateUser(SleepUser user);

@@ -21,7 +21,7 @@ class SleepUserDto with _$SleepUserDto {
 extension SleepUserMapper on SleepUserDto {
   SleepUser toModel() {
     return SleepUser(
-      id: id,
+      token: id,
       avatar: avatar.toModel(),
       name: name,
       email: email,
@@ -32,7 +32,7 @@ extension SleepUserMapper on SleepUserDto {
 
   static SleepUserDto fromModel(SleepUser user) {
     return SleepUserDto(
-      id: user.id,
+      id: user.token,
       avatar: SleepAvatarMapper.fromModel(user.avatar),
       name: user.name,
       email: user.email,

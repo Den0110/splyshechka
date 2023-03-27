@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:side_effect_bloc/side_effect_bloc.dart';
+import 'package:splyshechka/di/locator.dart';
 import 'package:splyshechka/models/bottom_bars/app_bottom_bar_items.dart';
 import 'package:splyshechka/navigation/auto_router.gr.dart';
 import 'package:splyshechka/pages/main/bloc/main_bloc.dart';
@@ -16,8 +18,8 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => MainBloc(),
-      child: BlocConsumer<MainBloc, MainState>(
+      create: (context) => getIt<MainBloc>()..add(PageOpened()),
+      child: BlocSideEffectConsumer<MainBloc, MainBloc, MainState, MainCommand>(
         listener: (context, state) {
           if (state is NavToProfile) {
             context.router.navigate(const ProfileRoute());
@@ -33,12 +35,15 @@ class MainPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Avatar(
-                    color: AppColors.darkPurple,
-                    imageUrl: AppImages.sleepingFace,
-                    size: 28.r,
-                    padding: 4.r,
-                  ),
+                  state.maybeWhen(
+                    orElse: () => SizedBox(),
+                    pageOpen: (user) => Avatar(
+                      color: user.avatar.color,
+                      imageUrl: user.avatar.emojiUrl,
+                      size: 28.r,
+                      padding: 4.r,
+                    ),
+                  )
                 ],
               ),
             ),
