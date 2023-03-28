@@ -1,8 +1,8 @@
-part of 'sleep_time_details_cubit.dart';
+part of 'set_sleep_time_details_bloc.dart';
 
 @freezed
-class SleepTimeDetailsState with _$SleepTimeDetailsState {
-  const factory SleepTimeDetailsState.initial({
+class SetSleepTimeDetailsState with _$SetSleepTimeDetailsState {
+    const factory SetSleepTimeDetailsState.initial({
     required SleepTime bedtime,
     required SleepTime wakeupTime,
     required bool remindToSleep,
@@ -13,10 +13,4 @@ class SleepTimeDetailsState with _$SleepTimeDetailsState {
     required SleepTime sleepGoal,
     required SleepTimeType selectedTab,
   }) = Initial;
-
-  @Implements<OneShotState>()
-  factory SleepTimeDetailsState.navToSnooze() = NavToSnooze;
-
-  @Implements<OneShotState>()
-  factory SleepTimeDetailsState.navBack() = NavBack;
 }

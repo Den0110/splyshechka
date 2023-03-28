@@ -8,9 +8,9 @@ class SetSleepTimePageState with _$SetSleepTimePageState {
   }) = _SetSleepTimePageState;
 
   @Implements<OneShotState>()
-  factory SetSleepTimePageState.navToDetails({
+  factory SetSleepTimePageState.navToWentDetails({
     required SleepTimeType initialTab,
-  }) = NavToDetails;
+  }) = NavToWentDetails;
 
   @Implements<OneShotState>()
   factory SetSleepTimePageState.navToSleep() = NavToSleep;

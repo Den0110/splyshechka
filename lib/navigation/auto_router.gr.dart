@@ -133,11 +133,11 @@ class AppRouter extends _i24.RootStackRouter {
         child: const _i13.AllAnalysisPage(),
       );
     },
-    SetSleepTimeDetailsRoute.name: (routeData) {
-      final args = routeData.argsAs<SetSleepTimeDetailsRouteArgs>();
+    SetSleepTimeDetailsWentRoute.name: (routeData) {
+      final args = routeData.argsAs<SetSleepTimeDetailsWentRouteArgs>();
       return _i24.CustomPage<dynamic>(
         routeData: routeData,
-        child: _i14.SetSleepTimeDetailsPage(
+        child: _i14.SetSleepTimeDetailsWentPage(
           key: args.key,
           initial: args.initial,
         ),
@@ -298,8 +298,8 @@ class AppRouter extends _i24.RootStackRouter {
           path: '/all-analysis-page',
         ),
         _i24.RouteConfig(
-          SetSleepTimeDetailsRoute.name,
-          path: '/set-sleep-time-details-page',
+          SetSleepTimeDetailsWentRoute.name,
+          path: '/set-sleep-time-details-went-page',
         ),
         _i24.RouteConfig(
           SnoozeRoute.name,
@@ -508,26 +508,26 @@ class AllAnalysisRoute extends _i24.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i14.SetSleepTimeDetailsPage]
-class SetSleepTimeDetailsRoute
-    extends _i24.PageRouteInfo<SetSleepTimeDetailsRouteArgs> {
-  SetSleepTimeDetailsRoute({
+/// [_i14.SetSleepTimeDetailsWentPage]
+class SetSleepTimeDetailsWentRoute
+    extends _i24.PageRouteInfo<SetSleepTimeDetailsWentRouteArgs> {
+  SetSleepTimeDetailsWentRoute({
     _i27.Key? key,
     required _i29.SleepTimeType initial,
   }) : super(
-          SetSleepTimeDetailsRoute.name,
-          path: '/set-sleep-time-details-page',
-          args: SetSleepTimeDetailsRouteArgs(
+          SetSleepTimeDetailsWentRoute.name,
+          path: '/set-sleep-time-details-went-page',
+          args: SetSleepTimeDetailsWentRouteArgs(
             key: key,
             initial: initial,
           ),
         );
 
-  static const String name = 'SetSleepTimeDetailsRoute';
+  static const String name = 'SetSleepTimeDetailsWentRoute';
 }
 
-class SetSleepTimeDetailsRouteArgs {
-  const SetSleepTimeDetailsRouteArgs({
+class SetSleepTimeDetailsWentRouteArgs {
+  const SetSleepTimeDetailsWentRouteArgs({
     this.key,
     required this.initial,
   });
@@ -538,7 +538,7 @@ class SetSleepTimeDetailsRouteArgs {
 
   @override
   String toString() {
-    return 'SetSleepTimeDetailsRouteArgs{key: $key, initial: $initial}';
+    return 'SetSleepTimeDetailsWentRouteArgs{key: $key, initial: $initial}';
   }
 }
 

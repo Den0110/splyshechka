@@ -44,8 +44,8 @@ class SetSleepTimePageCubit extends Cubit<SetSleepTimePageState> {
     _alarmRepository.setWakeupTime(wakeUpTime);
   }
 
-  void editRequested(SleepTimeType initialTab) {
-    emitOnce(emit, NavToDetails(initialTab: initialTab));
+  void editWentRequested(SleepTimeType initialTab) {
+    emitOnce(emit, NavToWentDetails(initialTab: initialTab));
   }
 
   void sleepClicked() {

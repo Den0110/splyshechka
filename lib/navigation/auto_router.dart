@@ -79,7 +79,7 @@ import 'package:splyshechka/pages/statistics/current_analys/analys_widget.dart';
       page: AllAnalysisPage,
     ),
     CustomRoute(
-      page: SetSleepTimeDetailsPage,
+      page: SetSleepTimeDetailsWentPage,
       customRouteBuilder: regularPageBuilder,
     ),
     CustomRoute(

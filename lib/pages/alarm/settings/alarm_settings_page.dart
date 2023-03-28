@@ -1,11 +1,12 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:side_effect_bloc/side_effect_bloc.dart';
+import 'package:splyshechka/pages/alarm/set_sleep_time_details/bloc/set_sleep_time_details_bloc.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/widgets/buttons/large_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:splyshechka/di/locator.dart';
-import 'package:splyshechka/pages/alarm/set_sleep_time_details/bloc/sleep_time_details_cubit.dart';
 import 'package:splyshechka/pages/alarm/set_sleep_time_details/widgets/sleep_time_options/alarm_options.dart';
 import 'package:splyshechka/utils/one_shot_bloc.dart';
 
@@ -15,8 +16,9 @@ class AlarmSettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<SleepTimeDetailsCubit>(),
-      child: OneShotBlocConsumer<SleepTimeDetailsCubit, SleepTimeDetailsState>(
+      create: (context) => getIt<SetSleepTimeDetailsBloc>(),
+      child:  BlocSideEffectConsumer<SetSleepTimeDetailsBloc, SetSleepTimeDetailsBloc, SetSleepTimeDetailsState,
+          SetSleepTimeDetailsCommand>(
         listener: (context, state) {
           if (state is NavBack) {
             context.router.pop();
@@ -68,14 +70,14 @@ class AlarmSettingsPage extends StatelessWidget {
                           shadowColor: AppColors.lemon,
                           textColor: AppColors.darkGreen,
                           onPressed: () {
-                            context.read<SleepTimeDetailsCubit>().okayClicked();
+                            context.read<SetSleepTimeDetailsBloc>().okayClicked();
                           },
                         ),
                         SizedBox(height: 6.h),
                         LargeButton(
                           text: "Отмена",
                           onPressed: () {
-                            context.read<SleepTimeDetailsCubit>().okayClicked();
+                            context.read<SetSleepTimeDetailsBloc>().okayClicked();
                           },
                         ),
                       ],

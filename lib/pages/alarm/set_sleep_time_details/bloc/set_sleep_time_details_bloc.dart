@@ -1,35 +1,38 @@
 import 'package:bloc/bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
+import 'package:side_effect_bloc/side_effect_bloc.dart';
 import 'package:splyshechka/domain/entities/alarm/sleep_time.dart';
 import 'package:splyshechka/domain/entities/alarm/snooze_time.dart';
 import 'package:splyshechka/domain/repository/alarm_repository.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
 import 'package:splyshechka/pages/alarm/set_sleep_time_details/model/sleep_time_type.dart';
-import 'package:splyshechka/utils/one_shot_bloc.dart';
 
-part 'sleep_time_details_cubit.freezed.dart';
-
-part 'sleep_time_details_state.dart';
+part 'set_sleep_time_details_event.dart';
+part 'set_sleep_time_details_state.dart';
+part 'set_sleep_time_details_command.dart';
+part 'set_sleep_time_details_bloc.freezed.dart';
 
 @injectable
-class SleepTimeDetailsCubit extends Cubit<SleepTimeDetailsState> {
+class SetSleepTimeDetailsBloc
+    extends Bloc<SetSleepTimeDetailsEvent, SetSleepTimeDetailsState>
+    with
+        SideEffectBlocMixin<SetSleepTimeDetailsState,
+            SetSleepTimeDetailsCommand> {
   final AlarmRepository _alarmRepository;
 
-  SleepTimeDetailsCubit(this._alarmRepository)
-      : super(
-          Initial(
-            bedtime: _alarmRepository.bedtime.value,
-            wakeupTime: _alarmRepository.wakeupTime.value,
-            remindToSleep: _alarmRepository.remindToSleep.value,
-            alarmEnabled: _alarmRepository.alarmEnabled.value,
-            vibrationEnabled: _alarmRepository.vibrationEnabled.value,
-            alarmVolume: _alarmRepository.alarmVolume.value,
-            snoozeTime: _alarmRepository.snoozeTime.value,
-            sleepGoal: _alarmRepository.wakeupTime.value -
-                _alarmRepository.bedtime.value,
-            selectedTab: SleepTimeType.bedtime,
-          ),
-        ) {
+  SetSleepTimeDetailsBloc(this._alarmRepository)
+      : super(Initial(
+          bedtime: _alarmRepository.bedtime.value,
+          wakeupTime: _alarmRepository.wakeupTime.value,
+          remindToSleep: _alarmRepository.remindToSleep.value,
+          alarmEnabled: _alarmRepository.alarmEnabled.value,
+          vibrationEnabled: _alarmRepository.vibrationEnabled.value,
+          alarmVolume: _alarmRepository.alarmVolume.value,
+          snoozeTime: _alarmRepository.snoozeTime.value,
+          sleepGoal: _alarmRepository.wakeupTime.value -
+              _alarmRepository.bedtime.value,
+          selectedTab: SleepTimeType.bedtime,
+        )) {
     _alarmRepository.bedtime.listen((value) {
       _withInitialState((state) {
         emit(state.copyWith(
@@ -124,10 +127,10 @@ class SleepTimeDetailsCubit extends Cubit<SleepTimeDetailsState> {
   }
 
   void snoozeClicked() {
-    emitOnce(emit, NavToSnooze());
+    produceSideEffect(NavToSnooze());
   }
 
   void okayClicked() {
-    emitOnce(emit, NavBack());
+    produceSideEffect(NavBack());
   }
 }
