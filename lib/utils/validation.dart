@@ -41,4 +41,11 @@ abstract class Validation {
     }
     return null;
   }
+
+   static String? loginEnterValidation(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Введите логин';
+    }
+    return null;
+  }
 }

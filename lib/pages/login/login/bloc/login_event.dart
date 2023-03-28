@@ -8,4 +8,9 @@ class LoginEvent with _$LoginEvent {
     required String email,
     required String password,
   }) = _SignInClicked;
+
+  const factory LoginEvent.signInEmailClicked({
+    required String email,
+    required String password,
+  }) = _SignInEmailClicked;
 }
