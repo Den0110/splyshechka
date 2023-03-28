@@ -11,6 +11,8 @@ import 'package:splyshechka/domain/entities/profile/sleep_avatar.dart';
 import 'package:splyshechka/domain/entities/profile/sleep_user.dart';
 import 'package:splyshechka/domain/repository/user_repository.dart';
 import 'package:splyshechka/models/gender/gender.dart';
+import 'package:splyshechka/models/pickers/face_picker_items.dart';
+import 'package:splyshechka/models/pickers/sleep_color_picker_items.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
@@ -48,10 +50,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState>
           gender: GenderExtension.fromJson(userDto.gender),
           id: userDto.id,
           token: token,
-          avatar: const SleepAvatar(
-            emojiUrl:
-                'https://drive.google.com/uc?export=view&id=1gnHBRgL1gV0Q7ewRt8bywXeVVF4M_Fmu',
-            color: Colors.white,
+          avatar: SleepAvatar(
+            emojiUrl: facePickerItems[userDto.image],
+            color: sleepColorPickerItems[userDto.color],
           ),
           sound: true,
         ),

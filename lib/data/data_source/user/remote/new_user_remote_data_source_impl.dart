@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/http.dart';
 import 'package:splyshechka/data/data_source/user/remote/new_user_remote_data_source.dart';
+import 'package:splyshechka/data/model/new_user/field_avatar_dto.dart';
 import 'package:splyshechka/data/model/new_user/field_dto.dart';
 import 'package:splyshechka/data/model/new_user/new_sleep_user_dto.dart';
 import 'package:splyshechka/data/model/new_user/sleep_user_sign_in_dto.dart';
@@ -52,6 +53,20 @@ abstract class NewUserRemoteDataSourceImpl implements NewUserRemoteDataSource {
   Future<void> updateGenderUser(
     @Header("Authorization") String token,
     @Body() FieldDto field,
+  );
+
+   @override
+  @POST('/user/update-color')
+  Future<void> updateColorUser(
+    @Header("Authorization") String token,
+    @Body() FieldAvatarDto field,
+  );
+
+  @override
+  @POST('/user/update-image')
+  Future<void> updateImageUser(
+    @Header("Authorization") String token,
+    @Body() FieldAvatarDto field,
   );
 
   @override
