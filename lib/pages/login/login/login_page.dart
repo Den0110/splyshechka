@@ -157,34 +157,31 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(
                       height: 40.h,
                     ),
-                    SizedBox(
-                      width: 180.w,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Еще нет аккаунта?",
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Еще нет аккаунта?",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: AppTextStyles.fontFamilyOpenSans,
+                              fontSize: 14.sp),
+                        ),
+                        SizedBox(
+                          width: 5.h,
+                        ),
+                        GestureDetector(
+                          child: Text(
+                            "Создать.",
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Color.fromRGBO(141, 141, 255, 1),
                                 fontFamily: AppTextStyles.fontFamilyOpenSans,
                                 fontSize: 14.sp),
                           ),
-                          SizedBox(
-                            width: 5.h,
-                          ),
-                          GestureDetector(
-                            child: Text(
-                              "Создать.",
-                              style: TextStyle(
-                                  color: Color.fromRGBO(141, 141, 255, 1),
-                                  fontFamily: AppTextStyles.fontFamilyOpenSans,
-                                  fontSize: 14.sp),
-                            ),
-                            onTap: () =>
-                                context.navigateTo(RegistrationRoute()),
-                          )
-                        ],
-                      ),
+                          onTap: () =>
+                              context.navigateTo(RegistrationRoute()),
+                        )
+                      ],
                     )
                   ],
                 ),
