@@ -29,12 +29,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState>
     this._dataSource,
     this._userRepository,
   ) : super(_Initial()) {
-    on<_SignInClicked>(_onSignInClicked);
-    on<_SignInEmailClicked>(_onSignInEmailClicked);
+    on<SignInClicked>(_onSignInClicked);
+    on<SignInEmailClicked>(_onSignInEmailClicked);
   }
 
   Future<void> _onSignInClicked(
-    _SignInClicked event,
+    SignInClicked event,
     Emitter<LoginState> emit,
   ) async {
     try {
@@ -66,7 +66,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState>
   }
 
   Future<void> _onSignInEmailClicked(
-    _SignInEmailClicked event,
+    SignInEmailClicked event,
     Emitter<LoginState> emit,
   ) async {
     try {
