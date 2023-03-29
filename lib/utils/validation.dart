@@ -37,7 +37,7 @@ abstract class Validation {
     if (!RegExp(r'[\w+]{4,}').hasMatch(value) ||
         !value.contains(RegExp(r'[0-9]')) ||
         !value.contains(RegExp(r'[A-Z]'))) {
-      return "Пароль должен содержать латинские буквы, цифры. Минимум 4 символа";
+      return "Пароль должен содержать латинские буквы разного регистра, цифры. Минимум 4 символа";
     }
     return null;
   }
