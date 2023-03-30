@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';
@@ -15,22 +14,37 @@ import 'package:splyshechka/models/gender/gender.dart';
 import 'package:splyshechka/models/pickers/face_picker_items.dart';
 import 'package:splyshechka/models/pickers/sleep_color_picker_items.dart';
 
-part 'login_event.dart';
-part 'login_state.dart';
-part 'login_command.dart';
 part 'login_bloc.freezed.dart';
+
+part 'login_command.dart';
+
+part 'login_event.dart';
+
+part 'login_state.dart';
 
 @injectable
 class LoginBloc extends Bloc<LoginEvent, LoginState>
     with SideEffectBlocMixin<LoginState, LoginCommand> {
   final NewUserRemoteDataSource _dataSource;
   final UserRepository _userRepository;
+
   LoginBloc(
     this._dataSource,
     this._userRepository,
   ) : super(_Initial()) {
+    on<Started>(_onStarted);
     on<SignInClicked>(_onSignInClicked);
     on<SignInEmailClicked>(_onSignInEmailClicked);
+  }
+
+  Future<void> _onStarted(
+    Started event,
+    Emitter<LoginState> emit,
+  ) async {
+    await emit.forEach(_userRepository.currentUser.stream, onData: (user) {
+      produceSideEffect(LoginCommand.navToMain());
+      return state;
+    });
   }
 
   Future<void> _onSignInClicked(
@@ -59,7 +73,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState>
           sound: true,
         ),
       );
-      produceSideEffect(LoginCommand.navToMain());
     } catch (e) {
       produceSideEffect(LoginCommand.error());
     }

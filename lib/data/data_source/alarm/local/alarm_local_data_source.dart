@@ -4,6 +4,7 @@ import 'package:splyshechka/data/data_source/alarm/local/alarm_props_keys.dart';
 import 'package:splyshechka/data/model/alarm/sleep_time_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:splyshechka/utils/pref_ext.dart';
 
 @singleton
 class AlarmLocalDataSource {
@@ -15,12 +16,12 @@ class AlarmLocalDataSource {
   set remindToChange(bool value) => _prefs.setBool(remindToChargeKey, value);
 
   SleepTimeDto get bedtime =>
-      _getObject(bedtimeKey) ?? const SleepTimeDto(hour: 22, minute: 0);
-  set bedtime(SleepTimeDto value) => _setObject(bedtimeKey, value);
+      _prefs.getObject(bedtimeKey, SleepTimeDto.fromJson) ?? const SleepTimeDto(hour: 22, minute: 0);
+  set bedtime(SleepTimeDto value) => _prefs.setObject(bedtimeKey, value);
 
   SleepTimeDto get wakeupTime =>
-      _getObject(wakeupTimeKey) ?? const SleepTimeDto(hour: 8, minute: 0);
-  set wakeupTime(SleepTimeDto value) => _setObject(wakeupTimeKey, value);
+      _prefs.getObject(wakeupTimeKey, SleepTimeDto.fromJson) ?? const SleepTimeDto(hour: 8, minute: 0);
+  set wakeupTime(SleepTimeDto value) => _prefs.setObject(wakeupTimeKey, value);
 
   bool get remindToSleep => _prefs.getBool(remindToSleepKey) ?? false;
   set remindToSleep(bool value) => _prefs.setBool(remindToSleepKey, value);
@@ -37,14 +38,4 @@ class AlarmLocalDataSource {
 
   int get snoozeTime => _prefs.getInt(snoozeTimeKey) ?? 5;
   set snoozeTime(int value) => _prefs.setInt(snoozeTimeKey, value);
-
-  dynamic _getObject(String key) {
-    final json = _prefs.getString(key);
-    if (json == null) return null;
-    return SleepTimeDto.fromJson(jsonDecode(json));
-  }
-
-  void _setObject(String key, dynamic value) {
-    _prefs.setString(key, jsonEncode(value.toJson()));
-  }
 }

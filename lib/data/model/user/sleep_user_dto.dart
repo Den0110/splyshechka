@@ -1,10 +1,10 @@
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:splyshechka/data/model/user/sleep_avatar_dto.dart';
 import 'package:splyshechka/data/model/user/sleep_gender_dto.dart';
 import 'package:splyshechka/domain/entities/profile/sleep_user.dart';
 
 part 'sleep_user_dto.freezed.dart';
+part 'sleep_user_dto.g.dart';
 
 @freezed
 class SleepUserDto with _$SleepUserDto {
@@ -18,6 +18,9 @@ class SleepUserDto with _$SleepUserDto {
     required String token,
     required GenderDto gender,
   }) = _SleepUserDto;
+
+  factory SleepUserDto.fromJson(Map<String, dynamic> json) =>
+      _$SleepUserDtoFromJson(json);
 }
 
 extension SleepUserMapper on SleepUserDto {
@@ -29,7 +32,7 @@ extension SleepUserMapper on SleepUserDto {
       email: email,
       sound: sound,
       token: token,
-      gender: gender.toModel(), 
+      gender: gender.toModel(),
       nickname: nickname,
     );
   }
