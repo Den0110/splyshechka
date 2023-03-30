@@ -23,7 +23,7 @@ class AlarmSleepingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<AlarmSleepingBloc>(),
+      create: (context) => getIt<AlarmSleepingBloc>()..add(const AlarmSleepingEvent.started()),
       child: BlocSideEffectConsumer<AlarmSleepingBloc, AlarmSleepingBloc,
           AlarmSleepingState, AlarmSleepingCommand>(
         listener: (context, state) {

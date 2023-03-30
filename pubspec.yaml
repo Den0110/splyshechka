@@ -33,7 +33,12 @@ dependencies:
     sdk: flutter
   side_effect_bloc:
     path: side_effect_bloc
-    
+
+  flutter_background_service:
+    path: flutter_background_service/packages/flutter_background_service
+
+  flutter_local_notifications: ^13.0.0
+
   progressive_time_picker: ^0.0.7
   flutter_time_picker_spinner: ^2.0.0
   intl: ^0.17.0
@@ -42,6 +47,7 @@ dependencies:
   flutter_svg: ^1.1.6
   percent_indicator: ^4.2.2
   flutter_parsed_text: ^2.2.1
+  permission_handler: ^10.2.0
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -69,7 +75,6 @@ dependencies:
 
   # memory
   shared_preferences: ^2.0.15
-  flutter_alarm_clock: ^0.0.2
   alarm: ^0.2.0
   json_annotation: ^4.8.0
 

@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter_alarm_clock/flutter_alarm_clock.dart';
 import 'package:splyshechka/domain/entities/alarm/sleep_time.dart';
 import 'package:splyshechka/domain/repository/alarm_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -49,9 +48,6 @@ class SetSleepTimePageCubit extends Cubit<SetSleepTimePageState> {
   }
 
   void sleepClicked() {
-    int hour = _alarmRepository.wakeupTime.value.h;
-    int minutes = _alarmRepository.wakeupTime.value.m;
-    FlutterAlarmClock.createAlarm(hour, minutes);
     emitOnce(emit, NavToSleep());
   }
 

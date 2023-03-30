@@ -20,6 +20,9 @@ class _SoundListenerState extends State<SoundListener>
   late AnimationController controller;
   late Tween<double> waveHeightTween;
 
+  late Function() animListener;
+  late Function(AnimationStatus) animStateListener;
+
   @override
   void initState() {
     super.initState();
@@ -36,32 +39,41 @@ class _SoundListenerState extends State<SoundListener>
       end: widget.waveHeight,
     );
 
+    animListener = () {
+      setState(() {});
+    };
+
+    animStateListener = (status) {
+      if (status == AnimationStatus.completed) {
+        controller.reverse();
+      } else if (status == AnimationStatus.dismissed) {
+        controller.forward(
+          from: controller.value,
+        );
+      }
+    };
+
     animation = waveHeightTween.animate(
       CurvedAnimation(
         parent: controller,
         curve: Curves.easeInOut,
       ),
     )
-      ..addListener(() {
-        setState(() {});
-      })
-      ..addStatusListener((status) {
-        if (status == AnimationStatus.completed) {
-          controller.reverse();
-        } else if (status == AnimationStatus.dismissed) {
-          controller.forward(
-            from: controller.value,
-          );
-        }
-      });
+      ..addListener(animListener)
+      ..addStatusListener(animStateListener);
 
     controller.forward();
   }
 
-  @override void dispose() {
-    super.dispose();
+  @override
+  void dispose() {
     controller.dispose();
+    animation
+      ..removeListener(animListener)
+      ..removeStatusListener(animStateListener);
+    super.dispose();
   }
+
   @override
   void didUpdateWidget(covariant SoundListener oldWidget) {
     double oldWave = waveHeightTween.end!;

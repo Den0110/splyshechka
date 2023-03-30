@@ -1,0 +1,79 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:1:1-36:12
+INJECTED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:1:1-36:12
+INJECTED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:1:1-36:12
+	package
+		ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:2:3-50
+		INJECTED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml
+		INJECTED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:4:5-76
+	android:name
+		ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:4:22-74
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:5:5-80
+	android:name
+		ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:5:22-78
+uses-permission#android.permission.WAKE_LOCK
+ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:6:5-67
+	android:name
+		ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:6:22-65
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:7:5-70
+	android:name
+		ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:7:22-68
+application
+ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:10:5-35:19
+service#id.flutter.flutter_background_service.BackgroundService
+ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:11:9-16:15
+	android:enabled
+		ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:12:13-35
+	android:exported
+		ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:13:13-36
+	android:stopWithTask
+		ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:15:13-41
+	android:name
+		ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:14:13-46
+receiver#id.flutter.flutter_background_service.WatchdogReceiver
+ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:18:9-22:15
+	android:enabled
+		ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:20:13-35
+	android:exported
+		ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:21:13-36
+	android:name
+		ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:19:13-45
+receiver#id.flutter.flutter_background_service.BootReceiver
+ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:24:9-33:20
+	android:enabled
+		ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:26:13-35
+	android:exported
+		ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:27:13-36
+	android:name
+		ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:25:13-41
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.QUICKBOOT_POWERON
+ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:29:13-32:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:30:17-78
+	android:name
+		ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:30:25-76
+action#android.intent.action.QUICKBOOT_POWERON
+ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:31:17-81
+	android:name
+		ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:31:25-79
+uses-sdk
+INJECTED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml
+INJECTED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml
+INJECTED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml
+INJECTED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml
+		ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml
+		INJECTED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml
+		ADDED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml
+		INJECTED from /Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml

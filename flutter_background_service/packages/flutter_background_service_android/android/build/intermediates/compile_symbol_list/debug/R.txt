@@ -1,0 +1,1 @@
+int drawable ic_bg_service_small 0x0
