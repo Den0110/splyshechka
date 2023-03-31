@@ -37,6 +37,11 @@ abstract class NewUserRemoteDataSource {
     String token,
     FieldAvatarDto field,
   );
+  Future<void> sendCodeEmail(String token);
+  Future<void> resetPassword(
+    String token,
+    NonResetPasswordDto resetPasswordDto,
+  );
   Future<SleepDto> getLastSleep(String token);
   Future<List<SleepDto>> getAllSleep(String token);
   Future<void> addSleep(

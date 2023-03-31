@@ -27,6 +27,7 @@ class ProfileSettingsGenderBloc
     on<CancelPressed>(_onPressedCancelButton);
     on<GenderChanged>(_onGenderChanged);
   }
+  
   void _onPressedSaveButton(
     SavePressed event,
     Emitter<ProfileSettingsGenderState> emit,

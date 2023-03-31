@@ -24,9 +24,19 @@ class ProfileSettingsPasswordPage extends StatelessWidget {
           ProfileSettingsPasswordState>(
         listener: (context, state) {
           if (state is NavToBack) {
+            const snackBar = SnackBar(
+              content: Text('Пароль успешно изменён!'),
+            );
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
             context.router.navigate(
               const ProfileSettingsRoute(),
             );
+          }
+          if (state is Error) {
+            const snackBar = SnackBar(
+              content: Text('Ошибка! Неверный данные.'),
+            );
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
           }
         },
         builder: (context, state) {
@@ -143,12 +153,9 @@ class ProfileSettingsPasswordPage extends StatelessWidget {
                                   LargeButton(
                                     text: "Отменить",
                                     onPressed: () {
-                                      context
-                                          .read<ProfileSettingsPasswordBloc>()
-                                          .add(
-                                            const ProfileSettingsPasswordEvent
-                                                .cancelPressed(),
-                                          );
+                                      context.router.navigate(
+                                        const ProfileSettingsRoute(),
+                                      );
                                     },
                                   ),
                                 ],

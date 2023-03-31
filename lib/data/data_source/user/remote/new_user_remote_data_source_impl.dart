@@ -44,7 +44,7 @@ abstract class NewUserRemoteDataSourceImpl implements NewUserRemoteDataSource {
   @override
   @POST('/non-auth-email/confirm-non-auth-reset-code')
   Future<void> nonResetPassword(@Body() NonResetPasswordDto resetPasswordDto);
-  
+
   @override
   @POST('/user/delete')
   Future<void> deleteUser(@Header("Authorization") String token);
@@ -82,6 +82,19 @@ abstract class NewUserRemoteDataSourceImpl implements NewUserRemoteDataSource {
   Future<void> updateImageUser(
     @Header("Authorization") String token,
     @Body() FieldAvatarDto field,
+  );
+
+  @override
+  @POST('/email/send-reset-code')
+  Future<void> sendCodeEmail(
+    @Header("Authorization") String token,
+  );
+
+  @override
+  @GET('/email/confirm-reset-code')
+  Future<void> resetPassword(
+    @Header("Authorization") String token,
+    @Body() NonResetPasswordDto resetPasswordDto
   );
 
   @override

@@ -37,18 +37,21 @@ class _PasswordRetrievalPageState extends State<PasswordRetrievalPage> {
           PasswordRetrievalState,
           PasswordRetrievalCommand>(
         listener: (context, sideEffect) {
-          sideEffect.when(navToLogin: () {
-            const snackBar = SnackBar(
-              content: Text('Пароль успешно изменён!'),
-            );
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
-            context.navigateTo(const LoginRoute());
-          }, error: () {
-            const snackBar = SnackBar(
-              content: Text('Ошибка! Неверный данные.'),
-            );
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
-          });
+          sideEffect.when(
+            navToLogin: () {
+              const snackBar = SnackBar(
+                content: Text('Пароль успешно изменён!'),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              context.navigateTo(const LoginRoute());
+            },
+            error: () {
+              const snackBar = SnackBar(
+                content: Text('Ошибка! Неверный данные.'),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            },
+          );
         },
         builder: (context, state) => Scaffold(
           appBar: AppBar(
