@@ -21,6 +21,13 @@ class _SoundListenerState extends State<SoundListener>
   late Tween<double> waveHeightTween;
 
   @override
+  void dispose()
+  {
+     controller.stop();
+    super.dispose();
+  }
+
+  @override
   void initState() {
     super.initState();
 
@@ -58,10 +65,6 @@ class _SoundListenerState extends State<SoundListener>
     controller.forward();
   }
 
-  @override void dispose() {
-    super.dispose();
-    controller.dispose();
-  }
   @override
   void didUpdateWidget(covariant SoundListener oldWidget) {
     double oldWave = waveHeightTween.end!;

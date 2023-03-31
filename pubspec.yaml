@@ -70,7 +70,7 @@ dependencies:
   # memory
   shared_preferences: ^2.0.15
   flutter_alarm_clock: ^0.0.2
-  alarm: ^0.2.0
+  alarm: ^0.2.7
   json_annotation: ^4.8.0
 
 dev_dependencies:
@@ -112,6 +112,7 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/
     - assets/images/
     - assets/icons/
 

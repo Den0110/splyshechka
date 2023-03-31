@@ -1,3 +1,4 @@
+import 'package:alarm/alarm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:splyshechka/di/locator.dart';
@@ -7,6 +8,7 @@ import 'package:splyshechka/utils/app_text_styles.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Alarm.init(showDebugLogs: true);
   await initDependencies();
   runApp(MyApp());
 }

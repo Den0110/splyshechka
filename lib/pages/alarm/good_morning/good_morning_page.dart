@@ -21,14 +21,14 @@ class GoodMorningPage extends StatelessWidget {
         listener: (context, state) {
           state.whenOrNull(
             delay: () {
-           /*   context.router.pushAndPopUntil(
+                 context.router.pushAndPopUntil(
                 const MainRoute(),
                 predicate: (_) => false,
-              );*/
-                  context.router.navigate(const HomeRoute());
+              );
+           //   context.router.navigate(const MainRoute());
             },
             wakeUp: () {
-              context.router.navigate(const HomeRoute());
+              context.router.navigate(const MainRoute());
             },
           );
         },

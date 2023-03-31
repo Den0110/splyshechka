@@ -1,5 +1,6 @@
+import 'package:alarm/alarm.dart';
+import 'package:alarm/model/alarm_settings.dart';
 import 'package:bloc/bloc.dart';
-import 'package:flutter_alarm_clock/flutter_alarm_clock.dart';
 import 'package:splyshechka/domain/entities/alarm/sleep_time.dart';
 import 'package:splyshechka/domain/repository/alarm_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -48,10 +49,21 @@ class SetSleepTimePageCubit extends Cubit<SetSleepTimePageState> {
     emitOnce(emit, NavToWentDetails(initialTab: initialTab));
   }
 
-  void sleepClicked() {
+  Future<void> sleepClicked() async {
     int hour = _alarmRepository.wakeupTime.value.h;
     int minutes = _alarmRepository.wakeupTime.value.m;
-    FlutterAlarmClock.createAlarm(hour, minutes);
+    final alarmSettings = AlarmSettings(
+      id: 42,
+      dateTime: DateTime.now(),
+      assetAudioPath: 'assets/alarm.mp3',
+      loopAudio: true,
+      vibrate: true,
+      fadeDuration: 3.0,
+      notificationTitle: 'This is the title',
+      notificationBody: 'This is the body',
+      enableNotificationOnKill: true,
+    );
+    await Alarm.set(alarmSettings: alarmSettings);
     emitOnce(emit, NavToSleep());
   }
 
