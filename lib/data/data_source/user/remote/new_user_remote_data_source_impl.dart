@@ -5,6 +5,8 @@ import 'package:splyshechka/data/data_source/user/remote/new_user_remote_data_so
 import 'package:splyshechka/data/model/new_user/field_avatar_dto.dart';
 import 'package:splyshechka/data/model/new_user/field_dto.dart';
 import 'package:splyshechka/data/model/new_user/new_sleep_user_dto.dart';
+import 'package:splyshechka/data/model/new_user/non_reset_password_dto.dart';
+import 'package:splyshechka/data/model/new_user/non_send_email_code_dto.dart';
 import 'package:splyshechka/data/model/new_user/sleep_user_sign_in_dto.dart';
 import 'package:splyshechka/data/model/new_user/sleep_user_sign_in_email_dto.dart';
 import 'package:splyshechka/data/model/new_user/sleep_user_sign_up_dto.dart';
@@ -26,15 +28,23 @@ abstract class NewUserRemoteDataSourceImpl implements NewUserRemoteDataSource {
   @override
   @POST('/api/auth/login/')
   Future<TokenDto> signInUser(@Body() SleepUserSignInDto user);
-  
+
   @override
   @POST('/api/auth/email-login')
   Future<TokenDto> signInEmailUser(@Body() SleepUserSignInEmailDto user);
-  
+
   @override
   @GET("/user/get-user")
   Future<NewSleepUserDto> getUser(@Header("Authorization") String token);
 
+  @override
+  @POST('/non-auth-email/send-non-auth-code')
+  Future<void> nonSendEmailCode(@Body() NonSendEmailCodeDto emailCodeDto);
+
+  @override
+  @POST('/non-auth-email/confirm-non-auth-reset-code')
+  Future<void> nonResetPassword(@Body() NonResetPasswordDto resetPasswordDto);
+  
   @override
   @POST('/user/delete')
   Future<void> deleteUser(@Header("Authorization") String token);
@@ -60,7 +70,7 @@ abstract class NewUserRemoteDataSourceImpl implements NewUserRemoteDataSource {
     @Body() FieldDto field,
   );
 
-   @override
+  @override
   @POST('/user/update-color')
   Future<void> updateColorUser(
     @Header("Authorization") String token,

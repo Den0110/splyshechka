@@ -34,13 +34,17 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState>
     _SignUpClicked event,
     Emitter<RegistrationState> emit,
   ) async {
-    _dataSource.signUpUser(SleepUserSignUpDto(
-      username: event.nickname,
-      fullName: event.fullname,
-      email: event.email,
-      password: event.password,
-      gender: state.gender.jsonName,
-    ));
-    produceSideEffect(NavToMain());
+    try {
+      _dataSource.signUpUser(SleepUserSignUpDto(
+        username: event.nickname,
+        fullName: event.fullname,
+        email: event.email,
+        password: event.password,
+        gender: state.gender.jsonName,
+      ));
+      produceSideEffect(NavToMain());
+    } catch (e) {
+      produceSideEffect(Error());
+    }
   }
 }

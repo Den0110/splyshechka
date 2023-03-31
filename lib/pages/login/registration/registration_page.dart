@@ -44,6 +44,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
               context.navigateTo(const LoginRoute());
             },
+            error: () {
+              const snackBar = SnackBar(
+                content: Text('Ошибка! Эти данные уже были использованы.'),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            },
           );
         },
         builder: (context, state) => SafeArea(
