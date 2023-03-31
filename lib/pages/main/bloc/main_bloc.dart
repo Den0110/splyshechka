@@ -2,8 +2,14 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';
+import 'package:splyshechka/data/data_source/user/remote/new_user_remote_data_source.dart';
+import 'package:splyshechka/data/model/new_user/new_sleep_user_dto.dart';
+import 'package:splyshechka/domain/entities/profile/sleep_avatar.dart';
 import 'package:splyshechka/domain/entities/profile/sleep_user.dart';
 import 'package:splyshechka/domain/repository/user_repository.dart';
+import 'package:splyshechka/models/gender/gender.dart';
+import 'package:splyshechka/models/pickers/face_picker_items.dart';
+import 'package:splyshechka/models/pickers/sleep_color_picker_items.dart';
 import 'package:splyshechka/pages/main/bloc/main_ui_model.dart';
 
 part 'main_bloc.freezed.dart';
@@ -16,7 +22,8 @@ part 'main_state.dart';
 class MainBloc extends Bloc<MainEvent, MainState>
     with SideEffectBlocMixin<MainState, MainCommand> {
   final UserRepository _userRepository;
-  MainBloc(this._userRepository)
+  final NewUserRemoteDataSource _dataSource;
+  MainBloc(this._userRepository, this._dataSource)
       : super(
           MainState.pageOpen(user: _userRepository.lastCurrentUser),
         ) {
@@ -32,6 +39,23 @@ class MainBloc extends Bloc<MainEvent, MainState>
     PageOpened event,
     Emitter<MainState> emit,
   ) async {
+    String token = _userRepository.currentUser.value.token; 
+    NewSleepUserDto userDto = await _dataSource.getUser(token);
+    _userRepository.updateUser(
+      SleepUser(
+        nickname: userDto.username,
+        fullName: userDto.fullName,
+        email: userDto.email,
+        gender: GenderExtension.fromJson(userDto.gender),
+        id: userDto.id,
+        token: token,
+        avatar: SleepAvatar(
+          emojiUrl: facePickerItems[userDto.image],
+          color: sleepColorPickerItems[userDto.color],
+        ),
+        sound: true,
+      ),
+    );
     await for (final user in _userRepository.currentUser.stream) {
       if (state is PageOpen) {
         final userState = state as PageOpen;

@@ -55,32 +55,6 @@ class ProfileSettingsPasswordPage extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Padding(
-                              padding: EdgeInsets.only(
-                                left: 16.w,
-                                top: 6.h,
-                                bottom: 8.h,
-                              ),
-                              child: Text(
-                                "Email",
-                                style: AppTextStyles.profileLabelStyle,
-                              ),
-                            ),
-                            SleepContainer(
-                              child: AppTextField(
-                                onChanged: (value) {
-                                  context
-                                      .read<ProfileSettingsPasswordBloc>()
-                                      .add(
-                                        const ProfileSettingsPasswordEvent
-                                            .emailChanged(),
-                                      );
-                                },
-                                value: user.email,
-                                hint: "Введите email",
-                              ),
-                            ),
-                            SizedBox(height: 10.h),
                             if (state == PasswordState.codeSent) ...[
                               SleepContainer(
                                 child: AppTextField(
@@ -141,8 +115,10 @@ class ProfileSettingsPasswordPage extends StatelessWidget {
                                       context
                                           .read<ProfileSettingsPasswordBloc>()
                                           .add(
-                                            const ProfileSettingsPasswordEvent
-                                                .savePressed(),
+                                            ProfileSettingsPasswordEvent
+                                                .savePressed(
+                                                    code: code,
+                                                    password: password),
                                           );
                                     },
                                     backgroundColor: AppColors.lightGreen,

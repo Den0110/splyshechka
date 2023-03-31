@@ -91,7 +91,7 @@ abstract class NewUserRemoteDataSourceImpl implements NewUserRemoteDataSource {
   );
 
   @override
-  @GET('/email/confirm-reset-code')
+  @POST('/email/confirm-reset-code')
   Future<void> resetPassword(
     @Header("Authorization") String token,
     @Body() NonResetPasswordDto resetPasswordDto

@@ -32,7 +32,7 @@ class ProfileSettingsAvatarBloc
   Future<void> close() async {
     final newProfileState = state as _ProfileSettingsAvatarState;
 
-    _dataSource.updateColorUser(
+    await _dataSource.updateColorUser(
       newProfileState.user.token,
       FieldAvatarDto(
         field: sleepColorPickerItems.indexWhere(
@@ -40,7 +40,7 @@ class ProfileSettingsAvatarBloc
         ),
       ),
     );
-    _dataSource.updateImageUser(
+    await _dataSource.updateImageUser(
       newProfileState.user.token,
       FieldAvatarDto(
         field: facePickerItems.indexWhere(

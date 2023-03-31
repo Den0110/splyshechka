@@ -44,13 +44,13 @@ class ProfileSettingsPasswordBloc
         await _dataSource.resetPassword(
           profileState.user.token,
           NonResetPasswordDto(
-            resetCode: profileState.code,
-            newPassword: profileState.password,
+            resetCode: event.code,
+            newPassword: event.password,
           ),
         );
         _userRepository.updatePassword(
-          profileState.password,
-          profileState.code,
+          event.password,
+          event.code,
         );
         emitOnce(emit, NavToBack());
       }
