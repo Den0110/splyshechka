@@ -11,6 +11,7 @@ import 'package:splyshechka/pages/login/widgets/password_text_field.dart';
 import 'package:splyshechka/pages/main/main_page.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/utils/app_text_styles.dart';
+import 'package:splyshechka/utils/validation.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -78,6 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     RegistrationTextField(
                       hintText: 'Email/логин',
+                      validator: Validation.loginEnterValidation,
                       controller: _emailController,
                     ),
                     SizedBox(
@@ -85,6 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     PasswordTextField(
                       hintText: "Пароль",
+                      validator: Validation.passwordValidation,
                       controller: _passwordController,
                     ),
                     SizedBox(
@@ -107,12 +110,23 @@ class _LoginPageState extends State<LoginPage> {
                     GestureDetector(
                       onTap: () {
                         if (_formKey.currentState!.validate()) {
-                          context.read<LoginBloc>().add(
-                                LoginEvent.signInClicked(
-                                  email: _emailController.text,
-                                  password: _passwordController.text,
-                                ),
-                              );
+                          if (Validation.emailValidation(
+                                  _emailController.text) ==
+                              null) {
+                            context.read<LoginBloc>().add(
+                                  LoginEvent.signInEmailClicked(
+                                    email: _emailController.text,
+                                    password: _passwordController.text,
+                                  ),
+                                );
+                          } else {
+                            context.read<LoginBloc>().add(
+                                  LoginEvent.signInClicked(
+                                    email: _emailController.text,
+                                    password: _passwordController.text,
+                                  ),
+                                );
+                          }
                         }
                       },
                       child: Container(

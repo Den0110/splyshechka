@@ -11,6 +11,8 @@ class NewSleepUserDto with _$NewSleepUserDto {
     required String fullName,
     required String email,
     required String gender,
+    required int color,
+    required int image,
   }) = _NewSleepUserDto;
 
   factory NewSleepUserDto.fromJson(Map<String, dynamic> json) =>
