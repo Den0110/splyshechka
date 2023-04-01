@@ -3,6 +3,7 @@ import 'package:side_effect_bloc/side_effect_bloc.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/utils/app_icons.dart';
 import 'package:splyshechka/utils/app_text_styles.dart';
+import 'package:splyshechka/utils/date_formatter.dart';
 import 'package:splyshechka/widgets/buttons/large_button.dart';
 import 'package:splyshechka/widgets/options_list/value_element.dart';
 import 'package:splyshechka/widgets/sleep_container/sleep_container.dart';
@@ -39,7 +40,7 @@ class AlarmSleepingPage extends StatelessWidget {
         builder: (context, state) {
           return state.maybeWhen(
             initial: (currentDate, alarmTime, currentVolume) {
-              String dateString = DateFormat("EEEE, MMM d").format(currentDate);
+              String dateString = currentDate.toRusWeekFormat();
               String timeString =
                   DateFormat(DateFormat.HOUR24_MINUTE).format(currentDate);
               return Scaffold(

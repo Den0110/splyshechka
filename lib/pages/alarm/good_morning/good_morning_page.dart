@@ -9,6 +9,7 @@ import 'package:splyshechka/navigation/auto_router.gr.dart';
 import 'package:splyshechka/pages/alarm/good_morning/bloc/good_morning_bloc.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/utils/app_text_styles.dart';
+import 'package:splyshechka/utils/date_formatter.dart';
 import 'package:splyshechka/utils/one_shot_bloc.dart';
 import 'package:splyshechka/widgets/buttons/large_button.dart';
 
@@ -33,7 +34,7 @@ class GoodMorningPage extends StatelessWidget {
         builder: (context, state) {
           return state.maybeWhen(
             initial: (dateTime) {
-              String dateString = DateFormat("EEEE, MMM d").format(dateTime);
+              String dateString = dateTime.toRusWeekFormat();
               String timeString =
                   DateFormat(DateFormat.HOUR24_MINUTE).format(dateTime);
               return Container(

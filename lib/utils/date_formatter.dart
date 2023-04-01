@@ -11,6 +11,73 @@ extension DateTimeExt on DateTime {
     return _dateFormatter.format(this);
   }
 
+  String toRusWeekFormat() {
+    String result = "";
+    switch (weekday) {
+      case 1:
+        result += "Понедельник";
+        break;
+      case 2:
+        result += "Вторник";
+        break;
+      case 3:
+        result += "Среда";
+        break;
+      case 4:
+        result += "Четверг";
+        break;
+      case 5:
+        result += "Пятница";
+        break;
+      case 6:
+        result += "Суббота";
+        break;
+      case 7:
+        result += "Воскресенье";
+        break;
+    }
+    result += ", " + day.toString() + " ";
+    switch (month) {
+      case 1:
+        result += "января";
+        break;
+      case 2:
+        result += "февраля";
+        break;
+      case 3:
+        result += "марта";
+        break;
+      case 4:
+        result += "апреля";
+        break;
+      case 5:
+        result += "мая";
+        break;
+      case 6:
+        result += "июня";
+        break;
+      case 7:
+        result += "июля";
+        break;
+      case 8:
+        result += "августа";
+        break;
+      case 9:
+        result += "сентября";
+        break;
+      case 10:
+        result += "октября";
+        break;
+      case 11:
+        result += "ноября";
+        break;
+      case 12:
+        result += "декабря";
+        break;
+    }
+    return result;
+  }
+
   String toRusFormat() {
     if (isDateEqual(DateTime.now())) return "Сегодня";
     if (isDateEqual(
