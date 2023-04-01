@@ -9,6 +9,7 @@ public class NoiseModel {
     private List<Double> RMS;
     private List<Double> RLH;
     private List<Double> VAR;
+    private List<Double> decibel;
 
     private int snore = 0;
     private int movement = 0;
@@ -17,6 +18,7 @@ public class NoiseModel {
         RMS = new ArrayList<>();
         RLH = new ArrayList<>();
         VAR = new ArrayList<>();
+        decibel = new ArrayList<>();
     }
 
     public void addRMS(Double rms) {
@@ -36,6 +38,19 @@ public class NoiseModel {
             VAR.remove(0);
         }
         VAR.add(var);
+    }
+
+    public void addDecibel(Double var) {
+        if(decibel.size() >= 100) {
+            decibel.remove(0);
+        }
+        decibel.add(var);
+    }
+
+    public Double getDecibel() {
+        if(decibel.size() <= 1) return 0d;
+
+        return mean(decibel.subList(Math.max(decibel.size()-10, 0), decibel.size()-1));
     }
 
     public double getNormalizedRMS() {

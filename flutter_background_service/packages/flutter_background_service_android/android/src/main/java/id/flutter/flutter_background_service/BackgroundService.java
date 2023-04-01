@@ -201,10 +201,6 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
         config.setManuallyStopped(false);
         WatchdogReceiver.enqueue(this);
         runService();
-        if (recorder == null) {
-            recorder = new Recorder();
-            recorder.start(getApplicationContext(), new FileHandler(getApplicationContext()));
-        }
         return START_STICKY;
     }
 
@@ -235,6 +231,11 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
 
             methodChannel = new MethodChannel(backgroundEngine.getDartExecutor().getBinaryMessenger(), "id.flutter/background_service_android_bg", JSONMethodCodec.INSTANCE);
             methodChannel.setMethodCallHandler(this);
+
+            if (recorder == null) {
+                recorder = new Recorder(methodChannel);
+                recorder.start(getApplicationContext(), new FileHandler(getApplicationContext()));
+            }
 
             dartEntrypoint = new DartExecutor.DartEntrypoint(flutterLoader.findAppBundlePath(), "package:flutter_background_service_android/flutter_background_service_android.dart", "entrypoint");
 

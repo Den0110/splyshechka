@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';
 import 'package:splyshechka/data/data_source/user/remote/new_user_remote_data_source.dart';
 import 'package:splyshechka/data/model/sleep/sleep_dto.dart';
@@ -31,12 +34,17 @@ class LastStatisticBloc extends Bloc<LastStatisticEvent, LastStatisticState>
     _Started event,
     Emitter<LastStatisticState> emit,
   ) async {
-    try {
-      final SleepDto sleep = await _dataSource.getLastSleep(
-        _userRepository.currentUser.valueOrNull!.token,
-      );
-      emit(state.copyWith(sleep: sleep));
-    } catch (e) {}
-     emit(state.copyWith(loading: false));
+    Directory dir = await getApplicationDocumentsDirectory();
+    final pathSegs = dir.uri.pathSegments.where((e) => e.isNotEmpty).toList();
+    pathSegs.removeLast();
+    pathSegs.add('files');
+    dir = Directory(pathSegs.join('/'));
+    final files = await dir
+        .list()
+        .map((e) => e.path)
+        .where((e) => e.contains('recording') && e.endsWith('txt'))
+        .toList();
+    files.sort();
+    emit(LastStatisticState.initial(loading: false, sleepFilePath: files.last));
   }
 }

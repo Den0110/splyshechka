@@ -1,12 +1,15 @@
 package id.flutter.flutter_background_service.lib;
 
 import android.content.Context;
-import android.os.PowerManager;
 import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import id.flutter.flutter_background_service.lib.detection.NoiseModel;
 import id.flutter.flutter_background_service.lib.recorders.AudioRecorder;
 import id.flutter.flutter_background_service.lib.recorders.LightRecorder;
+import io.flutter.plugin.common.MethodChannel;
 
 /**
  * This class is the interface for starting and stopping the tracker.
@@ -21,10 +24,14 @@ public class Recorder {
     private AudioRecorder audioRecorder = null;
     private StringBuilder data = new StringBuilder();
     private String startTime = "";
-    private PowerManager.WakeLock wakeLock;
     private boolean running = false;
     private OutputHandler outputHandler;
     private NoiseModel noiseModel = new NoiseModel();
+    private MethodChannel methodChannel;
+
+    public Recorder(MethodChannel methodChannel) {
+        this.methodChannel = methodChannel;
+    }
 
     /**
      * Start tracking
@@ -34,26 +41,22 @@ public class Recorder {
         this.outputHandler = outputHandler;
         this.running = true;
 
-        // Acquire a wake lock so we don't get interrupted
-        PowerManager mgr = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
-        wakeLock = mgr.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "splyshechka:sleeplock");
-        wakeLock.acquire();
-
         // Set the current timestamp to the data string and set start time
         this.startTime = String.valueOf(System.currentTimeMillis() / 1000L);
         this.data.append(this.startTime);
         this.data.append(";");
+
+        // Get the current data every 5 seconds
+        final android.os.Handler customHandler = new android.os.Handler();
 
         // Start the light recorder
         lightRecorder = new LightRecorder();
         lightRecorder.start(context);
 
         // Start the audio recorder
-        audioRecorder = new AudioRecorder(noiseModel,null);
+        audioRecorder = new AudioRecorder(noiseModel,null, methodChannel, customHandler);
         audioRecorder.start();
 
-        // Get the current data every 5 seconds
-        final android.os.Handler customHandler = new android.os.Handler();
         Runnable updateTimerThread = new Runnable()
         {
             public void run() {
@@ -82,8 +85,19 @@ public class Recorder {
                     data.append(noiseModel.getIntensity());
 
                     data.append(";");
-
-                    Log.d(TAG, "Track\tEvent: " + noiseModel.getEvent() + "\tIntensity: " + noiseModel.getIntensity());
+                    try {
+                        JSONObject call = new JSONObject()
+                                .put("method", "onReceiveData")
+                                .put("args", new JSONObject()
+                                        .put("event", noiseModel.getEvent())
+                                        .put("intensity", noiseModel.getIntensity())
+                                        .put("light", lightRecorder.getCurrentLux())
+                                        .put("decibel", noiseModel.getDecibel())
+                                );
+                        methodChannel.invokeMethod("onReceiveData", call);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                     // Dump the data to the text file if we accumulated "enough" Approximately every 15 minutes
                     if (data.length() > 1000) {
                         dumpData();
@@ -118,9 +132,6 @@ public class Recorder {
                 // Cleanup
                 audioRecorder = null;
             }
-
-            // Release the lock
-            wakeLock.release();
 
             // Write the data to a file
             dumpData();

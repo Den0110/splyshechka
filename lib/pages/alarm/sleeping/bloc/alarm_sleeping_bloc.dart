@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -23,10 +24,11 @@ class AlarmSleepingBloc extends Bloc<AlarmSleepingEvent, AlarmSleepingState>
   AlarmSleepingBloc(
     this._repository,
     this._backgroundService,
-  ) : super(_Initial(
+  ) : super(AlarmSleepingState(
           currentDate: DateTime.now(),
           alarmTime: _getAlarmTime(_repository),
-          currentVolume: 3,
+          volume: 0,
+          visualVolume: 0,
         )) {
     on<Started>(_onStarted);
   }
@@ -40,20 +42,16 @@ class AlarmSleepingBloc extends Bloc<AlarmSleepingEvent, AlarmSleepingState>
     }
     await Future.wait([
       emit.forEach(_repository.wakeupTime.stream, onData: (data) {
-        if (state is _Initial) {
-          final initialState = state as _Initial;
-          return initialState.copyWith(alarmTime: _getAlarmTime(_repository));
-        }
-        return state;
+        return state.copyWith(alarmTime: _getAlarmTime(_repository));
       }),
-      emit.forEach<bool>(
-          Stream.periodic(const Duration(seconds: 1))
-              .asyncMap((event) async => await _backgroundService.isRunning()),
-          onData: (data) {
-        return AlarmSleepingState.initial(
-          currentDate: DateTime.now(),
-          alarmTime: _getAlarmTime(_repository),
-          currentVolume: data ? 3 : 0,
+      emit.forEach<Map<String, dynamic>?>(
+          _backgroundService.on('decibelUpdate'), onData: (data) {
+        debugPrint(data.toString());
+        final decibel = double.tryParse(data!["decibel"].toString()) ?? .0;
+        final visualVolume = decibel / 100.0 * 6.0;
+        return state.copyWith(
+          visualVolume: visualVolume,
+          volume: decibel.toInt(),
         );
       }),
     ]);

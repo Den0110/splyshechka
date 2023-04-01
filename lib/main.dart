@@ -24,6 +24,14 @@ void onStart(ServiceInstance service) async {
     service.stopSelf();
   });
 
+  service.on('onReceiveData').listen((event) {
+    service.invoke('onReceiveData', event);
+  });
+
+  service.on('decibelUpdate').listen((event) {
+    service.invoke('decibelUpdate', event);
+  });
+
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
   FlutterLocalNotificationsPlugin();
 
@@ -33,12 +41,12 @@ void onStart(ServiceInstance service) async {
       if (await service.isForegroundService()) {
         flutterLocalNotificationsPlugin.show(
           notificationId,
-          'COOL SERVICE',
+          'Sleep tracking',
           'Awesome ${DateTime.now()}',
           const NotificationDetails(
             android: AndroidNotificationDetails(
               notificationChannelId,
-              'MY FOREGROUND SERVICE',
+              'Sleep tracking service',
               icon: 'ic_bg_service_small',
               ongoing: true,
             ),

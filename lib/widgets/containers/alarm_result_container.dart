@@ -32,7 +32,7 @@ class AlarmResultContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(13),
       ),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: crossAxisAlignment,
         children: [
           title != null

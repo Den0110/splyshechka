@@ -78,6 +78,9 @@ dependencies:
   alarm: ^0.2.0
   json_annotation: ^4.8.0
 
+  path_provider: ^2.0.14
+  syncfusion_flutter_charts: ^20.2.36
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

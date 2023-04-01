@@ -4,6 +4,6 @@ part of 'last_statistic_bloc.dart';
 class LastStatisticState with _$LastStatisticState {
   const factory LastStatisticState.initial({
     required bool loading,
-    SleepDto? sleep,
+    String? sleepFilePath,
   }) = _Initial;
 }

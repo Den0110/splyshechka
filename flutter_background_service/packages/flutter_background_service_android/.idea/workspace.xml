@@ -4,28 +4,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da74d25b-d047-4c65-a347-d7a3d700cba8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/android/src/main/java/id/flutter/flutter_background_service/FileHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/java/id/flutter/flutter_background_service/Hooks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/java/id/flutter/flutter_background_service/RecordingService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/java/id/flutter/flutter_background_service/lib/DebugView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/java/id/flutter/flutter_background_service/lib/OutputHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/java/id/flutter/flutter_background_service/lib/Recorder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/java/id/flutter/flutter_background_service/lib/detection/FeatureExtractor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/java/id/flutter/flutter_background_service/lib/detection/NoiseModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/java/id/flutter/flutter_background_service/lib/recorders/AudioRecorder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/java/id/flutter/flutter_background_service/lib/recorders/LightRecorder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../melos_flutter_background_service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../melos_flutter_background_service.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/melos_flutter_background_service_android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/melos_flutter_background_service_android.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flutter_background_service_ios/melos_flutter_background_service_ios.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../flutter_background_service_ios/melos_flutter_background_service_ios.iml" afterDir="false" />
-    </list>
+    <list default="true" id="da74d25b-d047-4c65-a347-d7a3d700cba8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="ProjectId" id="2NiFnfs0IPx9au9pOy2ZVBQb2W6" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
