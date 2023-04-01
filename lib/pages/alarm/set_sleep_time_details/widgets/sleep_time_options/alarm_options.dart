@@ -53,20 +53,20 @@ class AlarmOptions extends StatelessWidget {
           SizedBox(height: 30.h),
           SleepGoal(goal: sleepGoal),
           SizedBox(height: 30.h),
-          SleepContainer(
-            child: SwitchElement(
-              title: "Будильник",
-              isActive: true,
-              value: alarmEnabled,
-              onChanged: (bool value) {
-                context.read<SetSleepTimeDetailsBloc>().alarmSwitched(value);
-              },
-            ),
-          ),
-          if (alarmEnabled) ...[
-            SizedBox(
-              height: 10.h,
-            ),
+          // SleepContainer(
+          //   child: SwitchElement(
+          //     title: "Будильник",
+          //     isActive: true,
+          //     value: alarmEnabled,
+          //     onChanged: (bool value) {
+          //       context.read<SetSleepTimeDetailsBloc>().alarmSwitched(value);
+          //     },
+          //   ),
+          // ),
+          // if (alarmEnabled) ...[
+          //   SizedBox(
+          //     height: 10.h,
+          //   ),
             SleepContainer(
               child: Column(
                 children: [
@@ -103,13 +103,13 @@ class AlarmOptions extends StatelessWidget {
                 title: "Отложить",
                 isActive: true,
                 onTap: () {
-                  context.read<SetSleepTimeDetailsBloc>().snoozeClicked();
+                  context.read<SetSleepTimeDetailsBloc>().snoozeChanged();
                 },
                 value: snoozeTime,
               ),
             ),
           ],
-        ],
+     //   ],
       ),
     );
   }

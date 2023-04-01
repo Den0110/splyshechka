@@ -126,8 +126,12 @@ class SetSleepTimeDetailsBloc
     _alarmRepository.setAlarmVolume(volume);
   }
 
-  void snoozeClicked() {
+  void snoozeChanged() {
     produceSideEffect(NavToSnooze());
+  }
+
+  void delayClicked() {
+    produceSideEffect(NavToDelay());
   }
 
   void okayClicked() async {

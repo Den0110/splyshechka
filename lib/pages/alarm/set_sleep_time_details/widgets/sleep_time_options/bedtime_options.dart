@@ -25,6 +25,8 @@ class BedtimeOptions extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: Column(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SleepTimePicker(
             initialHour: bedtime.h,
@@ -40,19 +42,19 @@ class BedtimeOptions extends StatelessWidget {
           ),
           SizedBox(height: 30.h),
           SleepGoal(goal: sleepGoal),
-          SizedBox(height: 30.h),
-          SleepContainer(
-            child: SwitchElement(
-              title: "Напомнить мне о сне",
-              isActive: true,
-              value: remindToSleep,
-              onChanged: (bool value) {
-                context
-                    .read<SetSleepTimeDetailsBloc>()
-                    .remindToSleepSwitched(value);
-              },
-            ),
-          )
+          // SizedBox(height: 30.h),
+          // SleepContainer(
+          //   child: SwitchElement(
+          //     title: "Напомнить мне о сне",
+          //     isActive: true,
+          //     value: remindToSleep,
+          //     onChanged: (bool value) {
+          //       context
+          //           .read<SetSleepTimeDetailsBloc>()
+          //           .remindToSleepSwitched(value);
+          //     },
+          //   ),
+          // )
         ],
       ),
     );

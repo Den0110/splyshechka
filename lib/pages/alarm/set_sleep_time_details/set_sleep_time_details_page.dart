@@ -25,7 +25,10 @@ class SetSleepTimeDetailsWentPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<SetSleepTimeDetailsBloc>(),
-      child:  BlocSideEffectConsumer<SetSleepTimeDetailsBloc, SetSleepTimeDetailsBloc, SetSleepTimeDetailsState,
+      child: BlocSideEffectConsumer<
+          SetSleepTimeDetailsBloc,
+          SetSleepTimeDetailsBloc,
+          SetSleepTimeDetailsState,
           SetSleepTimeDetailsCommand>(
         listener: (context, state) {
           if (state is NavBack) {
@@ -65,10 +68,13 @@ class SetSleepTimeDetailsWentPage extends StatelessWidget {
                   children: [
                     SingleChildScrollView(
                       child: selectedTab == SleepTimeType.bedtime
-                          ? BedtimeOptions(
-                              bedtime: bedtime,
-                              sleepGoal: sleepGoal,
-                              remindToSleep: remindToSleep,
+                          ? Align(
+                              alignment: Alignment.topCenter,
+                              child: BedtimeOptions(
+                                bedtime: bedtime,
+                                sleepGoal: sleepGoal,
+                                remindToSleep: remindToSleep,
+                              ),
                             )
                           : AlarmOptions(
                               wakeupTime: wakeupTime,
@@ -88,7 +94,9 @@ class SetSleepTimeDetailsWentPage extends StatelessWidget {
                         ),
                         child: LargeButton(
                           onPressed: () {
-                            context.read<SetSleepTimeDetailsBloc>().okayClicked();
+                            context
+                                .read<SetSleepTimeDetailsBloc>()
+                                .okayClicked();
                           },
                           text: "Принять",
                           backgroundColor: AppColors.white,
