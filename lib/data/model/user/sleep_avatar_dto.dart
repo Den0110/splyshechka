@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:splyshechka/domain/entities/profile/sleep_avatar.dart';
 
 part 'sleep_avatar_dto.freezed.dart';
+part 'sleep_avatar_dto.g.dart';
 
 @freezed
 class SleepAvatarDto with _$SleepAvatarDto {
@@ -10,6 +11,9 @@ class SleepAvatarDto with _$SleepAvatarDto {
     required String imageUrl,
     required int color,
   }) = _SleepAvatarDto;
+
+  factory SleepAvatarDto.fromJson(Map<String, dynamic> json) =>
+      _$SleepAvatarDtoFromJson(json);
 }
 
 extension SleepAvatarMapper on SleepAvatarDto {

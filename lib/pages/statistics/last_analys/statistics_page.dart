@@ -25,7 +25,8 @@ class StatisticsPage extends StatelessWidget {
         ..add(
           const LastStatisticEvent.started(),
         ),
-      child: BlocSideEffectConsumer<LastStatisticBloc, LastStatisticBloc,
+      child: Scaffold(
+        body: BlocSideEffectConsumer<LastStatisticBloc, LastStatisticBloc,
           LastStatisticState, LastStatisticCommand>(
         listener: (context, sideEffect) {
           sideEffect.when(
@@ -41,34 +42,8 @@ class StatisticsPage extends StatelessWidget {
                 ),
               )
             : state.sleep == null
-                ? Center(
-                    child: Column(
-                      children: [
-                        Text(
-                          "Анализ последнего сна",
-                          style: TextStyle(
-                            fontFamily: AppTextStyles.fontFamilyOpenSans,
-                            fontSize: 16.sm,
-                            fontWeight: FontWeight.w600,
-                            color: const Color.fromRGBO(180, 180, 185, 1),
-                            height: 23 / 16.sm,
-                          ),
-                        ),
-                        Text(
-                          "Нет данных для анализа. Вам следует поспать!",
-                          style: TextStyle(
-                            fontFamily: AppTextStyles.fontFamilyOpenSans,
-                            fontSize: 16.sm,
-                            fontWeight: FontWeight.w400,
-                            color: const Color.fromRGBO(180, 180, 185, 1),
-                            height: 23 / 16.sm,
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
-                : Scaffold(
-                    body: SingleChildScrollView(
+                ? _NoData()
+                : SingleChildScrollView(
                       child: Padding(
                         padding: EdgeInsets.symmetric(
                             horizontal: 16.0.w, vertical: 9.h),
@@ -279,6 +254,46 @@ class StatisticsPage extends StatelessWidget {
                       ),
                     ),
                   ),
+      ),
+    );
+  }
+}
+
+class _NoData extends StatelessWidget {
+  const _NoData({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              "Анализ последнего сна",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontFamily: AppTextStyles.fontFamilyOpenSans,
+                fontSize: 16.sm,
+                fontWeight: FontWeight.w600,
+                color: const Color.fromRGBO(180, 180, 185, 1),
+                height: 23 / 16.sm,
+              ),
+            ),
+            Text(
+              "Нет данных для анализа. Вам следует поспать!",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontFamily: AppTextStyles.fontFamilyOpenSans,
+                fontSize: 16.sm,
+                fontWeight: FontWeight.w400,
+                color: const Color.fromRGBO(180, 180, 185, 1),
+                height: 23 / 16.sm,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,4 +22,7 @@ abstract class AppModule {
           responseHeader: true,
           compact: false,
         ));
+
+  @lazySingleton
+  FlutterBackgroundService get backgroundService => FlutterBackgroundService();
 }
