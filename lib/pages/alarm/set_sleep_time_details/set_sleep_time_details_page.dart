@@ -24,7 +24,10 @@ class SetSleepTimeDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<SetSleepTimeDetailsBloc>(),
+      create: (context) => getIt<SetSleepTimeDetailsBloc>()
+        ..add(
+          const Started(),
+        ),
       child: BlocSideEffectConsumer<
           SetSleepTimeDetailsBloc,
           SetSleepTimeDetailsBloc,

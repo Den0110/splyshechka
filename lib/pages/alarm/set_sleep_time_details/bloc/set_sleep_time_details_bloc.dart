@@ -33,57 +33,92 @@ class SetSleepTimeDetailsBloc
               _alarmRepository.bedtime.value,
           selectedTab: SleepTimeType.bedtime,
         )) {
-    _alarmRepository.bedtime.listen((value) {
-      _withInitialState((state) {
-        emit(state.copyWith(
-          bedtime: value,
-          sleepGoal: _calculateGoal(value, state.wakeupTime),
-        ));
-      });
-    });
-    _alarmRepository.wakeupTime.listen((value) {
-      _withInitialState((state) {
-        emit(state.copyWith(
-          wakeupTime: value,
-          sleepGoal: _calculateGoal(state.bedtime, value),
-        ));
-      });
-    });
-    _alarmRepository.remindToSleep.listen((value) {
-      _withInitialState((state) {
-        emit(state.copyWith(
-          remindToSleep: value,
-        ));
-      });
-    });
-    _alarmRepository.alarmEnabled.listen((value) {
-      _withInitialState((state) {
-        emit(state.copyWith(
-          alarmEnabled: value,
-        ));
-      });
-    });
-    _alarmRepository.vibrationEnabled.listen((value) {
-      _withInitialState((state) {
-        emit(state.copyWith(
-          vibrationEnabled: value,
-        ));
-      });
-    });
-    _alarmRepository.alarmVolume.listen((value) {
-      _withInitialState((state) {
-        emit(state.copyWith(
-          alarmVolume: value,
-        ));
-      });
-    });
-    _alarmRepository.snoozeTime.listen((value) {
-      _withInitialState((state) {
-        emit(state.copyWith(
-          snoozeTime: value,
-        ));
-      });
-    });
+    on<Started>(onStarted);
+  }
+
+  void onStarted(
+    Started event,
+    Emitter<SetSleepTimeDetailsState> emit,
+  ) async {
+    await Future.wait(
+      [
+        _alarmRepository.bedtime.forEach(
+          (value) {
+            _withInitialState(
+              (state) {
+                emit(state.copyWith(
+                  bedtime: value,
+                  sleepGoal: _calculateGoal(value, state.wakeupTime),
+                ));
+              },
+            );
+          },
+        ),
+        _alarmRepository.wakeupTime.forEach(
+          (value) {
+            _withInitialState(
+              (state) {
+                emit(state.copyWith(
+                  wakeupTime: value,
+                  sleepGoal: _calculateGoal(state.bedtime, value),
+                ));
+              },
+            );
+          },
+        ),
+        _alarmRepository.remindToSleep.forEach(
+          (value) {
+            _withInitialState(
+              (state) {
+                emit(state.copyWith(
+                  remindToSleep: value,
+                ));
+              },
+            );
+          },
+        ),
+        _alarmRepository.alarmEnabled.forEach(
+          (value) {
+            _withInitialState(
+              (state) {
+                emit(state.copyWith(
+                  alarmEnabled: value,
+                ));
+              },
+            );
+          },
+        ),
+        _alarmRepository.vibrationEnabled.forEach(
+          (value) {
+            _withInitialState((state) {
+              emit(state.copyWith(
+                vibrationEnabled: value,
+              ));
+            });
+          },
+        ),
+        _alarmRepository.alarmVolume.forEach((value) {
+          _withInitialState(
+            (state) {
+              emit(state.copyWith(
+                alarmVolume: value,
+              ));
+            },
+          );
+        }),
+        _alarmRepository.snoozeTime.forEach(
+          (value) {
+            _withInitialState(
+              (state) {
+                emit(state.copyWith(
+                  snoozeTime: value,
+                ));
+              },
+            );
+          },
+        )
+      ],
+    );
   }
 
   void _withInitialState(Function(Initial state) f) {
