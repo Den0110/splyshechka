@@ -22,25 +22,13 @@ class AlarmSleepingBloc extends Bloc<AlarmSleepingEvent, AlarmSleepingState>
           currentVolume: 3,
         )) {
     on<_Started>(_onStarted);
-
-    Stream.periodic(const Duration(seconds: 1)).listen(
-      (event) {
-        emit(
-          AlarmSleepingState.initial(
-            currentDate: DateTime.now(),
-            alarmTime: _getAlarmTime(_repository),
-            currentVolume: 3,
-          ),
-        );
-      },
-    );
   }
 
   void _onStarted(
     _Started event,
     Emitter<AlarmSleepingState> emit,
   ) async {
-    Future.wait(
+    await Future.wait(
       [
         _repository.wakeupTime.forEach((event) {
           if (state is _Initial) {

@@ -3,7 +3,7 @@ abstract class AppImages {
       "https://drive.google.com/uc?export=view&id=1gnHBRgL1gV0Q7ewRt8bywXeVVF4M_Fmu";
   static const String clownFace =
       "https://drive.google.com/uc?export=view&id=1lXj3z1-fONnscN-lPxaGenInu8r0qe7U";
-  
+
   static const String starFace =
       "https://i.ibb.co/qd0bzqF/removal-ai-tmp-64242f69e20a6.png";
   static const String moneyFace =
@@ -15,12 +15,17 @@ abstract class AppImages {
   static const String surprisedFace =
       "https://i.ibb.co/kcNB9Wm/removal-ai-tmp-6424303ebf816.png";
   static const String vomitFace =
-        "https://i.ibb.co/RNFsvHz/removal-ai-tmp-64243034a2964.png  ";
+      "https://i.ibb.co/RNFsvHz/removal-ai-tmp-64243034a2964.png  ";
   static const String embrassedFace =
       "https://i.ibb.co/xmtFKHC/removal-ai-tmp-6424302b089d6.png";
   static const String deadFace =
       "https://i.ibb.co/vcvrxX0/removal-ai-tmp-6424301fa1283.png";
+  static const String ahhFace =
+      "https://cdn141.picsart.com/328034044039211.png";
+  static const String yasikFace =
+      "https://i.pinimg.com/originals/68/e9/15/68e915b43f0795f0995d861cc749e62a.png";
+  static const String shamingFace =
+      "https://i.pinimg.com/originals/4c/50/fb/4c50fbf93541659e41e2180c1a277e89.png";
 
-      
   static const String pillow = "assets/images/pillow.png";
 }

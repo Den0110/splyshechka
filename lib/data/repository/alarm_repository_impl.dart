@@ -82,8 +82,8 @@ class AlarmRepositoryImpl extends AlarmRepository {
       loopAudio: true,
       vibrate: vibrationEnabled.value,
       fadeDuration: 3.0,
-      notificationTitle: 'This is the title',
-      notificationBody: 'This is the body',
+      notificationTitle: 'Лучший будильник на свете',
+      notificationBody: 'Пора просыпаться, засоня :)',
       enableNotificationOnKill: true,
     );
     await Alarm.set(alarmSettings: alarmSettings);

@@ -26,7 +26,7 @@ class Avatar extends StatelessWidget {
       ),
       child: Image.network(
         imageUrl,
-        fit: BoxFit.fill,
+        fit: BoxFit.cover,
       ),
     );
   }
