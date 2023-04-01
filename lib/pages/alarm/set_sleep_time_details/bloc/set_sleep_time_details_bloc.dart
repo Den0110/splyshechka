@@ -34,6 +34,7 @@ class SetSleepTimeDetailsBloc
           selectedTab: SleepTimeType.bedtime,
         )) {
     on<Started>(onStarted);
+    on<PageOpened>(_onPageOpened);
   }
 
   void onStarted(
@@ -121,6 +122,10 @@ class SetSleepTimeDetailsBloc
     );
   }
 
+  void _onPageOpened(PageOpened event, Emitter<SetSleepTimeDetailsState> emit) {
+    emit(state.copyWith(selectedTab: event.sleepTimeType));
+  }
+
   void _withInitialState(Function(Initial state) f) {
     if (state is Initial) {
       f(state as Initial);
@@ -174,7 +179,7 @@ class SetSleepTimeDetailsBloc
     produceSideEffect(NavBack());
   }
 
-  void cancelClicked() async {
+  void cancelClicked() {
     produceSideEffect(NavBack());
   }
 }

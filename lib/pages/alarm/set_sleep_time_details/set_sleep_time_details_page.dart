@@ -25,6 +25,9 @@ class SetSleepTimeDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<SetSleepTimeDetailsBloc>()
+        ..add(PageOpened(
+         sleepTimeType: initial,
+        ))
         ..add(
           const Started(),
         ),

@@ -23,18 +23,25 @@ class SetSleepTimePageCubit extends Cubit<SetSleepTimePageState> {
             wakeUpTime: _alarmRepository.wakeupTime.value,
           ),
         ) {
-    _alarmRepository.bedtime.listen((value) {
-      if (state is _SetSleepTimePageState) {
-        final sleepTimeState = state as _SetSleepTimePageState;
-        emit(sleepTimeState.copyWith(bedTime: value));
-      }
-    });
-    _alarmRepository.wakeupTime.listen((value) {
-      if (state is _SetSleepTimePageState) {
-        final sleepTimeState = state as _SetSleepTimePageState;
-        emit(sleepTimeState.copyWith(wakeUpTime: value));
-      }
-    });
+        }
+
+  void started() async {
+    await Future.wait(
+      [
+        _alarmRepository.bedtime.forEach((value) {
+          if (state is _SetSleepTimePageState) {
+            final sleepTimeState = state as _SetSleepTimePageState;
+            emit(sleepTimeState.copyWith(bedTime: value));
+          }
+        }),
+        _alarmRepository.wakeupTime.forEach((value) {
+          if (state is _SetSleepTimePageState) {
+            final sleepTimeState = state as _SetSleepTimePageState;
+            emit(sleepTimeState.copyWith(wakeUpTime: value));
+          }
+        }),
+      ],
+    );
   }
 
   void timeChanged({

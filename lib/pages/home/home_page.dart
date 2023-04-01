@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
           bottom: 16.h,
         ),
         child: BlocProvider(
-          create: (context) => getIt<SetSleepTimePageCubit>(),
+          create: (context) => getIt<SetSleepTimePageCubit>()..started(),
           child: Builder(builder: (context) {
             return Stack(
               children: [

@@ -23,8 +23,8 @@ class GoodMorningBloc extends Bloc<GoodMorningEvent, GoodMorningState> {
     on<Delayed>(onDelayed);
   }
 
-  onWokeUp<WokeUp>(WokeUp event, emit) {
-    Alarm.stop(42);
+  onWokeUp<WokeUp>(WokeUp event, emit) async {
+    await Alarm.stop(42);
     emitOnce(emit, WakeUp());
   }
 
