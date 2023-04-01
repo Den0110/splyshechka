@@ -5,6 +5,7 @@ import 'package:splyshechka/utils/app_icons.dart';
 import 'package:splyshechka/utils/app_text_styles.dart';
 import 'package:splyshechka/utils/date_formatter.dart';
 import 'package:splyshechka/widgets/buttons/large_button.dart';
+import 'package:splyshechka/widgets/clock/clock_widget.dart';
 import 'package:splyshechka/widgets/options_list/value_element.dart';
 import 'package:splyshechka/widgets/sleep_container/sleep_container.dart';
 import 'package:flutter/material.dart';
@@ -49,24 +50,8 @@ class AlarmSleepingPage extends StatelessWidget {
                     SizedBox(
                       height: 77.h,
                     ),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: timeString,
-                            style: AppTextStyles.alarmNumber.copyWith(
-                              color: AppColors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 17.h),
-                    Text(
-                      dateString,
-                      style: AppTextStyles.alarmSubtitle.copyWith(
-                        color: AppColors.white,
-                      ),
+                    const ClockWidget(
+                      color: AppColors.white,
                     ),
                     SizedBox(height: 38.h),
                     Padding(

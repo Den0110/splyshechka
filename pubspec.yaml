@@ -33,14 +33,11 @@ dependencies:
     sdk: flutter
   side_effect_bloc:
     path: side_effect_bloc
-  alarm:
-    path: alarm-main
 
   flutter_background_service:
     path: flutter_background_service/packages/flutter_background_service
 
   flutter_local_notifications: ^13.0.0
-
   progressive_time_picker: ^0.0.7
   flutter_time_picker_spinner: ^2.0.0
   intl: ^0.17.0
@@ -78,6 +75,7 @@ dependencies:
   # memory
   shared_preferences: ^2.0.15
   json_annotation: ^4.8.0
+  alarm: ^0.2.8
 
 dev_dependencies:
   flutter_test:

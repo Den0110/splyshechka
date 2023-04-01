@@ -12,6 +12,7 @@ import 'package:splyshechka/utils/app_text_styles.dart';
 import 'package:splyshechka/utils/date_formatter.dart';
 import 'package:splyshechka/utils/one_shot_bloc.dart';
 import 'package:splyshechka/widgets/buttons/large_button.dart';
+import 'package:splyshechka/widgets/clock/clock_widget.dart';
 
 class GoodMorningPage extends StatelessWidget {
   const GoodMorningPage({super.key});
@@ -24,7 +25,7 @@ class GoodMorningPage extends StatelessWidget {
         listener: (context, state) {
           state.whenOrNull(
             delay: () {
-               context.router.pop();
+              context.router.pop();
             },
             wakeUp: () {
               context.router.navigate(const AlarmResultRoute());
@@ -68,24 +69,8 @@ class GoodMorningPage extends StatelessWidget {
                         SizedBox(
                           height: 25.h,
                         ),
-                        RichText(
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: timeString,
-                                style: AppTextStyles.alarmNumber.copyWith(
-                                  color: AppColors.black,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 17.h,
-                        ),
-                        Text(
-                          dateString,
-                          style: AppTextStyles.alarmSubtitle,
+                        const ClockWidget(
+                          color: AppColors.black,
                         ),
                         SizedBox(
                           height: 146.h,
@@ -119,9 +104,7 @@ class GoodMorningPage extends StatelessWidget {
                           backgroundColor: AppColors.white,
                           shadowColor: AppColors.black,
                           onPressed: () {
-                            context
-                                .read<GoodMorningBloc>()
-                                .add(const WokeUp());
+                            context.read<GoodMorningBloc>().add(const WokeUp());
                           },
                         ),
                       ],
