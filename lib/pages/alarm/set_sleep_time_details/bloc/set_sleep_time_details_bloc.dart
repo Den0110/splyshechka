@@ -130,7 +130,8 @@ class SetSleepTimeDetailsBloc
     produceSideEffect(NavToSnooze());
   }
 
-  void okayClicked() {
+  void okayClicked() async {
+    await _alarmRepository.setAlarm();
     produceSideEffect(NavBack());
   }
 }

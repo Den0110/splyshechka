@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:splyshechka/data/repository/alarm_repository_impl.dart';
+import 'package:splyshechka/di/locator.dart';
 import 'package:splyshechka/navigation/auto_router.gr.dart';
 import 'package:splyshechka/pages/alarm/good_morning/bloc/good_morning_bloc.dart';
 import 'package:splyshechka/utils/app_colors.dart';
@@ -16,19 +18,15 @@ class GoodMorningPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => GoodMorningBloc(),
+      create: (context) => getIt<GoodMorningBloc>(),
       child: OneShotBlocConsumer<GoodMorningBloc, GoodMorningState>(
         listener: (context, state) {
           state.whenOrNull(
             delay: () {
-                 context.router.pushAndPopUntil(
-                const MainRoute(),
-                predicate: (_) => false,
-              );
-           //   context.router.navigate(const MainRoute());
+               context.router.pop();
             },
             wakeUp: () {
-              context.router.navigate(const MainRoute());
+              context.router.navigate(const AlarmResultRoute());
             },
           );
         },
@@ -122,7 +120,7 @@ class GoodMorningPage extends StatelessWidget {
                           onPressed: () {
                             context
                                 .read<GoodMorningBloc>()
-                                .add(const Delayed());
+                                .add(const WokeUp());
                           },
                         ),
                       ],

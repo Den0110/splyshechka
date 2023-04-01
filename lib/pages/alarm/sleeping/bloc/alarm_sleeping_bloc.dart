@@ -1,3 +1,4 @@
+import 'package:alarm/alarm.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -38,13 +39,26 @@ class AlarmSleepingBloc extends Bloc<AlarmSleepingEvent, AlarmSleepingState>
   void _onStarted(
     _Started event,
     Emitter<AlarmSleepingState> emit,
-  ) {
-    _repository.wakeupTime.stream.listen((event) {
-      if (state is _Initial) {
-        final initialState = state as _Initial;
-        emit(initialState.copyWith(alarmTime: _getAlarmTime(_repository)));
-      }
-    });
+  ) async {
+    Future.wait(
+      [
+        _repository.wakeupTime.forEach((event) {
+          if (state is _Initial) {
+            final initialState = state as _Initial;
+            emit(initialState.copyWith(alarmTime: _getAlarmTime(_repository)));
+          }
+        }),
+        Alarm.ringStream.stream.forEach(
+          (_) => produceSideEffect(AlarmSleepingCommand.navToResults()),
+        )
+      ],
+    );
+    // _repository.wakeupTime.stream.listen((event) {
+    //   if (state is _Initial) {
+    //     final initialState = state as _Initial;
+    //     emit(initialState.copyWith(alarmTime: _getAlarmTime(_repository)));
+    //   }
+    // });
   }
 
   static String _getAlarmTime(AlarmRepository repo) {

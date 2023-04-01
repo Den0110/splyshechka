@@ -1,4 +1,5 @@
 import 'package:alarm/alarm.dart';
+import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:splyshechka/di/locator.dart';
@@ -6,8 +7,11 @@ import 'package:splyshechka/navigation/auto_router.gr.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/utils/app_text_styles.dart';
 
+
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  //await AndroidAlarmManager.initialize();
   await Alarm.init(showDebugLogs: true);
   await initDependencies();
   runApp(MyApp());

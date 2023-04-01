@@ -27,4 +27,8 @@ abstract class AlarmRepository {
   void setAlarmVolume(double value);
 
   void setSnoozeTime(SnoozeTime value);
+
+  Future<void> setAlarm();
+
+  Future<void> snoozeAlarm();
 }

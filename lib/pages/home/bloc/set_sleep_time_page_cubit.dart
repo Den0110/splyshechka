@@ -50,21 +50,8 @@ class SetSleepTimePageCubit extends Cubit<SetSleepTimePageState> {
   }
 
   Future<void> sleepClicked() async {
-    int hour = _alarmRepository.wakeupTime.value.h;
-    int minutes = _alarmRepository.wakeupTime.value.m;
-    final alarmSettings = AlarmSettings(
-      id: 42,
-      dateTime: DateTime.now(),
-      assetAudioPath: 'assets/alarm.mp3',
-      loopAudio: true,
-      vibrate: true,
-      fadeDuration: 3.0,
-      notificationTitle: 'This is the title',
-      notificationBody: 'This is the body',
-      enableNotificationOnKill: true,
-    );
-    await Alarm.set(alarmSettings: alarmSettings);
     emitOnce(emit, NavToSleep());
+    await _alarmRepository.setAlarm();
   }
 
   void cancelClicked() {
