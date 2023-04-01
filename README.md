@@ -1,16 +1,10 @@
 # splyshechka
 
-A new Flutter project.
+*** Сон – неотъемлемая часть жизни человека! *** Сон необходим для восстановления потраченных сил и энергии, нервной и иммунной системы, нормализации обмена веществ, снижения риска развития многих заболеваний. Хронический недостаток сна, как и его избыток, оказывает отрицательное влияние на организм, поэтому каждый ответственный человек, который заботится о своем здоровье, должен следить за этим серьезным ежедневным процессом.
 
-## Getting Started
+## Наше мобильное приложение – Splyshecka – направлено, чтобы помочь вам устранить эти проблемы и не только.
 
-This project is a starting point for a Flutter application.
+-	Удобный, настраиваемый под ваши предпочтения будильник;
+-	Встроенный анализ цикла сна, определяющий его качество в процентном соотношении. Просчитывающий циркадные ритмы, быстрые и глубокие фазы, всего лишь основываясь на ваших биометрических данных, а также свете, звуке и движениях вокруг устройства; 
+-	А также специальный раздел с познавательным статьями, позволяющими узнать полезную информацию о своем организме.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
