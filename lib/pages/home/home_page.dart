@@ -37,7 +37,7 @@ class HomePage extends StatelessWidget {
                   listener: (context, state) {
                     if (state is NavToWentDetails) {
                       context.router.navigate(
-                        SetSleepTimeDetailsWentRoute(initial: state.initialTab),
+                        SetSleepTimeDetailsRoute(initial: state.initialTab),
                       );
                     } 
                     else if (state is NavToSleep) {
@@ -76,7 +76,7 @@ class HomePage extends StatelessWidget {
                                     onTap: () {
                                       BlocProvider.of<SetSleepTimePageCubit>(
                                               context)
-                                          .editWentRequested(SleepTimeType.bedtime);
+                                          .editRequested(SleepTimeType.bedtime);
                                     },
                                     icon: AppIcons.bedtime,
                                     title: "Заснуть в",
@@ -88,7 +88,7 @@ class HomePage extends StatelessWidget {
                                     onTap: () {
                                       BlocProvider.of<SetSleepTimePageCubit>(
                                               context)
-                                          .editWentRequested(SleepTimeType.alarm);
+                                          .editRequested(SleepTimeType.alarm);
                                     },
                                     icon: AppIcons.wakeUp,
                                     title: "Проснуться в",

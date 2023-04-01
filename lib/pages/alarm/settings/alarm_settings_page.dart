@@ -90,7 +90,7 @@ class AlarmSettingsPage extends StatelessWidget {
                           onPressed: () {
                             context
                                 .read<SetSleepTimeDetailsBloc>()
-                                .okayClicked();
+                                .cancelClicked();
                           },
                         ),
                       ],

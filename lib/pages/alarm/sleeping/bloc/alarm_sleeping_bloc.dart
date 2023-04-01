@@ -53,12 +53,6 @@ class AlarmSleepingBloc extends Bloc<AlarmSleepingEvent, AlarmSleepingState>
         )
       ],
     );
-    // _repository.wakeupTime.stream.listen((event) {
-    //   if (state is _Initial) {
-    //     final initialState = state as _Initial;
-    //     emit(initialState.copyWith(alarmTime: _getAlarmTime(_repository)));
-    //   }
-    // });
   }
 
   static String _getAlarmTime(AlarmRepository repo) {

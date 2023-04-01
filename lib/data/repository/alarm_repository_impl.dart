@@ -99,17 +99,17 @@ class AlarmRepositoryImpl extends AlarmRepository {
       millisecond: 0,
       microsecond: 0,
     );
-    // DateTime sleepTime = DateTime.now().copyWith(
-    //   hour: bedtime.value.h,
-    //   minute: bedtime.value.m,
-    //   second: 0,
-    //   millisecond: 0,
-    //   microsecond: 0,
-    // );
-    // if (sleepTime.compareTo(DateTime.now()) <= 0 ||
-    //     sleepTime.compareTo(alarm) > 0) {
-    //   alarm = alarm.copyWith(day: today + 1);
-    // }
+    DateTime sleepTime = DateTime.now().copyWith(
+      hour: bedtime.value.h,
+      minute: bedtime.value.m,
+      second: 0,
+      millisecond: 0,
+      microsecond: 0,
+    );
+    if (sleepTime.compareTo(DateTime.now()) <= 0 ||
+        sleepTime.compareTo(alarm) > 0) {
+      alarm = alarm.copyWith(day: today + 1);
+    }
     print(alarm);
     return alarm;
   }

@@ -138,4 +138,8 @@ class SetSleepTimeDetailsBloc
     await _alarmRepository.setAlarm();
     produceSideEffect(NavBack());
   }
+
+  void cancelClicked() async {
+    produceSideEffect(NavBack());
+  }
 }

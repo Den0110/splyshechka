@@ -13,8 +13,8 @@ import 'package:splyshechka/pages/alarm/set_sleep_time_details/model/sleep_time_
 import 'package:splyshechka/pages/alarm/set_sleep_time_details/widgets/sleep_time_options/alarm_options.dart';
 import 'package:splyshechka/pages/alarm/set_sleep_time_details/widgets/sleep_time_options/bedtime_options.dart';
 
-class SetSleepTimeDetailsWentPage extends StatelessWidget {
-  const SetSleepTimeDetailsWentPage({
+class SetSleepTimeDetailsPage extends StatelessWidget {
+  const SetSleepTimeDetailsPage({
     super.key,
     required this.initial,
   });
