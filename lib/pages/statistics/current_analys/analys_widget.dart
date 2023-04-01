@@ -20,16 +20,17 @@ class CurrentAnalysPage extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.0.w, vertical: 9.h),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             sleep.went_sleep.toRusFormat(),
             style: TextStyle(
               fontFamily: AppTextStyles.fontFamilyOpenSans,
-              fontSize: 23.sm,
+              fontSize: 23.sp,
               fontWeight: FontWeight.w600,
               color: const Color.fromRGBO(180, 180, 185, 1),
-              height: 23 / 23.sm,
+              height: 23.h / 23.sp,
             ),
           ),
           SizedBox(height: 10.h),
@@ -66,135 +67,126 @@ class CurrentAnalysPage extends StatelessWidget {
           SizedBox(
             height: 10.h,
           ),
-          SizedBox(
-            height: 180.h,
-            child: Row(
-              children: [
-                Expanded(
-                  child: AlarmResultContainer(
-                    title: "Качество",
-                    child: CircleFillIndicator(
-                      maxValue: 100,
-                      minValue: 0,
-                      value: sleep.quality.toDouble(),
-                      indicatorRadius: 67.r,
-                      widthIndicator: 15.r,
-                      unit: "%",
-                      fontSizeText: 37,
-                      fontSizeUntil: 22,
-                      textColor: AppColors.white,
+          Row(
+            children: [
+              Expanded(
+                child: AlarmResultContainer(
+                  title: "Качество",
+                  child: CircleFillIndicator(
+                    maxValue: 100,
+                    minValue: 0,
+                    value: sleep.quality.toDouble(),
+                    indicatorRadius: 67.r,
+                    widthIndicator: 15.r,
+                    unit: "%",
+                    fontSizeText: 37,
+                    fontSizeUntil: 22,
+                    textColor: AppColors.white,
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 10.0.w,
+              ),
+              Expanded(
+                child: AlarmResultContainer(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  padding: EdgeInsets.only(
+                    left: 16.r,
+                    top: 16.r,
+                    right: 16.r,
+                    bottom: 31.r,
+                  ),
+                  child: Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Длительность",
+                          style: AppTextStyles.alarmSubtitleStyle,
+                        ),
+                        SizedBox(
+                          height: 9.h,
+                        ),
+                        Text(
+                          "${sleep.slept_during.hour}ч ${sleep.slept_during.minute}мин",
+                          style: AppTextStyles.alarmDurationStyle,
+                        ),
+                        Text(
+                          "Спал всего",
+                          style: AppTextStyles.alarmSubtitleStyle,
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Text(
+                          "${sleep.time_spent_in_bed.hour}ч ${sleep.time_spent_in_bed.minute}мин",
+                          style: AppTextStyles.alarmDurationStyle,
+                        ),
+                        Text(
+                          "В постели",
+                          style: AppTextStyles.alarmSubtitleStyle,
+                        ),
+                      ],
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: 10.0.w,
-                ),
-                Expanded(
-                  child: AlarmResultContainer(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    padding: EdgeInsets.only(
-                      left: 16.r,
-                      top: 16.r,
-                      right: 16.r,
-                      bottom: 31.r,
-                    ),
-                    child: Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Длительность",
-                            style: AppTextStyles.alarmSubtitleStyle,
-                          ),
-                          SizedBox(
-                            height: 9.h,
-                          ),
-                          Text(
-                            "${sleep.slept_during.hour}ч ${sleep.slept_during.minute}мин",
-                            style: AppTextStyles.alarmDurationStyle,
-                          ),
-                          Text(
-                            "Спал всего",
-                            style: AppTextStyles.alarmSubtitleStyle,
-                          ),
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                          Text(
-                            "${sleep.time_spent_in_bed.hour}ч ${sleep.time_spent_in_bed.minute}мин",
-                            style: AppTextStyles.alarmDurationStyle,
-                          ),
-                          Text(
-                            "В постели",
-                            style: AppTextStyles.alarmSubtitleStyle,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
           SizedBox(
             height: 10.h,
           ),
-          SizedBox(
-            height: 140.h,
-            child: AlarmResultContainer(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              padding: EdgeInsets.only(
-                top: 17.h,
-                left: 30.h,
-                right: 30.h,
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CategoryWithIcon(
-                          title: "Отправился спать",
-                          icon: AppIcons.wentToBed,
-                          value:
-                              "${sleep.went_sleep.hour}:${sleep.went_sleep.minute}",
-                        ),
-                        SizedBox(height: 25.h),
-                        CategoryWithIcon(
-                          title: "Заснул после",
-                          icon: AppIcons.asleepAfter,
-                          value:
-                              "${sleep.fell_asleep_during.minute + sleep.fell_asleep_during.hour * 60} мин",
-                        ),
-                      ],
+          AlarmResultContainer(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            padding: EdgeInsets.only(
+              top: 17.h,
+              left: 30.h,
+              right: 30.h,
+            ),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CategoryWithIcon(
+                      title: "Отправился спать",
+                      icon: AppIcons.wentToBed,
+                      value:
+                          "${sleep.went_sleep.hour}:${sleep.went_sleep.minute}",
                     ),
-                  ),
-                  SizedBox(
-                    width: 26.w,
-                  ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CategoryWithIcon(
-                          title: "Проснулся",
-                          icon: AppIcons.wokeUp,
-                          value:
-                              "${sleep.waked_up_at.hour}:${sleep.waked_up_at.minute}",
-                        ),
-                        SizedBox(height: 25.h),
-                        CategoryWithIcon(
-                          title: "Шум",
-                          icon: AppIcons.noise,
-                          value: "${sleep.noise} дб",
-                        ),
-                      ],
+                    CategoryWithIcon(
+                      title: "Проснулся",
+                      icon: AppIcons.wokeUp,
+                      value:
+                          "${sleep.waked_up_at.hour}:${sleep.waked_up_at.minute}",
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CategoryWithIcon(
+                      title: "Заснул после",
+                      icon: AppIcons.asleepAfter,
+                      value:
+                          "${sleep.fell_asleep_during.minute + sleep.fell_asleep_during.hour * 60} мин",
+                    ),
+                    CategoryWithIcon(
+                      title: "Шум",
+                      icon: AppIcons.noise,
+                      value: "${sleep.noise} дб",
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 15.h,
+                )
+              ],
             ),
           ),
           SizedBox(
