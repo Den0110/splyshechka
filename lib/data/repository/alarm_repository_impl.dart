@@ -106,8 +106,11 @@ class AlarmRepositoryImpl extends AlarmRepository {
       millisecond: 0,
       microsecond: 0,
     );
-    if (sleepTime.compareTo(DateTime.now()) <= 0 ||
-        sleepTime.compareTo(alarm) > 0) {
+    if (sleepTime.compareTo(alarm) > 0) {
+      alarm = alarm.copyWith(day: today + 1);
+      today = today + 1;
+    }
+    if (sleepTime.compareTo(DateTime.now()) <= 0) {
       alarm = alarm.copyWith(day: today + 1);
     }
     print(alarm);

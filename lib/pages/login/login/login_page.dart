@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
     final TextEditingController _passwordController = TextEditingController();
 
     return BlocProvider(
-      create: (context) => getIt<LoginBloc>(),
+      create: (context) => getIt<LoginBloc>()..add(const Started()),
       child: BlocSideEffectConsumer<LoginBloc, LoginBloc, LoginState,
           LoginCommand>(
         listener: (context, sideEffect) {

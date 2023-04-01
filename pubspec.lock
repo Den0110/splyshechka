@@ -12,10 +12,9 @@ packages:
   alarm:
     dependency: "direct main"
     description:
-      name: alarm
-      sha256: c57664ba9d5720ed90c4de72a14d903804d9bd7e3d59d47c3f9522bb306206a5
-      url: "https://pub.dev"
-    source: hosted
+      path: alarm-main
+      relative: true
+    source: path
     version: "0.2.8"
   analyzer:
     dependency: transitive
@@ -26,7 +25,7 @@ packages:
     source: hosted
     version: "5.10.0"
   android_alarm_manager_plus:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: android_alarm_manager_plus
       sha256: "8647cc5f9339f3955a2bd9ec40e0f10c3a80049f31f80b3ffdd87e07bb73fce2"
