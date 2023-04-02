@@ -8,4 +8,9 @@
 -  Встроенный анализ цикла сна, определяющий его качество в процентном соотношении. Просчитывающий циркадные ритмы, быстрые и глубокие фазы, всего лишь основываясь на ваших биометрических данных, а также свете, звуке и движениях вокруг устройства; 
 -  А также специальный раздел с познавательным статьями, позволяющими узнать полезную информацию о своем организме.
 
-[Ссылка на репозиторий BackEnd](https://github.com/Den0110/splyshechka_api)
+======================================= [Ссылка на репозиторий BackEnd](https://github.com/Den0110/splyshechka_api) =======================================
+
+![alt text](https://drive.google.com/file/d/1CeQkSAMVX0itkdu8F9inBinrWsiAB26l/view?usp=share_link)
+![alt text](https://drive.google.com/file/d/1Dwz0ZPIXLhmrNsUP4YUD3aGZH_8av5SV/view?usp=share_link)
+![alt text](https://drive.google.com/file/d/11cTd0iTwUz2swlTd3CPIOl42k6xcO96H/view?usp=share_link)
+![alt text](https://drive.google.com/file/d/1KbwMeZMm-h1QC2vPRFNUfKBZfZpbpWKL/view?usp=share_link)
