@@ -63,20 +63,20 @@ class AlarmSettingsPage extends StatelessWidget {
                       SizedBox(height: 30.h),
                       SleepGoal(goal: state.sleepGoal),
                       SizedBox(height: 30.h),
-                      SleepContainer(
-                        child: SwitchElement(
-                          title: "Будильник",
-                          isActive: true,
-                          value: state.alarmEnabled,
-                          onChanged: (bool value) {
-                            context
-                                .read<AlarmSettingsBloc>()
-                                .alarmSwitched(value);
-                          },
-                        ),
-                      ),
-                      SizedBox(height: 10.h),
-                      if (state.alarmEnabled) ...[
+                      // SleepContainer(
+                      //   child: SwitchElement(
+                      //     title: "Будильник",
+                      //     isActive: true,
+                      //     value: state.alarmEnabled,
+                      //     onChanged: (bool value) {
+                      //       context
+                      //           .read<AlarmSettingsBloc>()
+                      //           .alarmSwitched(value);
+                      //     },
+                      //   ),
+                      // ),
+                      // SizedBox(height: 10.h),
+                      // if (state.alarmEnabled) ...[
                         SleepContainer(
                           child: Column(
                             children: [
@@ -116,7 +116,7 @@ class AlarmSettingsPage extends StatelessWidget {
                             ],
                           ),
                         ),
-                      ],
+                    //  ],
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: Padding(
