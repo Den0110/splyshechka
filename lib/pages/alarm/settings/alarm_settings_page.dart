@@ -102,7 +102,6 @@ class AlarmSettingsPage extends StatelessWidget {
                               //         .volumeChanged(value);
                               //   },
                               // ),
-
                               ValueElement(
                                 title: "Отложить",
                                 isActive: true,

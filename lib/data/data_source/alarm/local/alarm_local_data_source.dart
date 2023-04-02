@@ -26,7 +26,7 @@ class AlarmLocalDataSource {
   bool get remindToSleep => _prefs.getBool(remindToSleepKey) ?? false;
   set remindToSleep(bool value) => _prefs.setBool(remindToSleepKey, value);
 
-  bool get alarmEnabled => _prefs.getBool(alarmEnabledKey) ?? false;
+  bool get alarmEnabled => _prefs.getBool(alarmEnabledKey) ?? true;
   set alarmEnabled(bool value) => _prefs.setBool(alarmEnabledKey, value);
 
   bool get vibrationEnabled => _prefs.getBool(vibrationEnabledKey) ?? false;
