@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:rxdart/subjects.dart';
+import 'package:splyshechka/data/model/sleep/sleep_dto.dart';
 import 'package:splyshechka/domain/entities/profile/sleep_avatar.dart';
 import 'package:splyshechka/domain/entities/profile/sleep_user.dart';
 import 'package:splyshechka/models/gender/gender.dart';
 
 abstract class UserRepository {
   final currentUser = BehaviorSubject<SleepUser>();
+  final sleepDtoStream = BehaviorSubject<bool>();
 
   SleepUser get lastCurrentUser =>
       currentUser.valueOrNull ??
@@ -25,6 +27,7 @@ abstract class UserRepository {
       );
 
   Future<void> updateUser(SleepUser user);
+  Future<void> updateSleepDto(bool sleepDto);
   Future<void> sendEmailCode();
   Future<void> updatePassword(String password, String code);
 }

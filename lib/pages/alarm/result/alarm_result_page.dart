@@ -17,7 +17,8 @@ class AlarmResultPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<AlarmResultPageBloc>()..add(const LoadStarted()),
+      create: (context) =>
+          getIt<AlarmResultPageBloc>()..add(const LoadStarted()),
       child: BlocBuilder<AlarmResultPageBloc, AlarmResultPageState>(
         builder: (context, state) {
           return Scaffold(
@@ -25,12 +26,17 @@ class AlarmResultPage extends StatelessWidget {
               child: Stack(
                 children: [
                   state.when(
-                    initial: () => const Center(
-                      child: CircularProgressIndicator(),
+                    initial: () => Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      ],
                     ),
                     loaded: (filePath) => SingleChildScrollView(
                       child: Padding(
-                        padding: EdgeInsets.only(bottom: 86.h),
+                        padding: EdgeInsets.only(bottom: 96.h),
                         child: SleepAnalysis(filePath: filePath),
                       ),
                     ),

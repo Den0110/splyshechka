@@ -6,6 +6,7 @@ import 'package:injectable/injectable.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:splyshechka/data/data_source/user/remote/new_user_remote_data_source.dart';
+import 'package:splyshechka/domain/repository/user_repository.dart';
 
 part 'alarm_result_page_bloc.freezed.dart';
 
@@ -17,8 +18,10 @@ part 'alarm_result_page_state.dart';
 class AlarmResultPageBloc
     extends Bloc<AlarmResultPageEvent, AlarmResultPageState> {
   final SharedPreferences _prefs;
+  final UserRepository _userRepository;
+
   AlarmResultPageBloc(
-    this._prefs,
+    this._prefs, this._userRepository,
   ) : super(const AlarmResultPageState.initial()) {
     on<LoadStarted>(_onStarted);
   }
@@ -40,6 +43,7 @@ class AlarmResultPageBloc
     files.sort();
 
     _prefs.setInt("lastSleepTime", DateTime.now().millisecondsSinceEpoch);
+    _userRepository.updateSleepDto(true);
 
     emit(AlarmResultPageState.loaded(filePath: files.last));
   }

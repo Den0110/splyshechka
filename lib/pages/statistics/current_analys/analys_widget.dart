@@ -110,7 +110,7 @@ class CurrentAnalysPage extends StatelessWidget {
                           height: 9.h,
                         ),
                         Text(
-                          "${getHours(sleep.slept_during)}ч ${getMinutes(sleep.slept_during)}мин",
+                          "${getHours(sleep.slept_during)} ч ${getMinutes(sleep.slept_during)} мин",
                           style: AppTextStyles.alarmDurationStyle,
                         ),
                         Text(

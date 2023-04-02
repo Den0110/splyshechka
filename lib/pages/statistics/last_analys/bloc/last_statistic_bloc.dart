@@ -34,6 +34,7 @@ class LastStatisticBloc extends Bloc<LastStatisticEvent, LastStatisticState>
     _Started event,
     Emitter<LastStatisticState> emit,
   ) async {
+     _userRepository.updateSleepDto(false);
     Directory dir = await getApplicationDocumentsDirectory();
     final pathSegs = dir.uri.pathSegments.where((e) => e.isNotEmpty).toList();
     pathSegs.removeLast();

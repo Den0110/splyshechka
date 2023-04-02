@@ -62,7 +62,7 @@ class AnalysisCard extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.only(left: 4.w),
                           child: Text(
-                            "Cпал всего: $sleepAll",
+                            "Cпал всего: ${sleepAll}",
                             style: AppTextStyles.clockLetterStyle.copyWith(
                                 color: AppColors.white,
                                 fontSize: 16.sp,

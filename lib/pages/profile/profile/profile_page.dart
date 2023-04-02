@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:splyshechka/di/locator.dart';
+import 'package:splyshechka/models/gender/gender.dart';
 import 'package:splyshechka/navigation/auto_router.gr.dart';
 import 'package:splyshechka/pages/profile/edit_avatar/avatar.dart';
 import 'package:splyshechka/pages/profile/profile/bloc/profile_bloc.dart';
@@ -84,18 +85,45 @@ class ProfilePage extends StatelessWidget {
                         child: Column(
                           children: [
                             ValueElement(
-                              title: "Аудиозаписи",
-                              isActive: false,
-                              onTap: () {
-                                context.read<ProfileBloc>().add(
-                                      const ProfileEvent.recordsPressed(),
-                                    );
-                              },
+                              title: "Email",
+                              value: user.email,
+                              isActive: true,
+                            ),
+                            ValueElement(
+                              title: "Имя",
+                              value: user.fullName,
+                              isActive: true,
+                            ),
+                            ValueElement(
+                              title: "Пол",
+                              value: user.gender.getName,
+                              isActive: true,
+                            ),
+                            ValueElement(
+                              title: "Пароль",
+                              value: "Установлен",
+                              isActive: true,
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(height: 10.h),
+                      // SizedBox(height: 35.h),
+                      // SleepContainer(
+                      //   child: Column(
+                      //     children: [
+                      //       ValueElement(
+                      //         title: "Аудиозаписи",
+                      //         isActive: false,
+                      //         onTap: () {
+                      //           context.read<ProfileBloc>().add(
+                      //                 const ProfileEvent.recordsPressed(),
+                      //               );
+                      //         },
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
+                      // SizedBox(height: 10.h),
                       // SleepContainer(
                       //   child: Column(
                       //     children: [

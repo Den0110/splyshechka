@@ -29,16 +29,38 @@ class SleepAnalysisBloc extends Bloc<SleepAnalysisEvent, SleepAnalysisState> {
     this._prefs,
     this._dataSource,
     this._userRepository,
-  ) : super(const SleepAnalysisState.loading()) {
-    on<Started>((event, emit) async {
-      try {
-        final lastRecord = File(event.filePath);
-        final contents = await lastRecord.readAsString();
-        emit(await _parseSleepData(contents));
-      } catch (e) {
-        debugPrint(e.toString());
-      }
-    });
+  ) : super(SleepAnalysisState.loading()) {
+    on<Pushed>(_onPushed);
+    on<Started>(_onStarted);
+    // on<Started>((event, emit) async {
+    //   try {
+    //     final lastRecord = File(event.filePath);
+    //     final contents = await lastRecord.readAsString();
+    //     emit(await _parseSleepData(contents));
+    //   } catch (e) {
+    //     debugPrint(e.toString());
+    //   }
+    // });
+  }
+
+  Future<void> _onStarted(
+    Started event,
+    Emitter<SleepAnalysisState> emit,
+  ) async {
+    try {
+      final lastRecord = File(event.filePath);
+      final contents = await lastRecord.readAsString();
+      emit(await _parseSleepData(contents));
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  Future<void> _onPushed(
+    Pushed event,
+    Emitter<SleepAnalysisState> emit,
+  ) async {
+
   }
 
   Future<SleepAnalysisState> _parseSleepData(String content) async {
@@ -233,19 +255,22 @@ class SleepAnalysisBloc extends Bloc<SleepAnalysisEvent, SleepAnalysisState> {
 
     final averageNoise = decibelSum / decibelCount;
 
-    try {
+    SleepDto sleepDto = SleepDto(
+      noise: averageNoise.toInt(),
+      quality: averageQuality,
+      went_sleep: wentSleepAt,
+      waked_up_at: awakeDateTime,
+      slept_during: toBack(totalSleepTime),
+      fell_asleep_during: asleepAfterTime.h * 60 + asleepAfterTime.m,
+      time_spent_in_bed: toBack(totalSleepTime - asleepAfterTime),
+    );
+
+    if (_userRepository.sleepDtoStream.value) {
       await _dataSource.addSleep(
-          _userRepository.currentUser.value.token,
-          SleepDto(
-            noise: averageNoise.toInt(),
-            quality: averageQuality,
-            went_sleep: wentSleepAt,
-            waked_up_at: awakeDateTime,
-            slept_during: toBack(totalSleepTime),
-            fell_asleep_during: asleepAfterTime.h*60+asleepAfterTime.m,
-            time_spent_in_bed: toBack(totalSleepTime - asleepAfterTime),
-          ));
-    } catch (e) {}
+        _userRepository.currentUser.value.token,
+        sleepDto,
+      );
+    }
 
     return SleepAnalysisState.loaded(
       wentToBed: SleepTime(h: wentSleepAt.hour, m: wentSleepAt.minute),

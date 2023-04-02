@@ -144,18 +144,25 @@ int getHours(double n) {
 
 int getMinutes(double n) {
   var s = n;
-  return int.parse(
-    s.toString().split('.')[1]
-  );
+  return int.parse(s.toString().split('.')[1]);
 }
 
-double toBack(SleepTime time)
-{
+String toHours(int n) {
+  var s = n.toString();
+  return s.length == 1 ? "0" + s : s;
+}
+
+String toMinutes(int n) {
+  var s = n.toString();
+  return s.length == 1 ? "0" + s : s;
+}
+
+double toBack(SleepTime time) {
   double res = time.h + 0;
-  if (time.m<10) {
-    res+= time.m*0.1;
+  if (time.m < 10) {
+    res += time.m * 0.1;
   } else {
-    res+=time.m*0.01;
+    res += time.m * 0.01;
   }
   return res;
 }

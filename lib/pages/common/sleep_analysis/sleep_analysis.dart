@@ -128,10 +128,11 @@ class SleepAnalysis extends StatelessWidget {
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       SizedBox(
-                                        height: 20.h,
+                                        height: 10.h,
                                       ),
                                       Text(
                                         "${state.totalSleep.h} ч ${state.totalSleep.m} мин",
@@ -145,7 +146,7 @@ class SleepAnalysis extends StatelessWidget {
                                         style: AppTextStyles.alarmSubtitleStyle,
                                       ),
                                       SizedBox(
-                                        height: 20.h,
+                                        height: 10.h,
                                       ),
                                       Text(
                                         "${state.inBed.h} ч ${state.inBed.m} мин",
@@ -169,8 +170,7 @@ class SleepAnalysis extends StatelessWidget {
                       SizedBox(
                         height: 10.h,
                       ),
-                      SizedBox(
-                        height: 140.h,
+                      IntrinsicHeight(
                         child: AlarmResultContainer(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           padding: EdgeInsets.only(
@@ -178,49 +178,47 @@ class SleepAnalysis extends StatelessWidget {
                             left: 30.h,
                             right: 30.h,
                           ),
-                          child: Row(
+                          child: Column(
                             children: [
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    CategoryWithIcon(
-                                      title: "Отправился спать",
-                                      icon: AppIcons.wentToBed,
-                                      value:
-                                          state.wentToBed.toStringWithColon(),
-                                    ),
-                                    SizedBox(height: 25.h),
-                                    CategoryWithIcon(
-                                      title: "Заснул в течение",
-                                      icon: AppIcons.asleepAfter,
-                                      value:
-                                          "${state.asleepAfter.m + state.asleepAfter.h * 60} мин",
-                                    ),
-                                  ],
-                                ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  CategoryWithIcon(
+                                    title: "Отправился спать",
+                                    icon: AppIcons.wentToBed,
+                                    value: state.wentToBed.toStringWithColon(),
+                                  ),
+                                  CategoryWithIcon(
+                                    title: "Проснулся",
+                                    icon: AppIcons.wokeUp,
+                                    value: state.wokeUp.toStringWithColon(),
+                                  ),
+                                ],
                               ),
                               SizedBox(
-                                width: 26.w,
+                                height: 20.h,
                               ),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    CategoryWithIcon(
-                                      title: "Проснулся в",
-                                      icon: AppIcons.wokeUp,
-                                      value: state.wokeUp.toStringWithColon(),
-                                    ),
-                                    SizedBox(height: 25.h),
-                                    CategoryWithIcon(
-                                      title: "Шум",
-                                      icon: AppIcons.noise,
-                                      value: "${state.noise} дб",
-                                    ),
-                                  ],
-                                ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  CategoryWithIcon(
+                                    title: "Заснул после",
+                                    icon: AppIcons.asleepAfter,
+                                    value:
+                                        "${state.asleepAfter.m + state.asleepAfter.h * 60} мин",
+                                  ),
+                                  CategoryWithIcon(
+                                    title: "Шум",
+                                    icon: AppIcons.noise,
+                                    value: "${state.noise} дб",
+                                  ),
+                                ],
                               ),
+                              SizedBox(
+                                height: 15.h,
+                              )
                             ],
                           ),
                         ),
