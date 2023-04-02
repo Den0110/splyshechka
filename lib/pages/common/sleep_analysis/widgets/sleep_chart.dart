@@ -4,19 +4,19 @@ import 'package:splyshechka/utils/app_colors.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class SleepChart extends StatelessWidget {
-  final List<int> data;
+  final List<int> sleepRecords;
   final List<String> labels;
 
   SleepChart({
     Key? key,
-    required this.data,
+    required this.sleepRecords,
     required this.labels,
   }) : super(key: key);
 
   List<SplineAreaSeries<int, String>> _getDataSeries() {
     return <SplineAreaSeries<int, String>>[
       SplineAreaSeries<int, String>(
-        dataSource: data,
+        dataSource: sleepRecords,
         xValueMapper: (int price, int index) => labels[index],
         yValueMapper: (int price, _) => price,
         markerSettings: const MarkerSettings(isVisible: false),
@@ -31,7 +31,6 @@ class SleepChart extends StatelessWidget {
             Color.fromRGBO(160, 230, 240, 1.0),
           ],
         ),
-        // width: 1.r,
       ),
     ];
   }
@@ -98,9 +97,10 @@ class SleepChart extends StatelessWidget {
                   maximumLabels: 12,
                   axisLabelFormatter: (AxisLabelRenderDetails details) {
                     return ChartAxisLabel(
-                        (details.text == labels.first ? '          ' : '') +
-                            details.text,
-                        labelsStyle.copyWith(height: 10.h / 10.sp));
+                      (details.text == labels.first ? '          ' : '') +
+                          details.text,
+                      labelsStyle.copyWith(height: 10.h / 10.sp),
+                    );
                   },
                   majorTickLines: const MajorTickLines(width: 0),
                   majorGridLines: const MajorGridLines(

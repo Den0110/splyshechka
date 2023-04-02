@@ -83,6 +83,8 @@ public class Recorder {
                     data.append(noiseModel.getEvent());
                     data.append(" ");
                     data.append(noiseModel.getIntensity());
+                    data.append(" ");
+                    data.append(noiseModel.getDecibel().intValue());
 
                     data.append(";");
                     try {

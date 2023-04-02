@@ -5,7 +5,7 @@ import 'package:splyshechka/di/locator.dart';
 import 'package:splyshechka/pages/alarm/result/widgets/category_with_icon.dart';
 import 'package:splyshechka/pages/alarm/result/widgets/value_with_icon.dart';
 import 'package:splyshechka/pages/common/sleep_analysis/bloc/sleep_analysis_bloc.dart';
-import 'package:splyshechka/pages/common/sleep_analysis/widgets/proceeds_chart.dart';
+import 'package:splyshechka/pages/common/sleep_analysis/widgets/sleep_chart.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/utils/app_icons.dart';
 import 'package:splyshechka/utils/app_text_styles.dart';
@@ -28,21 +28,21 @@ class SleepAnalysis extends StatelessWidget {
       child: BlocBuilder<SleepAnalysisBloc, SleepAnalysisState>(
           builder: (context, state) {
         return Column(children: [
-          InkWell(
-            child: Padding(
-              padding: EdgeInsets.all(16.r),
-              child: const Text(
-                "Reload",
-                style: TextStyle(
-                  fontSize: 16,
-                  color: AppColors.purple,
-                ),
-              ),
-            ),
-            onTap: () => context
-                .read<SleepAnalysisBloc>()
-                .add(SleepAnalysisEvent.started(filePath)),
-          ),
+          // InkWell(
+          //   child: Padding(
+          //     padding: EdgeInsets.all(16.r),
+          //     child: const Text(
+          //       "Reload",
+          //       style: TextStyle(
+          //         fontSize: 16,
+          //         color: AppColors.purple,
+          //       ),
+          //     ),
+          //   ),
+          //   onTap: () => context
+          //       .read<SleepAnalysisBloc>()
+          //       .add(SleepAnalysisEvent.started(filePath)),
+          // ),
           state.map(
               loading: (_) => const CircularProgressIndicator(),
               loaded: (state) {
@@ -75,7 +75,7 @@ class SleepAnalysis extends StatelessWidget {
                               children: [
                                 ValueWithIcon(
                                   icon: AppIcons.moon,
-                                  title: "-${state.totalSleep.h} ч",
+                                  title: "${state.totalSleep.h} ч",
                                 ),
                               ],
                             ),
@@ -232,7 +232,7 @@ class SleepAnalysis extends StatelessWidget {
                         child: SizedBox(
                           height: 201.h,
                           child: SleepChart(
-                            data: state.chartData,
+                            sleepRecords: state.chartSleepData,
                             labels: state.chartLabels,
                           ),
                         ),

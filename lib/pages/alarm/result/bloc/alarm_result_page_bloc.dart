@@ -2,7 +2,9 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'alarm_result_page_bloc.freezed.dart';
 
@@ -10,9 +12,11 @@ part 'alarm_result_page_event.dart';
 
 part 'alarm_result_page_state.dart';
 
+@injectable
 class AlarmResultPageBloc
     extends Bloc<AlarmResultPageEvent, AlarmResultPageState> {
-  AlarmResultPageBloc() : super(const AlarmResultPageState.initial()) {
+  final SharedPreferences _prefs;
+  AlarmResultPageBloc(this._prefs) : super(const AlarmResultPageState.initial()) {
     on<LoadStarted>(_onStarted);
   }
 
@@ -31,6 +35,9 @@ class AlarmResultPageBloc
         .where((e) => e.contains('recording') && e.endsWith('txt'))
         .toList();
     files.sort();
+
+    _prefs.setInt("lastSleepTime", DateTime.now().millisecondsSinceEpoch);
+
     emit(AlarmResultPageState.loaded(filePath: files.last));
   }
 }

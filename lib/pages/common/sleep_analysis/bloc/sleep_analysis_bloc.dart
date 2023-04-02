@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:splyshechka/domain/entities/alarm/sleep_time.dart';
 
 part 'sleep_analysis_bloc.freezed.dart';
@@ -16,7 +17,9 @@ part 'sleep_analysis_state.dart';
 
 @injectable
 class SleepAnalysisBloc extends Bloc<SleepAnalysisEvent, SleepAnalysisState> {
-  SleepAnalysisBloc() : super(const SleepAnalysisState.loading()) {
+  final SharedPreferences _prefs;
+
+  SleepAnalysisBloc(this._prefs) : super(const SleepAnalysisState.loading()) {
     on<Started>((event, emit) async {
       try {
         final lastRecord = File(event.filePath);
@@ -32,10 +35,13 @@ class SleepAnalysisBloc extends Bloc<SleepAnalysisEvent, SleepAnalysisState> {
     final parts = content.split(";").toList();
     parts.removeWhere((e) => e.isEmpty);
 
-    final p = parts.sublist(1);
-    parts.addAll(List.generate(2000, (index) => p).expand((i) => i).toList());
+    // final p = parts.sublist(1);
+    // parts.addAll(List.generate(2000, (index) => p).expand((i) => i).toList());
 
     String start = parts[0];
+
+    final wentSleepAt =
+        DateTime.fromMillisecondsSinceEpoch((int.tryParse(start) ?? 0) * 1000);
 
     final lightStageEntries = <Entry>[];
 
@@ -63,20 +69,33 @@ class SleepAnalysisBloc extends Bloc<SleepAnalysisEvent, SleepAnalysisState> {
     int dawnLight = 0;
     int dayLight = 0;
 
+    Duration? asleepAfter;
+    int asleepCounter = 0;
+
     final lightsIntensities = [];
+
+    int decibelSum = 0;
+    int decibelCount = 0;
 
     for (int i = 2; i < parts.length; i++) {
       final values = parts[i].split(" ");
       j++;
+      asleepCounter++;
       if (values[1] == "0") {
         sleepEvents++;
       }
       if (values[1] == "1") {
         snoreEvents++;
+        asleepCounter = 0;
       }
       if (values[1] == "2") {
         movementEvents++;
         movements++;
+        asleepCounter = 0;
+      }
+      //after 5 min
+      if (asleepAfter == null && asleepCounter > 60 * 5 / 5) {
+        asleepAfter = Duration(seconds: 5 * i);
       }
       int lightIntensity = int.tryParse(values[0]) ?? 0;
       if (lightIntensity <= 20) {
@@ -88,6 +107,11 @@ class SleepAnalysisBloc extends Bloc<SleepAnalysisEvent, SleepAnalysisState> {
       }
 
       lightsIntensities.add(lightIntensity);
+
+      if (int.tryParse(values[3]) != null) {
+        decibelSum += int.tryParse(values[3]) ?? 0;
+        decibelCount++;
+      }
 
       if (i % 300 == 0) {
         // Add the movement interval
@@ -157,7 +181,10 @@ class SleepAnalysisBloc extends Bloc<SleepAnalysisEvent, SleepAnalysisState> {
       qualityPhases = qualityPhases - translate(delta, 0, 4, 0, 1);
     }
 
-    final hours = parts.length.toDouble() / (0.1 * 60 * 60);
+    final sleepUnix = _prefs.getInt('lastSleepTime') ?? DateTime.now().millisecondsSinceEpoch;
+    final awakeDateTime = DateTime.fromMillisecondsSinceEpoch(sleepUnix);
+    final sleepTime = awakeDateTime.difference(wentSleepAt);
+    final hours = sleepTime.inMinutes / 60;
     double qualitySleep = translate(hours, 0, max(hours, 7), 0, 1);
 
     int averageQuality =
@@ -185,15 +212,26 @@ class SleepAnalysisBloc extends Bloc<SleepAnalysisEvent, SleepAnalysisState> {
     debugPrint(
         "nightLight=$nightLight, dawnLight=$dawnLight, dayLight$dawnLight");
 
+    final asleepAfterTime = SleepTime(
+      h: asleepAfter?.inHours ?? 0,
+      m: (asleepAfter?.inMinutes ?? 0) % 60,
+    );
+
+    final totalSleepTime =
+        SleepTime(h: hours.toInt(), m: ((hours - hours.toInt()) * 60).toInt());
+
+    final averageNoise = decibelSum / decibelCount;
+
     return SleepAnalysisState.loaded(
-      wentToBed: const SleepTime(h: 8, m: 0),
-      asleepAfter: const SleepTime(h: 8, m: 0),
-      totalSleep: const SleepTime(h: 8, m: 0),
-      inBed: const SleepTime(h: 8, m: 0),
-      wokeUp: const SleepTime(h: 8, m: 0),
-      noise: Random().nextInt(100),
+      wentToBed: SleepTime(h: wentSleepAt.hour, m: wentSleepAt.minute),
+      asleepAfter: asleepAfterTime,
+      totalSleep: totalSleepTime,
+      inBed: totalSleepTime - asleepAfterTime,
+      wokeUp: SleepTime(h: awakeDateTime.hour, m: awakeDateTime.minute),
+      noise: averageNoise.toInt(),
       quality: averageQuality,
-      chartData: sleepStageEntries.map((e) => e.first).toList(),
+      chartSleepData: sleepStageEntries.map((e) => e.first).toList(),
+      chartLightData: lightStageEntries.map((e) => e.first).toList(),
       chartLabels: xVals,
     );
   }

@@ -11,7 +11,8 @@ class SleepAnalysisState with _$SleepAnalysisState {
     required SleepTime wokeUp,
     required int noise,
     required int quality,
-    required List<int> chartData,
+    required List<int> chartSleepData,
+    required List<int> chartLightData,
     required List<String> chartLabels,
   }) = _Loaded;
 }
