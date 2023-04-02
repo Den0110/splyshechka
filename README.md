@@ -10,7 +10,4 @@
 
 [Ссылка на репозиторий BackEnd](https://github.com/Den0110/splyshechka_api) 
 
-![alt text](https://drive.google.com/uc?export=view&id=1CeQkSAMVX0itkdu8F9inBinrWsiAB26l)
-![alt text](https://drive.google.com/uc?export=view&id=11cTd0iTwUz2swlTd3CPIOl42k6xcO96H)
-![alt text](https://drive.google.com/uc?export=view&id=1Dwz0ZPIXLhmrNsUP4YUD3aGZH_8av5SV)
-![alt text](https://drive.google.com/uc?export=view&id=1KbwMeZMm-h1QC2vPRFNUfKBZfZpbpWKL)
+![alt text](https://drive.google.com/uc?export=view&id=1fCFrDWUwiCK6CVCQCrwWXthcldc-WYkC)
