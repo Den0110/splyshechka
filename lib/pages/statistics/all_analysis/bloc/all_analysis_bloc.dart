@@ -30,8 +30,11 @@ class AllAnalysisBloc extends Bloc<AllAnalysisEvent, AllAnalysisState>
     Emitter<AllAnalysisState> emit,
   ) async {
     try {
-      final List<SleepDto> sleep = await _dataSource.getAllSleep(
+      List<SleepDto> sleep = await _dataSource.getAllSleep(
         _userRepository.currentUser.valueOrNull!.token,
+      );
+      sleep.sort(
+        (a, b) => a.waked_up_at.compareTo(b.waked_up_at)*(-1),
       );
       emit(state.copyWith(listSleep: sleep));
     } catch (e) {}
