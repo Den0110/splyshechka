@@ -10,9 +10,9 @@ class SleepDto with _$SleepDto {
     required int quality,
     required DateTime went_sleep,
     required DateTime waked_up_at,
-    required DateTime slept_during,
-    required DateTime fell_asleep_during,
-    required DateTime time_spent_in_bed
+    required double slept_during,
+    required int fell_asleep_during,
+    required double time_spent_in_bed
   }) = _SleepDto;
 
   factory SleepDto.fromJson(Map<String, dynamic> json) =>

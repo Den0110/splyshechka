@@ -7,12 +7,10 @@ class ProfileSettingsPasswordState with _$ProfileSettingsPasswordState {
     required PasswordState state,
     required String code,
     required String password,
+    required String? wrongPassword,
+    required String? wrongCode,
   }) = _ProfileSettingsPasswordState;
 
-  @Implements<OneShotState>()
-  factory ProfileSettingsPasswordState.navToBack() = NavToBack;
-  @Implements<OneShotState>()
-  factory ProfileSettingsPasswordState.error() = Error;
 }
 
 enum PasswordState { initial, codeSent }

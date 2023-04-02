@@ -51,6 +51,7 @@ class ProfileSettingsNamePage extends StatelessWidget {
                         },
                         value: user.fullName,
                         hint: "Введите имя",
+                        onDelete: () {},
                       ),
                     ),
                     const Spacer(),

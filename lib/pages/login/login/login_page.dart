@@ -57,6 +57,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Form(
                 key: _formKey,
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Flexible(
@@ -75,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                           fontFamily: AppTextStyles.fontFamilyOpenSans),
                     ),
                     SizedBox(
-                      height: 40.h,
+                      height: 20.h,
                     ),
                     RegistrationTextField(
                       hintText: 'Email/логин',
@@ -105,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                           context.navigateTo(PasswordRetrievalRoute());
                         }),
                     SizedBox(
-                      height: 40.h,
+                      height: 20.h,
                     ),
                     GestureDetector(
                       onTap: () {
@@ -131,7 +132,6 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       child: Container(
                         width: 170.w,
-                        height: 35.h,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(11.r),
                           color: AppColors.greyMain,
@@ -142,20 +142,23 @@ class _LoginPageState extends State<LoginPage> {
                           ],
                         ),
                         child: Center(
-                          child: Text(
-                            "Войти",
-                            style: TextStyle(
-                              color: AppColors.white,
-                              fontFamily: AppTextStyles.fontFamilyOpenSans,
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w500,
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0.r),
+                            child: Text(
+                              "Войти",
+                              style: TextStyle(
+                                color: AppColors.white,
+                                fontFamily: AppTextStyles.fontFamilyOpenSans,
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: 40.h,
+                      height: 20.h,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -178,8 +181,7 @@ class _LoginPageState extends State<LoginPage> {
                                 fontFamily: AppTextStyles.fontFamilyOpenSans,
                                 fontSize: 14.sp),
                           ),
-                          onTap: () =>
-                              context.navigateTo(RegistrationRoute()),
+                          onTap: () => context.navigateTo(RegistrationRoute()),
                         )
                       ],
                     )

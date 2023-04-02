@@ -6,6 +6,10 @@ class ProfileSettingsPasswordEvent with _$ProfileSettingsPasswordEvent {
     required String code,
     required String password,
   }) = SavePressed;
+  
+  const factory ProfileSettingsPasswordEvent.deleteCode() = DeleteCode;
+  
+  const factory ProfileSettingsPasswordEvent.deletePassword() = DeletePassword;
 
   const factory ProfileSettingsPasswordEvent.cancelPressed() = CancelPressed;
 

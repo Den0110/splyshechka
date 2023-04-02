@@ -7,7 +7,11 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:splyshechka/data/data_source/user/remote/new_user_remote_data_source.dart';
+import 'package:splyshechka/data/model/sleep/sleep_dto.dart';
 import 'package:splyshechka/domain/entities/alarm/sleep_time.dart';
+import 'package:splyshechka/domain/repository/user_repository.dart';
+import 'package:splyshechka/utils/date_formatter.dart';
 
 part 'sleep_analysis_bloc.freezed.dart';
 
@@ -18,8 +22,14 @@ part 'sleep_analysis_state.dart';
 @injectable
 class SleepAnalysisBloc extends Bloc<SleepAnalysisEvent, SleepAnalysisState> {
   final SharedPreferences _prefs;
+  final NewUserRemoteDataSource _dataSource;
+  final UserRepository _userRepository;
 
-  SleepAnalysisBloc(this._prefs) : super(const SleepAnalysisState.loading()) {
+  SleepAnalysisBloc(
+    this._prefs,
+    this._dataSource,
+    this._userRepository,
+  ) : super(const SleepAnalysisState.loading()) {
     on<Started>((event, emit) async {
       try {
         final lastRecord = File(event.filePath);
@@ -181,7 +191,8 @@ class SleepAnalysisBloc extends Bloc<SleepAnalysisEvent, SleepAnalysisState> {
       qualityPhases = qualityPhases - translate(delta, 0, 4, 0, 1);
     }
 
-    final sleepUnix = _prefs.getInt('lastSleepTime') ?? DateTime.now().millisecondsSinceEpoch;
+    final sleepUnix =
+        _prefs.getInt('lastSleepTime') ?? DateTime.now().millisecondsSinceEpoch;
     final awakeDateTime = DateTime.fromMillisecondsSinceEpoch(sleepUnix);
     final sleepTime = awakeDateTime.difference(wentSleepAt);
     final hours = sleepTime.inMinutes / 60;
@@ -221,6 +232,20 @@ class SleepAnalysisBloc extends Bloc<SleepAnalysisEvent, SleepAnalysisState> {
         SleepTime(h: hours.toInt(), m: ((hours - hours.toInt()) * 60).toInt());
 
     final averageNoise = decibelSum / decibelCount;
+
+    try {
+      _dataSource.addSleep(
+          _userRepository.currentUser.value.token,
+          SleepDto(
+            noise: averageNoise.toInt(),
+            quality: averageQuality,
+            went_sleep: wentSleepAt,
+            waked_up_at: awakeDateTime,
+            slept_during: toBack(totalSleepTime),
+            fell_asleep_during: asleepAfterTime.h*60+asleepAfterTime.m,
+            time_spent_in_bed: toBack(totalSleepTime - asleepAfterTime),
+          ));
+    } catch (e) {}
 
     return SleepAnalysisState.loaded(
       wentToBed: SleepTime(h: wentSleepAt.hour, m: wentSleepAt.minute),

@@ -58,4 +58,14 @@ abstract class Validation {
     }
     return null;
   }
+
+  static String? notNull(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Введите код';
+    }
+    if (!RegExp(r'[0-9][0-9][0-9][0-9][0-9][0-9]$').hasMatch(value)) {
+      return "Введите шестизначный код";
+    }
+    return null;
+  }
 }

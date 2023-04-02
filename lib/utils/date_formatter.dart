@@ -1,4 +1,5 @@
 import 'package:intl/intl.dart';
+import 'package:splyshechka/domain/entities/alarm/sleep_time.dart';
 
 extension DateTimeExt on DateTime {
   static final DateFormat _dateFormatter = DateFormat('d MMMM y');
@@ -135,4 +136,26 @@ extension DateTimeExt on DateTime {
       day,
     ).isBefore(DateTime.now());
   }
+}
+
+int getHours(double n) {
+  return n.truncate();
+}
+
+int getMinutes(double n) {
+  var s = n;
+  return int.parse(
+    s.toString().split('.')[1]
+  );
+}
+
+double toBack(SleepTime time)
+{
+  double res = time.h + 0;
+  if (time.m<10) {
+    res+= time.m*0.1;
+  } else {
+    res+=time.m*0.01;
+  }
+  return res;
 }

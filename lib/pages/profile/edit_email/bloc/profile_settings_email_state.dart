@@ -4,8 +4,6 @@ part of 'profile_settings_email_bloc.dart';
 class ProfileSettingsEmailState with _$ProfileSettingsEmailState {
   factory ProfileSettingsEmailState({
     required SleepUser user,
+    required String? error,
   }) = _ProfileSettingsEmailState;
-
-  @Implements<OneShotState>()
-  factory ProfileSettingsEmailState.navToBack() = NavToBack;
 }

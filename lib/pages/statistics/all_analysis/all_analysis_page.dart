@@ -15,6 +15,7 @@ class AllAnalysisPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -63,7 +64,7 @@ class AllAnalysisPage extends StatelessWidget {
                               goBed:
                                   "${state.listSleep[index].went_sleep.hour}:${state.listSleep[index].went_sleep.minute}",
                               sleepAll:
-                                  "${state.listSleep[index].slept_during.hour}:${state.listSleep[index].slept_during.minute}",
+                                  "${getHours(state.listSleep[index].slept_during)}:${getMinutes(state.listSleep[index].slept_during)}",
                               sleepQuality:
                                   state.listSleep[index].quality.toDouble(),
                               onTap: () {

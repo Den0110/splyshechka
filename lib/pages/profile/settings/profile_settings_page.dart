@@ -45,7 +45,7 @@ class ProfileSettingsPage extends StatelessWidget {
           }
           if (state is NavToSettingsPassword) {
             context.router.navigate(
-              const ProfileSettingsPasswordRoute(),
+               ProfileSettingsPasswordRoute(),
             );
           }
           if (state is NavToSettingsGender) {

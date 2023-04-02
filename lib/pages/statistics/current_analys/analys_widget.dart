@@ -57,7 +57,7 @@ class CurrentAnalysPage extends StatelessWidget {
                   children: [
                     ValueWithIcon(
                       icon: AppIcons.moon,
-                      title: "-${sleep.slept_during.hour} ч",
+                      title: "${getHours(sleep.slept_during)} ч",
                     ),
                   ],
                 ),
@@ -110,7 +110,7 @@ class CurrentAnalysPage extends StatelessWidget {
                           height: 9.h,
                         ),
                         Text(
-                          "${sleep.slept_during.hour}ч ${sleep.slept_during.minute}мин",
+                          "${getHours(sleep.slept_during)}ч ${getMinutes(sleep.slept_during)}мин",
                           style: AppTextStyles.alarmDurationStyle,
                         ),
                         Text(
@@ -121,7 +121,7 @@ class CurrentAnalysPage extends StatelessWidget {
                           height: 10.h,
                         ),
                         Text(
-                          "${sleep.time_spent_in_bed.hour}ч ${sleep.time_spent_in_bed.minute}мин",
+                          "${getHours(sleep.time_spent_in_bed)}ч ${getMinutes(sleep.time_spent_in_bed)}мин",
                           style: AppTextStyles.alarmDurationStyle,
                         ),
                         Text(
@@ -174,7 +174,7 @@ class CurrentAnalysPage extends StatelessWidget {
                       title: "Заснул после",
                       icon: AppIcons.asleepAfter,
                       value:
-                          "${sleep.fell_asleep_during.minute + sleep.fell_asleep_during.hour * 60} мин",
+                          "${sleep.fell_asleep_during} мин",
                     ),
                     CategoryWithIcon(
                       title: "Шум",
