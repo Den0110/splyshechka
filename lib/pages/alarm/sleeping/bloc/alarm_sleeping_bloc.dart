@@ -43,7 +43,7 @@ class AlarmSleepingBloc extends Bloc<AlarmSleepingEvent, AlarmSleepingState>
     }
     await Future.wait(
       [
-        emit.forEach(_repository.wakeupTime.stream, onData: (data) {
+        emit.forEach(_repository.wakeupTime, onData: (data) {
           return state.copyWith(alarmTime: _getAlarmTime(_repository));
         }),
         emit.forEach<Map<String, dynamic>?>(

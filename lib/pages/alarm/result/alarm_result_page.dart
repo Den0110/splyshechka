@@ -23,47 +23,49 @@ class AlarmResultPage extends StatelessWidget {
         builder: (context, state) {
           return Scaffold(
             body: SafeArea(
-              child: Stack(
-                children: [
-                  state.when(
-                    initial: () => Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Center(
-                          child: CircularProgressIndicator(),
+              child: Center(
+                child: Stack(
+                  children: [
+                    state.when(
+                      initial: () => Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        ],
+                      ),
+                      loaded: (filePath) => SingleChildScrollView(
+                        child: Padding(
+                          padding: EdgeInsets.only(bottom: 96.h),
+                          child: SleepAnalysis(filePath: filePath),
                         ),
-                      ],
+                      ),
                     ),
-                    loaded: (filePath) => SingleChildScrollView(
+                    Align(
+                      alignment: Alignment.bottomCenter,
                       child: Padding(
-                        padding: EdgeInsets.only(bottom: 96.h),
-                        child: SleepAnalysis(filePath: filePath),
+                        padding: EdgeInsets.only(
+                          left: 16.0.w,
+                          right: 16.0.w,
+                          bottom: 16.h,
+                        ),
+                        child: LargeButton(
+                          text: "Принять",
+                          textColor: AppColors.darkGreen,
+                          onPressed: () {
+                            context.router.pushAndPopUntil(
+                              const MainRoute(),
+                              predicate: (_) => false,
+                            );
+                          },
+                          backgroundColor: AppColors.green,
+                          shadowColor: AppColors.yellow,
+                        ),
                       ),
                     ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        left: 16.0.w,
-                        right: 16.0.w,
-                        bottom: 16.h,
-                      ),
-                      child: LargeButton(
-                        text: "Принять",
-                        textColor: AppColors.darkGreen,
-                        onPressed: () {
-                          context.router.pushAndPopUntil(
-                            const MainRoute(),
-                            predicate: (_) => false,
-                          );
-                        },
-                        backgroundColor: AppColors.green,
-                        shadowColor: AppColors.yellow,
-                      ),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           );
