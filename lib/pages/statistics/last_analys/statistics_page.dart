@@ -9,6 +9,7 @@ import 'package:splyshechka/pages/common/sleep_analysis/sleep_analysis.dart';
 import 'package:splyshechka/pages/statistics/last_analys/bloc/last_statistic_bloc.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/utils/app_text_styles.dart';
+import 'package:splyshechka/widgets/buttons/large_button.dart';
 
 class StatisticsPage extends StatelessWidget {
   const StatisticsPage({Key? key}) : super(key: key);
@@ -41,7 +42,29 @@ class StatisticsPage extends StatelessWidget {
                   : SingleChildScrollView(
                       child: Padding(
                         padding: EdgeInsets.only(bottom: 16.h),
-                        child: SleepAnalysis(filePath: state.sleepFilePath!),
+                        child: Column(
+                          children: [
+                            SleepAnalysis(filePath: state.sleepFilePath!),
+                            SizedBox(
+                              height: 15.h,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 16.0.w,
+                              ),
+                              child: LargeButton(
+                                text: "Вся статистика",
+                                backgroundColor: AppColors.green,
+                                shadowColor: AppColors.yellow,
+                                textColor: AppColors.darkGreen,
+                                onPressed: () {
+                                  context.router
+                                      .navigate(const AllAnalysisRoute());
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
         ),

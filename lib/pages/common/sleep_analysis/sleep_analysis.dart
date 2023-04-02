@@ -83,7 +83,7 @@ class SleepAnalysis extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 25.h,
+                        height: 8.h,
                       ),
                       SizedBox(
                         height: 204.h,

@@ -34,14 +34,14 @@ class SleepAnalysisBloc extends Bloc<SleepAnalysisEvent, SleepAnalysisState> {
       try {
         final lastRecord = File(event.filePath);
         final contents = await lastRecord.readAsString();
-        emit(_parseSleepData(contents));
+        emit(await _parseSleepData(contents));
       } catch (e) {
         debugPrint(e.toString());
       }
     });
   }
 
-  SleepAnalysisState _parseSleepData(String content) {
+  Future<SleepAnalysisState> _parseSleepData(String content) async {
     final parts = content.split(";").toList();
     parts.removeWhere((e) => e.isEmpty);
 
@@ -234,7 +234,7 @@ class SleepAnalysisBloc extends Bloc<SleepAnalysisEvent, SleepAnalysisState> {
     final averageNoise = decibelSum / decibelCount;
 
     try {
-      _dataSource.addSleep(
+      await _dataSource.addSleep(
           _userRepository.currentUser.value.token,
           SleepDto(
             noise: averageNoise.toInt(),

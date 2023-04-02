@@ -31,6 +31,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: widget.validator,
       controller: widget.controller,
       textInputAction: TextInputAction.next,
       cursorWidth: 1.w,

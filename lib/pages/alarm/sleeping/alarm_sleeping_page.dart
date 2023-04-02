@@ -83,9 +83,6 @@ class AlarmSleepingPage extends StatelessWidget {
                 SizedBox(
                   height: 45.h,
                 ),
-                SizedBox(
-                  height: 45.h,
-                ),
                 Padding(
                   padding: EdgeInsets.only(left: 25.w, right: 25.w),
                   child: LargeButton(

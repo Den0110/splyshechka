@@ -75,16 +75,21 @@ class AlarmRepositoryImpl extends AlarmRepository {
 
   @override
   Future<void> setAlarm() async {
+    DateTime dateTime = DateTime.now().copyWith(
+      hour: wakeupTime.value.h,
+      minute: wakeupTime.value.m,
+      second: 0,
+      microsecond: 0,
+      millisecond: 0,
+    );
+    if (dateTime.compareTo(DateTime.now()) < 1) {
+      dateTime = dateTime.copyWith(day: DateTime.now().day+1);
+    }
+
     if (alarmEnabled.value) {
       final alarmSettings = AlarmSettings(
         id: 42,
-        dateTime: DateTime.now().copyWith(
-          hour: wakeupTime.value.h,
-          minute: wakeupTime.value.m,
-          second: 0,
-          microsecond: 0,
-          millisecond: 0,
-        ),
+        dateTime:dateTime,
         assetAudioPath: 'assets/alarm.mp3',
         loopAudio: true,
         vibrate: vibrationEnabled.value,
