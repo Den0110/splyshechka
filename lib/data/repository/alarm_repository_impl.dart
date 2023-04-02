@@ -1,3 +1,4 @@
+import 'package:alarm/alarm.dart';
 import 'package:injectable/injectable.dart';
 import 'package:splyshechka/data/data_source/alarm/local/alarm_local_data_source.dart';
 import 'package:splyshechka/data/model/alarm/sleep_time_dto.dart';
@@ -70,5 +71,57 @@ class AlarmRepositoryImpl extends AlarmRepository {
   void setSnoozeTime(SnoozeTime value) {
     snoozeTime.add(value);
     _dataSource.snoozeTime = value.value;
+  }
+
+  @override
+  Future<void> setAlarm() async {
+    if (alarmEnabled.value) {
+      final alarmSettings = AlarmSettings(
+        id: 42,
+        dateTime: DateTime.now().copyWith(
+          hour: wakeupTime.value.h,
+          minute: wakeupTime.value.m,
+          second: 0,
+          microsecond: 0,
+          millisecond: 0,
+        ),
+        assetAudioPath: 'assets/alarm.mp3',
+        loopAudio: true,
+        vibrate: vibrationEnabled.value,
+        fadeDuration: 3.0,
+        notificationTitle: 'Лучший будильник на свете',
+        notificationBody: 'Пора просыпаться, засоня :)',
+        enableNotificationOnKill: true,
+      );
+      await Alarm.set(alarmSettings: alarmSettings);
+    }
+  }
+
+  @override
+  Future<void> snoozeAlarm() async {
+    if (alarmEnabled.value) {
+      final alarmSettings = AlarmSettings(
+        id: 42,
+        dateTime: DateTime.now()
+            .copyWith(
+              second: 0,
+              microsecond: 0,
+              millisecond: 0,
+            )
+            .add(
+              Duration(
+                minutes: snoozeTime.value.value,
+              ),
+            ),
+        assetAudioPath: 'assets/alarm.mp3',
+        loopAudio: true,
+        vibrate: vibrationEnabled.value,
+        fadeDuration: 3.0,
+        notificationTitle: 'Лучший будильник на свете',
+        notificationBody: 'Пора просыпаться, засоня :)',
+        enableNotificationOnKill: true,
+      );
+      Alarm.set(alarmSettings: alarmSettings);
+    }
   }
 }

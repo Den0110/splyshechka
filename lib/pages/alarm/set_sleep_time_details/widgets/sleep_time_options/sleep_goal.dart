@@ -18,7 +18,7 @@ class SleepGoal extends StatelessWidget {
       TextSpan(children: [
         const TextSpan(text: "Ваша цель проспать "),
         TextSpan(
-          text: goal.toString(),
+          text: "${goal.h} ч ${goal.m} мин",
           style: TextStyle(
             fontFamily: AppTextStyles.fontFamilyOpenSans,
             color: AppColors.lightGreen,

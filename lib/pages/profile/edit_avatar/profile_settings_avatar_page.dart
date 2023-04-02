@@ -67,7 +67,7 @@ class ProfileSettingsAvatarPage extends StatelessWidget {
                         vertical: 10.h,
                       ),
                       child: Text(
-                        "Face",
+                        "Мордашка",
                         style: AppTextStyles.titleMediumStyle,
                       ),
                     ),

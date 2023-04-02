@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:side_effect_bloc/side_effect_bloc.dart';
+import 'package:splyshechka/pages/alarm/set_sleep_time_details/bloc/set_sleep_time_details_bloc.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/widgets/buttons/large_button.dart';
 import 'package:splyshechka/widgets/switchers/pick_option/pick_option.dart';
@@ -7,11 +9,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:splyshechka/di/locator.dart';
 import 'package:splyshechka/navigation/auto_router.gr.dart';
-import 'package:splyshechka/pages/alarm/set_sleep_time_details/bloc/sleep_time_details_cubit.dart';
 import 'package:splyshechka/pages/alarm/set_sleep_time_details/model/sleep_time_type.dart';
 import 'package:splyshechka/pages/alarm/set_sleep_time_details/widgets/sleep_time_options/alarm_options.dart';
 import 'package:splyshechka/pages/alarm/set_sleep_time_details/widgets/sleep_time_options/bedtime_options.dart';
-import 'package:splyshechka/utils/one_shot_bloc.dart';
 
 class SetSleepTimeDetailsPage extends StatelessWidget {
   const SetSleepTimeDetailsPage({
@@ -24,8 +24,18 @@ class SetSleepTimeDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<SleepTimeDetailsCubit>()..selectTab(initial),
-      child: OneShotBlocConsumer<SleepTimeDetailsCubit, SleepTimeDetailsState>(
+      create: (context) => getIt<SetSleepTimeDetailsBloc>()
+        ..add(PageOpened(
+         sleepTimeType: initial,
+        ))
+        ..add(
+          const Started(),
+        ),
+      child: BlocSideEffectConsumer<
+          SetSleepTimeDetailsBloc,
+          SetSleepTimeDetailsBloc,
+          SetSleepTimeDetailsState,
+          SetSleepTimeDetailsCommand>(
         listener: (context, state) {
           if (state is NavBack) {
             context.router.pop();
@@ -55,7 +65,7 @@ class SetSleepTimeDetailsPage extends StatelessWidget {
                     active: selectedTab.index,
                     optionStyle: OptionStyle.backgroundStyle,
                     onTap: (i) {
-                      BlocProvider.of<SleepTimeDetailsCubit>(context)
+                      BlocProvider.of<SetSleepTimeDetailsBloc>(context)
                           .selectTab(SleepTimeType.values[i]);
                     },
                   ),
@@ -64,10 +74,13 @@ class SetSleepTimeDetailsPage extends StatelessWidget {
                   children: [
                     SingleChildScrollView(
                       child: selectedTab == SleepTimeType.bedtime
-                          ? BedtimeOptions(
-                              bedtime: bedtime,
-                              sleepGoal: sleepGoal,
-                              remindToSleep: remindToSleep,
+                          ? Align(
+                              alignment: Alignment.topCenter,
+                              child: BedtimeOptions(
+                                bedtime: bedtime,
+                                sleepGoal: sleepGoal,
+                                remindToSleep: remindToSleep,
+                              ),
                             )
                           : AlarmOptions(
                               wakeupTime: wakeupTime,
@@ -87,7 +100,9 @@ class SetSleepTimeDetailsPage extends StatelessWidget {
                         ),
                         child: LargeButton(
                           onPressed: () {
-                            context.read<SleepTimeDetailsCubit>().okayClicked();
+                            context
+                                .read<SetSleepTimeDetailsBloc>()
+                                .okayClicked();
                           },
                           text: "Принять",
                           backgroundColor: AppColors.white,

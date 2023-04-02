@@ -32,19 +32,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState>
     this._dataSource,
     this._userRepository,
   ) : super(_Initial()) {
-    on<Started>(_onStarted);
     on<SignInClicked>(_onSignInClicked);
     on<SignInEmailClicked>(_onSignInEmailClicked);
-  }
-
-  Future<void> _onStarted(
-    Started event,
-    Emitter<LoginState> emit,
-  ) async {
-    await emit.forEach(_userRepository.currentUser.stream, onData: (user) {
-      produceSideEffect(LoginCommand.navToMain());
-      return state;
-    });
   }
 
   Future<void> _onSignInClicked(
@@ -73,6 +62,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState>
           sound: true,
         ),
       );
+      produceSideEffect(LoginCommand.navToMain());
     } catch (e) {
       produceSideEffect(LoginCommand.error());
     }

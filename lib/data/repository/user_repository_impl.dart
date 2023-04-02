@@ -39,9 +39,5 @@ class UserRepositoryImpl extends UserRepository {
 
   @override
   Future<void> updatePassword(String password, String code) async {
-    await _remoteDataSource.updatePassword(
-      newPassword: password,
-      code: code,
-    );
   }
 }

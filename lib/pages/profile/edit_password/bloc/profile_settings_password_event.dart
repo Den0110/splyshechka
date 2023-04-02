@@ -2,7 +2,10 @@ part of 'profile_settings_password_bloc.dart';
 
 @freezed
 class ProfileSettingsPasswordEvent with _$ProfileSettingsPasswordEvent {
-  const factory ProfileSettingsPasswordEvent.savePressed() = SavePressed;
+  const factory ProfileSettingsPasswordEvent.savePressed({
+    required String code,
+    required String password,
+  }) = SavePressed;
 
   const factory ProfileSettingsPasswordEvent.cancelPressed() = CancelPressed;
 

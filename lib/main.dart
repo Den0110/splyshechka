@@ -1,3 +1,4 @@
+import 'package:alarm/alarm.dart';
 import 'dart:async';
 import 'dart:ui';
 
@@ -57,8 +58,12 @@ void onStart(ServiceInstance service) async {
   });
 }
 
+
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  //await AndroidAlarmManager.initialize();
+  await Alarm.init(showDebugLogs: true);
   await initDependencies();
 
   const AndroidNotificationChannel channel = AndroidNotificationChannel(

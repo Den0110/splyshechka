@@ -96,24 +96,24 @@ class ProfilePage extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 10.h),
-                      SleepContainer(
-                        child: Column(
-                          children: [
-                            SwitchElement(
-                              title: "Звук",
-                              isActive: true,
-                              value: user.sound,
-                              onChanged: (sound) {
-                                context.read<ProfileBloc>().add(
-                                      ProfileEvent.soundChanged(
-                                        sound: sound,
-                                      ),
-                                    );
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
+                      // SleepContainer(
+                      //   child: Column(
+                      //     children: [
+                      //       SwitchElement(
+                      //         title: "Звук",
+                      //         isActive: true,
+                      //         value: user.sound,
+                      //         onChanged: (sound) {
+                      //           context.read<ProfileBloc>().add(
+                      //                 ProfileEvent.soundChanged(
+                      //                   sound: sound,
+                      //                 ),
+                      //               );
+                      //         },
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
                       SizedBox(height: 10.h),
                       LargeButton(
                         text: "Выйти из аккаунта",

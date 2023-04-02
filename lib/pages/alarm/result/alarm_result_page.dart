@@ -47,7 +47,10 @@ class AlarmResultPage extends StatelessWidget {
                         text: "Принять",
                         textColor: AppColors.darkGreen,
                         onPressed: () {
-                          context.router.navigate(const GoodMorningRoute());
+                          context.router.pushAndPopUntil(
+                            const MainRoute(),
+                            predicate: (_) => false,
+                          );
                         },
                         backgroundColor: AppColors.green,
                         shadowColor: AppColors.yellow,

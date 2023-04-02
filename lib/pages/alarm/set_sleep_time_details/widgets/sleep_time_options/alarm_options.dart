@@ -1,4 +1,5 @@
 import 'package:flutter_svg/svg.dart';
+import 'package:splyshechka/pages/alarm/set_sleep_time_details/bloc/set_sleep_time_details_bloc.dart';
 import 'package:splyshechka/utils/app_icons.dart';
 import 'package:splyshechka/widgets/options_list/slider_element.dart';
 import 'package:splyshechka/widgets/options_list/switch_element.dart';
@@ -9,7 +10,7 @@ import 'package:splyshechka/domain/entities/alarm/snooze_time.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:splyshechka/pages/alarm/set_sleep_time_details/bloc/sleep_time_details_cubit.dart';
+
 import 'package:splyshechka/pages/alarm/set_sleep_time_details/widgets/sleep_time_options/sleep_goal.dart';
 import 'package:splyshechka/widgets/sleep_time_picker/sleep_time_picker.dart';
 
@@ -41,7 +42,7 @@ class AlarmOptions extends StatelessWidget {
             initialHour: wakeupTime.h,
             initialMin: wakeupTime.m,
             onTimeChanged: (h, m) {
-              context.read<SleepTimeDetailsCubit>().alarmTimeChanged(
+              context.read<SetSleepTimeDetailsBloc>().alarmTimeChanged(
                     SleepTime(
                       h: h,
                       m: m,
@@ -58,7 +59,7 @@ class AlarmOptions extends StatelessWidget {
               isActive: true,
               value: alarmEnabled,
               onChanged: (bool value) {
-                context.read<SleepTimeDetailsCubit>().alarmSwitched(value);
+                context.read<SetSleepTimeDetailsBloc>().alarmSwitched(value);
               },
             ),
           ),
@@ -75,36 +76,32 @@ class AlarmOptions extends StatelessWidget {
                     value: vibrationEnabled,
                     onChanged: (bool value) {
                       context
-                          .read<SleepTimeDetailsCubit>()
+                          .read<SetSleepTimeDetailsBloc>()
                           .vibrationSwitched(value);
                     },
                   ),
-                  SliderElement(
-                    icon: SvgPicture.asset(AppIcons.volume),
-                    minValue: 0,
-                    value: volume,
-                    maxValue: 100,
+                  // SliderElement(
+                  //   icon: SvgPicture.asset(AppIcons.volume),
+                  //   minValue: 0,
+                  //   value: volume,
+                  //   maxValue: 100,
+                  //   isActive: true,
+                  //   onChanged: (double value) {
+                  //     context
+                  //         .read<SetSleepTimeDetailsBloc>()
+                  //         .volumeChanged(value);
+                  //   },
+                  // ),
+
+                  ValueElement(
+                    title: "Отложить",
                     isActive: true,
-                    onChanged: (double value) {
-                      context
-                          .read<SleepTimeDetailsCubit>()
-                          .volumeChanged(value);
+                    onTap: () {
+                      context.read<SetSleepTimeDetailsBloc>().snoozeChanged();
                     },
+                    value: snoozeTime,
                   ),
                 ],
-              ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            SleepContainer(
-              child: ValueElement(
-                title: "Отложить",
-                isActive: true,
-                onTap: () {
-                  context.read<SleepTimeDetailsCubit>().snoozeClicked();
-                },
-                value: snoozeTime,
               ),
             ),
           ],

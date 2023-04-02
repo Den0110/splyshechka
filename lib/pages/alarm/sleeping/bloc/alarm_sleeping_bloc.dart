@@ -1,3 +1,4 @@
+import 'package:alarm/alarm.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
@@ -40,21 +41,32 @@ class AlarmSleepingBloc extends Bloc<AlarmSleepingEvent, AlarmSleepingState>
     if ((await Permission.microphone.request()).isGranted) {
       _backgroundService.startService();
     }
-    await Future.wait([
-      emit.forEach(_repository.wakeupTime.stream, onData: (data) {
-        return state.copyWith(alarmTime: _getAlarmTime(_repository));
-      }),
-      emit.forEach<Map<String, dynamic>?>(
-          _backgroundService.on('decibelUpdate'), onData: (data) {
-        debugPrint(data.toString());
-        final decibel = double.tryParse(data!["decibel"].toString()) ?? .0;
-        final visualVolume = decibel / 100.0 * 6.0;
-        return state.copyWith(
-          visualVolume: visualVolume,
-          volume: decibel.toInt(),
-        );
-      }),
-    ]);
+    await Future.wait(
+      [
+        emit.forEach(_repository.wakeupTime.stream, onData: (data) {
+          return state.copyWith(alarmTime: _getAlarmTime(_repository));
+        }),
+        emit.forEach<Map<String, dynamic>?>(
+            _backgroundService.on('decibelUpdate'), onData: (data) {
+          debugPrint(data.toString());
+          final decibel = double.tryParse(data!["decibel"].toString()) ?? .0;
+          final visualVolume = decibel / 100.0 * 6.0;
+          return state.copyWith(
+            visualVolume: visualVolume,
+            volume: decibel.toInt(),
+          );
+        }),
+        emit.forEach(
+          _repository.wakeupTime,
+          onData: (_) => state.copyWith(
+            alarmTime: _getAlarmTime(_repository),
+          ),
+        ),
+        Alarm.ringStream.stream.forEach(
+          (_) => produceSideEffect(AlarmSleepingCommand.navToResults()),
+        ),
+      ],
+    );
   }
 
   static String _getAlarmTime(AlarmRepository repo) {
