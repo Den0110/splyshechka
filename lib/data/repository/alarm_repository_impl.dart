@@ -75,76 +75,53 @@ class AlarmRepositoryImpl extends AlarmRepository {
 
   @override
   Future<void> setAlarm() async {
-    final alarmSettings = AlarmSettings(
-      id: 42,
-      dateTime: setTime(),
-      assetAudioPath: 'assets/alarm.mp3',
-      loopAudio: true,
-      vibrate: vibrationEnabled.value,
-      fadeDuration: 3.0,
-      notificationTitle: 'Лучший будильник на свете',
-      notificationBody: 'Пора просыпаться, засоня :)',
-      enableNotificationOnKill: true,
-    );
-    await Alarm.set(alarmSettings: alarmSettings);
-  }
-
-  DateTime setTime() {
-    int today = DateTime.now().day;
-
-    DateTime alarm = DateTime.now().copyWith(
-      hour: wakeupTime.value.h,
-      minute: wakeupTime.value.m,
-      second: 0,
-      millisecond: 0,
-      microsecond: 0,
-    );
-    DateTime sleepTime = DateTime.now().copyWith(
-      hour: bedtime.value.h,
-      minute: bedtime.value.m,
-      second: 0,
-      millisecond: 0,
-      microsecond: 0,
-    );
-    if (sleepTime.compareTo(alarm) > 0) {
-      alarm = alarm.copyWith(day: today + 1);
-      today = today + 1;
+    if (alarmEnabled.value) {
+      final alarmSettings = AlarmSettings(
+        id: 42,
+        dateTime: DateTime.now().copyWith(
+          hour: wakeupTime.value.h,
+          minute: wakeupTime.value.m,
+          second: 0,
+          microsecond: 0,
+          millisecond: 0,
+        ),
+        assetAudioPath: 'assets/alarm.mp3',
+        loopAudio: true,
+        vibrate: vibrationEnabled.value,
+        fadeDuration: 3.0,
+        notificationTitle: 'Лучший будильник на свете',
+        notificationBody: 'Пора просыпаться, засоня :)',
+        enableNotificationOnKill: true,
+      );
+      await Alarm.set(alarmSettings: alarmSettings);
     }
-    if (sleepTime.compareTo(DateTime.now()) <= 0) {
-      alarm = alarm.copyWith(day: today + 1);
-    }
-    print(alarm);
-    return alarm;
   }
 
   @override
   Future<void> snoozeAlarm() async {
-    final alarmSettings = AlarmSettings(
-      id: 42,
-      dateTime: setTime(),
-      assetAudioPath: 'assets/alarm.mp3',
-      loopAudio: true,
-      vibrate: vibrationEnabled.value,
-      fadeDuration: 3.0,
-      notificationTitle: 'Лучший будильник на свете',
-      notificationBody: 'Пора просыпаться, засоня :)',
-      enableNotificationOnKill: true,
-    );
-    final now = DateTime.now();
-    Alarm.set(
-      alarmSettings: alarmSettings.copyWith(
-        dateTime: DateTime(
-          now.year,
-          now.month,
-          now.day,
-          now.hour,
-          now.minute,
-          0,
-          0,
-        ).add(Duration(
-          minutes: snoozeTime.value.value,
-        )),
-      ),
-    );
+    if (alarmEnabled.value) {
+      final alarmSettings = AlarmSettings(
+        id: 42,
+        dateTime: DateTime.now()
+            .copyWith(
+              second: 0,
+              microsecond: 0,
+              millisecond: 0,
+            )
+            .add(
+              Duration(
+                minutes: snoozeTime.value.value,
+              ),
+            ),
+        assetAudioPath: 'assets/alarm.mp3',
+        loopAudio: true,
+        vibrate: vibrationEnabled.value,
+        fadeDuration: 3.0,
+        notificationTitle: 'Лучший будильник на свете',
+        notificationBody: 'Пора просыпаться, засоня :)',
+        enableNotificationOnKill: true,
+      );
+      Alarm.set(alarmSettings: alarmSettings);
+    }
   }
 }

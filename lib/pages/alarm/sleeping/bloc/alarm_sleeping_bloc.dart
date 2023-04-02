@@ -36,41 +36,32 @@ class AlarmSleepingBloc extends Bloc<AlarmSleepingEvent, AlarmSleepingState>
     Started event,
     Emitter<AlarmSleepingState> emit,
   ) async {
-    await Future.wait(
-      [
-        _repository.wakeupTime.forEach((event) {
-          if (state is _Initial) {
-            final initialState = state as _Initial;
-            emit(initialState.copyWith(alarmTime: _getAlarmTime(_repository)));
-          }
-        }),
-        Alarm.ringStream.stream.forEach(
-          (_) => produceSideEffect(AlarmSleepingCommand.navToResults()),
-        )
-      ],
-    );
     if ((await Permission.microphone.request()).isGranted) {
       _backgroundService.startService();
     }
-    await Future.wait([
-      emit.forEach(_repository.wakeupTime.stream, onData: (data) {
-        if (state is _Initial) {
-          final initialState = state as _Initial;
-          return initialState.copyWith(alarmTime: _getAlarmTime(_repository));
-        }
-        return state;
-      }),
-      emit.forEach<bool>(
-          Stream.periodic(const Duration(seconds: 1))
-              .asyncMap((event) async => await _backgroundService.isRunning()),
-          onData: (data) {
-        return AlarmSleepingState.initial(
-          currentDate: DateTime.now(),
-          alarmTime: _getAlarmTime(_repository),
-          currentVolume: data ? 3 : 0,
-        );
-      }),
-    ]);
+    await Future.wait(
+      [
+        emit.forEach(
+          _repository.wakeupTime,
+          onData: (_) => state.copyWith(
+            alarmTime: _getAlarmTime(_repository),
+          ),
+        ),
+        Alarm.ringStream.stream.forEach(
+          (_) => produceSideEffect(AlarmSleepingCommand.navToResults()),
+        ),
+        emit.forEach<bool>(
+            Stream.periodic(const Duration(seconds: 1)).asyncMap(
+                (event) async => await _backgroundService.isRunning()),
+            onData: (data) {
+          return AlarmSleepingState.initial(
+            currentDate: DateTime.now(),
+            alarmTime: _getAlarmTime(_repository),
+            currentVolume: data ? 3 : 0,
+          );
+        }),
+      ],
+    );
   }
 
   static String _getAlarmTime(AlarmRepository repo) {

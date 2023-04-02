@@ -14,9 +14,7 @@ part 'alarm_settings_command.dart';
 
 @injectable
 class AlarmSettingsBloc extends Bloc<AlarmSettingsEvent, AlarmSettingsState>
-    with
-        SideEffectBlocMixin<AlarmSettingsState,
-            AlarmSettingsCommand> {
+    with SideEffectBlocMixin<AlarmSettingsState, AlarmSettingsCommand> {
   final AlarmRepository _alarmRepository;
   AlarmSettingsBloc(this._alarmRepository)
       : super(Initial(
@@ -31,72 +29,79 @@ class AlarmSettingsBloc extends Bloc<AlarmSettingsEvent, AlarmSettingsState>
               _alarmRepository.bedtime.value,
           selectedTab: SleepTimeType.bedtime,
         )) {
-    _alarmRepository.bedtime.listen((value) {
-      _withInitialState((state) {
-        emit(state.copyWith(
-          bedtime: value,
-          sleepGoal: _calculateGoal(value, state.wakeupTime),
-        ));
-      });
-    });
-    _alarmRepository.wakeupTime.listen((value) {
-      _withInitialState((state) {
-        emit(state.copyWith(
-          wakeupTime: value,
-          sleepGoal: _calculateGoal(state.bedtime, value),
-        ));
-      });
-    });
-    _alarmRepository.remindToSleep.listen((value) {
-      _withInitialState((state) {
-        emit(state.copyWith(
-          remindToSleep: value,
-        ));
-      });
-    });
-    _alarmRepository.alarmEnabled.listen((value) {
-      _withInitialState((state) {
-        emit(state.copyWith(
-          alarmEnabled: value,
-        ));
-      });
-    });
-    _alarmRepository.vibrationEnabled.listen((value) {
-      _withInitialState((state) {
-        emit(state.copyWith(
-          vibrationEnabled: value,
-        ));
-      });
-    });
-    _alarmRepository.alarmVolume.listen((value) {
-      _withInitialState((state) {
-        emit(state.copyWith(
-          alarmVolume: value,
-        ));
-      });
-    });
-    _alarmRepository.snoozeTime.listen((value) {
-      _withInitialState((state) {
-        emit(state.copyWith(
-          snoozeTime: value,
-        ));
-      });
-    });
+    on<Started>(onStarted);
   }
-  void _withInitialState(Function(Initial state) f) {
-    if (state is Initial) {
-      f(state as Initial);
-    }
+
+  void onStarted(
+    Started event,
+    Emitter<AlarmSettingsState> emit,
+  ) async {
+    await Future.wait(
+      [
+        emit.forEach(
+          _alarmRepository.bedtime,
+          onData: (SleepTime value) {
+            return state.copyWith(
+              bedtime: value,
+              sleepGoal: _calculateGoal(value, state.wakeupTime),
+            );
+          },
+        ),
+        emit.forEach(
+          _alarmRepository.wakeupTime,
+          onData: (SleepTime value) {
+            return state.copyWith(
+              wakeupTime: value,
+              sleepGoal: _calculateGoal(state.bedtime, value),
+            );
+          },
+        ),
+        emit.forEach(
+          _alarmRepository.remindToSleep,
+          onData: (bool value) {
+            return state.copyWith(
+              remindToSleep: value,
+            );
+          },
+        ),
+        emit.forEach(
+          _alarmRepository.alarmEnabled,
+          onData: (bool value) {
+            return state.copyWith(
+              alarmEnabled: value,
+            );
+          },
+        ),
+        emit.forEach(
+          _alarmRepository.vibrationEnabled,
+          onData: (bool value) {
+            return state.copyWith(
+              vibrationEnabled: value,
+            );
+          },
+        ),
+        emit.forEach(
+          _alarmRepository.alarmVolume,
+          onData: (double value) {
+            return state.copyWith(
+              alarmVolume: value,
+            );
+          },
+        ),
+        emit.forEach(
+          _alarmRepository.snoozeTime,
+          onData: (SnoozeTime value) {
+            return state.copyWith(
+              snoozeTime: value,
+            );
+          },
+        ),
+      ],
+    );
   }
 
   SleepTime _calculateGoal(SleepTime bedtime, SleepTime wakeupTime) {
     return wakeupTime - bedtime;
-  }
-
-  void selectTab(SleepTimeType type) {
-    _withInitialState((state) {
-      emit(state.copyWith(selectedTab: type));
-    });
   }
 
   void bedTimeChanged(SleepTime bedtime) {
@@ -132,6 +137,7 @@ class AlarmSettingsBloc extends Bloc<AlarmSettingsEvent, AlarmSettingsState>
   }
 
   void okayClicked() async {
+    _alarmRepository.setBedtime(state.bedtime);
     await _alarmRepository.setAlarm();
     produceSideEffect(NavBack());
   }

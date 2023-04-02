@@ -24,7 +24,7 @@ class AlarmSettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<AlarmSettingsBloc>(),
+      create: (context) => getIt<AlarmSettingsBloc>()..add(Started()),
       child: BlocSideEffectConsumer<AlarmSettingsBloc, AlarmSettingsBloc,
           AlarmSettingsState, AlarmSettingsCommand>(
         listener: (context, state) {
@@ -44,117 +44,114 @@ class AlarmSettingsPage extends StatelessWidget {
             ),
             body: Stack(
               children: [
-                state.maybeWhen(
-                  initial: (
-                    bedtime,
-                    wakeupTime,
-                    remindToSleep,
-                    alarmEnabled,
-                    vibrationEnabled,
-                    alarmVolume,
-                    snoozeTime,
-                    sleepGoal,
-                    selectedTab,
-                  ) {
-                    return Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.w),
-                      child: Column(
-                        children: [
-                          SleepTimePicker(
-                            initialHour: wakeupTime.h,
-                            initialMin: wakeupTime.m,
-                            onTimeChanged: (h, m) {
-                              context
-                                  .read<AlarmSettingsBloc>()
-                                  .alarmTimeChanged(
-                                    SleepTime(
-                                      h: h,
-                                      m: m,
-                                    ),
-                                  );
-                            },
-                          ),
-                          SizedBox(height: 30.h),
-                          SleepGoal(goal: sleepGoal),
-                          SizedBox(height: 30.h),
-                          SleepContainer(
-                            child: Column(
-                              children: [
-                                SwitchElement(
-                                  title: "Вибрация",
-                                  isActive: true,
-                                  value: vibrationEnabled,
-                                  onChanged: (bool value) {
-                                    context
-                                        .read<AlarmSettingsBloc>()
-                                        .vibrationSwitched(value);
-                                  },
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                  child: Column(
+                    children: [
+                      SleepTimePicker(
+                        initialHour: state.wakeupTime.h,
+                        initialMin: state.wakeupTime.m,
+                        onTimeChanged: (h, m) {
+                          context.read<AlarmSettingsBloc>().alarmTimeChanged(
+                                SleepTime(
+                                  h: h,
+                                  m: m,
                                 ),
-                                SliderElement(
-                                  icon: SvgPicture.asset(AppIcons.volume),
-                                  minValue: 0,
-                                  value: alarmVolume,
-                                  maxValue: 100,
-                                  isActive: true,
-                                  onChanged: (double value) {
-                                    context
-                                        .read<AlarmSettingsBloc>()
-                                        .volumeChanged(value);
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                          SleepContainer(
-                            child: ValueElement(
-                              title: "Отложить",
-                              isActive: true,
-                              onTap: () {
-                                context
-                                    .read<AlarmSettingsBloc>()
-                                    .snoozeChanged();
-                              },
-                              value: snoozeTime,
-                            ),
-                          ),
-                        ],
-                        //   ],
+                              );
+                        },
                       ),
-                    );
-                  },
-                  orElse: Container.new,
-                ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 25.w,
-                      vertical: 16.h,
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        LargeButton(
-                          text: "Принять",
-                          backgroundColor: AppColors.lightGreen,
-                          shadowColor: AppColors.lemon,
-                          textColor: AppColors.darkGreen,
-                          onPressed: () {
-                            context.read<AlarmSettingsBloc>().okayClicked();
+                      SizedBox(height: 30.h),
+                      SleepGoal(goal: state.sleepGoal),
+                      SizedBox(height: 30.h),
+                      SleepContainer(
+                        child: SwitchElement(
+                          title: "Будильник",
+                          isActive: true,
+                          value: state.alarmEnabled,
+                          onChanged: (bool value) {
+                            context
+                                .read<AlarmSettingsBloc>()
+                                .alarmSwitched(value);
                           },
                         ),
-                        SizedBox(height: 6.h),
-                        LargeButton(
-                          text: "Отмена",
-                          onPressed: () {
-                            context.read<AlarmSettingsBloc>().cancelClicked();
-                          },
+                      ),
+                      SizedBox(height: 10.h),
+                      if (state.alarmEnabled) ...[
+                        SleepContainer(
+                          child: Column(
+                            children: [
+                              SwitchElement(
+                                title: "Вибрация",
+                                isActive: true,
+                                value: state.vibrationEnabled,
+                                onChanged: (bool value) {
+                                  context
+                                      .read<AlarmSettingsBloc>()
+                                      .vibrationSwitched(value);
+                                },
+                              ),
+                              // SliderElement(
+                              //   icon: SvgPicture.asset(AppIcons.volume),
+                              //   minValue: 0,
+                              //   value: state.alarmVolume,
+                              //   maxValue: 100,
+                              //   isActive: true,
+                              //   onChanged: (double value) {
+                              //     context
+                              //         .read<AlarmSettingsBloc>()
+                              //         .volumeChanged(value);
+                              //   },
+                              // ),
+
+                              ValueElement(
+                                title: "Отложить",
+                                isActive: true,
+                                onTap: () {
+                                  context
+                                      .read<AlarmSettingsBloc>()
+                                      .snoozeChanged();
+                                },
+                                value: state.snoozeTime,
+                              ),
+                            ],
+                          ),
                         ),
                       ],
-                    ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 25.w,
+                            vertical: 16.h,
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              LargeButton(
+                                text: "Принять",
+                                backgroundColor: AppColors.lightGreen,
+                                shadowColor: AppColors.lemon,
+                                textColor: AppColors.darkGreen,
+                                onPressed: () {
+                                  context
+                                      .read<AlarmSettingsBloc>()
+                                      .okayClicked();
+                                },
+                              ),
+                              SizedBox(height: 6.h),
+                              LargeButton(
+                                text: "Отмена",
+                                onPressed: () {
+                                  context
+                                      .read<AlarmSettingsBloc>()
+                                      .cancelClicked();
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],

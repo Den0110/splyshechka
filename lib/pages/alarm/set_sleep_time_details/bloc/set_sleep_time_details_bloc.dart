@@ -43,86 +43,72 @@ class SetSleepTimeDetailsBloc
   ) async {
     await Future.wait(
       [
-        _alarmRepository.bedtime.forEach(
-          (value) {
-            _withInitialState(
-              (state) {
-                emit(state.copyWith(
-                  bedtime: value,
-                  sleepGoal: _calculateGoal(value, state.wakeupTime),
-                ));
-              },
+        emit.forEach(
+          _alarmRepository.bedtime,
+          onData: (SleepTime value) {
+            return state.copyWith(
+              bedtime: value,
+              sleepGoal: _calculateGoal(value, state.wakeupTime),
             );
           },
         ),
-        _alarmRepository.wakeupTime.forEach(
-          (value) {
-            _withInitialState(
-              (state) {
-                emit(state.copyWith(
-                  wakeupTime: value,
-                  sleepGoal: _calculateGoal(state.bedtime, value),
-                ));
-              },
+        emit.forEach(
+          _alarmRepository.wakeupTime,
+          onData: (SleepTime value) {
+            return state.copyWith(
+              wakeupTime: value,
+              sleepGoal: _calculateGoal(state.bedtime, value),
             );
           },
         ),
-        _alarmRepository.remindToSleep.forEach(
-          (value) {
-            _withInitialState(
-              (state) {
-                emit(state.copyWith(
-                  remindToSleep: value,
-                ));
-              },
+        emit.forEach(
+          _alarmRepository.remindToSleep,
+          onData: (bool value) {
+            return state.copyWith(
+              remindToSleep: value,
             );
           },
         ),
-        _alarmRepository.alarmEnabled.forEach(
-          (value) {
-            _withInitialState(
-              (state) {
-                emit(state.copyWith(
-                  alarmEnabled: value,
-                ));
-              },
+        emit.forEach(
+          _alarmRepository.alarmEnabled,
+          onData: (bool value) {
+            return state.copyWith(
+              alarmEnabled: value,
             );
           },
         ),
-        _alarmRepository.vibrationEnabled.forEach(
-          (value) {
-            _withInitialState((state) {
-              emit(state.copyWith(
-                vibrationEnabled: value,
-              ));
-            });
-          },
-        ),
-        _alarmRepository.alarmVolume.forEach((value) {
-          _withInitialState(
-            (state) {
-              emit(state.copyWith(
-                alarmVolume: value,
-              ));
-            },
-          );
-        }),
-        _alarmRepository.snoozeTime.forEach(
-          (value) {
-            _withInitialState(
-              (state) {
-                emit(state.copyWith(
-                  snoozeTime: value,
-                ));
-              },
+        emit.forEach(
+          _alarmRepository.vibrationEnabled,
+          onData: (bool value) {
+            return state.copyWith(
+              vibrationEnabled: value,
             );
           },
-        )
+        ),
+        emit.forEach(
+          _alarmRepository.alarmVolume,
+          onData: (double value) {
+            return state.copyWith(
+              alarmVolume: value,
+            );
+          },
+        ),
+        emit.forEach(
+          _alarmRepository.snoozeTime,
+          onData: (SnoozeTime value) {
+            return state.copyWith(
+              snoozeTime: value,
+            );
+          },
+        ),
       ],
     );
   }
 
-  void _onPageOpened(PageOpened event, Emitter<SetSleepTimeDetailsState> emit) {
+  void _onPageOpened(
+    PageOpened event,
+    Emitter<SetSleepTimeDetailsState> emit,
+  ) {
     emit(state.copyWith(selectedTab: event.sleepTimeType));
   }
 
@@ -132,7 +118,10 @@ class SetSleepTimeDetailsBloc
     }
   }
 
-  SleepTime _calculateGoal(SleepTime bedtime, SleepTime wakeupTime) {
+  SleepTime _calculateGoal(
+    SleepTime bedtime,
+    SleepTime wakeupTime,
+  ) {
     return wakeupTime - bedtime;
   }
 

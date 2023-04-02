@@ -53,20 +53,20 @@ class AlarmOptions extends StatelessWidget {
           SizedBox(height: 30.h),
           SleepGoal(goal: sleepGoal),
           SizedBox(height: 30.h),
-          // SleepContainer(
-          //   child: SwitchElement(
-          //     title: "Будильник",
-          //     isActive: true,
-          //     value: alarmEnabled,
-          //     onChanged: (bool value) {
-          //       context.read<SetSleepTimeDetailsBloc>().alarmSwitched(value);
-          //     },
-          //   ),
-          // ),
-          // if (alarmEnabled) ...[
-          //   SizedBox(
-          //     height: 10.h,
-          //   ),
+          SleepContainer(
+            child: SwitchElement(
+              title: "Будильник",
+              isActive: true,
+              value: alarmEnabled,
+              onChanged: (bool value) {
+                context.read<SetSleepTimeDetailsBloc>().alarmSwitched(value);
+              },
+            ),
+          ),
+          if (alarmEnabled) ...[
+            SizedBox(
+              height: 10.h,
+            ),
             SleepContainer(
               child: Column(
                 children: [
@@ -80,36 +80,32 @@ class AlarmOptions extends StatelessWidget {
                           .vibrationSwitched(value);
                     },
                   ),
-                  SliderElement(
-                    icon: SvgPicture.asset(AppIcons.volume),
-                    minValue: 0,
-                    value: volume,
-                    maxValue: 100,
+                  // SliderElement(
+                  //   icon: SvgPicture.asset(AppIcons.volume),
+                  //   minValue: 0,
+                  //   value: volume,
+                  //   maxValue: 100,
+                  //   isActive: true,
+                  //   onChanged: (double value) {
+                  //     context
+                  //         .read<SetSleepTimeDetailsBloc>()
+                  //         .volumeChanged(value);
+                  //   },
+                  // ),
+
+                  ValueElement(
+                    title: "Отложить",
                     isActive: true,
-                    onChanged: (double value) {
-                      context
-                          .read<SetSleepTimeDetailsBloc>()
-                          .volumeChanged(value);
+                    onTap: () {
+                      context.read<SetSleepTimeDetailsBloc>().snoozeChanged();
                     },
+                    value: snoozeTime,
                   ),
                 ],
               ),
             ),
-            SizedBox(
-              height: 10.h,
-            ),
-            SleepContainer(
-              child: ValueElement(
-                title: "Отложить",
-                isActive: true,
-                onTap: () {
-                  context.read<SetSleepTimeDetailsBloc>().snoozeChanged();
-                },
-                value: snoozeTime,
-              ),
-            ),
           ],
-     //   ],
+        ],
       ),
     );
   }
