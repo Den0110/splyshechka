@@ -144,7 +144,7 @@ int getHours(double n) {
 
 int getMinutes(double n) {
   var s = n;
-  return int.parse(s.toString().split('.')[1]);
+  return int.parse(s.toString().split('.')[1].substring(0,1));
 }
 
 String toHours(int n) {
