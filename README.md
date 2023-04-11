@@ -11,3 +11,5 @@
 [Ссылка на репозиторий BackEnd](https://github.com/Den0110/splyshechka_api) 
 
 ![alt text](https://drive.google.com/uc?export=view&id=1fCFrDWUwiCK6CVCQCrwWXthcldc-WYkC)
+
+Баг: для того чтобы анализ сна заработал, нужно проспать не меньше минуты. Тогда отобразится последняя страница с анализом.
