@@ -11,7 +11,7 @@ abstract class AppModule {
 
   @lazySingleton
   Dio get dio => Dio(BaseOptions(
-        baseUrl: "http://213.189.201.161:8080",
+        baseUrl: "http://194.58.119.41:8080",
         connectTimeout: 20 * 1000,
         receiveTimeout: 20 * 1000,
       ))
