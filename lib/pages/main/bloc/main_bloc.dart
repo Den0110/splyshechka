@@ -6,11 +6,10 @@ import 'package:splyshechka/data/data_source/user/remote/new_user_remote_data_so
 import 'package:splyshechka/data/model/new_user/new_sleep_user_dto.dart';
 import 'package:splyshechka/domain/entities/profile/sleep_avatar.dart';
 import 'package:splyshechka/domain/entities/profile/sleep_user.dart';
+import 'package:splyshechka/domain/models/gender/gender.dart';
+import 'package:splyshechka/domain/models/pickers/face_picker_items.dart';
+import 'package:splyshechka/domain/models/pickers/sleep_color_picker_items.dart';
 import 'package:splyshechka/domain/repository/user_repository.dart';
-import 'package:splyshechka/models/gender/gender.dart';
-import 'package:splyshechka/models/pickers/face_picker_items.dart';
-import 'package:splyshechka/models/pickers/sleep_color_picker_items.dart';
-import 'package:splyshechka/pages/main/bloc/main_ui_model.dart';
 
 part 'main_bloc.freezed.dart';
 

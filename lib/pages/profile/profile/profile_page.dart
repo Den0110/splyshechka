@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:splyshechka/di/locator.dart';
-import 'package:splyshechka/models/gender/gender.dart';
+import 'package:splyshechka/domain/models/gender/gender.dart';
 import 'package:splyshechka/navigation/auto_router.gr.dart';
 import 'package:splyshechka/pages/profile/edit_avatar/avatar.dart';
 import 'package:splyshechka/pages/profile/profile/bloc/profile_bloc.dart';

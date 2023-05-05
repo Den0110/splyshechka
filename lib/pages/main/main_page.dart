@@ -4,11 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';
 import 'package:splyshechka/di/locator.dart';
-import 'package:splyshechka/models/bottom_bars/app_bottom_bar_items.dart';
+import 'package:splyshechka/domain/models/bottom_bars/app_bottom_bar_items.dart';
 import 'package:splyshechka/navigation/auto_router.gr.dart';
 import 'package:splyshechka/pages/main/bloc/main_bloc.dart';
-import 'package:splyshechka/utils/app_colors.dart';
-import 'package:splyshechka/utils/app_images.dart';
 import 'package:splyshechka/widgets/avatar.dart';
 import 'package:splyshechka/widgets/bottom_bars/app_bottom_bar.dart';
 

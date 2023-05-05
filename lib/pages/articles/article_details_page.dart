@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:splyshechka/models/articles/article.dart';
+import 'package:splyshechka/domain/models/articles/article.dart';
 import 'package:splyshechka/pages/articles/widgets/wiki_article_content.dart';
 
 

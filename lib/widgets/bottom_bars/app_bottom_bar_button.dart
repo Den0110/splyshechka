@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:splyshechka/models/bottom_bars/app_bottom_bar_items.dart';
+import 'package:splyshechka/domain/models/bottom_bars/app_bottom_bar_items.dart';
 
 class AppBottomBarButton extends StatelessWidget {
   final bool isEnabled;

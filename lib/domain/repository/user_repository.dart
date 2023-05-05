@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rxdart/subjects.dart';
-import 'package:splyshechka/data/model/sleep/sleep_dto.dart';
 import 'package:splyshechka/domain/entities/profile/sleep_avatar.dart';
 import 'package:splyshechka/domain/entities/profile/sleep_user.dart';
-import 'package:splyshechka/models/gender/gender.dart';
+import 'package:splyshechka/domain/models/gender/gender.dart';
 
 abstract class UserRepository {
   final currentUser = BehaviorSubject<SleepUser>();

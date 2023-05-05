@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:splyshechka/models/achievements/achievement.dart';
-import 'package:splyshechka/models/achievements/achievement_list.dart';
+import 'package:splyshechka/domain/models/achievements/achievement.dart';
+import 'package:splyshechka/domain/models/achievements/achievement_list.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/utils/app_text_styles.dart';
 

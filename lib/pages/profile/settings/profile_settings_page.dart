@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';
 import 'package:splyshechka/di/locator.dart';
-import 'package:splyshechka/models/gender/gender.dart';
+import 'package:splyshechka/domain/models/gender/gender.dart';
 import 'package:splyshechka/navigation/auto_router.gr.dart';
 import 'package:splyshechka/pages/profile/edit_avatar/avatar.dart';
 import 'package:splyshechka/utils/app_colors.dart';

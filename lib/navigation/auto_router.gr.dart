@@ -16,7 +16,7 @@ import 'package:flutter/cupertino.dart' as _i28;
 import 'package:flutter/material.dart' as _i26;
 
 import '../data/model/sleep/sleep_dto.dart' as _i31;
-import '../models/articles/article.dart' as _i29;
+import '../domain/models/articles/article.dart' as _i29;
 import '../pages/achievements/achievements_page.dart' as _i24;
 import '../pages/alarm/good_morning/good_morning_page.dart' as _i17;
 import '../pages/alarm/result/alarm_result_page.dart' as _i20;
@@ -212,11 +212,9 @@ class AppRouter extends _i25.RootStackRouter {
       );
     },
     ArticlesRoute.name: (routeData) {
-      final args = routeData.argsAs<ArticlesRouteArgs>(
-          orElse: () => const ArticlesRouteArgs());
       return _i25.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i22.ArticlesPage(key: args.key),
+        child: const _i22.ArticlesPage(),
       );
     },
     StatisticsRoute.name: (routeData) {
@@ -662,26 +660,14 @@ class HomeRoute extends _i25.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i22.ArticlesPage]
-class ArticlesRoute extends _i25.PageRouteInfo<ArticlesRouteArgs> {
-  ArticlesRoute({_i28.Key? key})
+class ArticlesRoute extends _i25.PageRouteInfo<void> {
+  const ArticlesRoute()
       : super(
           ArticlesRoute.name,
           path: 'articles-page',
-          args: ArticlesRouteArgs(key: key),
         );
 
   static const String name = 'ArticlesRoute';
-}
-
-class ArticlesRouteArgs {
-  const ArticlesRouteArgs({this.key});
-
-  final _i28.Key? key;
-
-  @override
-  String toString() {
-    return 'ArticlesRouteArgs{key: $key}';
-  }
 }
 
 /// generated route for

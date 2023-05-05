@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:splyshechka/models/bottom_bars/app_bottom_bar_items.dart';
+import 'package:splyshechka/domain/models/bottom_bars/app_bottom_bar_items.dart';
 import 'package:splyshechka/widgets/bottom_bars/app_bottom_bar_button.dart';
 
 class AppBottomBar extends StatelessWidget {

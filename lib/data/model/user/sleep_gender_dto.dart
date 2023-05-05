@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:splyshechka/models/gender/gender.dart';
+import 'package:splyshechka/domain/models/gender/gender.dart';
 
 enum GenderDto {
   @JsonValue("male")

@@ -9,17 +9,14 @@ import 'package:splyshechka/data/model/new_user/sleep_user_sign_in_email_dto.dar
 import 'package:splyshechka/data/model/new_user/token_dto.dart';
 import 'package:splyshechka/domain/entities/profile/sleep_avatar.dart';
 import 'package:splyshechka/domain/entities/profile/sleep_user.dart';
+import 'package:splyshechka/domain/models/gender/gender.dart';
+import 'package:splyshechka/domain/models/pickers/face_picker_items.dart';
+import 'package:splyshechka/domain/models/pickers/sleep_color_picker_items.dart';
 import 'package:splyshechka/domain/repository/user_repository.dart';
-import 'package:splyshechka/models/gender/gender.dart';
-import 'package:splyshechka/models/pickers/face_picker_items.dart';
-import 'package:splyshechka/models/pickers/sleep_color_picker_items.dart';
 
 part 'login_bloc.freezed.dart';
-
 part 'login_command.dart';
-
 part 'login_event.dart';
-
 part 'login_state.dart';
 
 @injectable

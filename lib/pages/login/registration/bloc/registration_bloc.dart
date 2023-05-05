@@ -4,7 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';
 import 'package:splyshechka/data/data_source/user/remote/new_user_remote_data_source.dart';
 import 'package:splyshechka/data/model/new_user/sleep_user_sign_up_dto.dart';
-import 'package:splyshechka/models/gender/gender.dart';
+import 'package:splyshechka/domain/models/gender/gender.dart';
 
 part 'registration_event.dart';
 part 'registration_state.dart';

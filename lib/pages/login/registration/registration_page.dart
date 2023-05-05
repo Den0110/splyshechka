@@ -4,7 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';
 import 'package:splyshechka/di/locator.dart';
-import 'package:splyshechka/models/gender/gender.dart';
+import 'package:splyshechka/domain/models/gender/gender.dart';
+
 import 'package:splyshechka/navigation/auto_router.gr.dart';
 import 'package:splyshechka/pages/login/registration/bloc/registration_bloc.dart';
 import 'package:splyshechka/pages/login/widgets/login_text_field.dart';

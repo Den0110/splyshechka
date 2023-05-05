@@ -1,11 +1,9 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:splyshechka/di/locator.dart';
-import 'package:splyshechka/models/pickers/face_picker_items.dart';
-import 'package:splyshechka/models/pickers/sleep_color_picker_items.dart';
-import 'package:splyshechka/navigation/auto_router.gr.dart';
+import 'package:splyshechka/domain/models/pickers/face_picker_items.dart';
+import 'package:splyshechka/domain/models/pickers/sleep_color_picker_items.dart';
 import 'package:splyshechka/pages/profile/edit_avatar/avatar.dart';
 import 'package:splyshechka/pages/profile/edit_avatar/bloc/profile_settings_avatar_bloc.dart';
 import 'package:splyshechka/utils/app_text_styles.dart';

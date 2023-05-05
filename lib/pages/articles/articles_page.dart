@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:splyshechka/models/articles/article.dart';
+import 'package:splyshechka/domain/models/articles/article.dart';
 import 'package:splyshechka/navigation/auto_router.gr.dart';
 import 'package:splyshechka/pages/articles/widgets/wiki_card.dart';
 
 class ArticlesPage extends StatelessWidget {
-  ArticlesPage({Key? key}) : super(key: key);
+  const ArticlesPage({Key? key}) : super(key: key);
 
   final articles = const [
     Article(

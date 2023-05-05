@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:splyshechka/models/notifications/notification_type.dart';
+import 'package:splyshechka/domain/models/notifications/notification_type.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/utils/app_icons.dart';
 import 'package:splyshechka/utils/app_text_styles.dart';

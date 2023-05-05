@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:splyshechka/models/articles/article.dart';
+import 'package:splyshechka/domain/models/articles/article.dart';
 
 part 'article_category.freezed.dart';
 
