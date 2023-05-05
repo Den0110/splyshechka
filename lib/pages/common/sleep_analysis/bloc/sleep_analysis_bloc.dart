@@ -59,9 +59,7 @@ class SleepAnalysisBloc extends Bloc<SleepAnalysisEvent, SleepAnalysisState> {
   Future<void> _onPushed(
     Pushed event,
     Emitter<SleepAnalysisState> emit,
-  ) async {
-
-  }
+  ) async {}
 
   Future<SleepAnalysisState> _parseSleepData(String content) async {
     final parts = content.split(";").toList();
@@ -270,6 +268,44 @@ class SleepAnalysisBloc extends Bloc<SleepAnalysisEvent, SleepAnalysisState> {
         _userRepository.currentUser.value.token,
         sleepDto,
       );
+    }
+
+    if (totalSleepTime.h >= 11) {
+      try {
+        await _dataSource.updateAchievement(
+          _userRepository.currentUser.value.token,
+          2,
+        );
+      } catch (e) {}
+    } else if (totalSleepTime.h == 8 ||
+        (totalSleepTime.h == 9 && totalSleepTime.m == 0)) {
+      try {
+        await _dataSource.updateAchievement(
+          _userRepository.currentUser.value.token,
+          3,
+        );
+        await _dataSource.updateAchievement(
+          _userRepository.currentUser.value.token,
+          4,
+        );
+        await _dataSource.updateAchievement(
+          _userRepository.currentUser.value.token,
+          5,
+        );
+        await _dataSource.updateAchievement(
+          _userRepository.currentUser.value.token,
+          6,
+        );
+      } catch (e) {}
+    } else if (totalSleepTime.h == 4 ||
+        totalSleepTime.h == 5 ||
+        (totalSleepTime.h == 6 && totalSleepTime.m == 0)) {
+      try {
+        await _dataSource.updateAchievement(
+          _userRepository.currentUser.value.token,
+          7,
+        );
+      } catch (e) {}
     }
 
     return SleepAnalysisState.loaded(

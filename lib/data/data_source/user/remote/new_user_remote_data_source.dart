@@ -8,6 +8,7 @@ import 'package:splyshechka/data/model/new_user/sleep_user_sign_in_email_dto.dar
 import 'package:splyshechka/data/model/new_user/sleep_user_sign_up_dto.dart';
 import 'package:splyshechka/data/model/new_user/token_dto.dart';
 import 'package:splyshechka/data/model/sleep/sleep_dto.dart';
+import 'package:splyshechka/data/model/achievement/achievement_dto.dart';
 
 abstract class NewUserRemoteDataSource {
   Future<void> signUpUser(SleepUserSignUpDto user);
@@ -47,5 +48,10 @@ abstract class NewUserRemoteDataSource {
   Future<void> addSleep(
     String token,
     SleepDto field,
+  );
+  Future<List<AchievementDto>> getAllAchievements(String token);
+  Future<void> updateAchievement(
+    String token,
+    int index,
   );
 }

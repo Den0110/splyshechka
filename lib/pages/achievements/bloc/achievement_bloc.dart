@@ -2,7 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';
-import 'package:splyshechka/domain/models/achievements/achievement.dart';
+import 'package:splyshechka/data/data_source/user/remote/new_user_remote_data_source.dart';
+import 'package:splyshechka/data/model/achievement/achievement_dto.dart';
+import 'package:splyshechka/domain/models/achievements/achievement_list.dart';
+import 'package:splyshechka/domain/repository/user_repository.dart';
 
 part 'achievement_event.dart';
 part 'achievement_state.dart';
@@ -12,23 +15,52 @@ part 'achievement_bloc.freezed.dart';
 @injectable
 class AchievementBloc extends Bloc<AchievementEvent, AchievementState>
     with SideEffectBlocMixin<AchievementState, AchievementCommand> {
-  AchievementBloc()
-      : super(
+  final NewUserRemoteDataSource _dataSource;
+  final UserRepository _userRepository;
+  AchievementBloc(
+    this._dataSource,
+    this._userRepository,
+  ) : super(
           const _Initial(
+            wasOpened: false,
             selectedPage: 0,
             listReady: [],
             listUnready: [],
             loading: true,
           ),
         ) {
-    on<PageChanged>(_onPageChanged);
+    on<PageOpened>(_onPageOpened);
   }
 
-   void _onPageChanged(
-    PageChanged event,
+  Future<void> _onPageOpened(
+    PageOpened event,
     Emitter<AchievementState> emit,
-  )  {
-    emit(state.copyWith(selectedPage: event.index));
-  }
+  ) async {
+    if (!state.wasOpened) {
+      try {
+        await _dataSource.updateAchievement(
+          _userRepository.currentUser.valueOrNull!.token,
+          1,
+        );
+      } catch (e) {}
+      emit(state.copyWith(wasOpened: true));
+    }
 
+    try {
+      // List<AchievementDto> achievements = await _dataSource.getAllAchievements(
+      //   _userRepository.currentUser.valueOrNull!.token,
+      // );
+      final achievements = Achievements.achievements;
+      final acquiredAchivements =
+          achievements.where((element) => element.isAchieved).toList();
+      final notAcquiredAchivements =
+          achievements.where((element) => !element.isAchieved).toList();
+
+      emit(state.copyWith(
+        listReady: acquiredAchivements,
+        listUnready: notAcquiredAchivements,
+      ));
+    } catch (e) {}
+    emit(state.copyWith(loading: false));
+  }
 }

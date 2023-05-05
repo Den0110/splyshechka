@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:splyshechka/domain/models/achievements/achievement.dart';
+import 'package:splyshechka/data/model/achievement/achievement_dto.dart';
 import 'package:splyshechka/domain/models/achievements/achievement_list.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/utils/app_text_styles.dart';
@@ -11,7 +11,7 @@ class AchievementCard extends StatelessWidget {
     required this.achievement,
   });
 
-  final Achievement achievement;
+  final AchievementDto achievement;
 
   @override
   Widget build(BuildContext context) {

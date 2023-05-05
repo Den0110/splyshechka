@@ -12,6 +12,7 @@ import 'package:splyshechka/data/model/new_user/sleep_user_sign_in_email_dto.dar
 import 'package:splyshechka/data/model/new_user/sleep_user_sign_up_dto.dart';
 import 'package:splyshechka/data/model/new_user/token_dto.dart';
 import 'package:splyshechka/data/model/sleep/sleep_dto.dart';
+import 'package:splyshechka/data/model/achievement/achievement_dto.dart';
 
 part 'new_user_remote_data_source_impl.g.dart';
 
@@ -92,10 +93,8 @@ abstract class NewUserRemoteDataSourceImpl implements NewUserRemoteDataSource {
 
   @override
   @POST('/email/confirm-reset-code')
-  Future<void> resetPassword(
-    @Header("Authorization") String token,
-    @Body() NonResetPasswordDto resetPasswordDto
-  );
+  Future<void> resetPassword(@Header("Authorization") String token,
+      @Body() NonResetPasswordDto resetPasswordDto);
 
   @override
   @GET("/sleep/last")
@@ -114,5 +113,18 @@ abstract class NewUserRemoteDataSourceImpl implements NewUserRemoteDataSource {
   Future<void> addSleep(
     @Header("Authorization") String token,
     @Body() SleepDto field,
+  );
+
+  @override
+  @GET("/achievement/all")
+  Future<List<AchievementDto>> getAllAchievements(
+    @Header("Authorization") String token,
+  );
+
+  @override
+  @POST("/achievement/update")
+  Future<void> updateAchievement(
+    @Header("Authorization") String token,
+    @Body() int index,
   );
 }
