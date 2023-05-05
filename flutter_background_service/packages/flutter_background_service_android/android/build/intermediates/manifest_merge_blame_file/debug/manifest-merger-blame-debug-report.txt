@@ -1,0 +1,65 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="id.flutter.flutter_background_service" >
+4
+5    <uses-sdk
+6        android:minSdkVersion="16"
+6-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml
+7        android:targetSdkVersion="16" />
+7-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml
+8
+9    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+9-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:4:5-76
+9-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:4:22-74
+10    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+10-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:5:5-80
+10-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:5:22-78
+11    <uses-permission android:name="android.permission.WAKE_LOCK" />
+11-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:6:5-67
+11-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:6:22-65
+12    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+12-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:7:5-70
+12-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:7:22-68
+13
+14    <application>
+14-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:10:5-35:19
+15        <service
+15-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:11:9-16:15
+16            android:name="id.flutter.flutter_background_service.BackgroundService"
+16-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:14:13-46
+17            android:enabled="true"
+17-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:12:13-35
+18            android:exported="true"
+18-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:13:13-36
+19            android:stopWithTask="false" />
+19-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:15:13-41
+20
+21        <receiver
+21-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:18:9-22:15
+22            android:name="id.flutter.flutter_background_service.WatchdogReceiver"
+22-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:19:13-45
+23            android:enabled="true"
+23-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:20:13-35
+24            android:exported="true" />
+24-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:21:13-36
+25        <receiver
+25-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:24:9-33:20
+26            android:name="id.flutter.flutter_background_service.BootReceiver"
+26-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:25:13-41
+27            android:enabled="true"
+27-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:26:13-35
+28            android:exported="true" >
+28-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:27:13-36
+29            <intent-filter>
+29-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:29:13-32:29
+30                <action android:name="android.intent.action.BOOT_COMPLETED" />
+30-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:30:17-78
+30-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:30:25-76
+31                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+31-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:31:17-81
+31-->/Users/denis/Documents/Applications/Flutter/splyshechka/flutter_background_service/packages/flutter_background_service_android/android/src/main/AndroidManifest.xml:31:25-79
+32            </intent-filter>
+33        </receiver>
+34    </application>
+35
+36</manifest>
