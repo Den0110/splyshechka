@@ -10,6 +10,9 @@ import 'package:splyshechka/pages/alarm/snooze/snooze_page.dart';
 import 'package:splyshechka/pages/articles/article_details_page.dart';
 import 'package:splyshechka/pages/articles/articles_page.dart';
 import 'package:splyshechka/pages/home/home_page.dart';
+import 'package:splyshechka/pages/login/login/login_page.dart';
+import 'package:splyshechka/pages/login/password_retrieval/password_retrieval_page.dart';
+import 'package:splyshechka/pages/login/registration/registration_page.dart';
 import 'package:splyshechka/pages/main/main_page.dart';
 import 'package:splyshechka/pages/profile/edit_avatar/profile_settings_avatar_page.dart';
 import 'package:splyshechka/pages/profile/edit_email/profile_settings_email_page.dart';
@@ -18,14 +21,15 @@ import 'package:splyshechka/pages/profile/edit_name/profile_settings_name_page.d
 import 'package:splyshechka/pages/profile/edit_password/profile_settings_password.dart';
 import 'package:splyshechka/pages/profile/profile/profile_page.dart';
 import 'package:splyshechka/pages/profile/settings/profile_settings_page.dart';
-import 'package:splyshechka/pages/statistics/statistics_page.dart';
+import 'package:splyshechka/pages/statistics/all_analysis/all_analysis_page.dart';
+import 'package:splyshechka/pages/statistics/last_analys/statistics_page.dart';
+import 'package:splyshechka/pages/statistics/current_analys/analys_widget.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
     AutoRoute(
       page: MainPage,
-      initial: true,
       children: [
         AutoRoute(
           page: HomePage,
@@ -40,6 +44,16 @@ import 'package:splyshechka/pages/statistics/statistics_page.dart';
           page: AchievementsPage,
         )
       ],
+    ),
+    AutoRoute(
+      page: LoginPage,
+      initial: true,
+    ),
+    AutoRoute(
+      page: PasswordRetrievalPage,
+    ),
+    AutoRoute(
+      page: RegistrationPage,
     ),
     AutoRoute(
       page: ArticleDetailsPage,
@@ -65,12 +79,19 @@ import 'package:splyshechka/pages/statistics/statistics_page.dart';
     AutoRoute(
       page: ProfileSettingsGenderPage,
     ),
+    AutoRoute(
+      page: AllAnalysisPage,
+    ),
     CustomRoute(
       page: SetSleepTimeDetailsPage,
       customRouteBuilder: regularPageBuilder,
     ),
     CustomRoute(
       page: SnoozePage,
+      customRouteBuilder: bottomSheetBuilder,
+    ),
+    CustomRoute(
+      page: CurrentAnalysPage,
       customRouteBuilder: bottomSheetBuilder,
     ),
     CustomRoute(

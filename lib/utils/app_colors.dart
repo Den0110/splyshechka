@@ -31,4 +31,7 @@ abstract class AppColors {
   static const Color darkGreen = Color.fromRGBO(26, 47, 35, 1);
   static Color black38 = Colors.black.withOpacity(0.38);
   static const Color grey = Color.fromRGBO(112,109,109,1);
+  static const Color brandMain = Color.fromRGBO(239, 210, 60, 1);
+  static const Color stroke = Color.fromRGBO(92, 91, 95, 1);
+  static const Color semiLightGrey = Color.fromRGBO(144, 143, 148, 1);
 }

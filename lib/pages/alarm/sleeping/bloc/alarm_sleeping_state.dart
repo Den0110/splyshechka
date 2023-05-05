@@ -1,16 +1,11 @@
-part of 'alarm_sleeping_cubit.dart';
+part of 'alarm_sleeping_bloc.dart';
 
-@Freezed(equal: false)
+@freezed
 class AlarmSleepingState with _$AlarmSleepingState {
-  const factory AlarmSleepingState.initial({
+  const factory AlarmSleepingState({
     required DateTime currentDate,
     required String alarmTime,
-    required int currentVolume,
-  }) = Initial;
-
-  @Implements<OneShotState>()
-  factory AlarmSleepingState.navToAlarm() = NavToAlarm;
-
-  @Implements<OneShotState>()
-  factory AlarmSleepingState.navToResults() = NavToResults;
+    required double visualVolume,
+    required int volume,
+  }) = _AlarmSleepingState;
 }

@@ -1,10 +1,7 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/utils/app_text_styles.dart';
-import 'package:splyshechka/widgets/options_list/active_widget.dart';
 
 class LargeButton extends StatelessWidget {
   final Color? backgroundColor;
@@ -30,44 +27,44 @@ class LargeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ActiveWidget(
-      isActive: isActive,
-      onTap: onPressed,
-      child: Container(
-        padding: EdgeInsets.only(bottom: 4.h),
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: shadowColor,
-          borderRadius: BorderRadius.all(Radius.circular(11.r)),
-        ),
+    return ClipRRect(
+      borderRadius: BorderRadius.all(Radius.circular(11.r)),
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      child: GestureDetector(
+        onTap: onPressed,
         child: Container(
-          padding: EdgeInsets.only(
-            top: 12.h,
-            bottom: 15.h,
-            left: 16.w,
-            right: 16.w,
-          ),
-          decoration: BoxDecoration(
-            color: backgroundColor ?? Colors.transparent,
-            borderRadius: BorderRadius.all(Radius.circular(11.r)),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              if (icon != null)
-                Padding(
-                  padding: EdgeInsets.only(right: 5.w),
-                  child: icon,
+          padding: EdgeInsets.only(bottom: 4.h),
+          width: double.infinity,
+          color: shadowColor,
+          child: Container(
+            padding: EdgeInsets.only(
+              top: 12.h,
+              bottom: 15.h,
+              left: 16.w,
+              right: 16.w,
+            ),
+            decoration: BoxDecoration(
+              color: backgroundColor ?? Colors.transparent,
+              borderRadius: BorderRadius.all(Radius.circular(11.r)),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (icon != null)
+                  Padding(
+                    padding: EdgeInsets.only(right: 5.w),
+                    child: icon,
+                  ),
+                Flexible(
+                  child: Text(
+                    text,
+                    textAlign: TextAlign.center,
+                    style: AppTextStyles.buttonLargeStyle
+                        .copyWith(color: textColor ?? AppColors.white),
+                  ),
                 ),
-              Flexible(
-                child: Text(
-                  text,
-                  textAlign: TextAlign.center,
-                  style: AppTextStyles.buttonLargeStyle
-                      .copyWith(color: textColor ?? AppColors.white),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

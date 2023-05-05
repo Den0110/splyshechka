@@ -1,6 +1,12 @@
+import 'dart:io';
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:splyshechka/domain/entities/alarm/sleep_time.dart';
+import 'package:injectable/injectable.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:splyshechka/data/data_source/user/remote/new_user_remote_data_source.dart';
+import 'package:splyshechka/domain/repository/user_repository.dart';
 
 part 'alarm_result_page_bloc.freezed.dart';
 
@@ -8,26 +14,37 @@ part 'alarm_result_page_event.dart';
 
 part 'alarm_result_page_state.dart';
 
+@injectable
 class AlarmResultPageBloc
     extends Bloc<AlarmResultPageEvent, AlarmResultPageState> {
-  AlarmResultPageBloc() : super(const AlarmResultPageInitial()) {
-    on<LoadStarted>(_loadData);
+  final SharedPreferences _prefs;
+  final UserRepository _userRepository;
+
+  AlarmResultPageBloc(
+    this._prefs, this._userRepository,
+  ) : super(const AlarmResultPageState.initial()) {
+    on<LoadStarted>(_onStarted);
   }
 
-  void _loadData(LoadStarted event, Emitter<AlarmResultPageState> emit) {
-    emit(
-      const AlarmResultPageDataLoaded(
-        value: 8.40,
-        boxes: 1,
-        image: "assets/images/pillow.png",
-        asleepAfter: SleepTime(h: 0, m: 5),
-        wentToBed: SleepTime(h: 23, m: 48),
-        wokeUp: SleepTime(h: 9, m: 32),
-        inBed: SleepTime(h: 8, m: 12),
-        totalSleep: SleepTime(h: 7, m: 52),
-        noise: 30,
-        quality: 100,
-      ),
-    );
+  Future<void> _onStarted(
+    LoadStarted event,
+    Emitter<AlarmResultPageState> emit,
+  ) async {
+    Directory dir = await getApplicationDocumentsDirectory();
+    final pathSegs = dir.uri.pathSegments.where((e) => e.isNotEmpty).toList();
+    pathSegs.removeLast();
+    pathSegs.add('files');
+    dir = Directory(pathSegs.join('/'));
+    final files = await dir
+        .list()
+        .map((e) => e.path)
+        .where((e) => e.contains('recording') && e.endsWith('txt'))
+        .toList();
+    files.sort();
+
+    _prefs.setInt("lastSleepTime", DateTime.now().millisecondsSinceEpoch);
+    _userRepository.updateSleepDto(true);
+
+    emit(AlarmResultPageState.loaded(filePath: files.last));
   }
 }

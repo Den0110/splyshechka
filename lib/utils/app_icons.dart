@@ -51,4 +51,5 @@ abstract class AppIcons {
   static const String mic = 'assets/icons/mic.svg';
   static const String sparklesEnabled = 'assets/icons/sparkles_enabled.svg';
   static const String sparklesDisabled = 'assets/icons/sparkles_disabled.svg';
+  static const String okCircle = "assets/icons/ok_circle.svg";
 }

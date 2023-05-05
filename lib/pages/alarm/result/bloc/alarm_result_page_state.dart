@@ -1,22 +1,7 @@
 part of 'alarm_result_page_bloc.dart';
 
-
-@Freezed(equal: false)
+@freezed
 class AlarmResultPageState with _$AlarmResultPageState {
-  const factory AlarmResultPageState.initial() =  AlarmResultPageInitial;
-
-  const factory AlarmResultPageState.dataLoaded({
-    required String image,
-    required SleepTime wentToBed,
-    required SleepTime asleepAfter,
-    required SleepTime totalSleep,
-    required SleepTime inBed,
-    required SleepTime wokeUp,
-    required int noise,
-    required double value,
-    required int boxes,
-    required int quality,
-  }) =  AlarmResultPageDataLoaded;
-
-
+  const factory AlarmResultPageState.initial() = _AlarmResultPageInitial;
+  const factory AlarmResultPageState.loaded({required String filePath}) = _Loaded;
 }

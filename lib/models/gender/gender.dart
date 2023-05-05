@@ -1,18 +1,23 @@
 import 'package:splyshechka/utils/app_icons.dart';
 
-enum Gender { male, female, other, secret }
+enum Gender { male, female }
 
 extension GenderExtension on Gender {
-  String get name {
+  String get getName {
     switch (this) {
       case Gender.male:
         return 'Мужской';
       case Gender.female:
         return 'Женский';
-      case Gender.other:
-        return 'Другой';
-      case Gender.secret:
-        return 'Скрыт';
+    }
+  }
+
+  String get jsonName {
+    switch (this) {
+      case Gender.male:
+        return 'male';
+      case Gender.female:
+        return 'female';
     }
   }
 
@@ -22,10 +27,16 @@ extension GenderExtension on Gender {
         return AppIcons.male;
       case Gender.female:
         return AppIcons.female;
-      case Gender.other:
-        return AppIcons.transgender;
-      case Gender.secret:
-        return AppIcons.question;
     }
+  }
+
+  static Gender fromJson(String gender) {
+    switch (gender) {
+      case "male":
+        return Gender.male;
+      case "female":
+        return Gender.female;
+    }
+    return Gender.male;
   }
 }

@@ -70,10 +70,3 @@ class SleepPeriodPicker extends StatelessWidget {
     );
   }
 }
-/*
-Center(
-        child: Text(
-          ("${begin.h} ${begin.m}  ${end.h} ${end.m}"),
-        ),
-      )
- */

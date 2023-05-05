@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,23 +7,26 @@ import 'package:splyshechka/utils/app_icons.dart';
 import 'package:splyshechka/utils/app_text_styles.dart';
 import 'package:splyshechka/widgets/buttons/circle_icon_button.dart';
 
-
 class AppTextField extends StatefulWidget {
   final String hint;
   final String? value;
   final Widget? icon;
   final Function(String) onChanged;
+  final Function() onDelete;
   final int? maxLines;
+  final bool onlyNumbers;
   final int? maxTextLength;
 
   const AppTextField({
     Key? key,
     required this.hint,
     required this.onChanged,
+    this.onlyNumbers = false,
     this.icon,
     this.value,
     this.maxLines,
     this.maxTextLength,
+    required this.onDelete,
   }) : super(key: key);
 
   @override
@@ -56,6 +58,7 @@ class _AppTextFieldState extends State<AppTextField> {
           width: double.infinity,
           decoration: const BoxDecoration(color: AppColors.greyMain),
           child: TextField(
+            keyboardType: widget.onlyNumbers ? TextInputType.number : null,
             inputFormatters: [
               LengthLimitingTextInputFormatter(widget.maxTextLength),
             ],
@@ -106,6 +109,7 @@ class _AppTextFieldState extends State<AppTextField> {
                         ),
                         onPressed: () {
                           _controller.clear();
+                          widget.onDelete();
                         },
                       ),
                     ),
