@@ -59,7 +59,7 @@ abstract class Achievements {
       finalCount: 28,
       index: 6,
     ),
-     const AchievementDto(
+    const AchievementDto(
       headerText: "Проклятие",
       description: "Проспать 4-6 часов.",
       image: AppImages.spiderEye,
@@ -68,7 +68,25 @@ abstract class Achievements {
       finalCount: 1,
       index: 7,
     ),
+    const AchievementDto(
+      headerText: "Маленький манёвр",
+      description: "Поставить будильник на 15 и меньше минут.",
+      image: AppImages.portal,
+      isAchieved: true,
+      counter: 0,
+      finalCount: 1,
+      index: 8,
+    ),
     ///////////////////////
+     const AchievementDto(
+      headerText: "Цыганские фокусы",
+      description: "Лечь 2 раза спать за день.",
+      image: AppImages.apple,
+      isAchieved: false,
+      counter: 0,
+      finalCount: 0,
+      index: 0,
+    ),
     const AchievementDto(
       headerText: "Дипломат",
       description:
@@ -90,15 +108,6 @@ abstract class Achievements {
       index: 0,
     ),
     const AchievementDto(
-      headerText: "Маленький манёвр",
-      description: "Поставить будильник на 15 и меньше минут.",
-      image: AppImages.portal,
-      isAchieved: false,
-      counter: 0,
-      finalCount: 0,
-      index: 0,
-    ),
-    const AchievementDto(
       headerText: "Да не умер он",
       description: "Проспать будильник.",
       image: AppImages.gast,
@@ -111,15 +120,6 @@ abstract class Achievements {
       headerText: "Исчезнувший",
       description: "Не ложиться спать.",
       image: AppImages.endPortal,
-      isAchieved: false,
-      counter: 0,
-      finalCount: 0,
-      index: 0,
-    ),
-    const AchievementDto(
-      headerText: "Цыганские фокусы",
-      description: "Лечь 2 раза спать за день.",
-      image: AppImages.apple,
       isAchieved: false,
       counter: 0,
       finalCount: 0,

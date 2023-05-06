@@ -2,8 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';
+import 'package:splyshechka/data/data_source/user/remote/new_user_remote_data_source.dart';
 import 'package:splyshechka/domain/entities/alarm/sleep_time.dart';
 import 'package:splyshechka/domain/repository/alarm_repository.dart';
+import 'package:splyshechka/domain/repository/user_repository.dart';
 import 'package:splyshechka/pages/alarm/set_sleep_time_details/model/sleep_time_type.dart';
 
 part 'set_sleep_time_event.dart';
@@ -15,7 +17,10 @@ part 'set_sleep_time_bloc.freezed.dart';
 class SetSleepTimeBloc extends Bloc<SetSleepTimeEvent, SetSleepTimeState>
     with SideEffectBlocMixin<SetSleepTimeState, SetSleepTimeCommand> {
   final AlarmRepository _alarmRepository;
-  SetSleepTimeBloc(this._alarmRepository)
+  final NewUserRemoteDataSource _dataSource;
+  final UserRepository _userRepository;
+  SetSleepTimeBloc(
+      this._alarmRepository, this._dataSource, this._userRepository)
       : super(_Initial(
           bedTime: _alarmRepository.bedtime.value,
           wakeUpTime: _alarmRepository.wakeupTime.value,
@@ -37,7 +42,7 @@ class SetSleepTimeBloc extends Bloc<SetSleepTimeEvent, SetSleepTimeState>
           _alarmRepository.bedtime,
           onData: (SleepTime value) => state.copyWith(bedTime: value),
         ),
-         emit.forEach(
+        emit.forEach(
           _alarmRepository.wakeupTime,
           onData: (SleepTime value) => state.copyWith(wakeUpTime: value),
         ),
@@ -66,6 +71,17 @@ class SetSleepTimeBloc extends Bloc<SetSleepTimeEvent, SetSleepTimeState>
   ) async {
     produceSideEffect(NavToSleep());
     await _alarmRepository.setAlarm();
+    if (less15Minutes(
+      _alarmRepository.bedtime.value,
+      _alarmRepository.wakeupTime.value,
+    )) {
+      try {
+        await _dataSource.updateAchievement(
+          _userRepository.currentUser.value.token,
+          8,
+        );
+      } catch (e) {}
+    }
   }
 
   void _onCancelClicked(
@@ -74,4 +90,13 @@ class SetSleepTimeBloc extends Bloc<SetSleepTimeEvent, SetSleepTimeState>
   ) {
     produceSideEffect(NavToBack());
   }
+}
+
+bool less15Minutes(SleepTime sleep, SleepTime wake) {
+  if (wake.h - sleep.h == 0 && wake.m - sleep.m <= 15) {
+    return true;
+  } else if (wake.h - sleep.h == 1 && ((60 - sleep.m + wake.m) <= 15)) {
+    return true;
+  }
+  return false;
 }

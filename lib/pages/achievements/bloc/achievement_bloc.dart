@@ -47,10 +47,10 @@ class AchievementBloc extends Bloc<AchievementEvent, AchievementState>
     }
 
     try {
-      // List<AchievementDto> achievements = await _dataSource.getAllAchievements(
-      //   _userRepository.currentUser.valueOrNull!.token,
-      // );
-      final achievements = Achievements.achievements;
+      List<AchievementDto> achievements = await _dataSource.getAllAchievements(
+        _userRepository.currentUser.valueOrNull!.token,
+      );
+      // final achievements = Achievements.achievements;
       final acquiredAchivements =
           achievements.where((element) => element.isAchieved).toList();
       final notAcquiredAchivements =
