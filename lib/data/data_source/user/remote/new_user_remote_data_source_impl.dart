@@ -123,7 +123,7 @@ abstract class NewUserRemoteDataSourceImpl implements NewUserRemoteDataSource {
 
   @override
   @POST("/achievement/update")
-  Future<void> updateAchievement(
+  Future<bool> updateAchievement(
     @Header("Authorization") String token,
     @Body() int index,
   );

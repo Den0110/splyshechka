@@ -5,6 +5,7 @@ import 'package:side_effect_bloc/side_effect_bloc.dart';
 import 'package:splyshechka/di/locator.dart';
 import 'package:splyshechka/pages/achievements/bloc/achievement_bloc.dart';
 import 'package:splyshechka/pages/achievements/widgets/achievemenets_column_widget.dart';
+import 'package:splyshechka/pages/achievements/widgets/achievement_dialog/achevement_get_dialog.dart';
 import 'package:splyshechka/pages/achievements/widgets/page_indicator.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/utils/app_text_styles.dart';
@@ -34,7 +35,9 @@ class _AchievementsPageState extends State<AchievementsPage> {
         bloc: getIt<AchievementBloc>(),
         listener: (context, state) {
           state.when(
-            openCard: () {},
+            openDialog: ()  {
+             print("blyat");
+            },
           );
         },
         builder: (context, state) => state.loading

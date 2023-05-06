@@ -50,7 +50,7 @@ abstract class NewUserRemoteDataSource {
     SleepDto field,
   );
   Future<List<AchievementDto>> getAllAchievements(String token);
-  Future<void> updateAchievement(
+  Future<bool> updateAchievement(
     String token,
     int index,
   );

@@ -38,10 +38,14 @@ class AchievementBloc extends Bloc<AchievementEvent, AchievementState>
   ) async {
     if (!state.wasOpened) {
       try {
-        await _dataSource.updateAchievement(
-          _userRepository.currentUser.valueOrNull!.token,
-          1,
-        );
+        bool isGotten = true;
+        // bool isGotten = await _dataSource.updateAchievement(
+        //   _userRepository.currentUser.valueOrNull!.token,
+        //   1,
+        // );
+        if (isGotten) {
+          produceSideEffect(const OpenDialog());
+        }
       } catch (e) {}
       emit(state.copyWith(wasOpened: true));
     }
@@ -50,7 +54,6 @@ class AchievementBloc extends Bloc<AchievementEvent, AchievementState>
       List<AchievementDto> achievements = await _dataSource.getAllAchievements(
         _userRepository.currentUser.valueOrNull!.token,
       );
-      // final achievements = Achievements.achievements;
       final acquiredAchivements =
           achievements.where((element) => element.isAchieved).toList();
       final notAcquiredAchivements =
