@@ -4,6 +4,16 @@ abstract class AppImages {
   static const String clownFace =
       "https://drive.google.com/uc?export=view&id=1lXj3z1-fONnscN-lPxaGenInu8r0qe7U";
 
+  static const String analysis = "assets/images/analysis.png";
+  static const String jinx = "assets/images/jinx.png";
+  static const String lastHero = "assets/images/last_hero.png";
+  static const String poGosty = "assets/images/poGosty.png";
+  static const String sweetDreams = "assets/images/sweet_dreams.png";
+  static const String theBest = "assets/images/theBest.png";
+  static const String way = "assets/images/way.png";
+  static const String who = "assets/images/who.png";
+  static const String questions = "assets/images/questions.png";
+
   static const String woodSword = "assets/images/wood_sword.gif";
   static const String ironSword = "assets/images/iron_sword.gif";
   static const String goldenSword = "assets/images/golden_sword.gif";
