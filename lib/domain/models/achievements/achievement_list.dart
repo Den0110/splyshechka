@@ -2,13 +2,13 @@ import 'package:splyshechka/data/model/achievement/achievement_dto.dart';
 import 'package:splyshechka/utils/app_images.dart';
 
 abstract class Achievements {
-  static const String notAchievedImage = "assets/images/question.png";
+  static const String notAchievedImage = "assets/images/questions.png";
 
   static final achievements = [
     const AchievementDto(
       headerText: "Аналитик",
       description: "Открыть статистику.",
-      image: AppImages.redstone,
+      image: AppImages.analysis,
       isAchieved: true,
       counter: 0,
       finalCount: 1,
@@ -17,7 +17,7 @@ abstract class Achievements {
     const AchievementDto(
       headerText: "Сладкий сон",
       description: "Проспать 11 и больше часов за день.",
-      image: AppImages.bed,
+      image: AppImages.sweetDreams,
       isAchieved: true,
       counter: 0,
       finalCount: 1,
@@ -26,7 +26,7 @@ abstract class Achievements {
     const AchievementDto(
       headerText: "По госту",
       description: "Проспать 8-9 часов.",
-      image: AppImages.woodSword,
+      image: AppImages.poGosty,
       isAchieved: true,
       counter: 0,
       finalCount: 1,
@@ -35,7 +35,7 @@ abstract class Achievements {
     const AchievementDto(
       headerText: "Зовите меня крутой",
       description: "Проспать 8-9 часов 3 дня.",
-      image: AppImages.ironSword,
+      image: AppImages.theBest,
       isAchieved: true,
       counter: 0,
       finalCount: 3,
@@ -44,7 +44,7 @@ abstract class Achievements {
     const AchievementDto(
       headerText: "Кто, если не я?",
       description: "Проспать 8-9 часов 7 дней.",
-      image: AppImages.goldenSword,
+      image: AppImages.who,
       isAchieved: true,
       counter: 0,
       finalCount: 7,
@@ -53,7 +53,7 @@ abstract class Achievements {
     const AchievementDto(
       headerText: "Последний герой",
       description: "Проспать 8-9 часов 28 дней.",
-      image: AppImages.diamonSword,
+      image: AppImages.lastHero,
       isAchieved: true,
       counter: 0,
       finalCount: 28,
@@ -62,7 +62,7 @@ abstract class Achievements {
     const AchievementDto(
       headerText: "Проклятие",
       description: "Проспать 4-6 часов.",
-      image: AppImages.spiderEye,
+      image: AppImages.jinx,
       isAchieved: true,
       counter: 0,
       finalCount: 1,
@@ -71,14 +71,14 @@ abstract class Achievements {
     const AchievementDto(
       headerText: "Маленький манёвр",
       description: "Поставить будильник на 15 и меньше минут.",
-      image: AppImages.portal,
+      image: AppImages.way,
       isAchieved: true,
       counter: 0,
       finalCount: 1,
       index: 8,
     ),
     ///////////////////////
-    const AchievementDto(
+     const AchievementDto(
       headerText: "Цыганские фокусы",
       description: "Лечь 2 раза спать за день.",
       image: AppImages.apple,
@@ -126,23 +126,4 @@ abstract class Achievements {
       index: 0,
     ),
   ];
-
-  static String imageAchievementsMapper(String name) {
-    switch (name) {
-      case "redstone":
-        return AppImages.redstone;
-      case "bed":
-        return AppImages.bed;
-      case "woodSwrod":
-        return AppImages.woodSword;
-      case "ironSword":
-        return AppImages.ironSword;
-      case "diamonSword":
-        return AppImages.diamonSword;
-      case "spiderEye":
-        return AppImages.spiderEye;
-      default:
-        return notAchievedImage;
-    }
-  }
 }
