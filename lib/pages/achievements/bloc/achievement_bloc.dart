@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';
 import 'package:splyshechka/data/data_source/user/remote/new_user_remote_data_source.dart';
 import 'package:splyshechka/data/model/achievement/achievement_dto.dart';
+import 'package:splyshechka/data/model/achievement/index_dto.dart';
 import 'package:splyshechka/domain/models/achievements/achievement_list.dart';
 import 'package:splyshechka/domain/repository/user_repository.dart';
 
@@ -38,13 +39,12 @@ class AchievementBloc extends Bloc<AchievementEvent, AchievementState>
   ) async {
     if (!state.wasOpened) {
       try {
-        bool isGotten = true;
-        // bool isGotten = await _dataSource.updateAchievement(
-        //   _userRepository.currentUser.valueOrNull!.token,
-        //   1,
-        // );
+        bool isGotten = await _dataSource.updateAchievement(
+          _userRepository.currentUser.valueOrNull!.token,
+          const IndexDto(index: 1),
+        );
         if (isGotten) {
-          produceSideEffect(const OpenDialog());
+          produceSideEffect(const AchievementCommand.openDialog());
         }
       } catch (e) {}
       emit(state.copyWith(wasOpened: true));

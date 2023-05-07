@@ -1,8 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';
 import 'package:splyshechka/di/locator.dart';
+import 'package:splyshechka/domain/models/achievements/achievement_list.dart';
+import 'package:splyshechka/navigation/auto_router.gr.dart';
 import 'package:splyshechka/pages/achievements/bloc/achievement_bloc.dart';
 import 'package:splyshechka/pages/achievements/widgets/achievemenets_column_widget.dart';
 import 'package:splyshechka/pages/achievements/widgets/achievement_dialog/achevement_get_dialog.dart';
@@ -32,12 +35,16 @@ class _AchievementsPageState extends State<AchievementsPage> {
       create: (context) => getIt<AchievementBloc>()..add(const PageOpened()),
       child: BlocSideEffectConsumer<AchievementBloc, AchievementBloc,
           AchievementState, AchievementCommand>(
-        bloc: getIt<AchievementBloc>(),
         listener: (context, state) {
           state.when(
-            openDialog: ()  {
-             print("blyat");
-            },
+            openDialog: () => showDialog(
+              context: context,
+              builder: (BuildContext context) => AcheievementGetDialog(
+                onPressed: () => context.router.pop(),
+                header: Achievements.achievements[0].headerText,
+                icon: Achievements.achievements[0].image,
+              ),
+            ),
           );
         },
         builder: (context, state) => state.loading

@@ -1,3 +1,4 @@
+import 'package:splyshechka/data/model/achievement/index_dto.dart';
 import 'package:splyshechka/data/model/new_user/field_avatar_dto.dart';
 import 'package:splyshechka/data/model/new_user/field_dto.dart';
 import 'package:splyshechka/data/model/new_user/new_sleep_user_dto.dart';
@@ -52,6 +53,6 @@ abstract class NewUserRemoteDataSource {
   Future<List<AchievementDto>> getAllAchievements(String token);
   Future<bool> updateAchievement(
     String token,
-    int index,
+    IndexDto index,
   );
 }

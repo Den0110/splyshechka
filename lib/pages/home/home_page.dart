@@ -5,7 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';
 import 'package:splyshechka/di/locator.dart';
 import 'package:splyshechka/domain/entities/alarm/sleep_time_mapper.dart';
+import 'package:splyshechka/domain/models/achievements/achievement_list.dart';
 import 'package:splyshechka/navigation/auto_router.gr.dart';
+import 'package:splyshechka/pages/achievements/widgets/achievement_dialog/achevement_get_dialog.dart';
 import 'package:splyshechka/pages/alarm/set_sleep_time_details/model/sleep_time_type.dart';
 import 'package:splyshechka/pages/home/bloc/set_sleep_time_bloc.dart';
 import 'package:splyshechka/pages/home/widgets/time_selection.dart';
@@ -46,6 +48,16 @@ class HomePage extends StatelessWidget {
                       context.router.navigate(const AlarmSleepingRoute());
                     } else if (state is NavToBack) {
                       context.router.pop();
+                    } else if (state is OpenDialog) {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            AcheievementGetDialog(
+                          onPressed: () => context.router.pop(),
+                          header: Achievements.achievements[7].headerText,
+                          icon: Achievements.achievements[7].image,
+                        ),
+                      );
                     }
                   },
                   builder: (context, state) => SingleChildScrollView(

@@ -43,7 +43,9 @@ class AchievementCard extends StatelessWidget {
                 width: 45.sp,
                 height: 45.sp,
                 child: Image.asset(
-                  achievement.isAchieved? achievement.image:Achievements.notAchievedImage,
+                  achievement.isAchieved
+                      ? Achievements.imageAchievementsMapper(achievement.image)
+                      : Achievements.notAchievedImage,
                   fit: BoxFit.fill,
                 )),
             SizedBox(
@@ -52,10 +54,10 @@ class AchievementCard extends StatelessWidget {
             Text(
               achievement.headerText,
               style: TextStyle(
-                  color: achievement.isAchieved? AppColors.green: Colors.white,
-                  fontSize: 22.sp,
-                  fontFamily: AppTextStyles.fontFamilySFPro,
-                  ),
+                color: achievement.isAchieved ? AppColors.green : Colors.white,
+                fontSize: 22.sp,
+                fontFamily: AppTextStyles.fontFamilySFPro,
+              ),
             ),
           ],
         ),

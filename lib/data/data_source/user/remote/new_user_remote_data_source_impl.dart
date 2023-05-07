@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/http.dart';
 import 'package:splyshechka/data/data_source/user/remote/new_user_remote_data_source.dart';
+import 'package:splyshechka/data/model/achievement/index_dto.dart';
 import 'package:splyshechka/data/model/new_user/field_avatar_dto.dart';
 import 'package:splyshechka/data/model/new_user/field_dto.dart';
 import 'package:splyshechka/data/model/new_user/new_sleep_user_dto.dart';
@@ -125,6 +126,6 @@ abstract class NewUserRemoteDataSourceImpl implements NewUserRemoteDataSource {
   @POST("/achievement/update")
   Future<bool> updateAchievement(
     @Header("Authorization") String token,
-    @Body() int index,
+    @Body() IndexDto index,
   );
 }

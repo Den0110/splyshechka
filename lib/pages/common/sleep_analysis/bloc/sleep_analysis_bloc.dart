@@ -7,20 +7,22 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:side_effect_bloc/side_effect_bloc.dart';
 import 'package:splyshechka/data/data_source/user/remote/new_user_remote_data_source.dart';
+import 'package:splyshechka/data/model/achievement/index_dto.dart';
 import 'package:splyshechka/data/model/sleep/sleep_dto.dart';
 import 'package:splyshechka/domain/entities/alarm/sleep_time.dart';
 import 'package:splyshechka/domain/repository/user_repository.dart';
 import 'package:splyshechka/utils/date_formatter.dart';
 
 part 'sleep_analysis_bloc.freezed.dart';
-
 part 'sleep_analysis_event.dart';
-
+part 'sleep_analysis_command.dart';
 part 'sleep_analysis_state.dart';
 
 @injectable
-class SleepAnalysisBloc extends Bloc<SleepAnalysisEvent, SleepAnalysisState> {
+class SleepAnalysisBloc extends Bloc<SleepAnalysisEvent, SleepAnalysisState>
+ with SideEffectBlocMixin<SleepAnalysisState, SleepAnalysisCommand>  {
   final SharedPreferences _prefs;
   final NewUserRemoteDataSource _dataSource;
   final UserRepository _userRepository;
@@ -272,39 +274,63 @@ class SleepAnalysisBloc extends Bloc<SleepAnalysisEvent, SleepAnalysisState> {
 
     if (totalSleepTime.h >= 11) {
       try {
-        await _dataSource.updateAchievement(
-          _userRepository.currentUser.value.token,
-          2,
+        bool isGotten = await _dataSource.updateAchievement(
+          _userRepository.currentUser.valueOrNull!.token,
+          const IndexDto(index: 2),
         );
+        if (isGotten) {
+          produceSideEffect(SleepAnalysisCommand.openDialog(index: 2));
+        }
       } catch (e) {}
     } else if (totalSleepTime.h == 8 ||
         (totalSleepTime.h == 9 && totalSleepTime.m == 0)) {
-      try {
-        await _dataSource.updateAchievement(
-          _userRepository.currentUser.value.token,
-          3,
+       try {
+        bool isGotten = await _dataSource.updateAchievement(
+          _userRepository.currentUser.valueOrNull!.token,
+          const IndexDto(index: 3),
         );
-        await _dataSource.updateAchievement(
-          _userRepository.currentUser.value.token,
-          4,
+        if (isGotten) {
+          produceSideEffect(SleepAnalysisCommand.openDialog(index: 3));
+        }
+      } catch (e) {}
+       try {
+        bool isGotten = await _dataSource.updateAchievement(
+          _userRepository.currentUser.valueOrNull!.token,
+          const IndexDto(index: 4),
         );
-        await _dataSource.updateAchievement(
-          _userRepository.currentUser.value.token,
-          5,
+        if (isGotten) {
+          produceSideEffect(SleepAnalysisCommand.openDialog(index: 4));
+        }
+      } catch (e) {}
+       try {
+        bool isGotten = await _dataSource.updateAchievement(
+          _userRepository.currentUser.valueOrNull!.token,
+          const IndexDto(index: 5),
         );
-        await _dataSource.updateAchievement(
-          _userRepository.currentUser.value.token,
-          6,
+        if (isGotten) {
+          produceSideEffect(SleepAnalysisCommand.openDialog(index: 5));
+        }
+      } catch (e) {}
+       try {
+        bool isGotten = await _dataSource.updateAchievement(
+          _userRepository.currentUser.valueOrNull!.token,
+          const IndexDto(index: 6),
         );
+        if (isGotten) {
+          produceSideEffect(SleepAnalysisCommand.openDialog(index: 6));
+        }
       } catch (e) {}
     } else if (totalSleepTime.h == 4 ||
         totalSleepTime.h == 5 ||
         (totalSleepTime.h == 6 && totalSleepTime.m == 0)) {
       try {
-        await _dataSource.updateAchievement(
-          _userRepository.currentUser.value.token,
-          7,
+        bool isGotten = await _dataSource.updateAchievement(
+          _userRepository.currentUser.valueOrNull!.token,
+          const IndexDto(index: 7),
         );
+        if (isGotten) {
+          produceSideEffect(SleepAnalysisCommand.openDialog(index: 7));
+        }
       } catch (e) {}
     }
 

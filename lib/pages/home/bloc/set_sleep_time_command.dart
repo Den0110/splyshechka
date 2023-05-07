@@ -7,6 +7,6 @@ class SetSleepTimeCommand with _$SetSleepTimeCommand {
   }) = NavToWentDetails;
 
   factory SetSleepTimeCommand.navToSleep() = NavToSleep;
-
   factory SetSleepTimeCommand.navToBack() = NavToBack;
+  factory SetSleepTimeCommand.openDialog() = OpenDialog;
 }

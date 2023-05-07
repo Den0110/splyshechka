@@ -1,7 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:side_effect_bloc/side_effect_bloc.dart';
 import 'package:splyshechka/di/locator.dart';
+import 'package:splyshechka/domain/models/achievements/achievement_list.dart';
+import 'package:splyshechka/pages/achievements/widgets/achievement_dialog/achevement_get_dialog.dart';
 import 'package:splyshechka/pages/alarm/result/widgets/category_with_icon.dart';
 import 'package:splyshechka/pages/alarm/result/widgets/value_with_icon.dart';
 import 'package:splyshechka/pages/common/sleep_analysis/bloc/sleep_analysis_bloc.dart';
@@ -25,8 +29,22 @@ class SleepAnalysis extends StatelessWidget {
     return BlocProvider(
       create: (_) =>
           getIt<SleepAnalysisBloc>()..add(SleepAnalysisEvent.started(filePath)),
-      child: BlocBuilder<SleepAnalysisBloc, SleepAnalysisState>(
-          builder: (context, state) {
+      child: BlocSideEffectConsumer<
+          SleepAnalysisBloc,
+          SleepAnalysisBloc,
+          SleepAnalysisState,
+          SleepAnalysisCommand>(listener: (state, sideEffect) {
+        if (state is OpenDialog) {
+          (index) => showDialog(
+                context: context,
+                builder: (BuildContext context) => AcheievementGetDialog(
+                  onPressed: () => context.router.pop(),
+                  header: Achievements.achievements[index-1].headerText,
+                  icon: Achievements.achievements[index-1].image,
+                ),
+              );
+        }
+      }, builder: (context, state) {
         return Column(children: [
           // InkWell(
           //   child: Padding(

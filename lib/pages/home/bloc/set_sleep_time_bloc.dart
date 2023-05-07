@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:side_effect_bloc/side_effect_bloc.dart';
 import 'package:splyshechka/data/data_source/user/remote/new_user_remote_data_source.dart';
+import 'package:splyshechka/data/model/achievement/index_dto.dart';
 import 'package:splyshechka/domain/entities/alarm/sleep_time.dart';
 import 'package:splyshechka/domain/repository/alarm_repository.dart';
 import 'package:splyshechka/domain/repository/user_repository.dart';
@@ -76,10 +77,13 @@ class SetSleepTimeBloc extends Bloc<SetSleepTimeEvent, SetSleepTimeState>
       _alarmRepository.wakeupTime.value,
     )) {
       try {
-        await _dataSource.updateAchievement(
-          _userRepository.currentUser.value.token,
-          8,
+        bool isGotten = await _dataSource.updateAchievement(
+          _userRepository.currentUser.valueOrNull!.token,
+          const IndexDto(index: 8),
         );
+        if (isGotten) {
+          produceSideEffect(SetSleepTimeCommand.openDialog());
+        }
       } catch (e) {}
     }
   }
