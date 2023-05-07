@@ -75,18 +75,28 @@ class SleepAnalysisBloc extends Bloc<SleepAnalysisEvent, SleepAnalysisState>
     final wentSleepAt =
         DateTime.fromMillisecondsSinceEpoch((int.tryParse(start) ?? 0) * 1000);
 
-    final lightStageEntries = <Entry>[];
+    final lightStageEntries = parts
+        .skip(1)
+        .map((e) => BarEntry(int.tryParse(e.split(' ')[0]) ?? 0, 0));
 
     final sleepStageEntries = <BarEntry>[];
 
     final xVals = <String>[];
+
+    final p1 = parts.skip(2).toList();
+    final format = DateFormat("HH:mm");
+    for (int i = 0; i < p1.length; i++) {
+      DateTime df = wentSleepAt.add(Duration(milliseconds: i * 500));
+      xVals.add(format.format(df));
+      sleepStageEntries.add(BarEntry(int.tryParse(p1[i].split(' ')[3]) ?? 0, 0));
+    }
 
     int j = 0;
 
     int movements = 0;
 
     // 30 minute intervals
-    final intervalsCount = (parts.length / 300.0).ceil();
+    final intervalsCount = (parts.length / 30.0).ceil();
     final intervals = List.generate(intervalsCount, (index) => 0);
     final lightIntervals = List.generate(intervalsCount, (index) => 0);
 
@@ -126,8 +136,8 @@ class SleepAnalysisBloc extends Bloc<SleepAnalysisEvent, SleepAnalysisState>
         asleepCounter = 0;
       }
       //after 5 min
-      if (asleepAfter == null && asleepCounter > 60 * 5 / 5) {
-        asleepAfter = Duration(seconds: 5 * i);
+      if (asleepAfter == null && asleepCounter > 60 * .5 / 5) {
+        asleepAfter = Duration(seconds: (0.5 * i).toInt());
       }
       int lightIntensity = int.tryParse(values[0]) ?? 0;
       if (lightIntensity <= 20) {
@@ -170,17 +180,17 @@ class SleepAnalysisBloc extends Bloc<SleepAnalysisEvent, SleepAnalysisState>
 
     for (int i = 0; i < intervals.length; i++) {
       // Set x value
-      int dv = ((int.tryParse(start) ?? 0) + 5 * (i * 300)) * 1000;
+      int dv = ((int.tryParse(start) ?? 0) + 5 * (i * 3)) * 1000;
       DateTime df = DateTime.fromMillisecondsSinceEpoch(dv);
-      xVals.add(DateFormat("HH:mm").format(df));
+      // xVals.add(DateFormat("HH:mm").format(df));
 
       int movementAmount = 0;
-      if (intervals[i] > 2) {
+      if (intervals[i] > 0) {
         movementAmount = intervals[i];
       }
 
-      sleepStageEntries.add(BarEntry(movementAmount, i));
-      if (movementAmount > 2) {
+      // sleepStageEntries.add(BarEntry(movementAmount, i));
+      if (movementAmount > 0) {
         if (isSleeping) {
           phases++;
           isSleeping = false;
@@ -191,7 +201,7 @@ class SleepAnalysisBloc extends Bloc<SleepAnalysisEvent, SleepAnalysisState>
         }
       }
 
-      lightStageEntries.add(Entry(lightIntervals[i], i));
+      // lightStageEntries.add(Entry(lightIntervals[i], i));
     }
 
     double qualityLight = 1;

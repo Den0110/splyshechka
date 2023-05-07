@@ -108,7 +108,11 @@ public class Recorder {
                     noiseModel.resetEvents();
 
                     // Restart in 5 seconds
+<<<<<<< HEAD
                     customHandler.postDelayed(this, 5000);
+=======
+                    customHandler.postDelayed(this, 500);
+>>>>>>> 2c5bbf128a1205e18a2e65b4c9aa0fcddde62dee
                 }
             }
         };
