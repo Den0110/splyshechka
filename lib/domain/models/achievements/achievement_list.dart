@@ -126,6 +126,7 @@ abstract class Achievements {
       index: 0,
     ),
   ];
+<<<<<<< HEAD
 
   
   static String imageAchievementsMapper(String name) {
@@ -149,3 +150,6 @@ abstract class Achievements {
     }
   }
 }
+=======
+}
+>>>>>>> c33f5031ad89dad6761ea5db7d29f60c0da2e64a
