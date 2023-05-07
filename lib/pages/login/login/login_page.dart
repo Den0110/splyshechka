@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
         builder: (context, state) => SafeArea(
           child: Scaffold(
             body: Container(
-              padding: EdgeInsets.only(bottom: 100.h, left: 50.w, right: 50.w),
+              padding: EdgeInsets.only(bottom: 90.h, left: 50.w, right: 50.w),
               decoration: const BoxDecoration(
                   gradient: LinearGradient(
                       begin: Alignment.topCenter,

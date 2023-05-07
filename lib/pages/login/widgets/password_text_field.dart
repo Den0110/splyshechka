@@ -43,6 +43,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
           fontWeight: FontWeight.w500),
       obscureText: _obscured,
       decoration: InputDecoration(
+        errorMaxLines: 2,
         suffixIcon: SizedBox(
           width: 32.sp,
           child: GestureDetector(
