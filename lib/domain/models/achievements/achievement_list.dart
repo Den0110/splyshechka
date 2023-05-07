@@ -2,7 +2,7 @@ import 'package:splyshechka/data/model/achievement/achievement_dto.dart';
 import 'package:splyshechka/utils/app_images.dart';
 
 abstract class Achievements {
-  static const String notAchievedImage = "assets/images/questions.png";
+  static const String notAchievedImage = "assets/images/question.png";
 
   static final achievements = [
     const AchievementDto(

@@ -46,6 +46,7 @@ class LastStatisticBloc extends Bloc<LastStatisticEvent, LastStatisticState>
         .where((e) => e.contains('recording') && e.endsWith('txt'))
         .toList();
     files.sort();
-    emit(LastStatisticState.initial(loading: false, sleepFilePath: files.last));
+    emit(LastStatisticState.initial(
+        loading: false, sleepFilePath: files.isEmpty ? null : files.last));
   }
 }

@@ -41,29 +41,26 @@ class LoginBloc extends Bloc<LoginEvent, LoginState>
     Emitter<LoginState> emit,
   ) async {
     emit(state.copyWith(loading: true));
+
     final currentUser = await _userRepository.userFromLocal();
     if (currentUser != null) {
-      try {
-        NewSleepUserDto userDto = await _dataSource.getUser(currentUser.token);
-        _userRepository.updateUser(
-          SleepUser(
-            nickname: userDto.username,
-            fullName: userDto.fullName,
-            email: userDto.email,
-            gender: GenderExtension.fromJson(userDto.gender),
-            id: userDto.id,
-            token: currentUser.token,
-            avatar: SleepAvatar(
-              emojiUrl: facePickerItems[userDto.image],
-              color: sleepColorPickerItems[userDto.color],
-            ),
-            sound: currentUser.sound,
+      NewSleepUserDto userDto = await _dataSource.getUser(currentUser.token);
+      _userRepository.updateUser(
+        SleepUser(
+          nickname: userDto.username,
+          fullName: userDto.fullName,
+          email: userDto.email,
+          gender: GenderExtension.fromJson(userDto.gender),
+          id: userDto.id,
+          token: currentUser.token,
+          avatar: SleepAvatar(
+            emojiUrl: facePickerItems[userDto.image],
+            color: sleepColorPickerItems[userDto.color],
           ),
-        );
-        produceSideEffect(LoginCommand.navToMain());
-      } catch (e) {
-        emit(state.copyWith(loading: false));
-      }
+          sound: currentUser.sound,
+        ),
+      );
+      produceSideEffect(LoginCommand.navToMain());
     } else {
       emit(state.copyWith(loading: false));
     }

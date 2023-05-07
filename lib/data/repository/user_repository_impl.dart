@@ -52,4 +52,9 @@ class UserRepositoryImpl extends UserRepository {
   Future<bool> userDeleteFromLocal() async {
     return await _prefs.remove("user");
   }
+  
+  @override
+  void setUser(SleepUser user) {
+   _prefs.setObject("user", SleepUserMapper.fromModel(user));
+  }
 }

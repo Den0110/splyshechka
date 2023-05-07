@@ -36,8 +36,8 @@ class ProfilePage extends StatelessWidget {
           if (state is NavToTermsOfUse) {}
           if (state is NavToRecords) {}
           if (state is Logout) {
-            context.router.navigate(
-              const LoginRoute(),
+            context.router.popUntilRouteWithName(
+               "LoginRoute",
             );
           }
         },

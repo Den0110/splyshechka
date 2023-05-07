@@ -31,4 +31,5 @@ abstract class UserRepository {
   Future<void> updatePassword(String password, String code);
   Future<SleepUser?> userFromLocal();
   Future<bool> userDeleteFromLocal();
+  void setUser(SleepUser user);
 }

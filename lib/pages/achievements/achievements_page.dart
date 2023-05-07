@@ -89,9 +89,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
                             Center(
                               child: Text(
                                 "Полученные достижения",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: AppTextStyles.fontFamilyOpenSans,
+                                style: AppTextStyles.titleMediumStyle.copyWith(
                                   fontSize: 26.sp,
                                 ),
                               ),
@@ -114,9 +112,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
                             Center(
                               child: Text(
                                 "Неполученные достижения",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: AppTextStyles.fontFamilyOpenSans,
+                                style: AppTextStyles.titleMediumStyle.copyWith(
                                   fontSize: 26.sp,
                                 ),
                               ),
