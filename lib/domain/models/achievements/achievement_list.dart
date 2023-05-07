@@ -3,7 +3,6 @@ import 'package:splyshechka/utils/app_images.dart';
 
 abstract class Achievements {
   static const String notAchievedImage = "assets/images/questions.png";
-
   static final achievements = [
     const AchievementDto(
       headerText: "Аналитик",
