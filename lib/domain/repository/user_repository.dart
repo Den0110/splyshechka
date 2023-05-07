@@ -29,4 +29,6 @@ abstract class UserRepository {
   Future<void> updateSleepDto(bool sleepDto);
   Future<void> sendEmailCode();
   Future<void> updatePassword(String password, String code);
+  Future<SleepUser?> userFromLocal();
+  Future<bool> userDeleteFromLocal();
 }

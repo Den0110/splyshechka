@@ -18,6 +18,7 @@ class UserRepositoryImpl extends UserRepository {
 
   Future<void> fetchUser() async {
     final user = _prefs.getObject("user", SleepUserDto.fromJson)?.toModel();
+    print(user);
     if (user != null) {
       currentUser.add(user);
     }
@@ -27,10 +28,6 @@ class UserRepositoryImpl extends UserRepository {
   Future<void> updateUser(SleepUser user) async {
     currentUser.add(user);
     _prefs.setObject("user", SleepUserMapper.fromModel(user));
-    // await _remoteDataSource.updateUser(
-    //  user.id,
-    //   SleepUserMapper.fromModel(user),
-    // );
   }
 
   @override
@@ -45,4 +42,14 @@ class UserRepositoryImpl extends UserRepository {
 
   @override
   Future<void> updatePassword(String password, String code) async {}
+
+  @override
+  Future<SleepUser?> userFromLocal() async {
+    return _prefs.getObject("user", SleepUserDto.fromJson)?.toModel();
+  }
+
+   @override
+  Future<bool> userDeleteFromLocal() async {
+    return await _prefs.remove("user");
+  }
 }

@@ -78,7 +78,7 @@ abstract class Achievements {
       index: 8,
     ),
     ///////////////////////
-     const AchievementDto(
+    const AchievementDto(
       headerText: "Цыганские фокусы",
       description: "Лечь 2 раза спать за день.",
       image: AppImages.apple,
@@ -127,7 +127,6 @@ abstract class Achievements {
     ),
   ];
 
-  
   static String imageAchievementsMapper(String name) {
     switch (name) {
       case "redstone":
@@ -138,10 +137,12 @@ abstract class Achievements {
         return AppImages.poGosty;
       case "ironSword":
         return AppImages.theBest;
-        case "goldenSword":
+      case "goldenSword":
         return AppImages.who;
       case "diamonSword":
         return AppImages.lastHero;
+      case "way":
+        return AppImages.way;
       case "spiderEye":
         return AppImages.jinx;
       default:

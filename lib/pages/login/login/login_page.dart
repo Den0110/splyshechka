@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
     final TextEditingController _passwordController = TextEditingController();
 
     return BlocProvider(
-      create: (context) => getIt<LoginBloc>(),
+      create: (context) => getIt<LoginBloc>()..add(const Started()),
       child: BlocSideEffectConsumer<LoginBloc, LoginBloc, LoginState,
           LoginCommand>(
         listener: (context, sideEffect) {
@@ -54,140 +54,151 @@ class _LoginPageState extends State<LoginPage> {
                     Color.fromRGBO(83, 83, 177, 1),
                     AppColors.space,
                   ])),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Flexible(
-                      child: Image.asset(
-                        "assets/images/LarkAndOwl.png",
-                        fit: BoxFit.contain,
-                        width: 200.w,
-                        height: 200.h,
+              child: state.loading
+                  ? const Center(
+                      child: CircularProgressIndicator(
+                        color: AppColors.purple,
                       ),
-                    ),
-                    Text(
-                      "Авторизация",
-                      style: TextStyle(
-                          fontSize: 26.sp,
-                          color: Colors.white,
-                          fontFamily: AppTextStyles.fontFamilyOpenSans),
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    RegistrationTextField(
-                      hintText: 'Email/логин',
-                      validator: Validation.loginEnterValidation,
-                      controller: _emailController,
-                    ),
-                    SizedBox(
-                      height: 15.h,
-                    ),
-                    PasswordTextField(
-                      hintText: "Пароль",
-                      validator: Validation.passwordValidation,
-                      controller: _passwordController,
-                    ),
-                    SizedBox(
-                      height: 15.h,
-                    ),
-                    GestureDetector(
-                        child: Text(
-                          "Забыли пароль?",
-                          style: TextStyle(
-                              color: Color.fromRGBO(141, 141, 255, 1),
-                              fontFamily: AppTextStyles.fontFamilyOpenSans,
-                              fontSize: 14.sp),
-                        ),
-                        onTap: () {
-                          context.navigateTo(PasswordRetrievalRoute());
-                        }),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        if (_formKey.currentState!.validate()) {
-                          if (Validation.emailValidation(
-                                  _emailController.text) ==
-                              null) {
-                            context.read<LoginBloc>().add(
-                                  LoginEvent.signInEmailClicked(
-                                    email: _emailController.text,
-                                    password: _passwordController.text,
+                    )
+                  : Form(
+                      key: _formKey,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Flexible(
+                            child: Image.asset(
+                              "assets/images/LarkAndOwl.png",
+                              fit: BoxFit.contain,
+                              width: 200.w,
+                              height: 200.h,
+                            ),
+                          ),
+                          Text(
+                            "Авторизация",
+                            style: TextStyle(
+                                fontSize: 26.sp,
+                                color: Colors.white,
+                                fontFamily: AppTextStyles.fontFamilyOpenSans),
+                          ),
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                          RegistrationTextField(
+                            hintText: 'Email/логин',
+                            validator: Validation.loginEnterValidation,
+                            controller: _emailController,
+                          ),
+                          SizedBox(
+                            height: 15.h,
+                          ),
+                          PasswordTextField(
+                            hintText: "Пароль",
+                            validator: Validation.passwordValidation,
+                            controller: _passwordController,
+                          ),
+                          SizedBox(
+                            height: 15.h,
+                          ),
+                          GestureDetector(
+                              child: Text(
+                                "Забыли пароль?",
+                                style: TextStyle(
+                                    color: Color.fromRGBO(141, 141, 255, 1),
+                                    fontFamily:
+                                        AppTextStyles.fontFamilyOpenSans,
+                                    fontSize: 14.sp),
+                              ),
+                              onTap: () {
+                                context.navigateTo(PasswordRetrievalRoute());
+                              }),
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              if (_formKey.currentState!.validate()) {
+                                if (Validation.emailValidation(
+                                        _emailController.text) ==
+                                    null) {
+                                  context.read<LoginBloc>().add(
+                                        LoginEvent.signInEmailClicked(
+                                          email: _emailController.text,
+                                          password: _passwordController.text,
+                                        ),
+                                      );
+                                } else {
+                                  context.read<LoginBloc>().add(
+                                        LoginEvent.signInClicked(
+                                          email: _emailController.text,
+                                          password: _passwordController.text,
+                                        ),
+                                      );
+                                }
+                              }
+                            },
+                            child: Container(
+                              width: 170.w,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(11.r),
+                                color: AppColors.greyMain,
+                                boxShadow: const [
+                                  BoxShadow(
+                                      color: Color.fromRGBO(83, 83, 177, 1),
+                                      offset: Offset(0, 1))
+                                ],
+                              ),
+                              child: Center(
+                                child: Padding(
+                                  padding: EdgeInsets.all(8.0.r),
+                                  child: Text(
+                                    "Войти",
+                                    style: TextStyle(
+                                      color: AppColors.white,
+                                      fontFamily:
+                                          AppTextStyles.fontFamilyOpenSans,
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
-                                );
-                          } else {
-                            context.read<LoginBloc>().add(
-                                  LoginEvent.signInClicked(
-                                    email: _emailController.text,
-                                    password: _passwordController.text,
-                                  ),
-                                );
-                          }
-                        }
-                      },
-                      child: Container(
-                        width: 170.w,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(11.r),
-                          color: AppColors.greyMain,
-                          boxShadow: const [
-                            BoxShadow(
-                                color: Color.fromRGBO(83, 83, 177, 1),
-                                offset: Offset(0, 1))
-                          ],
-                        ),
-                        child: Center(
-                          child: Padding(
-                            padding: EdgeInsets.all(8.0.r),
-                            child: Text(
-                              "Войти",
-                              style: TextStyle(
-                                color: AppColors.white,
-                                fontFamily: AppTextStyles.fontFamilyOpenSans,
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
                           ),
-                        ),
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Еще нет аккаунта?",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily:
+                                        AppTextStyles.fontFamilyOpenSans,
+                                    fontSize: 14.sp),
+                              ),
+                              SizedBox(
+                                width: 5.h,
+                              ),
+                              GestureDetector(
+                                child: Text(
+                                  "Создать.",
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(141, 141, 255, 1),
+                                      fontFamily:
+                                          AppTextStyles.fontFamilyOpenSans,
+                                      fontSize: 14.sp),
+                                ),
+                                onTap: () =>
+                                    context.navigateTo(RegistrationRoute()),
+                              )
+                            ],
+                          )
+                        ],
                       ),
                     ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Еще нет аккаунта?",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: AppTextStyles.fontFamilyOpenSans,
-                              fontSize: 14.sp),
-                        ),
-                        SizedBox(
-                          width: 5.h,
-                        ),
-                        GestureDetector(
-                          child: Text(
-                            "Создать.",
-                            style: TextStyle(
-                                color: Color.fromRGBO(141, 141, 255, 1),
-                                fontFamily: AppTextStyles.fontFamilyOpenSans,
-                                fontSize: 14.sp),
-                          ),
-                          onTap: () => context.navigateTo(RegistrationRoute()),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              ),
             ),
           ),
         ),

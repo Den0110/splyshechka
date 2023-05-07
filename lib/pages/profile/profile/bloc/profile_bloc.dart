@@ -55,7 +55,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   void _onPressedLogout(
     LogoutPressed event,
     Emitter<ProfileState> emit,
-  ) {
+  ) async {
+    await _userRepository.userDeleteFromLocal();
     emitOnce(emit, ProfileState.logout());
   }
 

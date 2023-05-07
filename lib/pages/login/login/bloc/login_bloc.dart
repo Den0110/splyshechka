@@ -28,9 +28,45 @@ class LoginBloc extends Bloc<LoginEvent, LoginState>
   LoginBloc(
     this._dataSource,
     this._userRepository,
-  ) : super(_Initial()) {
+  ) : super(const Initial(
+          loading: true,
+        )) {
+    on<Started>(_onStarted);
     on<SignInClicked>(_onSignInClicked);
     on<SignInEmailClicked>(_onSignInEmailClicked);
+  }
+
+  Future<void> _onStarted(
+    Started event,
+    Emitter<LoginState> emit,
+  ) async {
+    emit(state.copyWith(loading: true));
+    final currentUser = await _userRepository.userFromLocal();
+    if (currentUser != null) {
+      try {
+        NewSleepUserDto userDto = await _dataSource.getUser(currentUser.token);
+        _userRepository.updateUser(
+          SleepUser(
+            nickname: userDto.username,
+            fullName: userDto.fullName,
+            email: userDto.email,
+            gender: GenderExtension.fromJson(userDto.gender),
+            id: userDto.id,
+            token: currentUser.token,
+            avatar: SleepAvatar(
+              emojiUrl: facePickerItems[userDto.image],
+              color: sleepColorPickerItems[userDto.color],
+            ),
+            sound: currentUser.sound,
+          ),
+        );
+        produceSideEffect(LoginCommand.navToMain());
+      } catch (e) {
+        emit(state.copyWith(loading: false));
+      }
+    } else {
+      emit(state.copyWith(loading: false));
+    }
   }
 
   Future<void> _onSignInClicked(

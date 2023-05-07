@@ -70,8 +70,8 @@ class SetSleepTimeBloc extends Bloc<SetSleepTimeEvent, SetSleepTimeState>
     _SleepClicked event,
     Emitter<SetSleepTimeState> emit,
   ) async {
-    produceSideEffect(NavToSleep());
     await _alarmRepository.setAlarm();
+    produceSideEffect(NavToSleep());
     if (less15Minutes(
       _alarmRepository.bedtime.value,
       _alarmRepository.wakeupTime.value,
