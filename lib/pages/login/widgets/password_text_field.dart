@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:splyshechka/pages/login/widgets/login_text_field.dart';
 import 'package:splyshechka/utils/app_colors.dart';
 import 'package:splyshechka/utils/app_text_styles.dart';
 
@@ -33,8 +34,10 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
     return TextFormField(
       validator: widget.validator,
       controller: widget.controller,
+      keyboardType: TextInputType.visiblePassword,
       textInputAction: TextInputAction.next,
       cursorWidth: 1.w,
+      inputFormatters: [NoSpaceFormatter()],
       cursorColor: Color.fromRGBO(141, 141, 255, 1),
       style: TextStyle(
           color: AppColors.space,
